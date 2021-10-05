@@ -1,0 +1,23 @@
+— Begin: theory database issue-gen-spec.
+
+theory TG.
+
+rule GenA. formula 𝑨 object °𝒙.
+  𝑨 ⊢ ∀¹°𝒙 𝑨.
+
+axiom I. object °𝒙.
+  °𝒙 = °𝒙.
+
+axiom P. object 𝒙, 𝒚.
+  𝒙 = 𝒚.
+
+axiom Q. predicate variable 𝑷 object 𝒕.
+  𝑷(𝒕).
+
+lemma C. object °𝑥, °𝑦.
+  s(°𝑥) ≠ 0 ⊢⁽°𝑥⁾ s(°𝑦) ≠ 0
+result by premise C. — premise C.
+
+end theory TG.
+
+— End: theory database issue-gen-spec.

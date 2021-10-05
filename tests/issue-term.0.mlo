@@ -1,0 +1,40 @@
+— Begin: theory database issue-term.
+
+theory TG.
+
+rule GenA. formula 𝑨 object °𝒙.
+  𝑨 ⊢ ∀¹°𝒙 𝑨.
+
+rule K1. formula 𝑨 object 𝒕, °𝒙.
+  𝒕 free for °𝒙 in 𝑨 ⊩ ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝒕].
+
+rule K1a. formula 𝑨 object 𝒕, °𝒙.
+  ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝒕].
+
+rule K1b. formula 𝑨 object 𝒕, °𝒙.
+  ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝒕].
+
+rule K1c. formula 𝑨 object 𝑡, °𝒙.
+  ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝑡].
+
+axiom Id. 
+  ∀¹°𝑥⁰⁺¹ °𝑥⁰⁺¹ = °𝑥⁰⁺¹.
+
+axiom IdA. object 𝑥.
+  𝑥 = 𝑥.
+
+lemma A. object 𝑥, 𝑦.
+  𝑥 + 𝑦 = 𝑥 + 𝑦
+result by IdA, K1c. — IdA.
+
+lemma B. object 𝒙, 𝒚.
+  𝒙 + 𝒚 = 𝒙 + 𝒚
+result by IdA. — IdA.
+
+lemma C. object 𝑦.
+  ∀¹°𝑥⁰⁺¹ °𝑥⁰⁺¹ + 𝑦 = °𝑥⁰⁺¹ + 𝑦
+result by IdA, GenA. — GenA: IdA.
+
+end theory TG.
+
+— End: theory database issue-term.

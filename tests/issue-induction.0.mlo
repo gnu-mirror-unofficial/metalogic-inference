@@ -1,0 +1,272 @@
+— Begin: theory database issue-induction.
+
+theory TS1.
+
+rule MP. formula 𝑨, 𝑩.
+  𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+rule CI. formula 𝑨, 𝑩.
+  𝑨, 𝑩 ⊢ 𝑨 ∧ 𝑩.
+
+axiom K0. formula 𝑩 object 𝒕, °𝒚.
+  ∀¹°𝒚 𝑩 ⇒ 𝑩[°𝒚 ⤇ 𝒕].
+
+rule K1. formula 𝑨 object 𝒕, °𝒙.
+  ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝒕].
+
+rule Gen. formula 𝑩 object °𝒚.
+  𝑩 ⊢⁽°𝒚⁾ ∀¹°𝒚 𝑩.
+
+rule Ex. formula 𝑩 object 𝒕, °𝒚.
+  𝑩[°𝒚 ⤇ 𝒕] ⊢ ∃¹°𝒚 𝑩.
+
+rule OVS. formula 𝑪 object 𝒖, °𝒛.
+  𝑪 ⊢⁽°𝒛⁾ 𝑪[°𝒛 ⤇ 𝒖].
+
+rule IR1. predicate variable 𝑷.
+  𝑷(0), ∀²°𝑥⁰⁺²: 𝑷(°𝑥⁰⁺²) ⇒ 𝑷(s(°𝑥⁰⁺²)) ⊢ ∀¹°𝑦⁰⁺¹ 𝑷(°𝑦⁰⁺¹).
+
+rule IR1x. predicate variable 𝑷 object °𝑥.
+  𝑷(0), ∀²°𝑥: 𝑷(°𝑥) ⇒ 𝑷(s(°𝑥)) ⊢ ∀¹°𝑥 𝑷(°𝑥).
+
+axiom S9a. predicate variable 𝑷.
+  𝑷(0) ∧ ∀¹°𝑥⁰⁺¹: 𝑷(°𝑥⁰⁺¹) ⇒ 𝑷(s(°𝑥⁰⁺¹)) ⇒ ∀²°𝑦⁰⁺² 𝑷(°𝑦⁰⁺²).
+
+axiom S9b. predicate variable 𝑷.
+  𝑷(0) ∧ ∀¹°𝑥⁰⁺¹: 𝑷(°𝑥⁰⁺¹) ⇒ 𝑷(s(°𝑥⁰⁺¹)) ⇒ ∀²°𝑥⁰⁺² 𝑷(°𝑥⁰⁺²).
+
+axiom S9c. predicate variable 𝑷 object °𝑥.
+  𝑷(0) ∧ ∀¹°𝑥: 𝑷(°𝑥) ⇒ 𝑷(s(°𝑥)) ⇒ ∀²°𝑥 𝑷(°𝑥).
+
+axiom A. object 𝑡.
+  𝑡 ≠ 0 ⇒ ∃¹°𝑦⁰⁺¹ s(°𝑦⁰⁺¹) = 𝑡.
+
+axiom B. 
+  ∀¹°𝑦⁰⁺¹ s(°𝑦⁰⁺¹) ≠ 0.
+
+axiom C. object 𝑡.
+  s(𝑡) ≠ 0.
+
+axiom D. object °𝒙.
+  s(°𝒙) ≠ 0.
+
+axiom IB. 
+  ∀¹°𝑦⁰⁺¹ 𝑃(°𝑦⁰⁺¹, °𝑦⁰⁺¹).
+
+axiom IF. object 𝑡.
+  𝑃(𝑡, 𝑡).
+
+axiom IL. object °𝒙.
+  𝑃(°𝒙, °𝒙).
+
+axiom JB. 
+  ∀¹°𝑥⁰⁺¹,² °𝑦⁰⁺² 𝑃(°𝑥⁰⁺¹, °𝑦⁰⁺²).
+
+axiom JF. object 𝑡, 𝑢.
+  𝑃(𝑡, 𝑢).
+
+axiom JL. object °𝒙, °𝒚.
+  𝑃(°𝒙, °𝒚).
+
+rule E. predicate variable 𝑷.
+  ∀²°𝒚⁰⁺² 𝑷(°𝒚⁰⁺²) ⊢ ∀¹°𝒙⁰⁺¹ 𝑷(°𝒙⁰⁺¹).
+
+axiom T8a. object °𝒙, °𝒚, °𝒛.
+  °𝒙 = °𝒚 ⇒ °𝒙 + s(°𝒛) = °𝒚 + s(°𝒛).
+
+axiom T8b. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒚 ⇒ 𝒙 + s(𝒛) = 𝒚 + s(𝒛).
+
+definition Da. object °𝒙, °𝒚, 𝒛.
+  𝐴(𝒛) ≔₍°𝒙,°𝒚₎ °𝒙 = °𝒚 ⇒ °𝒙 + 𝒛 = °𝒚 + 𝒛.
+
+definition Db. object 𝒙, 𝒚, 𝒛.
+  𝐴(𝒛) ≔₍𝒙,𝒚₎ 𝒙 = 𝒚 ⇒ 𝒙 + 𝒛 = 𝒚 + 𝒛.
+
+lemma iia. object °𝒛.
+  𝐴(°𝒛) ⊢ 𝐴(s(°𝒛))
+9. [*concluding*] 𝐴(s(°𝒛)) by T8a, Da. — T8a₍Da₎.
+
+lemma iib. object 𝒛.
+  𝐴(𝒛) ⊢ 𝐴(s(𝒛))
+9. [*concluding*] 𝐴(s(𝒛)) by T8b, Db. — T8b₍Db₎.
+
+lemma iv. object °𝒙.
+  ∃²°𝑤⁰⁺² °𝒙 = s(°𝑤⁰⁺²) ⊢ ∃¹°𝑦⁰⁺¹ °𝒙 = s(°𝑦⁰⁺¹)
+result by premise iv. — premise iv.
+
+lemma ivb. object 𝒙.
+  ∃²°𝑤⁰⁺² 𝒙 = s(°𝑤⁰⁺²) ⊢ ∃¹°𝑦⁰⁺¹ 𝒙 = s(°𝑦⁰⁺¹)
+result by premise ⊢. — premise ⊢.
+
+lemma SaO. object °𝒖.
+  s(°𝒖) ≠ 0 ⊢⁽°𝒖⁾ s(0) ≠ 0
+result by OVS: premise SaO. — OVS: premise SaO.
+
+lemma SaT [*unproved*]. object 𝒕.
+  s(𝒕) ≠ 0 ⊢ s(0) ≠ 0
+[*unproved*] result by premise SaT.
+
+lemma Sa. object °𝑥.
+  s(°𝑥) ≠ 0 ⊢⁽°𝑥⁾ s(0) ≠ 0
+result by OVS: premise ⊢. — OVS: premise ⊢.
+
+lemma Sb. ∀¹°𝑥⁰⁺¹ s(°𝑥⁰⁺¹) ≠ 0 ⊢ s(0) ≠ 0
+result by K1. — K1.
+
+lemma IR1a. predicate variable 𝑷 object °𝑥.
+  𝑷(0), ∀²°𝑥: 𝑷(°𝑥) ⇒ 𝑷(s(°𝑥)) ⊢ ∀¹°𝑥 𝑷(°𝑥)
+result by MP: CI; S9a. — MP: CI; S9a.
+
+lemma IR1b. predicate variable 𝑷.
+  𝑷(0), ∀²°𝑥⁰⁺²: 𝑷(°𝑥⁰⁺²) ⇒ 𝑷(s(°𝑥⁰⁺²)) ⊢ ∀¹°𝑥⁰⁺¹ 𝑷(°𝑥⁰⁺¹)
+result by MP: CI; S9a. — MP: CI; S9a.
+
+lemma IR1c. predicate variable 𝑷.
+  𝑷(0), ∀²°𝑥⁰⁺²: 𝑷(°𝑥⁰⁺²) ⇒ 𝑷(s(°𝑥⁰⁺²)) ⊢ ∀¹°𝑦⁰⁺¹ 𝑷(°𝑦⁰⁺¹)
+result by MP: CI; S9a. — MP: CI; S9a.
+
+lemma IR2a. predicate variable 𝑷 object °𝒛.
+  𝑷(0), 𝑷(°𝒛) ⇒ 𝑷(s(°𝒛)) ⊢⁽¹ °𝒛⁾ 𝑷(°𝒛)
+result by K1: IR1: Gen. — K1: IR1: Gen.
+
+lemma Q1 [*unproved*]. predicate variable 𝑃 object °𝒙, °𝒚.
+  𝑃(°𝒙, °𝒙) ⊢ 𝑃(°𝒙, °𝒚)
+[*unproved*] result by premise Q1.
+
+lemma Q2 [*unproved*]. object °𝒙, °𝒚.
+  𝑃(°𝒙, °𝒙) ⊢ 𝑃(°𝒚, °𝒙)
+[*unproved*] result by premise Q2.
+
+lemma IR2b. predicate variable 𝑷 object °𝒛.
+  𝑷(0), 𝑷(°𝒛) ⇒ 𝑷(s(°𝒛)) ⊢⁽¹ °𝒛⁾ 𝑷(°𝒛)
+result by K1: IR1: Gen. — K1: IR1: Gen.
+
+lemma IR2x. predicate variable 𝑷 object °𝒛.
+  𝑷(0), 𝑷(°𝒛) ⇒ 𝑷(s(°𝒛)) ⊢ 𝑷(°𝒛)
+result by K1: IR1x: Gen: . — K1: IR1x: Gen.
+
+lemma Q [*unproved*]. object 𝑡, 𝑢.
+  𝑃(𝑢) ⊢ 𝑃(𝑡)
+[*unproved*] result by K1: Gen: premise ⊢.
+
+lemma Q0. object °𝒙, °𝒚.
+  𝑃(°𝒙, °𝒚) ⊢ 𝑃(°𝒙, °𝒚)
+result by premise Q0. — .
+
+lemma Q3. object 𝒕.
+  𝑃(𝒕) ⊢ ∃¹°𝑥⁰⁺¹ 𝑃(°𝑥⁰⁺¹)
+proof
+  1. 𝑃(𝒕) by premise Q3. — premise Q3.
+  2. ∃¹°𝑥¹⁺¹ 𝑃(°𝑥¹⁺¹) by Ex, 1. — Ex: 1.
+  result by Ex. — Ex.
+∎
+
+lemma K. formula 𝑨 object 𝑡, °𝒙.
+  ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝑡]
+result by K0, MP. — MP: K0.
+
+lemma S. object 𝑡.
+  s(𝑡) ≠ 0
+result by K1: B. — K1: B.
+
+lemma T. ∀¹°𝑦⁰⁺¹ s(°𝑦⁰⁺¹) ≠ 0
+result by Gen: C. — Gen: C.
+
+lemma X. object °𝑡.
+  s(°𝑡) ≠ 0 ⊢⁽°𝑡⁾ ∀¹°𝑦⁰⁺¹ s(°𝑦⁰⁺¹) ≠ 0
+result by Gen, premise X. — Gen: premise X.
+
+lemma Y. object °𝑡.
+  s(°𝑡) ≠ 0 ⊢⁽°𝑡⁾ ∀¹°𝑦⁰⁺¹ s(°𝑦⁰⁺¹) ≠ 0
+result by Gen, premise Y. — Gen: premise Y.
+
+lemma Z. object °𝑡.
+  s(°𝑡) ≠ 0 ⊢⁽°𝑡⁾ ∀¹°𝑡 s(°𝑡) ≠ 0
+result by Gen. — Gen.
+
+lemma Z1 [*unproved*]. object 𝑡.
+  s(𝑡) ≠ 0 ⊢ ∀¹°𝑡⁰⁺¹ s(°𝑡⁰⁺¹) ≠ 0
+[*unproved*] result by Gen, premise Z1.
+
+lemma Z2. object 𝑡.
+  s(𝑡) ≠ 0 ⊢ ∃¹°𝑡⁰⁺¹ s(°𝑡⁰⁺¹) ≠ 0
+result by Ex. — Ex.
+
+lemma KB [*unproved*]. ∀¹°𝑥⁰⁺¹,² °𝑦⁰⁺² 𝑃(°𝑥⁰⁺¹, °𝑦⁰⁺²)
+[*unproved*] result by IB.
+
+lemma KF [*unproved*]. object 𝑡, 𝑢.
+  𝑃(𝑡, 𝑢)
+[*unproved*] result by IF.
+
+lemma KL [*unproved*]. object °𝒙, °𝒚.
+  𝑃(°𝒙, °𝒚)
+[*unproved*] result by IL.
+
+lemma LB. ∀¹°𝑥⁰⁺¹,² °𝑦⁰⁺² 𝑃(°𝑥⁰⁺¹, °𝑦⁰⁺²)
+result by JB. — JB.
+
+lemma LF. object 𝑡, 𝑢.
+  𝑃(𝑡, 𝑢)
+result by JF. — JF.
+
+lemma LL. object °𝒙, °𝒚.
+  𝑃(°𝒙, °𝒚)
+result by JL. — JL.
+
+lemma MB. ∀¹°𝑥⁰⁺¹ 𝑃(°𝑥⁰⁺¹, °𝑥⁰⁺¹)
+result by IB. — IB.
+
+lemma MF. object 𝑡.
+  𝑃(𝑡, 𝑡)
+result by IF. — IF.
+
+lemma ML. object °𝒙.
+  𝑃(°𝒙, °𝒙)
+result by IL. — IL.
+
+lemma U [*unproved*]. predicate variable 𝑷 object °𝒙.
+  𝑷(0), ∀²°𝑥⁰⁺²: 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) ⊢ ∀¹°𝑥⁰⁺¹ 𝑷(°𝑥⁰⁺¹)
+proof
+  4b [*unproved*]. ∀¹°𝑥¹⁺¹ 𝑷(°𝑥¹⁺¹) by IR1, premise U.
+[* Last proof line is not concluding, thus unused in proof. *]
+[* No concluding proof line. *]
+∎
+
+lemma W [*unproved*]. predicate variable 𝑷 object °𝒙.
+  𝑷(0), ∀²°𝑥⁰⁺²: 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) ⊢ ∀¹°𝑥⁰⁺¹ 𝑷(°𝑥⁰⁺¹)
+proof
+  1. 𝑷(0) by premise W. — premise W₀.
+  2. ∀¹°𝑥¹⁺¹: 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) by premise W. — premise W₁.
+  3 [*unproved*]. ∀¹°𝑥¹⁺¹ 𝑷(°𝑥¹⁺¹) by IR1, 1, 2.
+[* Last proof line is not concluding, thus unused in proof. *]
+[* No concluding proof line. *]
+∎
+
+lemma IR2. predicate variable 𝑷 object °𝒙.
+  𝑷(0), 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) ⊢⁽¹ °𝒙⁾ 𝑷(°𝒙)
+proof
+  result by K1: IR1: Gen. — K1: IR1: Gen.
+  1. 𝑷(0) by premise IR2. — premise IR2₀.
+  2. 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) by premise IR2. — premise IR2₁.
+  3. ∀¹°𝒙: 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) by Gen, 2. — Gen: 2.
+  4. ∀¹°𝑥¹⁺¹ 𝑷(°𝑥¹⁺¹) by IR1: 1; 3. — IR1: 1; 3.
+  5. [*concluding*] 𝑷(°𝒙) by K1: 4. — K1: 4.
+  7. [*concluding*] 𝑷(°𝒙) by K1: IR1: premise IR2; Gen: premise IR2. — K1: IR1: premise IR2₀; Gen: premise IR2₁.
+[* Number of concluding proof lines: 3, all proved. *]
+∎
+
+lemma IR3 [*unproved*]. predicate variable 𝑷 object 𝒛.
+  𝑷(0), 𝑷(𝒛) ⇒ 𝑷(s(𝒛)) ⊢ 𝑷(𝒛)
+proof
+  1. 𝑷(0) by premise IR3. — premise IR3₀.
+  2. 𝑷(𝒛) ⇒ 𝑷(s(𝒛)) by premise IR3. — premise IR3₁.
+  3 [*unproved*]. ∀¹°𝑥¹⁺¹: 𝑷(°𝑥¹⁺¹) ⇒ 𝑷(s(°𝑥¹⁺¹)) by Gen, 2.
+  4 [*unproved*]. ∀¹°𝑥¹⁺¹ 𝑷(°𝑥¹⁺¹) by IR1: 1; 3.
+  5 [*unproved*]. [*concluding*] 𝑷(𝒛) by K1: 4.
+∎
+
+end theory TS1.
+
+— End: theory database issue-induction.

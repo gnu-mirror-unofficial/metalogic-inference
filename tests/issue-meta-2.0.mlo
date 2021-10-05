@@ -1,0 +1,17 @@
+— Begin: theory database issue-meta-2.
+
+theory TM.
+
+postulate DT. formula 𝑨, 𝑩.
+  𝑨 ⊢ 𝑩 ⊩ 𝑨 ⇒ 𝑩.
+
+rule IR2. predicate variable 𝑷 object °𝒙.
+  𝑷(0), 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) ⊢ 𝑷(°𝒙).
+
+lemma IR. predicate variable 𝑷 object °𝒙.
+  𝑷(0); 𝑷(°𝒙) ⊢ 𝑷(s(°𝒙)) ⊩ 𝑷(°𝒙)
+result by IR2: premise ⊢₀; DT: premise ⊢₁. — IR2: premise ⊢₀; DT.
+
+end theory TM.
+
+— End: theory database issue-meta-2.

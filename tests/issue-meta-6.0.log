@@ -1,0 +1,24 @@
+
+Proving lemma K. formula 𝑨 object 𝑡, °𝒙.
+  ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝑡]
+Proving result.
+Proof succeeded.
+Variables: '𝑨, '𝑡, '°𝒙
+Proof count: 1
+
+Proof of
+  ∀¹'°𝒙 '𝑨 ⊢ '𝑨['°𝒙 ⤇ '𝑡]
+succeeded:
+  MP: premise ⊢; K0.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝑨['°𝒙 ⤇ '𝑡]][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝑨['°𝒙 ⤇ '𝑡]][𝚪₁₀ ↦ □]
+∴ ∀¹'°𝒙 '𝑨 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝑨['°𝒙 ⤇ '𝑡]
+premise ⊢. formula '𝑨 object °𝒙.
+  ∀¹°𝒙 '𝑨.
+axiom K0. formula 𝑩₂₁ object 𝒕₂₁, °𝒚₂₁.
+  ∀¹°𝒚₂₁ 𝑩₂₁ ⇒ 𝑩₂₁[°𝒚₂₁ ⤇ 𝒕₂₁].
+[𝑨₁₀ ↦ ∀¹°𝒙 '𝑨][°𝒚₂₁ ↦ °𝒙][𝑩₂₁ ↦ '𝑨][°𝒙 ↦ '°𝒙][𝒕₂₁ ↦ '𝑡]
+∎
+
+

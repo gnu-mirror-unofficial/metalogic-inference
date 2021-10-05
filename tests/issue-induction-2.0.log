@@ -1,0 +1,98 @@
+
+Proving lemma Q2a0. object °𝑥, 𝒕.
+  𝑃(°𝑥) ⊢ 𝑃(𝒕)
+Proving result.
+Proof failed.
+Variables: '°𝑥, '𝒕
+Proof count: 0
+
+
+
+
+Proving lemma Q2a. object °𝑥, 𝒕.
+  𝑃(°𝑥) ⊢⁽°𝑥⁾ 𝑃(𝒕)
+Proving result.
+Proof succeeded.
+Variables: '°𝑥, '𝒕
+Proof count: 1
+
+Proof of
+  𝑃('°𝑥) ⊢⁽'°𝑥⁾ 𝑃('𝒕)
+succeeded:
+  OVS: premise ⊢.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢⁽°𝒛₁₀⁾ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒕][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ 𝑃('°𝒛₁₀)]
+∴ 𝑃('°𝑥) ⊢⁽'°𝑥⁾ 𝑃('°𝒛₁₀)
+premise ⊢. object °𝑥.
+  𝑃(°𝑥) ⊢⁽°𝑥⁾.
+[°𝑥 ↦⁰ ⁰ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma Q2b. object °𝑥, °𝑦, 𝒕.
+  𝑃(°𝑥, °𝑦) ⊢⁽°𝑥 °𝑦⁾ 𝑃(𝒕, 𝒕)
+Proving result.
+Proof succeeded.
+Variables: '°𝑥, '°𝑦, '𝒕
+Proof count: 1
+
+Proof of
+  𝑃('°𝑥, '°𝑦) ⊢⁽'°𝑥 '°𝑦⁾ 𝑃('𝒕, '𝒕)
+succeeded:
+  OVS: premise ⊢.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢⁽°𝒛₁₀⁾ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒕][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ 𝑃('°𝒛₁₀, '°𝒛₁₀)]
+∴ 𝑃('°𝑥, '°𝑦) ⊢⁽'°𝑥 '°𝑦⁾ 𝑃('°𝒛₁₀, '°𝒛₁₀)
+premise ⊢. object °𝑥, °𝑦.
+  𝑃(°𝑥, °𝑦) ⊢⁽°𝑥 °𝑦⁾.
+[°𝑥 ↦⁰ ⁰ '°𝒛₁₀][°𝑦 ↦⁰ ⁰ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma Q2c. object °𝑥, 𝒕.
+  𝑃(°𝑥) ⊢⁽°𝑥⁾ 𝑃(𝒕)
+Proving result.
+Proof succeeded.
+Variables: '°𝑥, '𝒕
+Proof count: 1
+
+Proof of
+  𝑃('°𝑥) ⊢⁽'°𝑥⁾ 𝑃('𝒕)
+succeeded:
+  OVS: premise ⊢.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢⁽°𝒛₁₀⁾ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒕][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ 𝑃('°𝒛₁₀)]
+∴ 𝑃('°𝑥) ⊢⁽'°𝑥⁾ 𝑃('°𝒛₁₀)
+premise ⊢. object °𝑥.
+  𝑃(°𝑥) ⊢⁽°𝑥⁾.
+[°𝑥 ↦⁰ ⁰ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma Q2d. object °𝑥, °𝑦, 𝒕.
+  𝑃(°𝑥, °𝑦) ⊢⁽°𝑥 °𝑦⁾ 𝑃(𝒕, 𝒕)
+Proving result.
+Proof succeeded.
+Variables: '°𝑥, '°𝑦, '𝒕
+Proof count: 1
+
+Proof of
+  𝑃('°𝑥, '°𝑦) ⊢⁽'°𝑥 '°𝑦⁾ 𝑃('𝒕, '𝒕)
+succeeded:
+  OVS: premise ⊢.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢⁽°𝒛₁₀⁾ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒕][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ 𝑃('°𝒛₁₀, '°𝒛₁₀)]
+∴ 𝑃('°𝑥, '°𝑦) ⊢⁽'°𝑥 '°𝑦⁾ 𝑃('°𝒛₁₀, '°𝒛₁₀)
+premise ⊢. object °𝑥, °𝑦.
+  𝑃(°𝑥, °𝑦) ⊢⁽°𝑥 °𝑦⁾.
+[°𝑥 ↦⁰ ⁰ '°𝒛₁₀][°𝑦 ↦⁰ ⁰ '°𝒛₁₀]
+∎
+
+

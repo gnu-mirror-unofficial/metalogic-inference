@@ -1,0 +1,33 @@
+— Begin: theory database issue-meta-5.
+
+theory TM.
+
+definition NE. object 𝑥, 𝑦.
+  𝑥 ≠ 𝑦 ≔ ¬𝑥 = 𝑦.
+
+axiom T1a. object 𝒙.
+  𝒙 = 𝒙.
+
+rule T1D. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒛, 𝒚 = 𝒛 ⊢ 𝒙 = 𝒚.
+
+postulate RAa. formula 𝑨, 𝑩.
+  𝑨 ⊢ 𝑩; 𝑨 ⊢ ¬𝑩 ⊩ ¬𝑨.
+
+lemma EqTrN [*unproved*]. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒚, 𝒚 ≠ 𝒛 ⊢ 𝒙 ≠ 𝒛
+proof
+  0. 𝒙 = 𝒚 by premise EqTrN. — premise EqTrN₀.
+  3e0. 𝒙 = 𝒛 ⊢ 𝒚 = 𝒛 by T1D: T1D; T1D: T1a; 0; T1a. — T1D: T1D; T1D: T1a; 0; T1a.
+  3e1. 𝒙 = 𝒛 ⊢ 𝒚 = 𝒛 by T1D: T1D; T1D: T1a; premise EqTrN₀; T1a. — T1D: T1D; T1D: T1a; premise EqTrN₀; T1a.
+  3e2. 𝒙 = 𝒛 ⊢ 𝒚 = 𝒛
+  result by T1D: T1D; T1D: T1a; 0; T1a. — T1D: T1D; T1D: T1a; 0; T1a.
+  3e3. 𝒙 = 𝒛 ⊢ 𝒚 = 𝒛
+  result by T1D: T1D; T1D: T1a; premise EqTrN₀; T1a. — T1D: T1D; T1D: T1a; premise EqTrN₀; T1a.
+[* Last proof line is not concluding, thus unused in proof. *]
+[* No concluding proof line. *]
+∎
+
+end theory TM.
+
+— End: theory database issue-meta-5.

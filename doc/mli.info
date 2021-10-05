@@ -1,0 +1,2023 @@
+This is mli.info, produced by makeinfo version 6.7 from mli.texi.
+
+This manual (17 November 2020) is for GNU MLI (version 0.1), the GNU
+MetaLogic Inference program.
+
+   Copyright © 2017 Hans Åberg
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover texts
+     being “A GNU Manual,” and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     “GNU Free Documentation License.”
+
+     (a) The FSF’s Back-Cover Text is: “You have the freedom to copy and
+     modify this GNU manual.  Buying copies from the FSF supports it in
+     developing GNU and promoting software freedom.”
+INFO-DIR-SECTION Software development
+START-INFO-DIR-ENTRY
+* mli: (mli).       GNU MetaLogic Inference Program
+END-INFO-DIR-ENTRY
+
+
+File: mli.info,  Node: Top,  Next: Introduction,  Up: (dir)
+
+MLI
+***
+
+This manual (17 November 2020) is for GNU MLI (version 0.1), the GNU
+MetaLogic Inference program.
+
+   Copyright © 2017 Hans Åberg
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover texts
+     being “A GNU Manual,” and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     “GNU Free Documentation License.”
+
+     (a) The FSF’s Back-Cover Text is: “You have the freedom to copy and
+     modify this GNU manual.  Buying copies from the FSF supports it in
+     developing GNU and promoting software freedom.”
+
+* Menu:
+
+* Introduction::
+* Conditions::
+* Copying::         The GNU General Public License: copy and share.
+
+
+Tutorial sections
+
+* Concepts::      The Concepts of MLI.
+* Examples::      Simple explained examples.
+
+Reference sections
+
+* Input File::    Writing MLI declarations and rules.
+* Interface::     User in interface.
+* Algorithm::     The MLI inference algorithm.
+
+* Debugging::     Understanding and debugging MLI source code.
+
+* Invocation::    How to run MLI
+
+
+Reference sections:
+* Table of Symbols::    MLI keywords, with explanation.
+* Glossary::            Basic concepts are explained.
+* Bibliography::        Publications cited in this manual.
+* Index of Terms::      Cross-references to the text.
+
+
+ — The Detailed Node Listing —
+
+The Concepts of MLI
+
+* Metatheory and Object Theory:: Formal structure of mathematics.
+* Formal Theories and Formal Proofs:: Formal structure of mathematics.
+* Proof Trees and Unification:: Formal structure of mathematics.
+* The Propositional Calculus:: Formal structure of mathematics.
+* The Predicate Calculus (Quantification Theory):: Formal structure of mathematics.
+* Theory with Equality:: Formal structure of mathematics.
+* Formal Number Theory:: Formal structure of mathematics.
+* Axiomatic Set Theory:: Formal structure of mathematics.
+
+Examples
+
+* Simple Propositional Calculus:: Examples
+
+* Nested proofs::   Simple Propositional Calculus.
+
+
+Debugging
+
+* MLI Options::       The options available described in detail.
+* Option Cross Key::  Alphabetical list of options.
+
+
+
+
+File: mli.info,  Node: Introduction,  Next: Conditions,  Prev: Top,  Up: Top
+
+Introduction
+************
+
+“MLI”, the MetaLogic Inference program, is a theorem prover that
+supports breadth-first proof tree searches, and unification branching
+where the substitutions may have attached conditions.  It starts at the
+metatheory level, by defining axioms and rules of inference for the
+metamathematics of your choice, proceeding towards the mathematical
+object theory.
+
+   This edition corresponds to version 0.1 of MLI.
+
+
+File: mli.info,  Node: Conditions,  Next: Copying,  Prev: Introduction,  Up: Top
+
+Conditions for Using MLI
+************************
+
+The distribution terms for MLI-generated proofs permit using them with
+free citizens, as long as it does not contravene International
+Conventions of Humans Rights.
+
+
+File: mli.info,  Node: Copying,  Next: Concepts,  Prev: Conditions,  Up: Top
+
+GNU GENERAL PUBLIC LICENSE
+**************************
+
+                        Version 3, 29 June 2007
+
+     Copyright © 2007 Free Software Foundation, Inc. <http://fsf.org/>
+
+     Everyone is permitted to copy and distribute verbatim copies of this
+     license document, but changing it is not allowed.
+
+Preamble
+========
+
+The GNU General Public License is a free, copyleft license for software
+and other kinds of works.
+
+   The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works.  By contrast,
+the GNU General Public License is intended to guarantee your freedom to
+share and change all versions of a program—to make sure it remains free
+software for all its users.  We, the Free Software Foundation, use the
+GNU General Public License for most of our software; it applies also to
+any other work released this way by its authors.  You can apply it to
+your programs, too.
+
+   When we speak of free software, we are referring to freedom, not
+price.  Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+them if you wish), that you receive source code or can get it if you
+want it, that you can change the software or use pieces of it in new
+free programs, and that you know you can do these things.
+
+   To protect your rights, we need to prevent others from denying you
+these rights or asking you to surrender the rights.  Therefore, you have
+certain responsibilities if you distribute copies of the software, or if
+you modify it: responsibilities to respect the freedom of others.
+
+   For example, if you distribute copies of such a program, whether
+gratis or for a fee, you must pass on to the recipients the same
+freedoms that you received.  You must make sure that they, too, receive
+or can get the source code.  And you must show them these terms so they
+know their rights.
+
+   Developers that use the GNU GPL protect your rights with two steps:
+(1) assert copyright on the software, and (2) offer you this License
+giving you legal permission to copy, distribute and/or modify it.
+
+   For the developers’ and authors’ protection, the GPL clearly explains
+that there is no warranty for this free software.  For both users’ and
+authors’ sake, the GPL requires that modified versions be marked as
+changed, so that their problems will not be attributed erroneously to
+authors of previous versions.
+
+   Some devices are designed to deny users access to install or run
+modified versions of the software inside them, although the manufacturer
+can do so.  This is fundamentally incompatible with the aim of
+protecting users’ freedom to change the software.  The systematic
+pattern of such abuse occurs in the area of products for individuals to
+use, which is precisely where it is most unacceptable.  Therefore, we
+have designed this version of the GPL to prohibit the practice for those
+products.  If such problems arise substantially in other domains, we
+stand ready to extend this provision to those domains in future versions
+of the GPL, as needed to protect the freedom of users.
+
+   Finally, every program is threatened constantly by software patents.
+States should not allow patents to restrict development and use of
+software on general-purpose computers, but in those that do, we wish to
+avoid the special danger that patents applied to a free program could
+make it effectively proprietary.  To prevent this, the GPL assures that
+patents cannot be used to render the program non-free.
+
+   The precise terms and conditions for copying, distribution and
+modification follow.
+
+TERMS AND CONDITIONS
+====================
+
+  0. Definitions.
+
+     “This License” refers to version 3 of the GNU General Public
+     License.
+
+     “Copyright” also means copyright-like laws that apply to other
+     kinds of works, such as semiconductor masks.
+
+     “The Program” refers to any copyrightable work licensed under this
+     License.  Each licensee is addressed as “you”.  “Licensees” and
+     “recipients” may be individuals or organizations.
+
+     To “modify” a work means to copy from or adapt all or part of the
+     work in a fashion requiring copyright permission, other than the
+     making of an exact copy.  The resulting work is called a “modified
+     version” of the earlier work or a work “based on” the earlier work.
+
+     A “covered work” means either the unmodified Program or a work
+     based on the Program.
+
+     To “propagate” a work means to do anything with it that, without
+     permission, would make you directly or secondarily liable for
+     infringement under applicable copyright law, except executing it on
+     a computer or modifying a private copy.  Propagation includes
+     copying, distribution (with or without modification), making
+     available to the public, and in some countries other activities as
+     well.
+
+     To “convey” a work means any kind of propagation that enables other
+     parties to make or receive copies.  Mere interaction with a user
+     through a computer network, with no transfer of a copy, is not
+     conveying.
+
+     An interactive user interface displays “Appropriate Legal Notices”
+     to the extent that it includes a convenient and prominently visible
+     feature that (1) displays an appropriate copyright notice, and (2)
+     tells the user that there is no warranty for the work (except to
+     the extent that warranties are provided), that licensees may convey
+     the work under this License, and how to view a copy of this
+     License.  If the interface presents a list of user commands or
+     options, such as a menu, a prominent item in the list meets this
+     criterion.
+
+  1. Source Code.
+
+     The “source code” for a work means the preferred form of the work
+     for making modifications to it.  “Object code” means any non-source
+     form of a work.
+
+     A “Standard Interface” means an interface that either is an
+     official standard defined by a recognized standards body, or, in
+     the case of interfaces specified for a particular programming
+     language, one that is widely used among developers working in that
+     language.
+
+     The “System Libraries” of an executable work include anything,
+     other than the work as a whole, that (a) is included in the normal
+     form of packaging a Major Component, but which is not part of that
+     Major Component, and (b) serves only to enable use of the work with
+     that Major Component, or to implement a Standard Interface for
+     which an implementation is available to the public in source code
+     form.  A “Major Component”, in this context, means a major
+     essential component (kernel, window system, and so on) of the
+     specific operating system (if any) on which the executable work
+     runs, or a compiler used to produce the work, or an object code
+     interpreter used to run it.
+
+     The “Corresponding Source” for a work in object code form means all
+     the source code needed to generate, install, and (for an executable
+     work) run the object code and to modify the work, including scripts
+     to control those activities.  However, it does not include the
+     work’s System Libraries, or general-purpose tools or generally
+     available free programs which are used unmodified in performing
+     those activities but which are not part of the work.  For example,
+     Corresponding Source includes interface definition files associated
+     with source files for the work, and the source code for shared
+     libraries and dynamically linked subprograms that the work is
+     specifically designed to require, such as by intimate data
+     communication or control flow between those subprograms and other
+     parts of the work.
+
+     The Corresponding Source need not include anything that users can
+     regenerate automatically from other parts of the Corresponding
+     Source.
+
+     The Corresponding Source for a work in source code form is that
+     same work.
+
+  2. Basic Permissions.
+
+     All rights granted under this License are granted for the term of
+     copyright on the Program, and are irrevocable provided the stated
+     conditions are met.  This License explicitly affirms your unlimited
+     permission to run the unmodified Program.  The output from running
+     a covered work is covered by this License only if the output, given
+     its content, constitutes a covered work.  This License acknowledges
+     your rights of fair use or other equivalent, as provided by
+     copyright law.
+
+     You may make, run and propagate covered works that you do not
+     convey, without conditions so long as your license otherwise
+     remains in force.  You may convey covered works to others for the
+     sole purpose of having them make modifications exclusively for you,
+     or provide you with facilities for running those works, provided
+     that you comply with the terms of this License in conveying all
+     material for which you do not control copyright.  Those thus making
+     or running the covered works for you must do so exclusively on your
+     behalf, under your direction and control, on terms that prohibit
+     them from making any copies of your copyrighted material outside
+     their relationship with you.
+
+     Conveying under any other circumstances is permitted solely under
+     the conditions stated below.  Sublicensing is not allowed; section
+     10 makes it unnecessary.
+
+  3. Protecting Users’ Legal Rights From Anti-Circumvention Law.
+
+     No covered work shall be deemed part of an effective technological
+     measure under any applicable law fulfilling obligations under
+     article 11 of the WIPO copyright treaty adopted on 20 December
+     1996, or similar laws prohibiting or restricting circumvention of
+     such measures.
+
+     When you convey a covered work, you waive any legal power to forbid
+     circumvention of technological measures to the extent such
+     circumvention is effected by exercising rights under this License
+     with respect to the covered work, and you disclaim any intention to
+     limit operation or modification of the work as a means of
+     enforcing, against the work’s users, your or third parties’ legal
+     rights to forbid circumvention of technological measures.
+
+  4. Conveying Verbatim Copies.
+
+     You may convey verbatim copies of the Program’s source code as you
+     receive it, in any medium, provided that you conspicuously and
+     appropriately publish on each copy an appropriate copyright notice;
+     keep intact all notices stating that this License and any
+     non-permissive terms added in accord with section 7 apply to the
+     code; keep intact all notices of the absence of any warranty; and
+     give all recipients a copy of this License along with the Program.
+
+     You may charge any price or no price for each copy that you convey,
+     and you may offer support or warranty protection for a fee.
+
+  5. Conveying Modified Source Versions.
+
+     You may convey a work based on the Program, or the modifications to
+     produce it from the Program, in the form of source code under the
+     terms of section 4, provided that you also meet all of these
+     conditions:
+
+       a. The work must carry prominent notices stating that you
+          modified it, and giving a relevant date.
+
+       b. The work must carry prominent notices stating that it is
+          released under this License and any conditions added under
+          section 7.  This requirement modifies the requirement in
+          section 4 to “keep intact all notices”.
+
+       c. You must license the entire work, as a whole, under this
+          License to anyone who comes into possession of a copy.  This
+          License will therefore apply, along with any applicable
+          section 7 additional terms, to the whole of the work, and all
+          its parts, regardless of how they are packaged.  This License
+          gives no permission to license the work in any other way, but
+          it does not invalidate such permission if you have separately
+          received it.
+
+       d. If the work has interactive user interfaces, each must display
+          Appropriate Legal Notices; however, if the Program has
+          interactive interfaces that do not display Appropriate Legal
+          Notices, your work need not make them do so.
+
+     A compilation of a covered work with other separate and independent
+     works, which are not by their nature extensions of the covered
+     work, and which are not combined with it such as to form a larger
+     program, in or on a volume of a storage or distribution medium, is
+     called an “aggregate” if the compilation and its resulting
+     copyright are not used to limit the access or legal rights of the
+     compilation’s users beyond what the individual works permit.
+     Inclusion of a covered work in an aggregate does not cause this
+     License to apply to the other parts of the aggregate.
+
+  6. Conveying Non-Source Forms.
+
+     You may convey a covered work in object code form under the terms
+     of sections 4 and 5, provided that you also convey the
+     machine-readable Corresponding Source under the terms of this
+     License, in one of these ways:
+
+       a. Convey the object code in, or embodied in, a physical product
+          (including a physical distribution medium), accompanied by the
+          Corresponding Source fixed on a durable physical medium
+          customarily used for software interchange.
+
+       b. Convey the object code in, or embodied in, a physical product
+          (including a physical distribution medium), accompanied by a
+          written offer, valid for at least three years and valid for as
+          long as you offer spare parts or customer support for that
+          product model, to give anyone who possesses the object code
+          either (1) a copy of the Corresponding Source for all the
+          software in the product that is covered by this License, on a
+          durable physical medium customarily used for software
+          interchange, for a price no more than your reasonable cost of
+          physically performing this conveying of source, or (2) access
+          to copy the Corresponding Source from a network server at no
+          charge.
+
+       c. Convey individual copies of the object code with a copy of the
+          written offer to provide the Corresponding Source.  This
+          alternative is allowed only occasionally and noncommercially,
+          and only if you received the object code with such an offer,
+          in accord with subsection 6b.
+
+       d. Convey the object code by offering access from a designated
+          place (gratis or for a charge), and offer equivalent access to
+          the Corresponding Source in the same way through the same
+          place at no further charge.  You need not require recipients
+          to copy the Corresponding Source along with the object code.
+          If the place to copy the object code is a network server, the
+          Corresponding Source may be on a different server (operated by
+          you or a third party) that supports equivalent copying
+          facilities, provided you maintain clear directions next to the
+          object code saying where to find the Corresponding Source.
+          Regardless of what server hosts the Corresponding Source, you
+          remain obligated to ensure that it is available for as long as
+          needed to satisfy these requirements.
+
+       e. Convey the object code using peer-to-peer transmission,
+          provided you inform other peers where the object code and
+          Corresponding Source of the work are being offered to the
+          general public at no charge under subsection 6d.
+
+     A separable portion of the object code, whose source code is
+     excluded from the Corresponding Source as a System Library, need
+     not be included in conveying the object code work.
+
+     A “User Product” is either (1) a “consumer product”, which means
+     any tangible personal property which is normally used for personal,
+     family, or household purposes, or (2) anything designed or sold for
+     incorporation into a dwelling.  In determining whether a product is
+     a consumer product, doubtful cases shall be resolved in favor of
+     coverage.  For a particular product received by a particular user,
+     “normally used” refers to a typical or common use of that class of
+     product, regardless of the status of the particular user or of the
+     way in which the particular user actually uses, or expects or is
+     expected to use, the product.  A product is a consumer product
+     regardless of whether the product has substantial commercial,
+     industrial or non-consumer uses, unless such uses represent the
+     only significant mode of use of the product.
+
+     “Installation Information” for a User Product means any methods,
+     procedures, authorization keys, or other information required to
+     install and execute modified versions of a covered work in that
+     User Product from a modified version of its Corresponding Source.
+     The information must suffice to ensure that the continued
+     functioning of the modified object code is in no case prevented or
+     interfered with solely because modification has been made.
+
+     If you convey an object code work under this section in, or with,
+     or specifically for use in, a User Product, and the conveying
+     occurs as part of a transaction in which the right of possession
+     and use of the User Product is transferred to the recipient in
+     perpetuity or for a fixed term (regardless of how the transaction
+     is characterized), the Corresponding Source conveyed under this
+     section must be accompanied by the Installation Information.  But
+     this requirement does not apply if neither you nor any third party
+     retains the ability to install modified object code on the User
+     Product (for example, the work has been installed in ROM).
+
+     The requirement to provide Installation Information does not
+     include a requirement to continue to provide support service,
+     warranty, or updates for a work that has been modified or installed
+     by the recipient, or for the User Product in which it has been
+     modified or installed.  Access to a network may be denied when the
+     modification itself materially and adversely affects the operation
+     of the network or violates the rules and protocols for
+     communication across the network.
+
+     Corresponding Source conveyed, and Installation Information
+     provided, in accord with this section must be in a format that is
+     publicly documented (and with an implementation available to the
+     public in source code form), and must require no special password
+     or key for unpacking, reading or copying.
+
+  7. Additional Terms.
+
+     “Additional permissions” are terms that supplement the terms of
+     this License by making exceptions from one or more of its
+     conditions.  Additional permissions that are applicable to the
+     entire Program shall be treated as though they were included in
+     this License, to the extent that they are valid under applicable
+     law.  If additional permissions apply only to part of the Program,
+     that part may be used separately under those permissions, but the
+     entire Program remains governed by this License without regard to
+     the additional permissions.
+
+     When you convey a copy of a covered work, you may at your option
+     remove any additional permissions from that copy, or from any part
+     of it.  (Additional permissions may be written to require their own
+     removal in certain cases when you modify the work.)  You may place
+     additional permissions on material, added by you to a covered work,
+     for which you have or can give appropriate copyright permission.
+
+     Notwithstanding any other provision of this License, for material
+     you add to a covered work, you may (if authorized by the copyright
+     holders of that material) supplement the terms of this License with
+     terms:
+
+       a. Disclaiming warranty or limiting liability differently from
+          the terms of sections 15 and 16 of this License; or
+
+       b. Requiring preservation of specified reasonable legal notices
+          or author attributions in that material or in the Appropriate
+          Legal Notices displayed by works containing it; or
+
+       c. Prohibiting misrepresentation of the origin of that material,
+          or requiring that modified versions of such material be marked
+          in reasonable ways as different from the original version; or
+
+       d. Limiting the use for publicity purposes of names of licensors
+          or authors of the material; or
+
+       e. Declining to grant rights under trademark law for use of some
+          trade names, trademarks, or service marks; or
+
+       f. Requiring indemnification of licensors and authors of that
+          material by anyone who conveys the material (or modified
+          versions of it) with contractual assumptions of liability to
+          the recipient, for any liability that these contractual
+          assumptions directly impose on those licensors and authors.
+
+     All other non-permissive additional terms are considered “further
+     restrictions” within the meaning of section 10.  If the Program as
+     you received it, or any part of it, contains a notice stating that
+     it is governed by this License along with a term that is a further
+     restriction, you may remove that term.  If a license document
+     contains a further restriction but permits relicensing or conveying
+     under this License, you may add to a covered work material governed
+     by the terms of that license document, provided that the further
+     restriction does not survive such relicensing or conveying.
+
+     If you add terms to a covered work in accord with this section, you
+     must place, in the relevant source files, a statement of the
+     additional terms that apply to those files, or a notice indicating
+     where to find the applicable terms.
+
+     Additional terms, permissive or non-permissive, may be stated in
+     the form of a separately written license, or stated as exceptions;
+     the above requirements apply either way.
+
+  8. Termination.
+
+     You may not propagate or modify a covered work except as expressly
+     provided under this License.  Any attempt otherwise to propagate or
+     modify it is void, and will automatically terminate your rights
+     under this License (including any patent licenses granted under the
+     third paragraph of section 11).
+
+     However, if you cease all violation of this License, then your
+     license from a particular copyright holder is reinstated (a)
+     provisionally, unless and until the copyright holder explicitly and
+     finally terminates your license, and (b) permanently, if the
+     copyright holder fails to notify you of the violation by some
+     reasonable means prior to 60 days after the cessation.
+
+     Moreover, your license from a particular copyright holder is
+     reinstated permanently if the copyright holder notifies you of the
+     violation by some reasonable means, this is the first time you have
+     received notice of violation of this License (for any work) from
+     that copyright holder, and you cure the violation prior to 30 days
+     after your receipt of the notice.
+
+     Termination of your rights under this section does not terminate
+     the licenses of parties who have received copies or rights from you
+     under this License.  If your rights have been terminated and not
+     permanently reinstated, you do not qualify to receive new licenses
+     for the same material under section 10.
+
+  9. Acceptance Not Required for Having Copies.
+
+     You are not required to accept this License in order to receive or
+     run a copy of the Program.  Ancillary propagation of a covered work
+     occurring solely as a consequence of using peer-to-peer
+     transmission to receive a copy likewise does not require
+     acceptance.  However, nothing other than this License grants you
+     permission to propagate or modify any covered work.  These actions
+     infringe copyright if you do not accept this License.  Therefore,
+     by modifying or propagating a covered work, you indicate your
+     acceptance of this License to do so.
+
+  10. Automatic Licensing of Downstream Recipients.
+
+     Each time you convey a covered work, the recipient automatically
+     receives a license from the original licensors, to run, modify and
+     propagate that work, subject to this License.  You are not
+     responsible for enforcing compliance by third parties with this
+     License.
+
+     An “entity transaction” is a transaction transferring control of an
+     organization, or substantially all assets of one, or subdividing an
+     organization, or merging organizations.  If propagation of a
+     covered work results from an entity transaction, each party to that
+     transaction who receives a copy of the work also receives whatever
+     licenses to the work the party’s predecessor in interest had or
+     could give under the previous paragraph, plus a right to possession
+     of the Corresponding Source of the work from the predecessor in
+     interest, if the predecessor has it or can get it with reasonable
+     efforts.
+
+     You may not impose any further restrictions on the exercise of the
+     rights granted or affirmed under this License.  For example, you
+     may not impose a license fee, royalty, or other charge for exercise
+     of rights granted under this License, and you may not initiate
+     litigation (including a cross-claim or counterclaim in a lawsuit)
+     alleging that any patent claim is infringed by making, using,
+     selling, offering for sale, or importing the Program or any portion
+     of it.
+
+  11. Patents.
+
+     A “contributor” is a copyright holder who authorizes use under this
+     License of the Program or a work on which the Program is based.
+     The work thus licensed is called the contributor’s “contributor
+     version”.
+
+     A contributor’s “essential patent claims” are all patent claims
+     owned or controlled by the contributor, whether already acquired or
+     hereafter acquired, that would be infringed by some manner,
+     permitted by this License, of making, using, or selling its
+     contributor version, but do not include claims that would be
+     infringed only as a consequence of further modification of the
+     contributor version.  For purposes of this definition, “control”
+     includes the right to grant patent sublicenses in a manner
+     consistent with the requirements of this License.
+
+     Each contributor grants you a non-exclusive, worldwide,
+     royalty-free patent license under the contributor’s essential
+     patent claims, to make, use, sell, offer for sale, import and
+     otherwise run, modify and propagate the contents of its contributor
+     version.
+
+     In the following three paragraphs, a “patent license” is any
+     express agreement or commitment, however denominated, not to
+     enforce a patent (such as an express permission to practice a
+     patent or covenant not to sue for patent infringement).  To “grant”
+     such a patent license to a party means to make such an agreement or
+     commitment not to enforce a patent against the party.
+
+     If you convey a covered work, knowingly relying on a patent
+     license, and the Corresponding Source of the work is not available
+     for anyone to copy, free of charge and under the terms of this
+     License, through a publicly available network server or other
+     readily accessible means, then you must either (1) cause the
+     Corresponding Source to be so available, or (2) arrange to deprive
+     yourself of the benefit of the patent license for this particular
+     work, or (3) arrange, in a manner consistent with the requirements
+     of this License, to extend the patent license to downstream
+     recipients.  “Knowingly relying” means you have actual knowledge
+     that, but for the patent license, your conveying the covered work
+     in a country, or your recipient’s use of the covered work in a
+     country, would infringe one or more identifiable patents in that
+     country that you have reason to believe are valid.
+
+     If, pursuant to or in connection with a single transaction or
+     arrangement, you convey, or propagate by procuring conveyance of, a
+     covered work, and grant a patent license to some of the parties
+     receiving the covered work authorizing them to use, propagate,
+     modify or convey a specific copy of the covered work, then the
+     patent license you grant is automatically extended to all
+     recipients of the covered work and works based on it.
+
+     A patent license is “discriminatory” if it does not include within
+     the scope of its coverage, prohibits the exercise of, or is
+     conditioned on the non-exercise of one or more of the rights that
+     are specifically granted under this License.  You may not convey a
+     covered work if you are a party to an arrangement with a third
+     party that is in the business of distributing software, under which
+     you make payment to the third party based on the extent of your
+     activity of conveying the work, and under which the third party
+     grants, to any of the parties who would receive the covered work
+     from you, a discriminatory patent license (a) in connection with
+     copies of the covered work conveyed by you (or copies made from
+     those copies), or (b) primarily for and in connection with specific
+     products or compilations that contain the covered work, unless you
+     entered into that arrangement, or that patent license was granted,
+     prior to 28 March 2007.
+
+     Nothing in this License shall be construed as excluding or limiting
+     any implied license or other defenses to infringement that may
+     otherwise be available to you under applicable patent law.
+
+  12. No Surrender of Others’ Freedom.
+
+     If conditions are imposed on you (whether by court order, agreement
+     or otherwise) that contradict the conditions of this License, they
+     do not excuse you from the conditions of this License.  If you
+     cannot convey a covered work so as to satisfy simultaneously your
+     obligations under this License and any other pertinent obligations,
+     then as a consequence you may not convey it at all.  For example,
+     if you agree to terms that obligate you to collect a royalty for
+     further conveying from those to whom you convey the Program, the
+     only way you could satisfy both those terms and this License would
+     be to refrain entirely from conveying the Program.
+
+  13. Use with the GNU Affero General Public License.
+
+     Notwithstanding any other provision of this License, you have
+     permission to link or combine any covered work with a work licensed
+     under version 3 of the GNU Affero General Public License into a
+     single combined work, and to convey the resulting work.  The terms
+     of this License will continue to apply to the part which is the
+     covered work, but the special requirements of the GNU Affero
+     General Public License, section 13, concerning interaction through
+     a network will apply to the combination as such.
+
+  14. Revised Versions of this License.
+
+     The Free Software Foundation may publish revised and/or new
+     versions of the GNU General Public License from time to time.  Such
+     new versions will be similar in spirit to the present version, but
+     may differ in detail to address new problems or concerns.
+
+     Each version is given a distinguishing version number.  If the
+     Program specifies that a certain numbered version of the GNU
+     General Public License “or any later version” applies to it, you
+     have the option of following the terms and conditions either of
+     that numbered version or of any later version published by the Free
+     Software Foundation.  If the Program does not specify a version
+     number of the GNU General Public License, you may choose any
+     version ever published by the Free Software Foundation.
+
+     If the Program specifies that a proxy can decide which future
+     versions of the GNU General Public License can be used, that
+     proxy’s public statement of acceptance of a version permanently
+     authorizes you to choose that version for the Program.
+
+     Later license versions may give you additional or different
+     permissions.  However, no additional obligations are imposed on any
+     author or copyright holder as a result of your choosing to follow a
+     later version.
+
+  15. Disclaimer of Warranty.
+
+     THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+     APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE
+     COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS”
+     WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,
+     INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE
+     RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.
+     SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+     NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+  16. Limitation of Liability.
+
+     IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN
+     WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES
+     AND/OR CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR
+     DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR
+     CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
+     THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA
+     BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+     PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
+     PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF
+     THE POSSIBILITY OF SUCH DAMAGES.
+
+  17. Interpretation of Sections 15 and 16.
+
+     If the disclaimer of warranty and limitation of liability provided
+     above cannot be given local legal effect according to their terms,
+     reviewing courts shall apply local law that most closely
+     approximates an absolute waiver of all civil liability in
+     connection with the Program, unless a warranty or assumption of
+     liability accompanies a copy of the Program in return for a fee.
+
+END OF TERMS AND CONDITIONS
+===========================
+
+How to Apply These Terms to Your New Programs
+=============================================
+
+If you develop a new program, and you want it to be of the greatest
+possible use to the public, the best way to achieve this is to make it
+free software which everyone can redistribute and change under these
+terms.
+
+   To do so, attach the following notices to the program.  It is safest
+to attach them to the start of each source file to most effectively
+state the exclusion of warranty; and each file should have at least the
+“copyright” line and a pointer to where the full notice is found.
+
+     ONE LINE TO GIVE THE PROGRAM'S NAME AND A BRIEF IDEA OF WHAT IT DOES.
+     Copyright (C) YEAR NAME OF AUTHOR
+
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or (at
+     your option) any later version.
+
+     This program is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+     General Public License for more details.
+
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+   Also add information on how to contact you by electronic and paper
+mail.
+
+   If the program does terminal interaction, make it output a short
+notice like this when it starts in an interactive mode:
+
+     PROGRAM Copyright (C) YEAR NAME OF AUTHOR
+     This program comes with ABSOLUTELY NO WARRANTY; for details type ‘show w’.
+     This is free software, and you are welcome to redistribute it
+     under certain conditions; type ‘show c’ for details.
+
+   The hypothetical commands ‘show w’ and ‘show c’ should show the
+appropriate parts of the General Public License.  Of course, your
+program’s commands might be different; for a GUI interface, you would
+use an “about box”.
+
+   You should also get your employer (if you work as a programmer) or
+school, if any, to sign a “copyright disclaimer” for the program, if
+necessary.  For more information on this, and how to apply and follow
+the GNU GPL, see <http://www.gnu.org/licenses/>.
+
+   The GNU General Public License does not permit incorporating your
+program into proprietary programs.  If your program is a subroutine
+library, you may consider it more useful to permit linking proprietary
+applications with the library.  If this is what you want to do, use the
+GNU Lesser General Public License instead of this License.  But first,
+please read <http://www.gnu.org/philosophy/why-not-lgpl.html>.
+
+
+File: mli.info,  Node: Concepts,  Next: Examples,  Prev: Copying,  Up: Top
+
+1 The Concepts of MLI
+*********************
+
+This chapter introduces some basic metalogical concepts without which
+the MLI program will not make much sense, both in details and general
+structure.  If you are not already well versed in metamathematics, this
+chapter may be of benefit.  There is though no particular about MLI
+relative what is found in the standard literature.
+
+* Menu:
+
+* Metatheory and Object Theory:: Formal structure of mathematics.
+* Formal Theories and Formal Proofs:: Formal structure of mathematics.
+* Proof Trees and Unification:: Formal structure of mathematics.
+* The Propositional Calculus:: Formal structure of mathematics.
+* The Predicate Calculus (Quantification Theory):: Formal structure of mathematics.
+* Theory with Equality:: Formal structure of mathematics.
+* Formal Number Theory:: Formal structure of mathematics.
+* Axiomatic Set Theory:: Formal structure of mathematics.
+
+
+File: mli.info,  Node: Metatheory and Object Theory,  Next: Formal Theories and Formal Proofs,  Up: Concepts
+
+1.1 Metatheory and Object Theory
+================================
+
+Standard mathematics deals with mathematical objects, such as numbers
+and sets, and other logical objects, which are described using logical
+statements.  There is in general no direct way to asses the truth of
+these statements, so instead, one is using proofs, following certain
+rules that they must obey.  The mathematical objects and statements
+belong to the “object theory”, whereas the proofs belong to the
+“metatheory”.
+
+   Standard mathematics uses mathematical objects and logical reasoning
+around them in an intuitive manners, which may, using computer
+terminology, be described as an interface towards the underlying formal
+metamathematical (metalogical) theory.  For example, mathematicians use
+“naive set theory”, whereas the formal metamathematics defines different
+systems of “axiomatic set theory”, that act as an implementation, and is
+typically not used directly in the standard mathematics.  MLI start at
+this formal level, but allows interfaces be built in the form of
+“theories” which approach that of standard mathematics.
+
+   The formalization of mathematics and metamathematics started in the
+early 1900s, though the distinction between the two is earlier, in an
+attempt to resolve certain paradoxes, that roughly can be describes as
+being caused by self-reference, similar to functions and macros in
+computing that end up in non-termination (or infinite loop).  The hope
+was to fairly quickly develop a “consistent” formal theory, i.e.,
+without logical contradictions, but the result was unexpected:
+
+   If roughly adding a “first order logic”, i.e., with “quantifiers” of
+the mathematical objects, but not of the logical statements, plus the
+axioms of natural numbers including mathematical induction, then not all
+statements have a proof: Similar to the the Cantor proof of the set of
+real numbers having a larger cardinality than a countable set, Gödel
+found that the set of proofs can be enumerated, but not the set of
+logical statements in a first order logic containing the natural numbers
+and the induction axiom.  Thus, there must be a lot of statements that
+have no proof, but one has not found any explicit such statement.  For
+comparison, the set of algebraic numbers is countable, and the set of
+real numbers is uncountable, but one have found a lot of explicit
+transcendental numbers, i.e., numbers that are not algebraic, like e and
+π, etc.
+
+   The set of proofs correspond in a certain sense to the set of
+algorithms that a computer in the form of a generalized Turing machine,
+with infinite time and memory, can produce.
+
+
+File: mli.info,  Node: Formal Theories and Formal Proofs,  Next: Proof Trees and Unification,  Prev: Metatheory and Object Theory,  Up: Concepts
+
+1.2 Formal Theories and Formal Proofs
+=====================================
+
+A “formal theory” has a countable infinite set of symbols 𝒮, and a
+superset of “(well-formed) formulas” ℱ, formed by certain rules.  In
+addition, there are “rules of inference”, also called “postulate”,
+defined as “relations” of the form
+     𝑷_0, …, 𝑷_{𝑘-1} ⊢ 𝑷
+   which allows one to check satisfiability for members 𝐹_0, …, 𝐹_{𝑘 -
+1} and 𝐹 of ℱ, in which case, one says that formula 𝐹 is a “direct
+consequence” of the formulas 𝐹_0, …, 𝐹_{𝑘 - 1}, the application of this
+specific rule explicitly given or implied by the context.  The letter 𝑷
+is here in boldface as a suggestion of representing a multitude, usually
+infinite, of formulas in ℱ, and in italic as a suggestion is is a
+variable that can be substituted, but these are just conventions to aid
+human readability, and are not required by MLI. Constants are then
+typically rendered in an upright font, but these conventions are not
+rigorously adhered to.
+
+   Here, we allow 𝑘 = 0, 1, …; when 𝑘 = 0 it is called an “axiom”,
+otherwise, when 𝑘 > 0 a “rule”.  In traditional computing terminology,
+the formula 𝐹 is called the “head” and the formula sequence 𝐹_0, …, 𝐹_{𝑘
+- 1} the “body” of the rule of inference, the latter which is also
+called a “clause”.
+
+   For those familiar with Prolog, the same may be written 𝑷 \,{:}{-}
+𝑷_0, …, 𝑷_{𝑘-1} implying that the body 𝑷_0, …, 𝑷_{𝑘-1} is executed in
+strict stack order, which is also called a “first-depth” proof tree
+search.  A problem with this Prolog interpretation is that the shallower
+parts of the proof tree will not be searched if there are new
+alternatives added that make the search infinite.
+
+   In formal proof theory is there is no such implied proof order, and
+MLI supports the use of “first-breadth” proof tree searches, making sure
+that the shallowest depth of the proof tree search always deepens, thus
+systematically exhausting the full proof tree.  In fact, one may write
+𝑷_0, …, 𝑷_{𝑘-1} as a set 𝓟 and write 𝓟 ⊢ 𝑷.
+
+   A fundamental inference rule is “modus ponens”, abbreviated “MP”:
+     𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩
+   That is, 𝑩 is a direct consequence of 𝑨 and 𝑨 ⇒ 𝑩, or alternatively
+𝑨 and 𝑨 ⇒ 𝑩 allows one to infer (prove) 𝑩, or for short, 𝑨 and 𝑨 ⇒ 𝑩
+proves 𝑩. In MLI, the corresponding code is
+     rule MP. formula 𝑨, 𝑩. 𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+   Here, it is necessary to indicate that it is an inference rule
+(‘rule’) and name it (‘MP’), to explicitly type the variables ‘𝑨’ and
+‘𝑩’ representing formulas in a substitution, and to terminate the
+statement with a dot.  The choice of mathematical style for ‘𝑨’ and ‘𝑩’
+is arbitrary, but the parser expects the symbols ‘⇒’ and ‘⊢’, which are
+tied to the object theory and the metatheory respectively, and have
+suitable precedences for the pretty-printing.  Spaces are needed just to
+separate certain symbols, such as identifiers, and layout does not
+matter.  Variables occurring frequently can be declared in the body of
+the context they belong to, for example:
+     formal system.
+       formula 𝑨, 𝑩.
+       rule MP. 𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+     end formal system.
+
+   A “formal proof” of a statement 𝑄 is then a sequence of formulas 𝑄_0,
+…, 𝑄_{n-1} such that each 𝑄_𝑖 is a direct consequence of the preceding
+formulas.  In other words, each 𝑄_𝑖 appears in the head of a rule of
+inference, with its body having formulas preceding it, unless it is an
+axiom, requiring no further validation.  Thus, the set of “provable”
+formulas is generated by the axioms, and iteratively applying the rules
+of inference.
+
+   A notation for this is
+     𝑄_0, …, 𝑄_{𝑘-1} ⊢_𝒜 𝑄
+   where 𝒜 is the set of inference rules and statements treated as
+axioms, requiring no further validation.  Often, though, the index 𝒜 is
+often dropped, implied by the context, giving rise to the notation
+     𝑄_0, …, 𝑄_{𝑘-1} ⊢ 𝑄
+   which confusingly looks exactly the same as for the one rules above.
+In practise, though, it is convenient, as the latter may be treated as a
+rule of inference if one for some reason would like treat it as a
+conjecture, and examine its consequences.
+
+   In addition, in practice, the 𝑄_𝑖 are required to only be already
+proved statements, and not necessarily direct consequences of a rule of
+inference, as it then can be expanded into a formal proof at will.  Just
+as in the case of fules of inference, one may indicate the set of
+formulas already proven by a letter 𝒬, and write 𝒬 ⊢_𝒜 𝑄 or 𝒬 ⊢ 𝑄 if 𝑄
+follows from them, but this notation implies that there is a strict
+order among them in which the deduction has been carried out.
+
+   This type of notation, though, is convenient in MLI, as the program
+can do searches among formulas to find a valid proof.  Each proof will
+then imply a strict deduction order.  There may be more than one proof
+and deduction order, but normally, one is just interested in finding
+one.  Using the “generalization axiom” (cf. *note Mendelson 1964:
+Bibliography, sec. 2.3)
+     rule Gen. formula 𝑨. 𝑨 ⊢ ∀𝒙 𝑨.
+   a statement with a long proof may look like
+     lemma X2. formula A, C.
+       A, ∀x A ⇒ C ⊢ ∀x C.
+     proof.
+       1. A by premise.
+       2. ∀x A by 1, Gen.
+       3. ∀x A ⇒ C by premise.
+       4. C by 2, 3, MP.
+       conclusion by 4, Gen.
+     ∎
+   but by the MLI proof searching capabilities, shortened to
+     lemma X2. formula A, C.
+       A, ∀x A ⇒ C ⊢ ∀x C.
+     proof.
+       conclusion by Gen, premise, MP.
+     ∎
+   Here, ‘conclusion’ indicates the right hand side of the ‘⊢’ (or head
+of the clause), and ‘premise’ indicates any of the statements of the
+left hand side of the ‘⊢’ (or member of the body of the clause).  The
+long proof has the advantage of being being more specific, resulting in
+a shorter proof tree search, but the short proof is more convenient for
+experienced users, though a too unspecific proof may result in overflow
+in the use of computer resources, time and space.  Given a short proof,
+a long proof can be extracted from the log file by enabling suitable
+tracing; *note Debugging::.
+
+
+File: mli.info,  Node: Proof Trees and Unification,  Next: The Propositional Calculus,  Prev: Formal Theories and Formal Proofs,  Up: Concepts
+
+1.3 Proof Trees and Unification
+===============================
+
+In practice, though one has a statement, and wants to find a proof for
+it, as a means of verification.  Then, one may search the set of
+inference rules from matching of their heads by a process called
+“unification”, which in MLI produces a set of substitutions with a
+condition attached to each.  When a match is found, that is, the set is
+non-empty, and apply in succession the substitution of the matching rule
+and add its condition.  This produces new set of formulas that much be
+searched backwards, until hopefully one branch results in just axioms
+that need no further verification.
+
+   The set of conditions that must be proved is in computing called
+“goals”.  One typically starts off with just one goal, which during the
+proof tree search expands, until it finally can be reduced to zero via
+axioms or other already proved statements.  It may happen, though, that
+the proof tree search becomes too large, or extensive, and must be
+picked down, and has been mentioned before, in general, not all
+statements have proofs.  *Note Metatheory and Object Theory::.
+
+   — Condition “free in” and type “Kleenean”.
+
+
+File: mli.info,  Node: The Propositional Calculus,  Next: The Predicate Calculus (Quantification Theory),  Prev: Proof Trees and Unification,  Up: Concepts
+
+1.4 The Propositional Calculus
+==============================
+
+The simplest of formal systems, the “propositional calculus”, has only
+logic axioms and one rule of inference, “modus ponens”, and thus no
+“quantifiers”.  A statement which is true for all substitutions of its
+logical variables is called a “tautology”.  A fundamental “metatheorem”,
+or a theorem about the metatheory, for the propositional calculus is
+that a statement is provable exactly when it is a tautology.  Thus, to
+prove a statement, one can plug in all truth values in a “truth table”
+and verify that the statement expression is true—the metatheorem
+guarantees there is proof.  Alternatively, one can find a proof, and
+then the truth table verification becomes unnecessary.  Since if there
+are 𝑘 variables, there will be 2^𝑘 possibilities to verify, this will
+quickly become difficult to work out, at least by hand, even though a
+computer might still be able to do it.  But for an infinitude of
+formulas, one will have to resort to the proofs alone.  This is in fact
+what happens when adding quantifiers.
+
+   This said so far relates to the Boolean logic, where every statement
+with no variables is true or false, also called the “excluded middle”.
+An alternative logic theory is “intuitionistic propositional calculus”,
+which does not have the excluded middle axiom, and leads to a “Heyting
+algebra” logic.
+
+   For future reference, here is the complete MLI code for the
+propositional calculus by Łukasiewicz ‘LL’ in file ‘std/LL.mli’,
+cf. *note Mendelson 1964: Bibliography.  It has just three axioms, and
+two symbols, unary prefix “logical negation” ‘¬’ and binary infix
+“logical implication” ‘⇒’, making it easy to show that it is
+“consistent”, that is, having no contradictions, in which case, it would
+collapse, becoming nonsensical.  The other logical symbols, “logical
+and” ‘∧’ and “logical or” ‘∨’, as well as “logical equivalence” ‘⇔’, are
+introduced as “definitions”.  From the formal point of view, they are
+not thought of as being a part of the formal system, but are expanded
+into the axiomatic theory with fewer primitives, simplifying proofs, but
+form the point of a user interface, there is no practical difference
+from a theory having them defined as part of axioms.  In addition, the
+truth values “logical true” ‘𝕥’ and “logical false” ‘𝕗’ are not a part
+of these logical theories, but are here entered as constants, called
+“atoms”.  And the “deduction theorem” (DT) is a “metatheorem”, and
+therefore entered as an axiom.
+
+     theory L. -- Propositional calculus by Łukasiewicz, cf. Mendelson, p. 31:
+       formal system.
+         atom 𝕗, 𝕥. -- False, true. Not in core of theory L.
+         formula 𝑨, 𝑩, 𝑪.
+
+       -- These axioms are called A1-A3 in Mendelson:
+       axiom L1. 𝑨 ⇒ (𝑩 ⇒ 𝑨).
+       axiom L2. (𝑨 ⇒ (𝑩 ⇒ 𝑪)) ⇒ ((𝑨 ⇒ 𝑩) ⇒ (𝑨 ⇒ 𝑪)).
+       axiom L3. (¬𝑩 ⇒ ¬𝑨) ⇒ ((¬𝑩 ⇒ 𝑨) ⇒ 𝑩).
+
+       -- Modus ponens:
+       rule MP. 𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+       -- Deduction theorem:
+       postulate DT. formula 𝑨, 𝑩. (𝑨 ⊢ 𝑩) ⊢ 𝑨 ⇒ 𝑩.
+
+       definition D1. 𝑨 ∧ 𝑩 ≔ ¬(𝑨 ⇒ ¬𝑩).
+       definition D2. 𝑨 ∨ 𝑩 ≔ (¬𝑨) ⇒ 𝑩.
+       definition D3. 𝑨 ⇔ 𝑩 ≔ (𝑨 ⇒ 𝑩) ∧ (𝑩 ⇒ 𝑨).
+       axiom D4. 𝕥.
+       definition D5. 𝕗 ≔ ¬𝕥.
+
+       end formal system.
+     end theory L.
+
+   These axioms are for the “classical system”, where the values are
+Boolean algebra truth ‘𝕥’ or false ‘𝕗’.  For the “intuitionistic
+system”, see the theory ‘LI’ in file ‘std/LI.mli’, which is the same as
+the Kleene theory ‘LK’ in file ‘std/LK.mli’ with the exception of an
+axiom for logical negation: The classical axiom ‘ ¬¬𝑨 ⇒ 𝑨’ is in
+intuitionistic logic replaced by ‘¬𝑨 ⇒ (𝑨 ⇒ 𝑩)’.
+
+   There are other axiomatizations as well: Hilbert-Ackerman ‘LHA’ in
+file ‘std/LHA.mli’, Rosser ‘LR’ in file ‘std/LR.mli’.
+
+
+File: mli.info,  Node: The Predicate Calculus (Quantification Theory),  Next: Theory with Equality,  Prev: The Propositional Calculus,  Up: Concepts
+
+1.5 The Predicate Calculus (Quantification Theory)
+==================================================
+
+
+File: mli.info,  Node: Theory with Equality,  Next: Formal Number Theory,  Prev: The Predicate Calculus (Quantification Theory),  Up: Concepts
+
+1.6 Theory with Equality
+========================
+
+
+File: mli.info,  Node: Formal Number Theory,  Next: Axiomatic Set Theory,  Prev: Theory with Equality,  Up: Concepts
+
+1.7 Formal Number Theory
+========================
+
+
+File: mli.info,  Node: Axiomatic Set Theory,  Prev: Formal Number Theory,  Up: Concepts
+
+1.8 Axiomatic Set Theory
+========================
+
+
+File: mli.info,  Node: Examples,  Next: Input File,  Prev: Concepts,  Up: Top
+
+2 Examples
+**********
+
+With the help of examples, we will now show some basic features: How to
+write a long and short proofs, and to convert them, making condensed
+proofs more efficient with respect to used computer resources, and some
+basic debugging.
+
+* Menu:
+
+* Simple Propositional Calculus:: Examples
+
+
+File: mli.info,  Node: Simple Propositional Calculus,  Up: Examples
+
+2.1 Simple Propositional Calculus
+=================================
+
+The point of departure is the propositional calculus, or logic theory,
+by Łukasiewicz, called ‘LL’ in the MLI library file ‘std/LL.mli’.  We
+run through some of the theorems in connection with the Deduction
+Theorem (DT). The text here is self-contained, so no immediate outside
+sources are required for an immediate understanding of the examples, but
+for a comparison, see for example *note Mendelson 1964: Bibliography.
+
+* Menu:
+
+* Nested proofs::   Simple Propositional Calculus.
+
+   In the proof of that the theory LL satisfies the Deduction Theorem
+DT, it is needed that for all formulas ‘𝑨’, one can prove ‘𝑨 ⇒ 𝑨’, which
+in MLI code becomes:
+     lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+   As the name contains a non-alphanumerical character, the dot, it must
+be put in quotes.  Here we call it a ‘lemma’, as it is intended as
+assistance in the proof of the upcoming theorem, the Deduction Theorem,
+but it is logically equivalent to a ‘theorem’.  Other, logically
+equivalent, names that might be used are ‘proposition’, a less important
+theorem, and ‘corollary’, though to be consequence of another theorem.
+Subproof statements are labeled with ‘claim’—see below.
+
+   The statement is about provability, that there is a formal proof of
+‘𝑨 ⇒ 𝑨’, and to make that explicit, the symbol ‘⊢’, like this:
+     lemma “XL.1”. formula 𝑨. ⊢ 𝑨 ⇒ 𝑨.
+   These two forms are treated as though equivalent by adding the ‘⊢’
+internally in implicit conversions at need.
+
+   The next step is to add a proof and let MLI verify it.  For that, the
+statement must be put in a theory, and the theory LL must be included.
+The full example comes with the distribution.  For your convenience, the
+proof is added; we start with a long proof:
+     lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+     proof.
+       1. ((𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨))) by A2.
+       2. 𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨) by A1.
+       3. (𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨) by MP, 1, 2.
+       4. 𝑨 ⇒ (𝑨 ⇒ 𝑨) by A1.
+       conclusion by MP, 3, 4.
+     ∎
+   Now run ‘mli’ on the input file, and check the output in the
+corresponding ‘.mlo’ file, to see that it has been verified: MLI writes
+the parts that failed with ‘[*unproved*]’, so if no such parts are
+found, the proof passed.
+
+   To see how this works, take away the ‘MP’ (along with the trailing
+comma) in the example code above, rerun ‘mli’, and recheck the ‘.mlo’
+file.  Then these lines along with the statement itself will be marked
+with ‘[*unproved*]’.  If one leaves the ‘MP’, and takes away something
+else, then MLI will end up in non-termination, or an infinite, unending,
+proof search: As modus ponens MP can always be used in a search, it will
+cause the proof tree to expand exponentially, until computer resources
+run out, or a limit in the program is reached.  There seem to be no
+simple way around this, with respect to MP, but to be careful with the
+use of modus ponens MP.
+
+   Since MLI tries to prove all lines, this will happen if one line has
+this type of proof error.  However, it may happen that one proof line
+fails, but it is not required for the proof of the statement, being
+redundant.  Then MLI will mark this proof line with ‘[*unproved*]’, and
+add an additional comment that it was needed in the proof of the
+statement.  To see this, alter the statement above to
+     lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+     proof.
+       1. ((𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨))) by A2.
+       2. 𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨) by A1.
+       3. (𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨) by MP, 1, 2.
+       3a. (𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨) by 1, 2.
+       4. 𝑨 ⇒ (𝑨 ⇒ 𝑨) by A1.
+       conclusion by MP, 3, 3a, 4.
+     ∎
+   Here, the proof is identical to the one before, except that a proof
+line ‘3a’ is added, which cannot be proved as MP has been removed, and
+it is further called for in the ‘conclusion’ proof line.  Then rerun
+‘mli’ and check the ‘.mlo’ file it writes.  This time, MLI does not end
+up in non-termination, as there actually is a proof.  The proof line
+‘3a’ is marked ‘[*unproved*]’, and right before the end of proof marker
+‘∎’, there is the comment
+     [*Statement is proved, but some proof lines are unproved.*]
+
+   As the list of statements in each proof line is but a suggestion to
+MLI what to search when constructing the proof tree, it continues to
+search even after it has found a failing line.  It is also possible that
+a proof line is proved, but not required in the statement proof, or one
+might even want to look for more than one proof, though the default is
+to just find one, which usually is a short one, in view of the
+breadth-first proof tree search.
+
+   Now, let’s make a short proof: From the proof above, we can see that
+it is proved using A1, A2 and MP. As MLI uses a breadth-first proof tree
+search.  So write
+     lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+     proof.
+       conclusion by A1, A2, MP.
+     ∎
+   Then rerun ‘mli’ and check the ‘.mlo’ file to verify it has been
+proved.
+
+   Even though this style of proof is more like that of mathematicians
+coming by and giving a talk, it might be good to get to know the details
+sometimes, and also verify that the proof is correct by hand.  So
+reverse this process: getting a long, detailed proof from the short,
+condensed one, and along with that, the substitutions used.  So change
+the above code, by inserting the debugging commands
+‘trace_result’…‘untrace_result’, to
+     trace_result
+     lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+     proof.
+       conclusion by A1, A2, MP.
+     ∎
+     untrace_result
+   Then rerun ‘mli’, and this time check the ‘.log’ file:
+
+   Here, ‘trace_result’ turns on writing the proof results to the ‘.log’
+file, and ‘untrace_result’ turns it off again, to avoid this file
+becoming too large and hard to read.  These debugging commands are not a
+part of the language itself, but the lexer just puts on/off a suitable
+flag for the purpose.  So they can be put just about anywhere in the
+input file, but as the parser may use a lookahead token, the flag may be
+altered out sync with what is expected.  In particular, the parser may
+decide to read the next token after the ‘∎’ before starting to write out
+the proof, and then ‘untrace_result’ will be turned off when the write
+out starts.  So if that happens, ‘untrace_result’ must be moved to a
+later point in the input code, one language token should suffice.
+
+   The code in the ‘.log’ file looks something like this:
+     Proving lemma XL.1. formula 𝑨.
+       ⊢ 𝑨 ⇒ 𝑨.
+     Proving conclusion.
+     Proof succeeded.
+     Variable: 𝑨
+     Proof count: 1
+
+     Proof of
+       𝑨 ⇒ 𝑨
+     succeeded:
+       MP: A1; MP: A1; A2.
+     rule MP. formula 𝑨₁₀, 𝑩₁₀.
+       𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+     [𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+      ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+     axiom A1. formula 𝑨₂₀, 𝑩₂₀.
+       ⊢ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀).
+     rule MP. formula 𝑨₂₁, 𝑩₂₁.
+       𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+     [𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)][𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]
+      ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+     axiom A1. formula 𝑨₃₀, 𝑩₃₀.
+       ⊢ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀).
+     axiom A2. formula 𝑨₃₁, 𝑩₃₁, 𝑪₃₁.
+       ⊢ (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₃₁ ⇒ 𝑩₃₁) ⇒ (𝑨₃₁ ⇒ 𝑪₃₁)).
+     [𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)][𝑨₃₀ ↦ 𝑨₃₁][𝑩₃₀ ↦ 𝑩₃₁][𝑨₃₁ ↦ 𝑪₃₁][𝑨₂₀ ↦ 𝑪₃₁][𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁][𝑪₃₁ ↦ 𝑨]
+     ∎
+
+   Let’s jog through the different components of this output.  The first
+part
+     Proving lemma XL.1. formula 𝑨.
+       ⊢ 𝑨 ⇒ 𝑨.
+     Proving conclusion.
+     Proof succeeded.
+     Variable: 𝑨
+   gives the statement, and the following line ‘Proving conclusion’ says
+which proof line of the full proof it concerns, in this case the
+conclusion part of the proof, as the proof only has one line.  After
+that, a list of the variables in the statement.
+
+   The lines that follow
+     Proof of
+       𝑨 ⇒ 𝑨
+     succeeded:
+       MP: A1; MP: A1; A2.
+   gives the statement of the proof line, says that the proof succeeded,
+and gives a description of the proof search it found: Each part
+delimited by semicolons is a sequence of statements used to transform
+the list of goals to a new list of goals.  The colons separates the
+different levels in the proof tree.  One can also use commas betweem the
+smicolons, specifying a set of statements to be used in the search.
+This will occur in the case of definitions, that later the behavior of
+the unifier, rather than causing specific unification.  Thus, the this
+is a specification for a single branch in the proof search tree.
+
+   It is in fact possible to enter such semicolons into the statement of
+the proof, helping the engine to limit the search, taking up less
+computer resources in terms of time and space.  The alternate form in
+the ‘.mlo’ file would be
+     lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+     proof.
+       conclusion by MP: A1; MP: A1; A2.
+     ∎
+   The output in the ‘.mlo’ will be different, giving the semicolons as
+well, but the output into the ‘.log’ by ‘trace_result’ will not change,
+as this is what the program does anyway.
+
+   The last part, up to the end of proof marker ‘∎’, shows a number of
+reductions to already proved statements.  It gives the substitutions
+found, along with details of the variable renumbering of the applied
+statements.
+     rule MP. formula 𝑨₁₀, 𝑩₁₀.
+       𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+     [𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+      ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+     axiom A1. formula 𝑨₂₀, 𝑩₂₀.
+       ⊢ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀).
+     rule MP. formula 𝑨₂₁, 𝑩₂₁.
+       𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+     [𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)][𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]
+      ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+     axiom A1. formula 𝑨₃₀, 𝑩₃₀.
+       ⊢ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀).
+     axiom A2. formula 𝑨₃₁, 𝑩₃₁, 𝑪₃₁.
+       ⊢ (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₃₁ ⇒ 𝑩₃₁) ⇒ (𝑨₃₁ ⇒ 𝑪₃₁)).
+     [𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)][𝑨₃₀ ↦ 𝑨₃₁][𝑩₃₀ ↦ 𝑩₃₁][𝑨₃₁ ↦ 𝑪₃₁][𝑨₂₀ ↦ 𝑪₃₁][𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁][𝑪₃₁ ↦ 𝑨]
+     ∎
+   These variables should be read as matrix component numbers, so ‘𝑩₂₃’
+is “B two three”.  If the index numbers require two digits, they will be
+separated by a subscript "+", and there may be a superscript number for
+nested proof depth and a third subscript number for definition degree,
+as well.
+
+   The actual numbers are other otherwise irrelevant, except for that
+the same renamed variable gets the same number everywhere: Whenever a
+proved statement is applied, its variables are renumbered, so as to not
+clash with any existing variables.  The use of multiple indices is just
+one way to implement it; a single index, or some other method to avoid
+variable clashes, might do just as well.
+
+   Let’s work these substitutions by hand, in part to see how it works,
+and to check that the program did it right.  The first part is
+       𝑨 ⇒ 𝑨
+     rule MP. formula 𝑨₁₀, 𝑩₁₀.
+       𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+     [𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+      ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+   with the first line the statement be proved, and the next modus
+ponens MP with the variables renumbered.  Thereafter follows a
+substitution, followed by the new list of goals, marked by a ‘⊣’,
+resulting in the application of it:
+     [𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+      ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+   Here, the substitution has only one components ‘[𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]’, but
+if there are several such brackets, they are applied from left to right.
+Replacing ‘𝑩₁₀’ with ‘𝑨 ⇒ 𝑨’ in the renumbered MP does result in
+      ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+   so so far, it is all right.
+
+   The next part is
+      ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+     axiom A1. formula 𝑨₂₀, 𝑩₂₀.
+       ⊢ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀).
+     rule MP. formula 𝑨₂₁, 𝑩₂₁.
+       𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+     [𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)][𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]
+      ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+   Here, the substitution has two brackets, and as noted above, they
+should applied left to right, so first ‘[𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)]’, and
+thereafter ‘[𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]’.  Applying the first
+one to the list of goals to be proved at the top, and marked with ‘⊣’,
+gives
+      ⊣ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀), (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)
+   while applying it to the renumbered MP results in nothing as it does
+not contain the variable ‘𝑨₁₀’.  Applying the second substitution to the
+list of goals does not change the latter, as it does not contain the
+variable ‘𝑩₂₁’, but when applied to MP, there results
+     rule MP. formula 𝑨₂₃, 𝑩₂₃.
+       𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)) ⊢ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨).
+
+   Now, the first goal ‘⊣ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)’ is valid by axiom A1, and
+the second goal ‘⊣ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)’ can by the substituted
+MP, replacing the conclusion (or head) by the premise (or body), be
+replaced by
+      ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+   which indeed the program statement above from the reductions of axiom
+A1 and rule MP.
+
+   The final reduction is then
+      ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+     axiom A1. formula 𝑨₃₀, 𝑩₃₀.
+       ⊢ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀).
+     axiom A2. formula 𝑨₃₁, 𝑩₃₁, 𝑪₃₁.
+       ⊢ (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₃₁ ⇒ 𝑩₃₁) ⇒ (𝑨₃₁ ⇒ 𝑪₃₁)).
+     [𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)][𝑨₃₀ ↦ 𝑨₃₁][𝑩₃₀ ↦ 𝑩₃₁][𝑨₃₁ ↦ 𝑪₃₁][𝑨₂₀ ↦ 𝑪₃₁][𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁][𝑪₃₁ ↦ 𝑨]
+     ∎
+
+   The substitution is now a bit longer, having seven brackets, but
+applying it to the two goals top in the example gives
+     -- By [𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)]:
+      ⊣ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀), (𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+     -- By [𝑨₃₀ ↦ 𝑨₃₁]:
+      ⊣ 𝑨₃₁ ⇒ (𝑩₃₀ ⇒ 𝑨₃₁), (𝑨₃₁ ⇒ (𝑩₃₀ ⇒ 𝑨₃₁)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+     -- By [𝑩₃₀ ↦ 𝑩₃₁]:
+      ⊣ 𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑨₃₁), (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑨₃₁)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+     -- By [𝑨₃₁ ↦ 𝑪₃₁]:
+      ⊣ 𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁), (𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+
+     -- By [𝑨₂₀ ↦ 𝑪₃₁]:
+      ⊣ 𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁), (𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑪₃₁ ⇒ (𝑩₂₀ ⇒ 𝑪₃₁)) ⇒ (𝑨 ⇒ 𝑨))
+     -- By [𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁]:
+      ⊣ 𝑪₃₁ ⇒ ((𝑩₂₀ ⇒ 𝑪₃₁) ⇒ 𝑪₃₁), (𝑪₃₁ ⇒ ((𝑩₂₀ ⇒ 𝑪₃₁) ⇒ 𝑪₃₁)) ⇒ ((𝑪₃₁ ⇒ (𝑩₂₀ ⇒ 𝑪₃₁)) ⇒ (𝑨 ⇒ 𝑨))
+
+     -- By [𝑪₃₁ ↦ 𝑨]:
+      ⊣ 𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨), (𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑩₂₀ ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨))
+     ∎
+   The same substitution applied to the renumbered axiom A1 gives
+       ⊢ 𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨).
+   proving the first goal, and applied to the renumbered axiom A2 gives
+       ⊢ (𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑩₂₀ ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨)).
+   which is the second goal.
+
+   Thus, this series of reductions led to a proof.
+
+   — Timing of the different proof versions.
+
+
+File: mli.info,  Node: Nested proofs,  Up: Simple Propositional Calculus
+
+2.1.1 Nested proofs
+-------------------
+
+A statement proof can be nested with subproofs, to facilitate writing
+writing proofs by hand, but are otherwise logically equivalent to
+unnested proofs.  It is a common style, when writing proofs by hand, to
+make intermediate statements that are proved, and then picked together
+in the full proof of the statement, and supporting that, helps making
+proofs structured, and requires less work when translating a handwritten
+proof into code.
+
+   A substatement with subproof is called ‘claim’, which in turn can
+have further nested levels, here called the “depth”, of statements and
+proofs.
+
+
+File: mli.info,  Node: Input File,  Next: Interface,  Prev: Examples,  Up: Top
+
+3 MLI Input Files
+*****************
+
+
+File: mli.info,  Node: Interface,  Next: Algorithm,  Prev: Input File,  Up: Top
+
+4 User Interface.
+*****************
+
+
+File: mli.info,  Node: Algorithm,  Next: Debugging,  Prev: Interface,  Up: Top
+
+5 The MLI Inference Algorithm.
+******************************
+
+
+File: mli.info,  Node: Debugging,  Next: Invocation,  Prev: Algorithm,  Up: Top
+
+6 Understanding and Debugging MLI Source Code.
+**********************************************
+
+
+File: mli.info,  Node: Invocation,  Next: Table of Symbols,  Prev: Debugging,  Up: Top
+
+7 Invoking MLI
+**************
+
+The usual way to invoke MLI is as follows:
+     mli INFILE
+
+   Here INFILE is the input file name, which usually ends in ‘.mli’.
+This file can in turn include other files, like libraries.  If the
+parsing and interpretation are successful, two output files are
+produced: One, by default ending in ‘.mlo’, with pretty-printing of the
+statements processed and their provability status indicated, and a log
+file, by default ending in ‘.log’, with proving process details, as
+chosen by the tracing commands in the input files.
+
+   If INFILE does not end with ‘.mli’, then ‘.mlo’ resp.  ‘.log’ are
+merely appended to the whole name, which also becomes the theory name.
+These names can be overridden by the options below.
+
+* Menu:
+
+* MLI Options::     The options described in detail,
+* Option Cross Key::  Long alphabetical list of options.
+
+
+File: mli.info,  Node: MLI Options,  Next: Option Cross Key,  Up: Invocation
+
+7.1 MLI Options
+===============
+
+MLI supports only modern option names beginning with indicated with
+‘--’.
+
+   For processing, an input file must be given, with optional prefix
+‘--input=’.
+
+‘--help’
+     Display help text, including a command line options summary, and
+     exit.
+
+‘--version’
+     Output version and program information, and exit
+
+‘[--input=]FILE’
+     Read input from FILE.  The prefix ‘--input=’ is optional.  If FILE
+     ends with ‘.mli’, the FILENAME BASE is what precedes it, otherwise,
+     it is the whole infile filename.  The FILENAME BASE is used to
+     determine the default names for the output files.
+
+‘--output=FILE’
+     Write output to FILE.  If this option is not given, the output file
+     name is the FILENAME BASE followed by ‘.mlo’.
+
+‘--log=FILE’
+     Write log output to FILE.  If this option is not given, the log
+     file name is the FILENAME BASE followed by ‘.log’.
+
+‘--include=DIR’
+     Add include directory DIR, ahead of the default library directory
+     named in the variable ‘DATADIR’ passed to the Makefile.  Multiple
+     occurrences will cause the directories to be searched in the same
+     order as they are given, left-to-right, on the command line.  The
+     name DIR is passed as is to the shell, though if it does not end
+     with ‘/’, it is added in the search.
+
+‘--theory=NAME’
+     Name the input file theory database to NAME.  If this option is not
+     given, the theory name is the same as the FILENAME BASE.
+
+‘--verbose’
+     More information to the standard output.
+
+
+File: mli.info,  Node: Option Cross Key,  Prev: MLI Options,  Up: Invocation
+
+7.2 Option Cross Key
+====================
+
+Alphabetical list of options.
+
+
+File: mli.info,  Node: Table of Symbols,  Next: Glossary,  Prev: Invocation,  Up: Top
+
+Appendix A MLI Symbols
+**********************
+
+ -- Symbol: theorem
+     Indicates a named theorem.
+
+
+File: mli.info,  Node: Glossary,  Next: Bibliography,  Prev: Table of Symbols,  Up: Top
+
+Appendix B Glossary
+*******************
+
+Theorem
+     A statement that is true in the object theory.  A theorem may or
+     may not have a proof, and in the latter case, there is in general
+     no way to determine whether it is true.
+
+
+File: mli.info,  Node: Bibliography,  Next: Index of Terms,  Prev: Glossary,  Up: Top
+
+Bibliography
+************
+
+[Kleene 1952]
+     Stephen Cole Kleene, "Introduction to Metamathematics", 1952,
+     seventh reprint 1974, North Holland ISBN 978-0-7204-2103-3,
+     American Elsevier ISBN 978-0-444-10088-7.
+
+[Mendelson 1964]
+     Elliott Mendelson, "Introduction to Mathematical Logic", 1964,
+     first edition, Van Nostrand, Library of Congress Control Number
+     ISBN 9780442053000.
+
+
+File: mli.info,  Node: Index of Terms,  Prev: Bibliography,  Up: Top
+
+Index of Terms
+**************
+
+ [index ]
+* Menu:
+
+* ¬:                                     The Propositional Calculus.
+                                                              (line  28)
+* ⇒:                                     The Propositional Calculus.
+                                                              (line  28)
+* ⇔:                                     The Propositional Calculus.
+                                                              (line  28)
+* ∧:                                     The Propositional Calculus.
+                                                              (line  28)
+* ∨:                                     The Propositional Calculus.
+                                                              (line  28)
+* algebra, Kleenean:                     Proof Trees and Unification.
+                                                              (line  24)
+* algebraic number:                      Metatheory and Object Theory.
+                                                              (line  32)
+* algorithm:                             Metatheory and Object Theory.
+                                                              (line  46)
+* and, logical:                          The Propositional Calculus.
+                                                              (line  28)
+* atom, logical:                         The Propositional Calculus.
+                                                              (line  28)
+* axiom:                                 Formal Theories and Formal Proofs.
+                                                              (line   6)
+* axiomatic set theory:                  Metatheory and Object Theory.
+                                                              (line  14)
+* axiomatic set theory <1>:              Axiomatic Set Theory.
+                                                              (line   6)
+* body, clause:                          Formal Theories and Formal Proofs.
+                                                              (line   6)
+* boldface, mathematical:                Formal Theories and Formal Proofs.
+                                                              (line   6)
+* Boolean logic:                         The Propositional Calculus.
+                                                              (line   6)
+* breadth-first proof tree search:       Simple Propositional Calculus.
+                                                              (line  52)
+* calculus, predicate:                   The Predicate Calculus (Quantification Theory).
+                                                              (line   6)
+* calculus, propositional:               The Propositional Calculus.
+                                                              (line   6)
+* Cantor diagonal proof:                 Metatheory and Object Theory.
+                                                              (line  32)
+* claim:                                 Simple Propositional Calculus.
+                                                              (line   6)
+* classical system:                      The Propositional Calculus.
+                                                              (line  28)
+* clause:                                Formal Theories and Formal Proofs.
+                                                              (line   6)
+* clause body:                           Formal Theories and Formal Proofs.
+                                                              (line   6)
+* clause head:                           Formal Theories and Formal Proofs.
+                                                              (line   6)
+* consistent:                            The Propositional Calculus.
+                                                              (line  28)
+* consistent formal theory:              Metatheory and Object Theory.
+                                                              (line  24)
+* constant:                              The Propositional Calculus.
+                                                              (line  28)
+* corollary:                             Simple Propositional Calculus.
+                                                              (line   6)
+* deduction theorem:                     The Propositional Calculus.
+                                                              (line  28)
+* deduction theorem <1>:                 Simple Propositional Calculus.
+                                                              (line   6)
+* definition:                            The Propositional Calculus.
+                                                              (line  28)
+* depth:                                 Nested proofs.       (line   6)
+* diagonal proof, Cantor:                Metatheory and Object Theory.
+                                                              (line  32)
+* direct consequence:                    Formal Theories and Formal Proofs.
+                                                              (line   6)
+* DT:                                    Simple Propositional Calculus.
+                                                              (line   6)
+* equality, theory with:                 Theory with Equality.
+                                                              (line   5)
+* equivalence, logical:                  The Propositional Calculus.
+                                                              (line  28)
+* examples, simple:                      Examples.            (line   6)
+* excluded middle:                       The Propositional Calculus.
+                                                              (line   6)
+* false, logical:                        The Propositional Calculus.
+                                                              (line  28)
+* first order logic:                     Metatheory and Object Theory.
+                                                              (line  32)
+* first order theory:                    The Predicate Calculus (Quantification Theory).
+                                                              (line   6)
+* first-breadth proof tree search:       Formal Theories and Formal Proofs.
+                                                              (line  35)
+* first-depth proof tree search:         Formal Theories and Formal Proofs.
+                                                              (line  28)
+* formal proof:                          Formal Theories and Formal Proofs.
+                                                              (line  62)
+* formal theory:                         Formal Theories and Formal Proofs.
+                                                              (line   6)
+* formal theory, consistent:             Metatheory and Object Theory.
+                                                              (line  24)
+* formula, well-formed:                  Formal Theories and Formal Proofs.
+                                                              (line   6)
+* free in:                               Proof Trees and Unification.
+                                                              (line  24)
+* generalized Turing machine:            Metatheory and Object Theory.
+                                                              (line  46)
+* glossary:                              Glossary.            (line   6)
+* goal:                                  Proof Trees and Unification.
+                                                              (line  16)
+* Gödel incompleteness theorem:          Metatheory and Object Theory.
+                                                              (line  32)
+* head, clause:                          Formal Theories and Formal Proofs.
+                                                              (line   6)
+* Heyting algebra:                       The Propositional Calculus.
+                                                              (line   6)
+* implication symbol:                    Formal Theories and Formal Proofs.
+                                                              (line  41)
+* implication, logical:                  The Propositional Calculus.
+                                                              (line  28)
+* incompleteness theorem, Gödel:         Metatheory and Object Theory.
+                                                              (line  32)
+* inference, rule of:                    Formal Theories and Formal Proofs.
+                                                              (line   6)
+* introduction:                          Introduction.        (line   6)
+* intuitionistic propositional calculus: The Propositional Calculus.
+                                                              (line   6)
+* intuitionistic system:                 The Propositional Calculus.
+                                                              (line  28)
+* invoking MLI:                          Invocation.          (line   6)
+* italic, mathematical:                  Formal Theories and Formal Proofs.
+                                                              (line   6)
+* Kleenean algebra:                      Proof Trees and Unification.
+                                                              (line  24)
+* lemma:                                 Simple Propositional Calculus.
+                                                              (line   6)
+* LHA:                                   The Propositional Calculus.
+                                                              (line  78)
+* LI:                                    The Propositional Calculus.
+                                                              (line  71)
+* LK:                                    The Propositional Calculus.
+                                                              (line  71)
+* LL:                                    The Propositional Calculus.
+                                                              (line  46)
+* logical and:                           The Propositional Calculus.
+                                                              (line  28)
+* logical atom:                          The Propositional Calculus.
+                                                              (line  28)
+* logical equivalence:                   The Propositional Calculus.
+                                                              (line  28)
+* logical false:                         The Propositional Calculus.
+                                                              (line  28)
+* logical implication:                   The Propositional Calculus.
+                                                              (line  28)
+* logical negation:                      The Propositional Calculus.
+                                                              (line  28)
+* logical or:                            The Propositional Calculus.
+                                                              (line  28)
+* logical true:                          The Propositional Calculus.
+                                                              (line  28)
+* LR:                                    The Propositional Calculus.
+                                                              (line  78)
+* mathematical boldface:                 Formal Theories and Formal Proofs.
+                                                              (line   6)
+* mathematical italic:                   Formal Theories and Formal Proofs.
+                                                              (line   6)
+* mathematical style:                    Formal Theories and Formal Proofs.
+                                                              (line  41)
+* mathematics:                           Metatheory and Object Theory.
+                                                              (line   6)
+* metalogic:                             Metatheory and Object Theory.
+                                                              (line   6)
+* metalogic variable:                    Formal Theories and Formal Proofs.
+                                                              (line  41)
+* metamathematics:                       Metatheory and Object Theory.
+                                                              (line   6)
+* metatheorem:                           The Propositional Calculus.
+                                                              (line   6)
+* metatheory:                            Metatheory and Object Theory.
+                                                              (line   6)
+* MLI invocation:                        Invocation.          (line   6)
+* MLI symbols, table of:                 Table of Symbols.    (line   6)
+* modus ponens:                          Formal Theories and Formal Proofs.
+                                                              (line  41)
+* modus ponens <1>:                      The Propositional Calculus.
+                                                              (line   6)
+* MP:                                    Formal Theories and Formal Proofs.
+                                                              (line  41)
+* naive set theory:                      Metatheory and Object Theory.
+                                                              (line  14)
+* negation, logical:                     The Propositional Calculus.
+                                                              (line  28)
+* nested proof:                          Nested proofs.       (line   6)
+* non-termination:                       Simple Propositional Calculus.
+                                                              (line  52)
+* not free in:                           Proof Trees and Unification.
+                                                              (line  24)
+* notation, constant:                    Formal Theories and Formal Proofs.
+                                                              (line   6)
+* notation, variable:                    Formal Theories and Formal Proofs.
+                                                              (line   6)
+* number theory, formal:                 Formal Number Theory.
+                                                              (line   6)
+* number, algebraic:                     Metatheory and Object Theory.
+                                                              (line  32)
+* number, transcendental:                Metatheory and Object Theory.
+                                                              (line  32)
+* object theory:                         Metatheory and Object Theory.
+                                                              (line   6)
+* options for invoking MLI:              Invocation.          (line   6)
+* or logical:                            The Propositional Calculus.
+                                                              (line  28)
+* postulate:                             Formal Theories and Formal Proofs.
+                                                              (line   6)
+* predicate calculus:                    The Predicate Calculus (Quantification Theory).
+                                                              (line   6)
+* Prolog, stack order:                   Formal Theories and Formal Proofs.
+                                                              (line  28)
+* proof line:                            Simple Propositional Calculus.
+                                                              (line 161)
+* proof line, redundant:                 Simple Propositional Calculus.
+                                                              (line  52)
+* proof tree:                            Proof Trees and Unification.
+                                                              (line   6)
+* proof tree search, breadth-first:      Simple Propositional Calculus.
+                                                              (line  52)
+* proof tree search, first-breadth:      Formal Theories and Formal Proofs.
+                                                              (line  35)
+* proof tree search, first-depth:        Formal Theories and Formal Proofs.
+                                                              (line  28)
+* proof, nested:                         Nested proofs.       (line   6)
+* proposition:                           Simple Propositional Calculus.
+                                                              (line   6)
+* propositional calculus:                The Propositional Calculus.
+                                                              (line   6)
+* provability:                           Formal Theories and Formal Proofs.
+                                                              (line  62)
+* proves symbol:                         Formal Theories and Formal Proofs.
+                                                              (line   6)
+* quantification theory:                 The Predicate Calculus (Quantification Theory).
+                                                              (line   6)
+* quantifiers:                           Metatheory and Object Theory.
+                                                              (line  32)
+* quantifiers <1>:                       The Propositional Calculus.
+                                                              (line   6)
+* redundant proof line:                  Simple Propositional Calculus.
+                                                              (line  52)
+* rule of inference:                     Formal Theories and Formal Proofs.
+                                                              (line   6)
+* search, breadth-first proof tree:      Simple Propositional Calculus.
+                                                              (line  52)
+* set theory, axiomatic:                 Metatheory and Object Theory.
+                                                              (line  14)
+* set theory, axiomatic <1>:             Axiomatic Set Theory.
+                                                              (line   6)
+* set theory, naive:                     Metatheory and Object Theory.
+                                                              (line  14)
+* simple examples:                       Examples.            (line   6)
+* style, mathematical:                   Formal Theories and Formal Proofs.
+                                                              (line  41)
+* subproof:                              Simple Propositional Calculus.
+                                                              (line   6)
+* subproof <1>:                          Nested proofs.       (line   6)
+* substitution:                          Proof Trees and Unification.
+                                                              (line   6)
+* symbol, implication:                   Formal Theories and Formal Proofs.
+                                                              (line  41)
+* symbol, proves:                        Formal Theories and Formal Proofs.
+                                                              (line   6)
+* symbols in MLI, table of:              Table of Symbols.    (line   6)
+* system, classical:                     The Propositional Calculus.
+                                                              (line  28)
+* system, intuitionistic:                The Propositional Calculus.
+                                                              (line  28)
+* tautology:                             The Propositional Calculus.
+                                                              (line   6)
+* theorem:                               Table of Symbols.    (line   6)
+* theorem <1>:                           Simple Propositional Calculus.
+                                                              (line   6)
+* theorem without proof:                 Metatheory and Object Theory.
+                                                              (line  32)
+* theorem, deduction:                    The Propositional Calculus.
+                                                              (line  28)
+* theory with equality:                  Theory with Equality.
+                                                              (line   6)
+* theory, axiomatic set:                 Axiomatic Set Theory.
+                                                              (line   6)
+* theory, axiomatic set <1>:             Axiomatic Set Theory.
+                                                              (line   6)
+* theory, first order:                   The Predicate Calculus (Quantification Theory).
+                                                              (line   5)
+* theory, formal number:                 Formal Number Theory.
+                                                              (line   6)
+* theory, meta:                          Metatheory and Object Theory.
+                                                              (line   6)
+* theory, number:                        Formal Number Theory.
+                                                              (line   5)
+* theory, object:                        Metatheory and Object Theory.
+                                                              (line   6)
+* theory, quantification:                The Predicate Calculus (Quantification Theory).
+                                                              (line   6)
+* theory, set:                           Axiomatic Set Theory.
+                                                              (line   5)
+* transcendental number:                 Metatheory and Object Theory.
+                                                              (line  32)
+* true, logical:                         The Propositional Calculus.
+                                                              (line  28)
+* Turing machine, generalized:           Metatheory and Object Theory.
+                                                              (line  46)
+* unification:                           Proof Trees and Unification.
+                                                              (line   6)
+* variable, metalogic:                   Formal Theories and Formal Proofs.
+                                                              (line  41)
+* well-formed formula:                   Formal Theories and Formal Proofs.
+                                                              (line   6)
+* 𝕗:                                     The Propositional Calculus.
+                                                              (line  28)
+* 𝕥:                                     The Propositional Calculus.
+                                                              (line  28)
+
+
+
+Tag Table:
+Node: Top997
+Node: Introduction3407
+Node: Conditions3929
+Node: Copying4229
+Node: Concepts41967
+Node: Metatheory and Object Theory42956
+Node: Formal Theories and Formal Proofs45730
+Node: Proof Trees and Unification52381
+Node: The Propositional Calculus53725
+Node: The Predicate Calculus (Quantification Theory)58087
+Node: Theory with Equality58342
+Node: Formal Number Theory58539
+Node: Axiomatic Set Theory58710
+Node: Examples58852
+Node: Simple Propositional Calculus59240
+Node: Nested proofs77336
+Node: Input File78050
+Node: Interface78169
+Node: Algorithm78289
+Node: Debugging78434
+Node: Invocation78612
+Node: MLI Options79593
+Node: Option Cross Key81275
+Node: Table of Symbols81429
+Node: Glossary81618
+Node: Bibliography81945
+Node: Index of Terms82435
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

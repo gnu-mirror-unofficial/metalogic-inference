@@ -1,0 +1,28 @@
+— Begin: theory database issue-meta-1.
+
+theory TM.
+
+rule MP. formula 𝑨, 𝑩.
+  𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+postulate DT. formula sequence 𝜞 formula 𝑨, 𝑩.
+  𝜞, 𝑨 ⊢ 𝑩 ⊩ 𝜞 ⊢ 𝑨 ⇒ 𝑩.
+
+rule IR2. predicate variable 𝑷 object °𝒙.
+  𝑷(0), 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) ⊢ 𝑷(°𝒙).
+
+corollary A. formula 𝑨, 𝑩, 𝑪.
+  𝑨 ⇒ 𝑩, 𝑩 ⇒ 𝑪 ⊢ 𝑨 ⇒ 𝑪
+result by DT: MP. — DT: MP: MP.
+
+corollary B. formula 𝑨, 𝑩, 𝑪.
+  𝑨 ⇒ 𝑩, 𝑩 ⇒ 𝑪, 𝑨 ⊢ 𝑪
+result by MP. — MP: MP.
+
+lemma IR0. predicate variable 𝑷 object °𝒙.
+  𝑷(0); 𝑷(°𝒙) ⊢ 𝑷(s(°𝒙)) ⊩ 𝑷(°𝒙)
+result by IR2: premise ⊢₀; DT: premise ⊢₁. — IR2: premise ⊢₀; DT.
+
+end theory TM.
+
+— End: theory database issue-meta-1.

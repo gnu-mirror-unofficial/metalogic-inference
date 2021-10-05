@@ -1,0 +1,58 @@
+
+Proving lemma A. object 𝑥, 𝑦.
+  𝑥 + 𝑦 = 𝑥 + 𝑦
+Proving result.
+Proof succeeded.
+Variables: '𝑥, '𝑦
+Proof count: 1
+
+Proof of
+  '𝑥 + '𝑦 = '𝑥 + '𝑦
+succeeded:
+  IdA.
+axiom IdA. object 𝑥₁₀.
+  𝑥₁₀ = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝑥 + '𝑦]
+∎
+
+
+
+Proving lemma B. object 𝒙, 𝒚.
+  𝒙 + 𝒚 = 𝒙 + 𝒚
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚
+Proof count: 1
+
+Proof of
+  '𝒙 + '𝒚 = '𝒙 + '𝒚
+succeeded:
+  IdA.
+axiom IdA. object 𝑥₁₀.
+  𝑥₁₀ = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙 + '𝒚]
+∎
+
+
+
+Proving lemma C. object 𝑦.
+  ∀¹°𝑥⁰⁺¹ °𝑥⁰⁺¹ + 𝑦 = °𝑥⁰⁺¹ + 𝑦
+Proving result.
+Proof succeeded.
+Variables: '𝑦, '°𝑥⁰⁺¹
+Proof count: 1
+
+Proof of
+  ∀¹'°𝑥⁰⁺¹ '°𝑥⁰⁺¹ + '𝑦 = '°𝑥⁰⁺¹ + '𝑦
+succeeded:
+  GenA: IdA.
+rule GenA. formula 𝑨₁₀ object °𝒙₁₀.
+  𝑨₁₀ ⊢ ∀¹°𝒙₁₀ 𝑨₁₀.
+[°𝒙₁₀ ↦ '°𝑥⁰⁺¹][𝑨₁₀ ↦ '°𝑥⁰⁺¹ + '𝑦 = '°𝑥⁰⁺¹ + '𝑦]
+∴ '°𝑥⁰⁺¹ + '𝑦 = '°𝑥⁰⁺¹ + '𝑦
+axiom IdA. object 𝑥₂₀.
+  𝑥₂₀ = 𝑥₂₀.
+[𝑥₂₀ ↦ '°𝑥⁰⁺¹ + '𝑦]
+∎
+
+

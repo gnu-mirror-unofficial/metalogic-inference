@@ -1,0 +1,106 @@
+
+digraph "MLI C++ classes"
+{
+  node [fontname = courier, shape = box, colorscheme = paired6]
+  edge [fontname = courier]
+
+  rankdir="RL"
+
+  subgraph cluster_MLI {
+    label="MLI.hh"
+
+    unit
+
+    formula -> unit
+    nonempty_formula -> formula
+    statement -> nonempty_formula
+
+    variable -> nonempty_formula
+    constant -> nonempty_formula
+    sequence -> nonempty_formula
+    structure -> nonempty_formula
+    bound_formula -> nonempty_formula
+    formula_set -> nonempty_formula
+    inference -> nonempty_formula
+    database -> nonempty_formula
+
+    variable_list -> unit
+  }
+
+
+  subgraph cluster_definition {
+    label="definition.hh"
+
+    definition -> statement
+    abbreviation -> nonempty_formula
+  }
+
+
+  subgraph cluster_function {
+    label="function.hh"
+
+    function -> nonempty_formula
+    function_map -> function
+    function_composition -> function
+
+    function_evaluation -> nonempty_formula
+  }
+
+
+  subgraph cluster_proposition {
+    label="proposition.hh"
+
+    supposition -> statement
+    implicit_premise -> nonempty_formula
+    premise -> statement
+    proof_line -> statement
+    theorem -> statement
+    statement_substitution -> statement
+  }
+
+
+  subgraph cluster_database {
+    label="database.hh"
+
+    set_database -> database
+    sublevel_database -> database
+    level_database -> database
+    sequential_database -> database
+    theory -> sequential_database
+    theory_database -> unit
+  }
+
+
+  subgraph cluster_basictype {
+    label="basictype.hh"
+
+    integer -> nonempty_formula
+  }
+
+
+  subgraph cluster_metacondition {
+    label="metacondition.hh"
+
+    metanot -> nonempty_formula
+    succeed_fail -> nonempty_formula
+    identical -> nonempty_formula
+    objectidentical -> nonempty_formula
+    free_in_object -> nonempty_formula
+    free_for_object -> nonempty_formula
+  }
+
+
+  subgraph cluster_substitution {
+    label="substitution.hh"
+
+    substitution -> nonempty_formula
+    variable_substitution -> substitution
+    composition -> substitution
+    substitution_formula -> nonempty_formula
+
+    alternative -> unit
+    alternatives -> unit
+    proof -> unit
+  }
+
+}

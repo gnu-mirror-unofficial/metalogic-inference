@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+
+BUILDDIR=$1
+
+MLI=${BUILDDIR}/src/mli
+INCLUDEDIR=$2/mli
+FILE=$3
+
+FILEBASE="${FILE%.*}"
+FILEDIR="${FILE%/*}"
+
+FILENAME="${FILE##*/}"
+FILENAMEBASE="${FILENAME%.*}"
+
+OUTBASE="${BUILDDIR}/tests"
+OUTFILE="${OUTBASE}/${FILENAMEBASE}.1.mlo"
+LOGFILE="${OUTBASE}/${FILENAMEBASE}.1.log"
+
+OUTCOMPARE="${FILEBASE}.0.mlo"
+LOGCOMPARE="${FILEBASE}.0.log"
+
+echo 0: $0
+echo 1: $1
+echo 2: $2
+echo 3: $3
+echo PWD: $PWD
+echo BUILDDIR: $BUILDDIR
+echo MLI: $MLI
+echo INCLUDEDIR: $INCLUDEDIR
+echo FILE: $FILE
+echo FILENAME: $FILENAME
+echo FILENAMEBASE: $FILENAMEBASE
+echo FILEDIR: $FILEDIR
+echo FILEBASE: $FILEBASE
+echo OUTBASE: $OUTBASE
+echo OUTFILE: $OUTFILE
+echo LOGFILE: $LOGFILE
+echo OUTCOMPARE: $OUTCOMPARE
+echo LOGCOMPARE: $LOGCOMPARE
+echo ""
+
+
+if [ "$2" = "update" ]
+then
+  echo "update"
+  cp -v $1/$3.1.mlo $3.0.mlo; cp -v $1/$3.1.log $3.0.log
+else
+  echo "mli:"
+  time ${MLI} ${INCLUDE} --theory=${FILENAMEBASE} --include="${INCLUDEDIR}"\
+    --output=${OUTFILE} --log=${LOGFILE} ${FILE}
+  echo "end mli"
+  cmp ${OUTFILE} ${OUTCOMPARE}
+  error0=$?
+  cmp ${LOGFILE} ${LOGCOMPARE}
+  error1=$?
+  exit $((${error0} + ${error1}))
+fi
+
+

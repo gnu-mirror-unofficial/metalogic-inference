@@ -1,0 +1,83 @@
+— Begin: theory database issue-spec.
+
+theory TG.
+
+axiom I1. object °𝒙.
+  °𝒙 = °𝒙.
+
+axiom I2. object 𝒙.
+  𝒙 = 𝒙.
+
+axiom P1. object °𝒙, °𝒚.
+  °𝒙 = °𝒚.
+
+axiom P2. object 𝒙, 𝒚.
+  𝒙 = 𝒚.
+
+lemma A11. object °𝑥.
+  °𝑥 = °𝑥
+result by I1. — I1.
+
+lemma A12 [*unproved*]. object 𝑥.
+  𝑥 = 𝑥
+[*unproved*] result by I1.
+
+lemma A21. object °𝑥.
+  °𝑥 = °𝑥
+result by I2. — I2.
+
+lemma A22. object 𝑥.
+  𝑥 = 𝑥
+result by I2. — I2.
+
+lemma B11 [*unproved*]. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+[*unproved*] result by I1.
+
+lemma B12 [*unproved*]. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+[*unproved*] result by I1.
+
+lemma B21 [*unproved*]. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+[*unproved*] result by I2.
+
+lemma B22 [*unproved*]. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+[*unproved*] result by I2.
+
+lemma C11. object °𝑥.
+  °𝑥 = °𝑥
+result by P1. — P1.
+
+lemma C12 [*unproved*]. object 𝑥.
+  𝑥 = 𝑥
+[*unproved*] result by P1.
+
+lemma C21. object °𝑥.
+  °𝑥 = °𝑥
+result by P2. — P2.
+
+lemma C22. object 𝑥.
+  𝑥 = 𝑥
+result by P2. — P2.
+
+lemma D11. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+result by P1. — P1.
+
+lemma D12. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+result by P2. — P2.
+
+lemma D21. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+result by P2. — P2.
+
+lemma D22. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+result by P2. — P2.
+
+end theory TG.
+
+— End: theory database issue-spec.

@@ -1,0 +1,26 @@
+— Begin: theory database issue-meta-3.
+
+theory TM.
+
+axiom S6. object 𝑥, 𝑦.
+  𝑥 + s(𝑦) = s(𝑥 + 𝑦).
+
+rule S2a. object 𝑥, 𝑦.
+  𝑥 = 𝑦 ⊢ s(𝑥) = s(𝑦).
+
+rule T1C. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒚, 𝒚 = 𝒛 ⊢ 𝒙 = 𝒛.
+
+rule T1D. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒛, 𝒚 = 𝒛 ⊢ 𝒙 = 𝒚.
+
+lemma a. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒚, 𝒙 + 𝒛 = 𝒚 + 𝒛 ⊢ 𝒙 + s(𝒛) = 𝒚 + s(𝒛)
+result by T1D, S6, T1C, S2a.
+— T1D: T1C; S6: S6; S2a.
+— T1D: S6; T1D: S6; S2a.
+— T1C: S6; T1D: S2a; S6.
+
+end theory TM.
+
+— End: theory database issue-meta-3.

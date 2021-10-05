@@ -1,0 +1,20 @@
+— Begin: theory database issue-meta-0.
+
+theory TM.
+
+postulate PCa. formula 𝑨, 𝑩, 𝑪.
+  𝑨 ⊢ 𝑪; 𝑩 ⊢ 𝑪 ⊩ 𝑨 ∨ 𝑩 ⊢ 𝑪.
+
+rule 2. object 𝒙.
+  𝒙 = 0 ⊢ ∃¹°𝑤⁰⁺¹ s(𝒙) = s(°𝑤⁰⁺¹).
+
+rule a. object 𝒙.
+  𝒙 ≠ 0 ⊢ ∃¹°𝑤⁰⁺¹ s(𝒙) = s(°𝑤⁰⁺¹).
+
+lemma b. object 𝒙.
+  𝒙 = 0 ∨ 𝒙 ≠ 0 ⊢ ∃¹°𝑤⁰⁺¹ s(𝒙) = s(°𝑤⁰⁺¹)
+result by PCa: 2, a. — PCa: 2; a.
+
+end theory TM.
+
+— End: theory database issue-meta-0.

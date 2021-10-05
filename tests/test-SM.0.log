@@ -1,0 +1,6128 @@
+
+Proving lemma T1a. object 𝒙.
+  𝒙 = 𝒙
+Proving 1. '𝒙 + 0 = '𝒙.
+Proof succeeded.
+Variable: '𝒙
+Proof count: 1
+
+Proof of
+  '𝒙 + 0 = '𝒙
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙]
+∎
+
+
+Proving 2. '𝒙 + 0 = '𝒙 ⇒ ('𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙).
+Proof succeeded.
+Variable: '𝒙
+Proof count: 1
+
+Proof of
+  '𝒙 + 0 = '𝒙 ⇒ ('𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙)
+succeeded:
+  S1.
+axiom S1. object 𝑥₁₀, 𝑦₁₀, 𝑧₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⇒ (𝑥₁₀ = 𝑧₁₀ ⇒ 𝑦₁₀ = 𝑧₁₀).
+[𝑥₁₀ ↦ '𝒙 + 0][𝑦₁₀ ↦ '𝒙][𝑧₁₀ ↦ '𝒙]
+∎
+
+
+Proving 3. '𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙.
+Proof succeeded.
+Variable: '𝒙
+Proof count: 1
+
+Proof of
+  '𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙
+succeeded:
+  MP: 1; 2.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ ('𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙)
+1. '𝒙 + 0 = '𝒙.
+2. '𝒙 + 0 = '𝒙 ⇒ ('𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙).
+[𝑨₁₀ ↦ '𝒙 + 0 = '𝒙]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒙
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒙
+succeeded:
+  MP: 1; 3.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙 = '𝒙]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙 = '𝒙
+1. '𝒙 + 0 = '𝒙.
+3. '𝒙 + 0 = '𝒙 ⇒ '𝒙 = '𝒙.
+[𝑨₁₀ ↦ '𝒙 + 0 = '𝒙]
+∎
+
+
+
+Proving lemma T1b. object 𝒙, 𝒚.
+  𝒙 = 𝒚 ⇒ 𝒚 = 𝒙
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒚 ⇒ '𝒚 = '𝒙
+succeeded:
+  MP: T1a; PI: S1.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙 = '𝒚 ⇒ '𝒚 = '𝒙]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ ('𝒙 = '𝒚 ⇒ '𝒚 = '𝒙)
+lemma T1a. object 𝒙₂₀.
+  𝒙₂₀ = 𝒙₂₀
+rule PI. formula 𝑨₂₁, 𝑩₂₁, 𝑪₂₁.
+  𝑨₂₁ ⇒ (𝑩₂₁ ⇒ 𝑪₂₁) ⊢ 𝑩₂₁ ⇒ (𝑨₂₁ ⇒ 𝑪₂₁).
+[𝑨₁₀ ↦ 𝒙₂₀ = 𝒙₂₀][𝑩₂₁ ↦ 𝒙₂₀ = 𝒙₂₀][𝑨₂₁ ↦ '𝒙 = '𝒚][𝑪₂₁ ↦ '𝒚 = '𝒙]
+∴ '𝒙 = '𝒚 ⇒ (𝒙₂₀ = 𝒙₂₀ ⇒ '𝒚 = '𝒙)
+axiom S1. object 𝑥₃₀, 𝑦₃₀, 𝑧₃₀.
+  𝑥₃₀ = 𝑦₃₀ ⇒ (𝑥₃₀ = 𝑧₃₀ ⇒ 𝑦₃₀ = 𝑧₃₀).
+[𝑥₃₀ ↦ '𝒙][𝑦₃₀ ↦ '𝒚][𝒙₂₀ ↦ '𝒙][𝑧₃₀ ↦ '𝒙]
+∎
+
+
+
+Proving lemma T1B. object 𝒙, 𝒚.
+  𝒙 = 𝒚 ⊢ 𝒚 = 𝒙
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒚 ⊢ '𝒚 = '𝒙
+succeeded:
+  MP: premise T1B; T1b.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒚 = '𝒙][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒚 = '𝒙][𝚪₁₀ ↦ □]
+∴ '𝒙 = '𝒚 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒚 = '𝒙
+premise T1B. object '𝒙, '𝒚.
+  '𝒙 = '𝒚.
+lemma T1b. object 𝒙₂₁, 𝒚₂₁.
+  𝒙₂₁ = 𝒚₂₁ ⇒ 𝒚₂₁ = 𝒙₂₁
+[𝑨₁₀ ↦ '𝒙 = '𝒚][𝒙₂₁ ↦ '𝒙][𝒚₂₁ ↦ '𝒚]
+∎
+
+
+
+Proving lemma T1c. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒚 ⇒ (𝒚 = 𝒛 ⇒ 𝒙 = 𝒛)
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒚 ⇒ ('𝒚 = '𝒛 ⇒ '𝒙 = '𝒛)
+succeeded:
+  ICh: T1b; S1.
+rule ICh. formula 𝑨₁₀, 𝑩₁₀, 𝑪₁₀.
+  𝑨₁₀ ⇒ 𝑩₁₀, 𝑩₁₀ ⇒ 𝑪₁₀ ⊢ 𝑨₁₀ ⇒ 𝑪₁₀.
+[𝑨₁₀ ↦ '𝒙 = '𝒚][𝑪₁₀ ↦ '𝒚 = '𝒛 ⇒ '𝒙 = '𝒛]
+∴ '𝒙 = '𝒚 ⇒ 𝑩₁₀, 𝑩₁₀ ⇒ ('𝒚 = '𝒛 ⇒ '𝒙 = '𝒛)
+lemma T1b. object 𝒙₂₀, 𝒚₂₀.
+  𝒙₂₀ = 𝒚₂₀ ⇒ 𝒚₂₀ = 𝒙₂₀
+axiom S1. object 𝑥₂₁, 𝑦₂₁, 𝑧₂₁.
+  𝑥₂₁ = 𝑦₂₁ ⇒ (𝑥₂₁ = 𝑧₂₁ ⇒ 𝑦₂₁ = 𝑧₂₁).
+[𝒙₂₀ ↦ '𝒙][𝒚₂₀ ↦ '𝒚][𝑩₁₀ ↦ '𝒚 = '𝒙][𝑥₂₁ ↦ '𝒚][𝑦₂₁ ↦ '𝒙][𝑧₂₁ ↦ '𝒛]
+∎
+
+
+
+Proving lemma T1C. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒚, 𝒚 = 𝒛 ⊢ 𝒙 = 𝒛
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒚, '𝒚 = '𝒛 ⊢ '𝒙 = '𝒛
+succeeded:
+  MP: premise T1C₁; MP: premise T1C₀; T1c.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙 = '𝒛][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒙 = '𝒛][𝚪₁₀ ↦ □]
+∴ '𝒙 = '𝒚, '𝒚 = '𝒛 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙 = '𝒛
+premise T1C₁. object '𝒚, '𝒛.
+  '𝒚 = '𝒛.
+rule MP. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+[𝑨₁₀ ↦ '𝒚 = '𝒛][𝑩₂₁ ↦ '𝒚 = '𝒛 ⇒ '𝒙 = '𝒛][𝚪₍₀₎₂₁ ↦ 𝑨₂₁][𝚪₍₁₎₂₁ ↦ 𝑨₂₁ ⇒ ('𝒚 = '𝒛 ⇒ '𝒙 = '𝒛)][𝚪₂₁ ↦ □]
+∴ '𝒙 = '𝒚, '𝒚 = '𝒛 ⊢ 𝑨₂₁, 𝑨₂₁ ⇒ ('𝒚 = '𝒛 ⇒ '𝒙 = '𝒛)
+premise T1C₀. object '𝒙, '𝒚.
+  '𝒙 = '𝒚.
+lemma T1c. object 𝒙₃₁, 𝒚₃₁, 𝒛₃₁.
+  𝒙₃₁ = 𝒚₃₁ ⇒ (𝒚₃₁ = 𝒛₃₁ ⇒ 𝒙₃₁ = 𝒛₃₁)
+[𝑨₂₁ ↦ '𝒙 = '𝒚][𝒙₃₁ ↦ '𝒙][𝒚₃₁ ↦ '𝒚][𝒛₃₁ ↦ '𝒛]
+∎
+
+
+
+Proving lemma T1d. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒛 ⇒ (𝒚 = 𝒛 ⇒ 𝒙 = 𝒚)
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒛 ⇒ ('𝒚 = '𝒛 ⇒ '𝒙 = '𝒚)
+succeeded:
+  PI: ICh: T1b; PI: T1c.
+rule PI. formula 𝑨₁₀, 𝑩₁₀, 𝑪₁₀.
+  𝑨₁₀ ⇒ (𝑩₁₀ ⇒ 𝑪₁₀) ⊢ 𝑩₁₀ ⇒ (𝑨₁₀ ⇒ 𝑪₁₀).
+[𝑩₁₀ ↦ '𝒙 = '𝒛][𝑨₁₀ ↦ '𝒚 = '𝒛][𝑪₁₀ ↦ '𝒙 = '𝒚]
+∴ '𝒚 = '𝒛 ⇒ ('𝒙 = '𝒛 ⇒ '𝒙 = '𝒚)
+rule ICh. formula 𝑨₂₀, 𝑩₂₀, 𝑪₂₀.
+  𝑨₂₀ ⇒ 𝑩₂₀, 𝑩₂₀ ⇒ 𝑪₂₀ ⊢ 𝑨₂₀ ⇒ 𝑪₂₀.
+[𝑨₂₀ ↦ '𝒚 = '𝒛][𝑪₂₀ ↦ '𝒙 = '𝒛 ⇒ '𝒙 = '𝒚]
+∴ '𝒚 = '𝒛 ⇒ 𝑩₂₀, 𝑩₂₀ ⇒ ('𝒙 = '𝒛 ⇒ '𝒙 = '𝒚)
+lemma T1b. object 𝒙₃₀, 𝒚₃₀.
+  𝒙₃₀ = 𝒚₃₀ ⇒ 𝒚₃₀ = 𝒙₃₀
+rule PI. formula 𝑨₃₁, 𝑩₃₁, 𝑪₃₁.
+  𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁) ⊢ 𝑩₃₁ ⇒ (𝑨₃₁ ⇒ 𝑪₃₁).
+[𝒙₃₀ ↦ '𝒚][𝒚₃₀ ↦ '𝒛][𝑩₂₀ ↦ '𝒛 = '𝒚][𝑩₃₁ ↦ '𝒛 = '𝒚][𝑨₃₁ ↦ '𝒙 = '𝒛][𝑪₃₁ ↦ '𝒙 = '𝒚]
+∴ '𝒙 = '𝒛 ⇒ ('𝒛 = '𝒚 ⇒ '𝒙 = '𝒚)
+lemma T1c. object 𝒙₄₀, 𝒚₄₀, 𝒛₄₀.
+  𝒙₄₀ = 𝒚₄₀ ⇒ (𝒚₄₀ = 𝒛₄₀ ⇒ 𝒙₄₀ = 𝒛₄₀)
+[𝒙₄₀ ↦ '𝒙][𝒚₄₀ ↦ '𝒛][𝒛₄₀ ↦ '𝒚]
+∎
+
+
+
+Proving lemma T1D. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒛, 𝒚 = 𝒛 ⊢ 𝒙 = 𝒚
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒛, '𝒚 = '𝒛 ⊢ '𝒙 = '𝒚
+succeeded:
+  MP: premise T1D₁; MP: premise T1D₀; T1d.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙 = '𝒚][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒙 = '𝒚][𝚪₁₀ ↦ □]
+∴ '𝒙 = '𝒛, '𝒚 = '𝒛 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙 = '𝒚
+premise T1D₁. object '𝒚, '𝒛.
+  '𝒚 = '𝒛.
+rule MP. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+[𝑨₁₀ ↦ '𝒚 = '𝒛][𝑩₂₁ ↦ '𝒚 = '𝒛 ⇒ '𝒙 = '𝒚][𝚪₍₀₎₂₁ ↦ 𝑨₂₁][𝚪₍₁₎₂₁ ↦ 𝑨₂₁ ⇒ ('𝒚 = '𝒛 ⇒ '𝒙 = '𝒚)][𝚪₂₁ ↦ □]
+∴ '𝒙 = '𝒛, '𝒚 = '𝒛 ⊢ 𝑨₂₁, 𝑨₂₁ ⇒ ('𝒚 = '𝒛 ⇒ '𝒙 = '𝒚)
+premise T1D₀. object '𝒙, '𝒛.
+  '𝒙 = '𝒛.
+lemma T1d. object 𝒙₃₁, 𝒚₃₁, 𝒛₃₁.
+  𝒙₃₁ = 𝒛₃₁ ⇒ (𝒚₃₁ = 𝒛₃₁ ⇒ 𝒙₃₁ = 𝒚₃₁)
+[𝑨₂₁ ↦ '𝒙 = '𝒛][𝒙₃₁ ↦ '𝒙][𝒛₃₁ ↦ '𝒛][𝒚₃₁ ↦ '𝒚]
+∎
+
+
+
+Proving lemma IR1. predicate variable 𝑷 object °𝑥.
+  𝑷(0), ∀²°𝑥: 𝑷(°𝑥) ⇒ 𝑷(s(°𝑥)) ⊢ ∀¹°𝑥 𝑷(°𝑥)
+Proving result.
+Proof succeeded.
+Variables: '𝑷, '°𝑥
+Proof count: 1
+
+Proof of
+  '𝑷(0), ∀²'°𝑥: '𝑷('°𝑥) ⇒ '𝑷(s('°𝑥)) ⊢ ∀¹'°𝑥 '𝑷('°𝑥)
+succeeded:
+  MP: CI; S9a.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ ∀¹'°𝑥 '𝑷('°𝑥)][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ ∀¹'°𝑥 '𝑷('°𝑥)][𝚪₁₀ ↦ □]
+∴ '𝑷(0), ∀²'°𝑥: '𝑷('°𝑥) ⇒ '𝑷(s('°𝑥)) ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ ∀¹'°𝑥 '𝑷('°𝑥)
+rule CI. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑩₂₀ ⊢ 𝑨₂₀ ∧ 𝑩₂₀.
+axiom S9a. predicate variable 𝑷₂₁.
+  𝑷₂₁(0) ∧ ∀¹°𝑥⁰⁺¹₂₁: 𝑷₂₁(°𝑥⁰⁺¹₂₁) ⇒ 𝑷₂₁(s(°𝑥⁰⁺¹₂₁)) ⇒ ∀²°𝑥⁰⁺²₂₁ 𝑷₂₁(°𝑥⁰⁺²₂₁).
+[𝑨₁₀ ↦ 𝑨₂₀ ∧ 𝑩₂₀][𝑨₂₀ ↦ '𝑷(0)][𝑩₂₀ ↦ ∀²'°𝑥: '𝑷('°𝑥) ⇒ '𝑷(s('°𝑥))][𝚪₂₀ ↦ □][𝑷₂₁ ↦ '𝑷][°𝑥⁰⁺¹₂₁ ↦ '°𝑥][°𝑥⁰⁺²₂₁ ↦ '°𝑥]
+∎
+
+
+
+Proving lemma IR2. predicate variable 𝑷 object °𝒙.
+  𝑷(0), 𝑷(°𝒙) ⇒ 𝑷(s(°𝒙)) ⊢⁽¹ °𝒙⁾ 𝑷(°𝒙)
+Proving result.
+Proof succeeded.
+Variables: '𝑷, '°𝒙
+Proof count: 1
+
+Proof of
+  '𝑷(0), '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙)) ⊢⁽¹ '°𝒙⁾ '𝑷('°𝒙)
+succeeded:
+  K1: IR1: Gen.
+rule K1. formula 𝑨₁₀ object 𝑡₁₀, °𝒙₁₀.
+  ∀¹°𝒙₁₀ 𝑨₁₀ ⊢ 𝑨₁₀[°𝒙₁₀ ⤇ 𝑡₁₀].
+[𝑡₁₀ ↦ '°𝒙][°𝒙₁₀ ↦ '°𝒙][𝑨₁₀ ↦ '𝑷('°𝒙)]
+∴ '𝑷(0), '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙)) ⊢⁽¹ '°𝒙⁾ ∀¹'°𝒙 '𝑷('°𝒙)
+lemma IR1. predicate variable 𝑷₂₀ object °𝑥₂₀.
+  𝑷₂₀(0), ∀²°𝑥₂₀: 𝑷₂₀(°𝑥₂₀) ⇒ 𝑷₂₀(s(°𝑥₂₀)) ⊢ ∀¹°𝑥₂₀ 𝑷₂₀(°𝑥₂₀)
+[°𝑥₂₀ ↦ '°𝒙][𝑷₂₀ ↦ '𝑷][𝚪₍₁₎₂₀ ↦ ∀²'°𝒙: '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙))][𝚪₂₀ ↦ □]
+∴ '𝑷(0), '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙)) ⊢⁽¹ '°𝒙⁾ ∀²'°𝒙: '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙))
+rule Gen. formula 𝑨₃₀ object °𝒙₃₀.
+  𝑨₃₀ ⊢⁽°𝒙₃₀⁾ ∀¹°𝒙₃₀ 𝑨₃₀.
+[°𝒙₃₀ ↦ '°𝒙][𝑨₃₀ ↦ '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙))]
+∎
+
+
+
+Proving lemma IR. predicate variable 𝑷 object °𝒙.
+  𝑷(0); 𝑷(°𝒙) ⊢ 𝑷(s(°𝒙)) ⊩ 𝑷(°𝒙)
+Proving result.
+Proof succeeded.
+Variables: '𝑷, '°𝒙
+Proof count: 1
+
+Proof of
+  '𝑷(0); '𝑷('°𝒙) ⊢ '𝑷(s('°𝒙)) ⊩ '𝑷('°𝒙)
+succeeded:
+  IR2: premise ⊢₀; DT.
+lemma IR2. predicate variable 𝑷₁₀ object °𝒙₁₀.
+  𝑷₁₀(0), 𝑷₁₀(°𝒙₁₀) ⇒ 𝑷₁₀(s(°𝒙₁₀)) ⊢⁽¹ °𝒙₁₀⁾ 𝑷₁₀(°𝒙₁₀)
+[𝑷₁₀ ↦ '𝑷][°𝒙₁₀ ↦ '°𝒙]
+∴ '𝑷(0); '𝑷('°𝒙) ⊢ '𝑷(s('°𝒙)) ⊩ '𝑷(0), '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙))
+premise ⊢₀. predicate variable '𝑷.
+  '𝑷(0).
+postulate DT. formula sequence 𝜞₂₁ formula 𝑨₂₁, 𝑩₂₁.
+  𝜞₂₁, 𝑨₂₁ ⊢ 𝑩₂₁ ⊩ 𝜞₂₁ ⊢ 𝑨₂₁ ⇒ 𝑩₂₁.
+[𝑨₂₁ ↦ '𝑷('°𝒙)][𝑩₂₁ ↦ '𝑷(s('°𝒙))][𝜞₂₁ ↦ ⦰]
+∎
+
+
+
+Proving lemma T1e. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⇒ 𝒕 + 𝒔 = 𝒓 + 𝒔
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒙².
+  𝒙² + 0 = 𝒙².
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + 0 = '𝒙²
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 2. object 𝒚².
+  𝒚² + 0 = 𝒚².
+Proof succeeded.
+Variable: '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² + 0 = '𝒚²
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒚²]
+∎
+
+
+
+Proving a. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⊢ 𝒙² + 0 = 𝒚² + 0
+Proving a3. '𝒙² = '𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚²
+succeeded:
+  premise a.
+premise a. object '𝒙², '𝒚².
+  '𝒙² = '𝒚².
+I
+∎
+
+
+Proving a4. '𝒙² + 0 = '𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + 0 = '𝒚²
+succeeded:
+  T1C: 1; a3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² + 0][𝒛₁₀ ↦ '𝒚²]
+∴ '𝒙² + 0 = 𝒚₁₀, 𝒚₁₀ = '𝒚²
+1. object 𝒙²₂₀.
+  𝒙²₂₀ + 0 = 𝒙²₂₀.
+a3. '𝒙² = '𝒚².
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⊢ '𝒙² + 0 = '𝒚² + 0
+succeeded:
+  T1D: a4; 2.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² + 0][𝒚₁₀ ↦ '𝒚² + 0][𝚪₍₀₎₁₀ ↦ '𝒙² + 0 = 𝒛₁₀][𝚪₍₁₎₁₀ ↦ '𝒚² + 0 = 𝒛₁₀][𝚪₁₀ ↦ □]
+∴ '𝒙² = '𝒚² ⊢ '𝒙² + 0 = 𝒛₁₀, '𝒚² + 0 = 𝒛₁₀
+a4. '𝒙² + 0 = '𝒚².
+2. object 𝒚²₂₁.
+  𝒚²₂₁ + 0 = 𝒚²₂₁.
+[𝒛₁₀ ↦ '𝒚²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  DT₍D₎: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒙¹₁₀₁ + 𝒛¹₁₀₁ = 𝒚¹₁₀₁ + 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ = '𝒚¹₁₀₁][𝑩₁₀ ↦ '𝒙¹₁₀₁ + 0 = '𝒚¹₁₀₁ + 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙¹₁₀₁ = '𝒚¹₁₀₁ ⊢ '𝒙¹₁₀₁ + 0 = '𝒚¹₁₀₁ + 0
+a. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ = 𝒚²₂₀ ⊢ 𝒙²₂₀ + 0 = 𝒚²₂₀ + 0
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒚²₂₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⇒ 𝒙² + '𝒛¹ = 𝒚² + '𝒛¹.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⇒ '𝒙² + '𝒛¹ = '𝒚² + '𝒛¹
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒙¹₁₀₁ + 𝒛¹₁₀₁ = 𝒚¹₁₀₁ + 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ '𝒛¹][𝒙¹₁₀₁ ↦ '𝒙²][𝒚¹₁₀₁ ↦ '𝒚²]
+∎
+
+
+Proving 2. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⊢ 𝒙² + '𝒛¹ = 𝒚² + '𝒛¹.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⊢ '𝒙² + '𝒛¹ = '𝒚² + '𝒛¹
+succeeded:
+  MP: premise ⊢; 1.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² + '𝒛¹ = '𝒚² + '𝒛¹][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒙² + '𝒛¹ = '𝒚² + '𝒛¹][𝚪₁₀ ↦ □]
+∴ '𝒙² = '𝒚² ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙² + '𝒛¹ = '𝒚² + '𝒛¹
+premise ⊢. object '𝒙², '𝒚².
+  '𝒙² = '𝒚².
+1. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ = 𝒚²₂₁ ⇒ 𝒙²₂₁ + '𝒛¹ = 𝒚²₂₁ + '𝒛¹.
+[𝑨₁₀ ↦ '𝒙² = '𝒚²][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving 3. object 𝒙².
+  𝒙² + s('𝒛¹) = s(𝒙² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒛¹) = s('𝒙² + '𝒛¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 4. object 𝒚².
+  𝒚² + s('𝒛¹) = s(𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+
+Proving a. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⊢ 𝒙² + s('𝒛¹) = 𝒚² + s('𝒛¹)
+Proving result.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⊢ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹)
+succeeded:
+  T1D: T1C; S6: S6; S2a: 2.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² + s('𝒛¹)][𝒚₁₀ ↦ '𝒚² + s('𝒛¹)][𝚪₍₀₎₁₀ ↦ '𝒙² + s('𝒛¹) = 𝒛₁₀][𝚪₍₁₎₁₀ ↦ '𝒚² + s('𝒛¹) = 𝒛₁₀][𝚪₁₀ ↦ □]
+∴ '𝒙² = '𝒚² ⊢ '𝒙² + s('𝒛¹) = 𝒛₁₀, '𝒚² + s('𝒛¹) = 𝒛₁₀
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+axiom S6. object 𝑥₂₁, 𝑦₂₁.
+  𝑥₂₁ + s(𝑦₂₁) = s(𝑥₂₁ + 𝑦₂₁).
+[𝒙₂₀ ↦ '𝒙² + s('𝒛¹)][𝒛₂₀ ↦ 𝒛₁₀][𝚪₍₀₎₂₀ ↦ '𝒙² + s('𝒛¹) = 𝒚₂₀][𝚪₍₁₎₂₀ ↦ 𝒚₂₀ = 𝒛₁₀][𝚪₂₀ ↦ □][𝑥₂₁ ↦ '𝒚²][𝑦₂₁ ↦ '𝒛¹][𝒛₁₀ ↦ s('𝒚² + '𝒛¹)]
+∴ '𝒙² = '𝒚² ⊢ '𝒙² + s('𝒛¹) = 𝒚₂₀, 𝒚₂₀ = s('𝒚² + '𝒛¹)
+axiom S6. object 𝑥₃₀, 𝑦₃₀.
+  𝑥₃₀ + s(𝑦₃₀) = s(𝑥₃₀ + 𝑦₃₀).
+rule S2a. object 𝑥₃₁, 𝑦₃₁.
+  𝑥₃₁ = 𝑦₃₁ ⊢ s(𝑥₃₁) = s(𝑦₃₁).
+[𝑥₃₀ ↦ '𝒙²][𝑦₃₀ ↦ '𝒛¹][𝒚₂₀ ↦ s('𝒙² + '𝒛¹)][𝑥₃₁ ↦ '𝒙² + '𝒛¹][𝑦₃₁ ↦ '𝒚² + '𝒛¹]
+∴ '𝒙² = '𝒚² ⊢ '𝒙² + '𝒛¹ = '𝒚² + '𝒛¹
+2. object 𝒙²₄₀, 𝒚²₄₀.
+  𝒙²₄₀ = 𝒚²₄₀ ⊢ 𝒙²₄₀ + '𝒛¹ = 𝒚²₄₀ + '𝒛¹.
+[𝒙²₄₀ ↦ '𝒙²][𝒚²₄₀ ↦ '𝒚²]
+∎
+
+
+Proving 8. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⇒ 𝒙² + s('𝒛¹) = 𝒚² + s('𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⇒ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹)
+succeeded:
+  DT: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² = '𝒚²][𝑩₁₀ ↦ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹)][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² = '𝒚² ⊢ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹)
+a. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ = 𝒚²₂₀ ⊢ 𝒙²₂₀ + s('𝒛¹) = 𝒚²₂₀ + s('𝒛¹)
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 9. [*concluding*] 𝐴(s('𝒛¹)).
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴(s('𝒛¹))
+succeeded:
+  8₍D₎.
+8. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ = 𝒚²₁₀ ⇒ 𝒙²₁₀ + s('𝒛¹) = 𝒚²₁₀ + s('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒙¹₁₀₁ + 𝒛¹₁₀₁ = 𝒚¹₁₀₁ + 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  DT₍D₎: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒙¹₁₀₁ + 𝒛¹₁₀₁ = 𝒚¹₁₀₁ + 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝑨₁₀ ↦ '𝒙¹₁₀₁ = '𝒚¹₁₀₁][𝑩₁₀ ↦ '𝒙¹₁₀₁ + s('𝒛¹) = '𝒚¹₁₀₁ + s('𝒛¹)][𝜞₁₀ ↦ 𝐴('𝒛¹)]
+∴ 𝐴('𝒛¹), '𝒙¹₁₀₁ = '𝒚¹₁₀₁ ⊢ '𝒙¹₁₀₁ + s('𝒛¹) = '𝒚¹₁₀₁ + s('𝒛¹)
+a. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ = 𝒚²₂₀ ⊢ 𝒙²₂₀ + s('𝒛¹) = 𝒚²₂₀ + s('𝒛¹)
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒚²₂₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⇒ '𝒕 + '𝒔 = '𝒓 + '𝒔
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 = '𝒓 ⇒ '𝒕 + '°𝒛₁₀ = '𝒓 + '°𝒛₁₀]
+∴ '𝒕 = '𝒓 ⇒ '𝒕 + '°𝒛₁₀ = '𝒓 + '°𝒛₁₀
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁, 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔₍𝒙¹₂₀₁,𝒚¹₂₀₁₎ 𝒙¹₂₀₁ = 𝒚¹₂₀₁ ⇒ 𝒙¹₂₀₁ + 𝒛¹₂₀₁ = 𝒚¹₂₀₁ + 𝒛¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][𝒚¹₂₀₁ ↦ '𝒓][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1E. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⊢ 𝒕 + 𝒔 = 𝒓 + 𝒔
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⊢ '𝒕 + '𝒔 = '𝒓 + '𝒔
+succeeded:
+  MP: premise T1E; T1e.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 + '𝒔 = '𝒓 + '𝒔][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒕 + '𝒔 = '𝒓 + '𝒔][𝚪₁₀ ↦ □]
+∴ '𝒕 = '𝒓 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 + '𝒔 = '𝒓 + '𝒔
+premise T1E. object '𝒓, '𝒕.
+  '𝒕 = '𝒓.
+lemma T1e. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ = 𝒓₂₁ ⇒ 𝒕₂₁ + 𝒔₂₁ = 𝒓₂₁ + 𝒔₂₁
+[𝑨₁₀ ↦ '𝒕 = '𝒓][𝒕₂₁ ↦ '𝒕][𝒓₂₁ ↦ '𝒓][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T1f. object 𝒕.
+  𝒕 = 0 + 𝒕
+Proving i. 𝐴(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  MP: S5; T1b₍D₎.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ 𝐴(0)]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ 𝐴(0)
+axiom S5. object 𝑥₂₀.
+  𝑥₂₀ + 0 = 𝑥₂₀.
+lemma T1b. object 𝒙₂₁, 𝒚₂₁.
+  𝒙₂₁ = 𝒚₂₁ ⇒ 𝒚₂₁ = 𝒙₂₁
+definition D. object 𝒙¹₂₁₁.
+  𝐴(𝒙¹₂₁₁) ≔ 𝒙¹₂₁₁ = 0 + 𝒙¹₂₁₁.
+[𝑨₁₀ ↦ 𝑥₂₀ + 0 = 𝑥₂₀][𝒙₂₁ ↦ 𝑥₂₀ + 0][𝒚₂₁ ↦ 𝑥₂₀][𝒙¹₂₁₁ ↦ 0][𝑥₂₀ ↦ 0]
+∎
+
+
+
+Proving ii. object 𝒙¹.
+  𝐴(𝒙¹) ⊢ 𝐴(s(𝒙¹))
+Proving 1. '𝒙¹ = 0 + '𝒙¹.
+Proof succeeded.
+Variable: '𝒙¹
+Proof count: 1
+
+Proof of
+  '𝒙¹ = 0 + '𝒙¹
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒙¹.
+  𝐴('𝒙¹).
+definition D. object 𝒙¹₁₀₁.
+  𝐴(𝒙¹₁₀₁) ≔ 𝒙¹₁₀₁ = 0 + 𝒙¹₁₀₁.
+[𝒙¹₁₀₁ ↦ '𝒙¹]
+∎
+
+
+Proving 2. 0 + s('𝒙¹) = s(0 + '𝒙¹).
+Proof succeeded.
+Variable: '𝒙¹
+Proof count: 1
+
+Proof of
+  0 + s('𝒙¹) = s(0 + '𝒙¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ 0][𝑦₁₀ ↦ '𝒙¹]
+∎
+
+
+Proving 3. s('𝒙¹) = s(0 + '𝒙¹).
+Proof succeeded.
+Variable: '𝒙¹
+Proof count: 1
+
+Proof of
+  s('𝒙¹) = s(0 + '𝒙¹)
+succeeded:
+  S2a: 1.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙¹][𝑦₁₀ ↦ 0 + '𝒙¹]
+∴ '𝒙¹ = 0 + '𝒙¹
+1. '𝒙¹ = 0 + '𝒙¹.
+I
+∎
+
+
+Proving 4. s('𝒙¹) = 0 + s('𝒙¹).
+Proof succeeded.
+Variable: '𝒙¹
+Proof count: 1
+
+Proof of
+  s('𝒙¹) = 0 + s('𝒙¹)
+succeeded:
+  T1D: 3; 2.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ s('𝒙¹)][𝒚₁₀ ↦ 0 + s('𝒙¹)]
+∴ s('𝒙¹) = 𝒛₁₀, 0 + s('𝒙¹) = 𝒛₁₀
+3. s('𝒙¹) = s(0 + '𝒙¹).
+2. 0 + s('𝒙¹) = s(0 + '𝒙¹).
+[𝒛₁₀ ↦ s(0 + '𝒙¹)]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒙¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒙¹) ⊢ 𝐴(s('𝒙¹))
+succeeded:
+  4₍D₎.
+4. s('𝒙¹) = 0 + s('𝒙¹).
+definition D. object 𝒙¹₁₀₁.
+  𝐴(𝒙¹₁₀₁) ≔ 𝒙¹₁₀₁ = 0 + 𝒙¹₁₀₁.
+[𝒙¹₁₀₁ ↦ s('𝒙¹)]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = 0 + '𝒕
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒕][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '°𝒛₁₀ = 0 + '°𝒛₁₀]
+∴ '°𝒛₁₀ = 0 + '°𝒛₁₀
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁.
+  𝐴(𝒙¹₂₀₁) ≔ 𝒙¹₂₀₁ = 0 + 𝒙¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒙¹₂₀₁ ↦ °𝒙₂₀][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0).
+ii. object 𝒙¹₃₁.
+  𝐴(𝒙¹₃₁) ⊢ 𝐴(s(𝒙¹₃₁))
+[𝒙¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1g. object 𝒓, 𝒕.
+  s(𝒕) + 𝒓 = s(𝒕 + 𝒓)
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒙².
+  s(𝒙²) + 0 = s(𝒙²).
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) + 0 = s('𝒙²)
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ s('𝒙²)]
+∎
+
+
+Proving 2. object 𝒙².
+  𝒙² + 0 = 𝒙².
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + 0 = '𝒙²
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 3. object 𝒙².
+  s(𝒙² + 0) = s(𝒙²).
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + 0) = s('𝒙²)
+succeeded:
+  S2a: 2.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙² + 0][𝑦₁₀ ↦ '𝒙²]
+∴ '𝒙² + 0 = '𝒙²
+2. object 𝒙²₂₀.
+  𝒙²₂₀ + 0 = 𝒙²₂₀.
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  T1D₍D₎: 1; 3.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ s(𝒙¹₁₀₁) + 𝒚¹₁₀₁ = s(𝒙¹₁₀₁ + 𝒚¹₁₀₁).
+[𝒚¹₁₀₁ ↦ 0][𝒙₁₀ ↦ s('𝒙¹₁₀₁) + 0][𝒚₁₀ ↦ s('𝒙¹₁₀₁ + 0)]
+∴ s('𝒙¹₁₀₁) + 0 = 𝒛₁₀, s('𝒙¹₁₀₁ + 0) = 𝒛₁₀
+1. object 𝒙²₂₀.
+  s(𝒙²₂₀) + 0 = s(𝒙²₂₀).
+3. object 𝒙²₂₁.
+  s(𝒙²₂₁ + 0) = s(𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒛₁₀ ↦ s('𝒙¹₁₀₁)][𝒙²₂₁ ↦ '𝒙¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  s(𝒙²) + '𝒚¹ = s(𝒙² + '𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) + '𝒚¹ = s('𝒙² + '𝒚¹)
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒚¹.
+  𝐴('𝒚¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ s(𝒙¹₁₀₁) + 𝒚¹₁₀₁ = s(𝒙¹₁₀₁ + 𝒚¹₁₀₁).
+[𝒚¹₁₀₁ ↦ '𝒚¹][𝒙¹₁₀₁ ↦ '𝒙²]
+∎
+
+
+Proving 2. object 𝒙².
+  s(𝒙²) + s('𝒚¹) = s(s(𝒙²) + '𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) + s('𝒚¹) = s(s('𝒙²) + '𝒚¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ s('𝒙²)][𝑦₁₀ ↦ '𝒚¹]
+∎
+
+
+Proving 3. object 𝒙².
+  s(s(𝒙²) + '𝒚¹) = s(s(𝒙² + '𝒚¹)).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s(s('𝒙²) + '𝒚¹) = s(s('𝒙² + '𝒚¹))
+succeeded:
+  S2a: 1.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ s('𝒙²) + '𝒚¹][𝑦₁₀ ↦ s('𝒙² + '𝒚¹)]
+∴ s('𝒙²) + '𝒚¹ = s('𝒙² + '𝒚¹)
+1. object 𝒙²₂₀.
+  s(𝒙²₂₀) + '𝒚¹ = s(𝒙²₂₀ + '𝒚¹).
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving 4. object 𝒙².
+  s(𝒙²) + s('𝒚¹) = s(s(𝒙² + '𝒚¹)).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) + s('𝒚¹) = s(s('𝒙² + '𝒚¹))
+succeeded:
+  T1C: 2; 3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒙²) + s('𝒚¹)][𝒛₁₀ ↦ s(s('𝒙² + '𝒚¹))]
+∴ s('𝒙²) + s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = s(s('𝒙² + '𝒚¹))
+2. object 𝒙²₂₀.
+  s(𝒙²₂₀) + s('𝒚¹) = s(s(𝒙²₂₀) + '𝒚¹).
+3. object 𝒙²₂₁.
+  s(s(𝒙²₂₁) + '𝒚¹) = s(s(𝒙²₂₁ + '𝒚¹)).
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ s(s('𝒙²) + '𝒚¹)][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 5. object 𝒙².
+  𝒙² + s('𝒚¹) = s(𝒙² + '𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚¹) = s('𝒙² + '𝒚¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒚¹]
+∎
+
+
+Proving 6. object 𝒙².
+  s(𝒙² + s('𝒚¹)) = s(s(𝒙² + '𝒚¹)).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + s('𝒚¹)) = s(s('𝒙² + '𝒚¹))
+succeeded:
+  S2a: 5.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙² + s('𝒚¹)][𝑦₁₀ ↦ s('𝒙² + '𝒚¹)]
+∴ '𝒙² + s('𝒚¹) = s('𝒙² + '𝒚¹)
+5. object 𝒙²₂₀.
+  𝒙²₂₀ + s('𝒚¹) = s(𝒙²₂₀ + '𝒚¹).
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving 7. object 𝒙².
+  s(𝒙²) + s('𝒚¹) = s(𝒙² + s('𝒚¹)).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) + s('𝒚¹) = s('𝒙² + s('𝒚¹))
+succeeded:
+  T1D: 4; 6.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ s('𝒙²) + s('𝒚¹)][𝒚₁₀ ↦ s('𝒙² + s('𝒚¹))]
+∴ s('𝒙²) + s('𝒚¹) = 𝒛₁₀, s('𝒙² + s('𝒚¹)) = 𝒛₁₀
+4. object 𝒙²₂₀.
+  s(𝒙²₂₀) + s('𝒚¹) = s(s(𝒙²₂₀ + '𝒚¹)).
+6. object 𝒙²₂₁.
+  s(𝒙²₂₁ + s('𝒚¹)) = s(s(𝒙²₂₁ + '𝒚¹)).
+[𝒙²₂₀ ↦ '𝒙²][𝒛₁₀ ↦ s(s('𝒙² + '𝒚¹))][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  7₍D₎.
+7. object 𝒙²₁₀.
+  s(𝒙²₁₀) + s('𝒚¹) = s(𝒙²₁₀ + s('𝒚¹)).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ s(𝒙¹₁₀₁) + 𝒚¹₁₀₁ = s(𝒙¹₁₀₁ + 𝒚¹₁₀₁).
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒕
+Proof count: 1
+
+Proof of
+  s('𝒕) + '𝒓 = s('𝒕 + '𝒓)
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒓][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ s('𝒕) + '°𝒛₁₀ = s('𝒕 + '°𝒛₁₀)]
+∴ s('𝒕) + '°𝒛₁₀ = s('𝒕 + '°𝒛₁₀)
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ s(𝒙¹₂₀₁) + 𝒚¹₂₀₁ = s(𝒙¹₂₀₁ + 𝒚¹₂₀₁).
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1h. object 𝒓, 𝒕.
+  𝒕 + 𝒓 = 𝒓 + 𝒕
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒙².
+  𝒙² + 0 = 𝒙².
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + 0 = '𝒙²
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 2. object 𝒙².
+  𝒙² = 0 + 𝒙².
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² = 0 + '𝒙²
+succeeded:
+  T1f.
+lemma T1f. object 𝒕₁₀.
+  𝒕₁₀ = 0 + 𝒕₁₀
+[𝒕₁₀ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  T1C₍D₎: 1; 2.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ = 𝒚¹₁₀₁ + 𝒙¹₁₀₁.
+[𝒚¹₁₀₁ ↦ 0][𝒙₁₀ ↦ '𝒙¹₁₀₁ + 0][𝒛₁₀ ↦ 0 + '𝒙¹₁₀₁]
+∴ '𝒙¹₁₀₁ + 0 = 𝒚₁₀, 𝒚₁₀ = 0 + '𝒙¹₁₀₁
+1. object 𝒙²₂₀.
+  𝒙²₂₀ + 0 = 𝒙²₂₀.
+2. object 𝒙²₂₁.
+  𝒙²₂₁ = 0 + 𝒙²₂₁.
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒚₁₀ ↦ '𝒙¹₁₀₁][𝒙²₂₁ ↦ '𝒙¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  𝒙² + '𝒚¹ = '𝒚¹ + 𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒚¹ = '𝒚¹ + '𝒙²
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒚¹.
+  𝐴('𝒚¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ = 𝒚¹₁₀₁ + 𝒙¹₁₀₁.
+[𝒚¹₁₀₁ ↦ '𝒚¹][𝒙¹₁₀₁ ↦ '𝒙²]
+∎
+
+
+Proving 2. object 𝒙².
+  𝒙² + s('𝒚¹) = s(𝒙² + '𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚¹) = s('𝒙² + '𝒚¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒚¹]
+∎
+
+
+Proving 3. object 𝒙².
+  s('𝒚¹) + 𝒙² = s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒚¹) + '𝒙² = s('𝒚¹ + '𝒙²)
+succeeded:
+  T1g.
+lemma T1g. object 𝒓₁₀, 𝒕₁₀.
+  s(𝒕₁₀) + 𝒓₁₀ = s(𝒕₁₀ + 𝒓₁₀)
+[𝒕₁₀ ↦ '𝒚¹][𝒓₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 4. object 𝒙².
+  s(𝒙² + '𝒚¹) = s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒚¹) = s('𝒚¹ + '𝒙²)
+succeeded:
+  S2a: 1.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙² + '𝒚¹][𝑦₁₀ ↦ '𝒚¹ + '𝒙²]
+∴ '𝒙² + '𝒚¹ = '𝒚¹ + '𝒙²
+1. object 𝒙²₂₀.
+  𝒙²₂₀ + '𝒚¹ = '𝒚¹ + 𝒙²₂₀.
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving 5. object 𝒙².
+  𝒙² + s('𝒚¹) = s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚¹) = s('𝒚¹ + '𝒙²)
+succeeded:
+  T1C: 2; 4.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² + s('𝒚¹)][𝒛₁₀ ↦ s('𝒚¹ + '𝒙²)]
+∴ '𝒙² + s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = s('𝒚¹ + '𝒙²)
+2. object 𝒙²₂₀.
+  𝒙²₂₀ + s('𝒚¹) = s(𝒙²₂₀ + '𝒚¹).
+4. object 𝒙²₂₁.
+  s(𝒙²₂₁ + '𝒚¹) = s('𝒚¹ + 𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ s('𝒙² + '𝒚¹)][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 6. object 𝒙².
+  𝒙² + s('𝒚¹) = s('𝒚¹) + 𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚¹) = s('𝒚¹) + '𝒙²
+succeeded:
+  T1D: 5; 3.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² + s('𝒚¹)][𝒚₁₀ ↦ s('𝒚¹) + '𝒙²]
+∴ '𝒙² + s('𝒚¹) = 𝒛₁₀, s('𝒚¹) + '𝒙² = 𝒛₁₀
+5. object 𝒙²₂₀.
+  𝒙²₂₀ + s('𝒚¹) = s('𝒚¹ + 𝒙²₂₀).
+3. object 𝒙²₂₁.
+  s('𝒚¹) + 𝒙²₂₁ = s('𝒚¹ + 𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙²][𝒛₁₀ ↦ s('𝒚¹ + '𝒙²)][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  6₍D₎.
+6. object 𝒙²₁₀.
+  𝒙²₁₀ + s('𝒚¹) = s('𝒚¹) + 𝒙²₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ = 𝒚¹₁₀₁ + 𝒙¹₁₀₁.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒓 = '𝒓 + '𝒕
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒓][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 + '°𝒛₁₀ = '°𝒛₁₀ + '𝒕]
+∴ '𝒕 + '°𝒛₁₀ = '°𝒛₁₀ + '𝒕
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ 𝒙¹₂₀₁ + 𝒚¹₂₀₁ = 𝒚¹₂₀₁ + 𝒙¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1i. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⇒ 𝒔 + 𝒕 = 𝒔 + 𝒓
+Proving 1. '𝒕 = '𝒓 ⇒ '𝒕 + '𝒔 = '𝒓 + '𝒔.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⇒ '𝒕 + '𝒔 = '𝒓 + '𝒔
+succeeded:
+  T1e.
+lemma T1e. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⇒ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ '𝒕][𝒓₁₀ ↦ '𝒓][𝒔₁₀ ↦ '𝒔]
+∎
+
+
+Proving 2. '𝒕 + '𝒔 = '𝒔 + '𝒕.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = '𝒔 + '𝒕
+succeeded:
+  T1h.
+lemma T1h. object 𝒓₁₀, 𝒕₁₀.
+  𝒕₁₀ + 𝒓₁₀ = 𝒓₁₀ + 𝒕₁₀
+[𝒕₁₀ ↦ '𝒕][𝒓₁₀ ↦ '𝒔]
+∎
+
+
+Proving 3. '𝒓 + '𝒔 = '𝒔 + '𝒓.
+Proof succeeded.
+Variables: '𝒓, '𝒔
+Proof count: 1
+
+Proof of
+  '𝒓 + '𝒔 = '𝒔 + '𝒓
+succeeded:
+  T1h.
+lemma T1h. object 𝒓₁₀, 𝒕₁₀.
+  𝒕₁₀ + 𝒓₁₀ = 𝒓₁₀ + 𝒕₁₀
+[𝒕₁₀ ↦ '𝒓][𝒓₁₀ ↦ '𝒔]
+∎
+
+
+
+Proving a. '𝒕 = '𝒓 ⊢ '𝒔 + '𝒕 = '𝒔 + '𝒓
+Proving 4. '𝒕 = '𝒓.
+Proof succeeded.
+Variables: '𝒓, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓
+succeeded:
+  premise a.
+premise a. object '𝒓, '𝒕.
+  '𝒕 = '𝒓.
+I
+∎
+
+
+Proving 5. '𝒕 + '𝒔 = '𝒓 + '𝒔.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = '𝒓 + '𝒔
+succeeded:
+  MP: 4; 1.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 + '𝒔 = '𝒓 + '𝒔]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 + '𝒔 = '𝒓 + '𝒔
+4. '𝒕 = '𝒓.
+1. '𝒕 = '𝒓 ⇒ '𝒕 + '𝒔 = '𝒓 + '𝒔.
+[𝑨₁₀ ↦ '𝒕 = '𝒓]
+∎
+
+
+Proving 6. '𝒔 + '𝒕 = '𝒓 + '𝒔.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒔 + '𝒕 = '𝒓 + '𝒔
+succeeded:
+  S1a: 2; 5.
+rule S1a. object 𝑥₁₀, 𝑦₁₀, 𝑧₁₀.
+  𝑥₁₀ = 𝑦₁₀, 𝑥₁₀ = 𝑧₁₀ ⊢ 𝑦₁₀ = 𝑧₁₀.
+[𝑦₁₀ ↦ '𝒔 + '𝒕][𝑧₁₀ ↦ '𝒓 + '𝒔]
+∴ 𝑥₁₀ = '𝒔 + '𝒕, 𝑥₁₀ = '𝒓 + '𝒔
+2. '𝒕 + '𝒔 = '𝒔 + '𝒕.
+5. '𝒕 + '𝒔 = '𝒓 + '𝒔.
+[𝑥₁₀ ↦ '𝒕 + '𝒔]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⊢ '𝒔 + '𝒕 = '𝒔 + '𝒓
+succeeded:
+  T1C: 6; 3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒔 + '𝒕][𝒛₁₀ ↦ '𝒔 + '𝒓][𝚪₍₀₎₁₀ ↦ '𝒔 + '𝒕 = 𝒚₁₀][𝚪₍₁₎₁₀ ↦ 𝒚₁₀ = '𝒔 + '𝒓][𝚪₁₀ ↦ □]
+∴ '𝒕 = '𝒓 ⊢ '𝒔 + '𝒕 = 𝒚₁₀, 𝒚₁₀ = '𝒔 + '𝒓
+6. '𝒔 + '𝒕 = '𝒓 + '𝒔.
+3. '𝒓 + '𝒔 = '𝒔 + '𝒓.
+[𝒚₁₀ ↦ '𝒓 + '𝒔]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⇒ '𝒔 + '𝒕 = '𝒔 + '𝒓
+succeeded:
+  DT: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒕 = '𝒓][𝑩₁₀ ↦ '𝒔 + '𝒕 = '𝒔 + '𝒓][𝜞₁₀ ↦ ⦰]
+∴ '𝒕 = '𝒓 ⊢ '𝒔 + '𝒕 = '𝒔 + '𝒓
+a. '𝒕 = '𝒓 ⊢ '𝒔 + '𝒕 = '𝒔 + '𝒓
+I
+∎
+
+
+
+Proving lemma T1I. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⊢ 𝒔 + 𝒕 = 𝒔 + 𝒓
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⊢ '𝒔 + '𝒕 = '𝒔 + '𝒓
+succeeded:
+  MP: premise ⊢; T1i.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒔 + '𝒕 = '𝒔 + '𝒓][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒔 + '𝒕 = '𝒔 + '𝒓][𝚪₁₀ ↦ □]
+∴ '𝒕 = '𝒓 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒔 + '𝒕 = '𝒔 + '𝒓
+premise ⊢. object '𝒓, '𝒕.
+  '𝒕 = '𝒓.
+lemma T1i. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ = 𝒓₂₁ ⇒ 𝒔₂₁ + 𝒕₂₁ = 𝒔₂₁ + 𝒓₂₁
+[𝑨₁₀ ↦ '𝒕 = '𝒓][𝒕₂₁ ↦ '𝒕][𝒓₂₁ ↦ '𝒓][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T1j. object 𝒓, 𝒔, 𝒕.
+  𝒕 + 𝒓 + 𝒔 = 𝒕 + (𝒓 + 𝒔)
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒙², 𝒚².
+  𝒙² + 𝒚² + 0 = 𝒙² + 𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒚² + 0 = '𝒙² + '𝒚²
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙² + '𝒚²]
+∎
+
+
+Proving 2. object 𝒚².
+  𝒚² + 0 = 𝒚².
+Proof succeeded.
+Variable: '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² + 0 = '𝒚²
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒚²]
+∎
+
+
+Proving 3. object 𝒙², 𝒚².
+  𝒙² + (𝒚² + 0) = 𝒙² + 𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + ('𝒚² + 0) = '𝒙² + '𝒚²
+succeeded:
+  T1I: 2.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙²][𝒕₁₀ ↦ '𝒚² + 0][𝒓₁₀ ↦ '𝒚²]
+∴ '𝒚² + 0 = '𝒚²
+2. object 𝒚²₂₀.
+  𝒚²₂₀ + 0 = 𝒚²₂₀.
+[𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  T1D₍D₎: 1; 3.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ + 𝒛¹₁₀₁ = 𝒙¹₁₀₁ + (𝒚¹₁₀₁ + 𝒛¹₁₀₁).
+[𝒛¹₁₀₁ ↦ 0][𝒙₁₀ ↦ '𝒙¹₁₀₁ + '𝒚¹₁₀₁ + 0][𝒚₁₀ ↦ '𝒙¹₁₀₁ + ('𝒚¹₁₀₁ + 0)]
+∴ '𝒙¹₁₀₁ + '𝒚¹₁₀₁ + 0 = 𝒛₁₀, '𝒙¹₁₀₁ + ('𝒚¹₁₀₁ + 0) = 𝒛₁₀
+1. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ + 𝒚²₂₀ + 0 = 𝒙²₂₀ + 𝒚²₂₀.
+3. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ + (𝒚²₂₁ + 0) = 𝒙²₂₁ + 𝒚²₂₁.
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒚²₂₀ ↦ '𝒚¹₁₀₁][𝒛₁₀ ↦ '𝒙¹₁₀₁ + '𝒚¹₁₀₁][𝒙²₂₁ ↦ '𝒙¹₁₀₁][𝒚²₂₁ ↦ '𝒚¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. object 𝒙², 𝒚².
+  𝒙² + 𝒚² + '𝒛¹ = 𝒙² + (𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒚² + '𝒛¹ = '𝒙² + ('𝒚² + '𝒛¹)
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ + 𝒛¹₁₀₁ = 𝒙¹₁₀₁ + (𝒚¹₁₀₁ + 𝒛¹₁₀₁).
+[𝒛¹₁₀₁ ↦ '𝒛¹][𝒙¹₁₀₁ ↦ '𝒙²][𝒚¹₁₀₁ ↦ '𝒚²]
+∎
+
+
+Proving 2. object 𝒙², 𝒚².
+  𝒙² + 𝒚² + s('𝒛¹) = s(𝒙² + 𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒚² + s('𝒛¹) = s('𝒙² + '𝒚² + '𝒛¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙² + '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 3. object 𝒙², 𝒚².
+  s(𝒙² + 𝒚² + '𝒛¹) = s(𝒙² + (𝒚² + '𝒛¹)).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒚² + '𝒛¹) = s('𝒙² + ('𝒚² + '𝒛¹))
+succeeded:
+  S2a: 1.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙² + '𝒚² + '𝒛¹][𝑦₁₀ ↦ '𝒙² + ('𝒚² + '𝒛¹)]
+∴ '𝒙² + '𝒚² + '𝒛¹ = '𝒙² + ('𝒚² + '𝒛¹)
+1. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ + 𝒚²₂₀ + '𝒛¹ = 𝒙²₂₀ + (𝒚²₂₀ + '𝒛¹).
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 4. object 𝒙², 𝒚².
+  𝒙² + 𝒚² + s('𝒛¹) = s(𝒙² + (𝒚² + '𝒛¹)).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒚² + s('𝒛¹) = s('𝒙² + ('𝒚² + '𝒛¹))
+succeeded:
+  T1C: 2; 3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² + '𝒚² + s('𝒛¹)][𝒛₁₀ ↦ s('𝒙² + ('𝒚² + '𝒛¹))]
+∴ '𝒙² + '𝒚² + s('𝒛¹) = 𝒚₁₀, 𝒚₁₀ = s('𝒙² + ('𝒚² + '𝒛¹))
+2. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ + 𝒚²₂₀ + s('𝒛¹) = s(𝒙²₂₀ + 𝒚²₂₀ + '𝒛¹).
+3. object 𝒙²₂₁, 𝒚²₂₁.
+  s(𝒙²₂₁ + 𝒚²₂₁ + '𝒛¹) = s(𝒙²₂₁ + (𝒚²₂₁ + '𝒛¹)).
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒚₁₀ ↦ s('𝒙² + '𝒚² + '𝒛¹)][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving 5. object 𝒚².
+  𝒚² + s('𝒛¹) = s(𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 6. object 𝒙², 𝒚².
+  𝒙² + (𝒚² + s('𝒛¹)) = 𝒙² + s(𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + ('𝒚² + s('𝒛¹)) = '𝒙² + s('𝒚² + '𝒛¹)
+succeeded:
+  T1I: 5.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙²][𝒕₁₀ ↦ '𝒚² + s('𝒛¹)][𝒓₁₀ ↦ s('𝒚² + '𝒛¹)]
+∴ '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹)
+5. object 𝒚²₂₀.
+  𝒚²₂₀ + s('𝒛¹) = s(𝒚²₂₀ + '𝒛¹).
+[𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 7. object 𝒙², 𝒚².
+  𝒙² + s(𝒚² + '𝒛¹) = s(𝒙² + (𝒚² + '𝒛¹)).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚² + '𝒛¹) = s('𝒙² + ('𝒚² + '𝒛¹))
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒚² + '𝒛¹]
+∎
+
+
+Proving 8. object 𝒙², 𝒚².
+  𝒙² + (𝒚² + s('𝒛¹)) = s(𝒙² + (𝒚² + '𝒛¹)).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + ('𝒚² + s('𝒛¹)) = s('𝒙² + ('𝒚² + '𝒛¹))
+succeeded:
+  T1C: 6; 7.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² + ('𝒚² + s('𝒛¹))][𝒛₁₀ ↦ s('𝒙² + ('𝒚² + '𝒛¹))]
+∴ '𝒙² + ('𝒚² + s('𝒛¹)) = 𝒚₁₀, 𝒚₁₀ = s('𝒙² + ('𝒚² + '𝒛¹))
+6. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ + (𝒚²₂₀ + s('𝒛¹)) = 𝒙²₂₀ + s(𝒚²₂₀ + '𝒛¹).
+7. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ + s(𝒚²₂₁ + '𝒛¹) = s(𝒙²₂₁ + (𝒚²₂₁ + '𝒛¹)).
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒚₁₀ ↦ '𝒙² + s('𝒚² + '𝒛¹)][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  T1D₍D₎: 4; 8.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ + 𝒛¹₁₀₁ = 𝒙¹₁₀₁ + (𝒚¹₁₀₁ + 𝒛¹₁₀₁).
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝒙₁₀ ↦ '𝒙¹₁₀₁ + '𝒚¹₁₀₁ + s('𝒛¹)][𝒚₁₀ ↦ '𝒙¹₁₀₁ + ('𝒚¹₁₀₁ + s('𝒛¹))][𝚪₍₀₎₁₀ ↦ '𝒙¹₁₀₁ + '𝒚¹₁₀₁ + s('𝒛¹) = 𝒛₁₀][𝚪₍₁₎₁₀ ↦ '𝒙¹₁₀₁ + ('𝒚¹₁₀₁ + s('𝒛¹)) = 𝒛₁₀][𝚪₁₀ ↦ □]
+∴ 𝐴('𝒛¹) ⊢ '𝒙¹₁₀₁ + '𝒚¹₁₀₁ + s('𝒛¹) = 𝒛₁₀, '𝒙¹₁₀₁ + ('𝒚¹₁₀₁ + s('𝒛¹)) = 𝒛₁₀
+4. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ + 𝒚²₂₀ + s('𝒛¹) = s(𝒙²₂₀ + (𝒚²₂₀ + '𝒛¹)).
+8. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ + (𝒚²₂₁ + s('𝒛¹)) = s(𝒙²₂₁ + (𝒚²₂₁ + '𝒛¹)).
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒚²₂₀ ↦ '𝒚¹₁₀₁][𝒛₁₀ ↦ s('𝒙¹₁₀₁ + ('𝒚¹₁₀₁ + '𝒛¹))][𝒙²₂₁ ↦ '𝒙¹₁₀₁][𝒚²₂₁ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒓 + '𝒔 = '𝒕 + ('𝒓 + '𝒔)
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 + '𝒓 + '°𝒛₁₀ = '𝒕 + ('𝒓 + '°𝒛₁₀)]
+∴ '𝒕 + '𝒓 + '°𝒛₁₀ = '𝒕 + ('𝒓 + '°𝒛₁₀)
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁, 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔₍𝒙¹₂₀₁,𝒚¹₂₀₁₎ 𝒙¹₂₀₁ + 𝒚¹₂₀₁ + 𝒛¹₂₀₁ = 𝒙¹₂₀₁ + (𝒚¹₂₀₁ + 𝒛¹₂₀₁).
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][𝒚¹₂₀₁ ↦ '𝒓][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1k. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⇒ 𝒕 ⋅ 𝒔 = 𝒓 ⋅ 𝒔
+
+Proving i. 𝐴(0)
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  DT₍D₎: T1D: S7; S7.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒙¹₁₀₁ ⋅ 𝒛¹₁₀₁ = 𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ = '𝒚¹₁₀₁][𝑩₁₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = '𝒚¹₁₀₁ ⋅ 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙¹₁₀₁ = '𝒚¹₁₀₁ ⊢ '𝒙¹₁₀₁ ⋅ 0 = '𝒚¹₁₀₁ ⋅ 0
+lemma T1D. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒛₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒚₂₀
+[𝒙₂₀ ↦ '𝒙¹₁₀₁ ⋅ 0][𝒚₂₀ ↦ '𝒚¹₁₀₁ ⋅ 0][𝚪₍₀₎₂₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = 𝒛₂₀][𝚪₍₁₎₂₀ ↦ '𝒚¹₁₀₁ ⋅ 0 = 𝒛₂₀][𝚪₂₀ ↦ □]
+∴ '𝒙¹₁₀₁ = '𝒚¹₁₀₁ ⊢ '𝒙¹₁₀₁ ⋅ 0 = 𝒛₂₀, '𝒚¹₁₀₁ ⋅ 0 = 𝒛₂₀
+axiom S7. object 𝑥₃₀.
+  𝑥₃₀ ⋅ 0 = 0.
+axiom S7. object 𝑥₃₁.
+  𝑥₃₁ ⋅ 0 = 0.
+[𝑥₃₀ ↦ '𝒙¹₁₀₁][𝒛₂₀ ↦ 0][𝑥₃₁ ↦ '𝒚¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⇒ 𝒙² ⋅ '𝒛¹ = 𝒚² ⋅ '𝒛¹.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⇒ '𝒙² ⋅ '𝒛¹ = '𝒚² ⋅ '𝒛¹
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒙¹₁₀₁ ⋅ 𝒛¹₁₀₁ = 𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ '𝒛¹][𝒙¹₁₀₁ ↦ '𝒙²][𝒚¹₁₀₁ ↦ '𝒚²]
+∎
+
+
+
+Proving a. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⊢ 𝒙² ⋅ s('𝒛¹) = 𝒚² ⋅ s('𝒛¹)
+Proving 1a. '𝒙² = '𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚²
+succeeded:
+  premise a.
+premise a. object '𝒙², '𝒚².
+  '𝒙² = '𝒚².
+I
+∎
+
+
+Proving 1b. '𝒚² = '𝒙².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² = '𝒙²
+succeeded:
+  MP: 1a; T1b.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒚² = '𝒙²]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒚² = '𝒙²
+1a. '𝒙² = '𝒚².
+lemma T1b. object 𝒙₂₁, 𝒚₂₁.
+  𝒙₂₁ = 𝒚₂₁ ⇒ 𝒚₂₁ = 𝒙₂₁
+[𝑨₁₀ ↦ '𝒙² = '𝒚²][𝒙₂₁ ↦ '𝒙²][𝒚₂₁ ↦ '𝒚²]
+∎
+
+
+Proving 2. '𝒙² ⋅ '𝒛¹ = '𝒚² ⋅ '𝒛¹.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒛¹ = '𝒚² ⋅ '𝒛¹
+succeeded:
+  MP: premise a; 1.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² ⋅ '𝒛¹ = '𝒚² ⋅ '𝒛¹]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙² ⋅ '𝒛¹ = '𝒚² ⋅ '𝒛¹
+premise a. object '𝒙², '𝒚².
+  '𝒙² = '𝒚².
+1. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ = 𝒚²₂₁ ⇒ 𝒙²₂₁ ⋅ '𝒛¹ = 𝒚²₂₁ ⋅ '𝒛¹.
+[𝑨₁₀ ↦ '𝒙² = '𝒚²][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving 3. '𝒙² ⋅ s('𝒛¹) = '𝒙² ⋅ '𝒛¹ + '𝒙².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒛¹) = '𝒙² ⋅ '𝒛¹ + '𝒙²
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 4. '𝒚² ⋅ s('𝒛¹) = '𝒚² ⋅ '𝒛¹ + '𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² ⋅ s('𝒛¹) = '𝒚² ⋅ '𝒛¹ + '𝒚²
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 5. '𝒙² ⋅ '𝒛¹ + '𝒙² = '𝒙² ⋅ '𝒛¹ + '𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒛¹ + '𝒙² = '𝒙² ⋅ '𝒛¹ + '𝒚²
+succeeded:
+  T1I: 1a.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙² ⋅ '𝒛¹][𝒕₁₀ ↦ '𝒙²][𝒓₁₀ ↦ '𝒚²]
+∴ '𝒙² = '𝒚²
+1a. '𝒙² = '𝒚².
+I
+∎
+
+
+Proving 6. '𝒙² ⋅ '𝒛¹ + '𝒚² = '𝒚² ⋅ '𝒛¹ + '𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒛¹ + '𝒚² = '𝒚² ⋅ '𝒛¹ + '𝒚²
+succeeded:
+  T1E: 2.
+lemma T1E. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ '𝒙² ⋅ '𝒛¹][𝒔₁₀ ↦ '𝒚²][𝒓₁₀ ↦ '𝒚² ⋅ '𝒛¹]
+∴ '𝒙² ⋅ '𝒛¹ = '𝒚² ⋅ '𝒛¹
+2. '𝒙² ⋅ '𝒛¹ = '𝒚² ⋅ '𝒛¹.
+I
+∎
+
+
+Proving 7. '𝒙² ⋅ '𝒛¹ + '𝒙² = '𝒚² ⋅ '𝒛¹ + '𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒛¹ + '𝒙² = '𝒚² ⋅ '𝒛¹ + '𝒚²
+succeeded:
+  T1C: 5; 6.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ '𝒛¹ + '𝒙²][𝒛₁₀ ↦ '𝒚² ⋅ '𝒛¹ + '𝒚²]
+∴ '𝒙² ⋅ '𝒛¹ + '𝒙² = 𝒚₁₀, 𝒚₁₀ = '𝒚² ⋅ '𝒛¹ + '𝒚²
+5. '𝒙² ⋅ '𝒛¹ + '𝒙² = '𝒙² ⋅ '𝒛¹ + '𝒚².
+6. '𝒙² ⋅ '𝒛¹ + '𝒚² = '𝒚² ⋅ '𝒛¹ + '𝒚².
+[𝒚₁₀ ↦ '𝒙² ⋅ '𝒛¹ + '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⊢ '𝒙² ⋅ s('𝒛¹) = '𝒚² ⋅ s('𝒛¹)
+succeeded:
+  T1D: 3; T1D: 4; 7.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ s('𝒛¹)][𝒚₁₀ ↦ '𝒚² ⋅ s('𝒛¹)][𝚪₍₀₎₁₀ ↦ '𝒙² ⋅ s('𝒛¹) = 𝒛₁₀][𝚪₍₁₎₁₀ ↦ '𝒚² ⋅ s('𝒛¹) = 𝒛₁₀][𝚪₁₀ ↦ □]
+∴ '𝒙² = '𝒚² ⊢ '𝒙² ⋅ s('𝒛¹) = 𝒛₁₀, '𝒚² ⋅ s('𝒛¹) = 𝒛₁₀
+3. '𝒙² ⋅ s('𝒛¹) = '𝒙² ⋅ '𝒛¹ + '𝒙².
+lemma T1D. object 𝒙₂₁, 𝒚₂₁, 𝒛₂₁.
+  𝒙₂₁ = 𝒛₂₁, 𝒚₂₁ = 𝒛₂₁ ⊢ 𝒙₂₁ = 𝒚₂₁
+[𝒛₁₀ ↦ '𝒙² ⋅ '𝒛¹ + '𝒙²][𝒙₂₁ ↦ '𝒚² ⋅ s('𝒛¹)][𝒚₂₁ ↦ '𝒙² ⋅ '𝒛¹ + '𝒙²][𝚪₍₀₎₂₁ ↦ '𝒚² ⋅ s('𝒛¹) = 𝒛₂₁][𝚪₍₁₎₂₁ ↦ '𝒙² ⋅ '𝒛¹ + '𝒙² = 𝒛₂₁][𝚪₂₁ ↦ □]
+∴ '𝒙² = '𝒚² ⊢ '𝒚² ⋅ s('𝒛¹) = 𝒛₂₁, '𝒙² ⋅ '𝒛¹ + '𝒙² = 𝒛₂₁
+4. '𝒚² ⋅ s('𝒛¹) = '𝒚² ⋅ '𝒛¹ + '𝒚².
+7. '𝒙² ⋅ '𝒛¹ + '𝒙² = '𝒚² ⋅ '𝒛¹ + '𝒚².
+[𝒛₂₁ ↦ '𝒚² ⋅ '𝒛¹ + '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  DT₍D₎: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒙¹₁₀₁ ⋅ 𝒛¹₁₀₁ = 𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝑨₁₀ ↦ '𝒙¹₁₀₁ = '𝒚¹₁₀₁][𝑩₁₀ ↦ '𝒙¹₁₀₁ ⋅ s('𝒛¹) = '𝒚¹₁₀₁ ⋅ s('𝒛¹)][𝜞₁₀ ↦ 𝐴('𝒛¹)]
+∴ 𝐴('𝒛¹), '𝒙¹₁₀₁ = '𝒚¹₁₀₁ ⊢ '𝒙¹₁₀₁ ⋅ s('𝒛¹) = '𝒚¹₁₀₁ ⋅ s('𝒛¹)
+a. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ = 𝒚²₂₀ ⊢ 𝒙²₂₀ ⋅ s('𝒛¹) = 𝒚²₂₀ ⋅ s('𝒛¹)
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒚²₂₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⇒ '𝒕 ⋅ '𝒔 = '𝒓 ⋅ '𝒔
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 = '𝒓 ⇒ '𝒕 ⋅ '°𝒛₁₀ = '𝒓 ⋅ '°𝒛₁₀]
+∴ '𝒕 = '𝒓 ⇒ '𝒕 ⋅ '°𝒛₁₀ = '𝒓 ⋅ '°𝒛₁₀
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁, 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔₍𝒙¹₂₀₁,𝒚¹₂₀₁₎ 𝒙¹₂₀₁ = 𝒚¹₂₀₁ ⇒ 𝒙¹₂₀₁ ⋅ 𝒛¹₂₀₁ = 𝒚¹₂₀₁ ⋅ 𝒛¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][𝒚¹₂₀₁ ↦ '𝒓][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1K. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⊢ 𝒕 ⋅ 𝒔 = 𝒓 ⋅ 𝒔
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⊢ '𝒕 ⋅ '𝒔 = '𝒓 ⋅ '𝒔
+succeeded:
+  MP: premise ⊢; T1k.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 ⋅ '𝒔 = '𝒓 ⋅ '𝒔][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒕 ⋅ '𝒔 = '𝒓 ⋅ '𝒔][𝚪₁₀ ↦ □]
+∴ '𝒕 = '𝒓 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 ⋅ '𝒔 = '𝒓 ⋅ '𝒔
+premise ⊢. object '𝒓, '𝒕.
+  '𝒕 = '𝒓.
+lemma T1k. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ = 𝒓₂₁ ⇒ 𝒕₂₁ ⋅ 𝒔₂₁ = 𝒓₂₁ ⋅ 𝒔₂₁
+[𝑨₁₀ ↦ '𝒕 = '𝒓][𝒕₂₁ ↦ '𝒕][𝒓₂₁ ↦ '𝒓][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T1l. object 𝒕.
+  0 ⋅ 𝒕 = 0
+Proving i. 𝐴(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  S7₍D₎.
+axiom S7. object 𝑥₁₀.
+  𝑥₁₀ ⋅ 0 = 0.
+definition D. object 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔ 0 ⋅ 𝒛¹₁₀₁ = 0.
+[𝒛¹₁₀₁ ↦ 0][𝑥₁₀ ↦ 0]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. 0 ⋅ '𝒛¹ = 0.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  0 ⋅ '𝒛¹ = 0
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔ 0 ⋅ 𝒛¹₁₀₁ = 0.
+[𝒛¹₁₀₁ ↦ '𝒛¹]
+∎
+
+
+Proving 2. 0 ⋅ s('𝒛¹) = 0 ⋅ '𝒛¹ + 0.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  0 ⋅ s('𝒛¹) = 0 ⋅ '𝒛¹ + 0
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ 0][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 3. 0 ⋅ '𝒛¹ + 0 = 0 ⋅ '𝒛¹.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  0 ⋅ '𝒛¹ + 0 = 0 ⋅ '𝒛¹
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ 0 ⋅ '𝒛¹]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  T1C₍D₎: 2; T1C: 3; premise ⊢₍D₎.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+definition D. object 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔ 0 ⋅ 𝒛¹₁₀₁ = 0.
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝒙₁₀ ↦ 0 ⋅ s('𝒛¹)][𝒛₁₀ ↦ 0][𝚪₍₀₎₁₀ ↦ 0 ⋅ s('𝒛¹) = 𝒚₁₀][𝚪₍₁₎₁₀ ↦ 𝒚₁₀ = 0][𝚪₁₀ ↦ □]
+∴ 𝐴('𝒛¹) ⊢ 0 ⋅ s('𝒛¹) = 𝒚₁₀, 𝒚₁₀ = 0
+2. 0 ⋅ s('𝒛¹) = 0 ⋅ '𝒛¹ + 0.
+lemma T1C. object 𝒙₂₁, 𝒚₂₁, 𝒛₂₁.
+  𝒙₂₁ = 𝒚₂₁, 𝒚₂₁ = 𝒛₂₁ ⊢ 𝒙₂₁ = 𝒛₂₁
+[𝒚₁₀ ↦ 0 ⋅ '𝒛¹ + 0][𝒙₂₁ ↦ 0 ⋅ '𝒛¹ + 0][𝒛₂₁ ↦ 0][𝚪₍₀₎₂₁ ↦ 0 ⋅ '𝒛¹ + 0 = 𝒚₂₁][𝚪₍₁₎₂₁ ↦ 𝒚₂₁ = 0][𝚪₂₁ ↦ □]
+∴ 𝐴('𝒛¹) ⊢ 0 ⋅ '𝒛¹ + 0 = 𝒚₂₁, 𝒚₂₁ = 0
+3. 0 ⋅ '𝒛¹ + 0 = 0 ⋅ '𝒛¹.
+premise ⊢. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒛¹₃₁₁.
+  𝐴(𝒛¹₃₁₁) ≔ 0 ⋅ 𝒛¹₃₁₁ = 0.
+[𝒚₂₁ ↦ 0 ⋅ '𝒛¹][𝒛¹₃₁₁ ↦ '𝒛¹]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒕
+Proof count: 1
+
+Proof of
+  0 ⋅ '𝒕 = 0
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒕][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ 0 ⋅ '°𝒛₁₀ = 0]
+∴ 0 ⋅ '°𝒛₁₀ = 0
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔ 0 ⋅ 𝒛¹₂₀₁ = 0.
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0).
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1m. object 𝒓, 𝒕.
+  s(𝒕) ⋅ 𝒓 = 𝒕 ⋅ 𝒓 + 𝒓
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒙².
+  s(𝒙²) ⋅ 0 = 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ 0 = 0
+succeeded:
+  S7.
+axiom S7. object 𝑥₁₀.
+  𝑥₁₀ ⋅ 0 = 0.
+[𝑥₁₀ ↦ s('𝒙²)]
+∎
+
+
+Proving 2. object 𝒙².
+  𝒙² ⋅ 0 = 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ 0 = 0
+succeeded:
+  S7.
+axiom S7. object 𝑥₁₀.
+  𝑥₁₀ ⋅ 0 = 0.
+[𝑥₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 3. object 𝒙².
+  𝒙² ⋅ 0 + 0 = 𝒙² ⋅ 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ 0 + 0 = '𝒙² ⋅ 0
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙² ⋅ 0]
+∎
+
+
+Proving 4. object 𝒙².
+  s(𝒙²) ⋅ 0 = 𝒙² ⋅ 0 + 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ 0 = '𝒙² ⋅ 0 + 0
+succeeded:
+  T1D: T1D; 3: 1; 2.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ s('𝒙²) ⋅ 0][𝒚₁₀ ↦ '𝒙² ⋅ 0 + 0]
+∴ s('𝒙²) ⋅ 0 = 𝒛₁₀, '𝒙² ⋅ 0 + 0 = 𝒛₁₀
+lemma T1D. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒛₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒚₂₀
+3. object 𝒙²₂₁.
+  𝒙²₂₁ ⋅ 0 + 0 = 𝒙²₂₁ ⋅ 0.
+[𝒙₂₀ ↦ s('𝒙²) ⋅ 0][𝒚₂₀ ↦ 𝒛₁₀][𝒙²₂₁ ↦ '𝒙²][𝒛₁₀ ↦ '𝒙² ⋅ 0]
+∴ s('𝒙²) ⋅ 0 = 𝒛₂₀, '𝒙² ⋅ 0 = 𝒛₂₀
+1. object 𝒙²₃₀.
+  s(𝒙²₃₀) ⋅ 0 = 0.
+2. object 𝒙²₃₁.
+  𝒙²₃₁ ⋅ 0 = 0.
+[𝒙²₃₀ ↦ '𝒙²][𝒛₂₀ ↦ 0][𝒙²₃₁ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  4₍D₎.
+4. object 𝒙²₁₀.
+  s(𝒙²₁₀) ⋅ 0 = 𝒙²₁₀ ⋅ 0 + 0.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ s(𝒙¹₁₀₁) ⋅ 𝒚¹₁₀₁ = 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ + 𝒚¹₁₀₁.
+[𝒚¹₁₀₁ ↦ 0][𝒙²₁₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  s(𝒙²) ⋅ '𝒚¹ = 𝒙² ⋅ '𝒚¹ + '𝒚¹.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ '𝒚¹ = '𝒙² ⋅ '𝒚¹ + '𝒚¹
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒚¹.
+  𝐴('𝒚¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ s(𝒙¹₁₀₁) ⋅ 𝒚¹₁₀₁ = 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ + 𝒚¹₁₀₁.
+[𝒚¹₁₀₁ ↦ '𝒚¹][𝒙¹₁₀₁ ↦ '𝒙²]
+∎
+
+
+Proving 2. object 𝒙².
+  s(𝒙²) ⋅ s('𝒚¹) = s(𝒙²) ⋅ '𝒚¹ + s(𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ s('𝒚¹) = s('𝒙²) ⋅ '𝒚¹ + s('𝒙²)
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ s('𝒙²)][𝑦₁₀ ↦ '𝒚¹]
+∎
+
+
+Proving 3. object 𝒙².
+  s(𝒙²) ⋅ '𝒚¹ + s(𝒙²) = 𝒙² ⋅ '𝒚¹ + '𝒚¹ + s(𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ '𝒚¹ + s('𝒙²) = '𝒙² ⋅ '𝒚¹ + '𝒚¹ + s('𝒙²)
+succeeded:
+  T1E: 1.
+lemma T1E. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ s('𝒙²) ⋅ '𝒚¹][𝒔₁₀ ↦ s('𝒙²)][𝒓₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒚¹]
+∴ s('𝒙²) ⋅ '𝒚¹ = '𝒙² ⋅ '𝒚¹ + '𝒚¹
+1. object 𝒙²₂₀.
+  s(𝒙²₂₀) ⋅ '𝒚¹ = 𝒙²₂₀ ⋅ '𝒚¹ + '𝒚¹.
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving 4. object 𝒙².
+  𝒙² ⋅ '𝒚¹ + '𝒚¹ + s(𝒙²) = 𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s(𝒙²)).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + '𝒚¹ + s('𝒙²) = '𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s('𝒙²))
+succeeded:
+  T1j.
+lemma T1j. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ + 𝒓₁₀ + 𝒔₁₀ = 𝒕₁₀ + (𝒓₁₀ + 𝒔₁₀)
+[𝒕₁₀ ↦ '𝒙² ⋅ '𝒚¹][𝒓₁₀ ↦ '𝒚¹][𝒔₁₀ ↦ s('𝒙²)]
+∎
+
+
+Proving 5. object 𝒙².
+  '𝒚¹ + s(𝒙²) = s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒚¹ + s('𝒙²) = s('𝒚¹ + '𝒙²)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒚¹][𝑦₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 6. object 𝒙².
+  𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s(𝒙²)) = 𝒙² ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s('𝒙²)) = '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)
+succeeded:
+  T1I: 5.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙² ⋅ '𝒚¹][𝒕₁₀ ↦ '𝒚¹ + s('𝒙²)][𝒓₁₀ ↦ s('𝒚¹ + '𝒙²)]
+∴ '𝒚¹ + s('𝒙²) = s('𝒚¹ + '𝒙²)
+5. object 𝒙²₂₀.
+  '𝒚¹ + s(𝒙²₂₀) = s('𝒚¹ + 𝒙²₂₀).
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving 7. object 𝒙².
+  s(𝒙²) ⋅ s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + '𝒚¹ + s(𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + '𝒚¹ + s('𝒙²)
+succeeded:
+  T1C: 2; 3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒙²) ⋅ s('𝒚¹)][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒚¹ + s('𝒙²)]
+∴ s('𝒙²) ⋅ s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ '𝒚¹ + '𝒚¹ + s('𝒙²)
+2. object 𝒙²₂₀.
+  s(𝒙²₂₀) ⋅ s('𝒚¹) = s(𝒙²₂₀) ⋅ '𝒚¹ + s(𝒙²₂₀).
+3. object 𝒙²₂₁.
+  s(𝒙²₂₁) ⋅ '𝒚¹ + s(𝒙²₂₁) = 𝒙²₂₁ ⋅ '𝒚¹ + '𝒚¹ + s(𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ s('𝒙²) ⋅ '𝒚¹ + s('𝒙²)][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 8. object 𝒙².
+  s(𝒙²) ⋅ s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s(𝒙²)).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s('𝒙²))
+succeeded:
+  T1C: 7; 4.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒙²) ⋅ s('𝒚¹)][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s('𝒙²))]
+∴ s('𝒙²) ⋅ s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s('𝒙²))
+7. object 𝒙²₂₀.
+  s(𝒙²₂₀) ⋅ s('𝒚¹) = 𝒙²₂₀ ⋅ '𝒚¹ + '𝒚¹ + s(𝒙²₂₀).
+4. object 𝒙²₂₁.
+  𝒙²₂₁ ⋅ '𝒚¹ + '𝒚¹ + s(𝒙²₂₁) = 𝒙²₂₁ ⋅ '𝒚¹ + ('𝒚¹ + s(𝒙²₂₁)).
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒚¹ + s('𝒙²)][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 9. object 𝒙².
+  s(𝒙²) ⋅ s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)
+succeeded:
+  T1C: 8; 6.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒙²) ⋅ s('𝒚¹)][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)]
+∴ s('𝒙²) ⋅ s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)
+8. object 𝒙²₂₀.
+  s(𝒙²₂₀) ⋅ s('𝒚¹) = 𝒙²₂₀ ⋅ '𝒚¹ + ('𝒚¹ + s(𝒙²₂₀)).
+6. object 𝒙²₂₁.
+  𝒙²₂₁ ⋅ '𝒚¹ + ('𝒚¹ + s(𝒙²₂₁)) = 𝒙²₂₁ ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚¹ + ('𝒚¹ + s('𝒙²))][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 10. object 𝒙².
+  s(𝒙² + '𝒚¹) = s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒚¹) = s('𝒚¹ + '𝒙²)
+succeeded:
+  S2a: T1h.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙² + '𝒚¹][𝑦₁₀ ↦ '𝒚¹ + '𝒙²]
+∴ '𝒙² + '𝒚¹ = '𝒚¹ + '𝒙²
+lemma T1h. object 𝒓₂₀, 𝒕₂₀.
+  𝒕₂₀ + 𝒓₂₀ = 𝒓₂₀ + 𝒕₂₀
+[𝒕₂₀ ↦ '𝒙²][𝒓₂₀ ↦ '𝒚¹]
+∎
+
+
+Proving 11. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + 𝒙² + s('𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + '𝒙² + s('𝒚¹)
+succeeded:
+  T1E: S8.
+lemma T1E. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ '𝒙² ⋅ s('𝒚¹)][𝒔₁₀ ↦ s('𝒚¹)][𝒓₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²]
+∴ '𝒙² ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + '𝒙²
+axiom S8. object 𝑥₂₀, 𝑦₂₀.
+  𝑥₂₀ ⋅ s(𝑦₂₀) = 𝑥₂₀ ⋅ 𝑦₂₀ + 𝑥₂₀.
+[𝑥₂₀ ↦ '𝒙²][𝑦₂₀ ↦ '𝒚¹]
+∎
+
+
+Proving 12. object 𝒙².
+  𝒙² ⋅ '𝒚¹ + 𝒙² + s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + (𝒙² + s('𝒚¹)).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + '𝒙² + s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + ('𝒙² + s('𝒚¹))
+succeeded:
+  T1j.
+lemma T1j. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ + 𝒓₁₀ + 𝒔₁₀ = 𝒕₁₀ + (𝒓₁₀ + 𝒔₁₀)
+[𝒕₁₀ ↦ '𝒙² ⋅ '𝒚¹][𝒓₁₀ ↦ '𝒙²][𝒔₁₀ ↦ s('𝒚¹)]
+∎
+
+
+Proving 13. object 𝒙².
+  𝒙² ⋅ '𝒚¹ + (𝒙² + s('𝒚¹)) = 𝒙² ⋅ '𝒚¹ + s(𝒙² + '𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + ('𝒙² + s('𝒚¹)) = '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹)
+succeeded:
+  T1I: S6.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙² ⋅ '𝒚¹][𝒕₁₀ ↦ '𝒙² + s('𝒚¹)][𝒓₁₀ ↦ s('𝒙² + '𝒚¹)]
+∴ '𝒙² + s('𝒚¹) = s('𝒙² + '𝒚¹)
+axiom S6. object 𝑥₂₀, 𝑦₂₀.
+  𝑥₂₀ + s(𝑦₂₀) = s(𝑥₂₀ + 𝑦₂₀).
+[𝑥₂₀ ↦ '𝒙²][𝑦₂₀ ↦ '𝒚¹]
+∎
+
+
+Proving 14. object 𝒙².
+  𝒙² ⋅ '𝒚¹ + s(𝒙² + '𝒚¹) = 𝒙² ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹) = '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)
+succeeded:
+  T1I: 10.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙² ⋅ '𝒚¹][𝒕₁₀ ↦ s('𝒙² + '𝒚¹)][𝒓₁₀ ↦ s('𝒚¹ + '𝒙²)]
+∴ s('𝒙² + '𝒚¹) = s('𝒚¹ + '𝒙²)
+10. object 𝒙²₂₀.
+  s(𝒙²₂₀ + '𝒚¹) = s('𝒚¹ + 𝒙²₂₀).
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving 15. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + s(𝒙² + '𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹)
+succeeded:
+  T1C: 11; T1C: 12; 13.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ s('𝒚¹) + s('𝒚¹)][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹)]
+∴ '𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹)
+11. object 𝒙²₂₀.
+  𝒙²₂₀ ⋅ s('𝒚¹) + s('𝒚¹) = 𝒙²₂₀ ⋅ '𝒚¹ + 𝒙²₂₀ + s('𝒚¹).
+lemma T1C. object 𝒙₂₁, 𝒚₂₁, 𝒛₂₁.
+  𝒙₂₁ = 𝒚₂₁, 𝒚₂₁ = 𝒛₂₁ ⊢ 𝒙₂₁ = 𝒛₂₁
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² + s('𝒚¹)][𝒙₂₁ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² + s('𝒚¹)][𝒛₂₁ ↦ '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹)]
+∴ '𝒙² ⋅ '𝒚¹ + '𝒙² + s('𝒚¹) = 𝒚₂₁, 𝒚₂₁ = '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹)
+12. object 𝒙²₃₀.
+  𝒙²₃₀ ⋅ '𝒚¹ + 𝒙²₃₀ + s('𝒚¹) = 𝒙²₃₀ ⋅ '𝒚¹ + (𝒙²₃₀ + s('𝒚¹)).
+13. object 𝒙²₃₁.
+  𝒙²₃₁ ⋅ '𝒚¹ + (𝒙²₃₁ + s('𝒚¹)) = 𝒙²₃₁ ⋅ '𝒚¹ + s(𝒙²₃₁ + '𝒚¹).
+[𝒙²₃₀ ↦ '𝒙²][𝒚₂₁ ↦ '𝒙² ⋅ '𝒚¹ + ('𝒙² + s('𝒚¹))][𝒙²₃₁ ↦ '𝒙²]
+∎
+
+
+Proving 16. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)
+succeeded:
+  T1C: 15; 14.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ s('𝒚¹) + s('𝒚¹)][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)]
+∴ '𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)
+15. object 𝒙²₂₀.
+  𝒙²₂₀ ⋅ s('𝒚¹) + s('𝒚¹) = 𝒙²₂₀ ⋅ '𝒚¹ + s(𝒙²₂₀ + '𝒚¹).
+14. object 𝒙²₂₁.
+  𝒙²₂₁ ⋅ '𝒚¹ + s(𝒙²₂₁ + '𝒚¹) = 𝒙²₂₁ ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚¹ + s('𝒙² + '𝒚¹)][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 17. object 𝒙².
+  s(𝒙²) ⋅ s('𝒚¹) = 𝒙² ⋅ s('𝒚¹) + s('𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙²) ⋅ s('𝒚¹) = '𝒙² ⋅ s('𝒚¹) + s('𝒚¹)
+succeeded:
+  T1D: 9; 16.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ s('𝒙²) ⋅ s('𝒚¹)][𝒚₁₀ ↦ '𝒙² ⋅ s('𝒚¹) + s('𝒚¹)]
+∴ s('𝒙²) ⋅ s('𝒚¹) = 𝒛₁₀, '𝒙² ⋅ s('𝒚¹) + s('𝒚¹) = 𝒛₁₀
+9. object 𝒙²₂₀.
+  s(𝒙²₂₀) ⋅ s('𝒚¹) = 𝒙²₂₀ ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²₂₀).
+16. object 𝒙²₂₁.
+  𝒙²₂₁ ⋅ s('𝒚¹) + s('𝒚¹) = 𝒙²₂₁ ⋅ '𝒚¹ + s('𝒚¹ + 𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙²][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚¹ + s('𝒚¹ + '𝒙²)][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  17₍D₎.
+17. object 𝒙²₁₀.
+  s(𝒙²₁₀) ⋅ s('𝒚¹) = 𝒙²₁₀ ⋅ s('𝒚¹) + s('𝒚¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ s(𝒙¹₁₀₁) ⋅ 𝒚¹₁₀₁ = 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ + 𝒚¹₁₀₁.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  17₍D₎.
+17. object 𝒙²₁₀.
+  s(𝒙²₁₀) ⋅ s('𝒚¹) = 𝒙²₁₀ ⋅ s('𝒚¹) + s('𝒚¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ s(𝒙¹₁₀₁) ⋅ 𝒚¹₁₀₁ = 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ + 𝒚¹₁₀₁.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒕
+Proof count: 1
+
+Proof of
+  s('𝒕) ⋅ '𝒓 = '𝒕 ⋅ '𝒓 + '𝒓
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒓][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ s('𝒕) ⋅ '°𝒛₁₀ = '𝒕 ⋅ '°𝒛₁₀ + '°𝒛₁₀]
+∴ s('𝒕) ⋅ '°𝒛₁₀ = '𝒕 ⋅ '°𝒛₁₀ + '°𝒛₁₀
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ s(𝒙¹₂₀₁) ⋅ 𝒚¹₂₀₁ = 𝒙¹₂₀₁ ⋅ 𝒚¹₂₀₁ + 𝒚¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1n. object 𝒓, 𝒕.
+  𝒕 ⋅ 𝒓 = 𝒓 ⋅ 𝒕
+Proving i. 𝐴(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  T1D₍D₎: S7; T1l.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 𝒚¹₁₀₁ ⋅ 𝒙¹₁₀₁.
+[𝒚¹₁₀₁ ↦ 0][𝒙₁₀ ↦ '𝒙¹₁₀₁ ⋅ 0][𝒚₁₀ ↦ 0 ⋅ '𝒙¹₁₀₁]
+∴ '𝒙¹₁₀₁ ⋅ 0 = 𝒛₁₀, 0 ⋅ '𝒙¹₁₀₁ = 𝒛₁₀
+axiom S7. object 𝑥₂₀.
+  𝑥₂₀ ⋅ 0 = 0.
+lemma T1l. object 𝒕₂₁.
+  0 ⋅ 𝒕₂₁ = 0
+[𝑥₂₀ ↦ '𝒙¹₁₀₁][𝒛₁₀ ↦ 0][𝒕₂₁ ↦ '𝒙¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  𝒙² ⋅ '𝒚¹ = '𝒚¹ ⋅ 𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ = '𝒚¹ ⋅ '𝒙²
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒚¹.
+  𝐴('𝒚¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 𝒚¹₁₀₁ ⋅ 𝒙¹₁₀₁.
+[𝒚¹₁₀₁ ↦ '𝒚¹][𝒙¹₁₀₁ ↦ '𝒙²]
+∎
+
+
+Proving 2. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) = 𝒙² ⋅ '𝒚¹ + 𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + '𝒙²
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒚¹]
+∎
+
+
+Proving 3. object 𝒙².
+  s('𝒚¹) ⋅ 𝒙² = '𝒚¹ ⋅ 𝒙² + 𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒚¹) ⋅ '𝒙² = '𝒚¹ ⋅ '𝒙² + '𝒙²
+succeeded:
+  T1m.
+lemma T1m. object 𝒓₁₀, 𝒕₁₀.
+  s(𝒕₁₀) ⋅ 𝒓₁₀ = 𝒕₁₀ ⋅ 𝒓₁₀ + 𝒓₁₀
+[𝒕₁₀ ↦ '𝒚¹][𝒓₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 4. object 𝒙².
+  𝒙² ⋅ '𝒚¹ + 𝒙² = '𝒚¹ ⋅ 𝒙² + 𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + '𝒙² = '𝒚¹ ⋅ '𝒙² + '𝒙²
+succeeded:
+  T1E: 1.
+lemma T1E. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ '𝒙² ⋅ '𝒚¹][𝒔₁₀ ↦ '𝒙²][𝒓₁₀ ↦ '𝒚¹ ⋅ '𝒙²]
+∴ '𝒙² ⋅ '𝒚¹ = '𝒚¹ ⋅ '𝒙²
+1. object 𝒙²₂₀.
+  𝒙²₂₀ ⋅ '𝒚¹ = '𝒚¹ ⋅ 𝒙²₂₀.
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving 5. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) = s('𝒚¹) ⋅ 𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = s('𝒚¹) ⋅ '𝒙²
+succeeded:
+  T1C: 2; T1D: 4; 3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ s('𝒚¹)][𝒛₁₀ ↦ s('𝒚¹) ⋅ '𝒙²]
+∴ '𝒙² ⋅ s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = s('𝒚¹) ⋅ '𝒙²
+2. object 𝒙²₂₀.
+  𝒙²₂₀ ⋅ s('𝒚¹) = 𝒙²₂₀ ⋅ '𝒚¹ + 𝒙²₂₀.
+lemma T1D. object 𝒙₂₁, 𝒚₂₁, 𝒛₂₁.
+  𝒙₂₁ = 𝒛₂₁, 𝒚₂₁ = 𝒛₂₁ ⊢ 𝒙₂₁ = 𝒚₂₁
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝒙₂₁ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝒚₂₁ ↦ s('𝒚¹) ⋅ '𝒙²]
+∴ '𝒙² ⋅ '𝒚¹ + '𝒙² = 𝒛₂₁, s('𝒚¹) ⋅ '𝒙² = 𝒛₂₁
+4. object 𝒙²₃₀.
+  𝒙²₃₀ ⋅ '𝒚¹ + 𝒙²₃₀ = '𝒚¹ ⋅ 𝒙²₃₀ + 𝒙²₃₀.
+3. object 𝒙²₃₁.
+  s('𝒚¹) ⋅ 𝒙²₃₁ = '𝒚¹ ⋅ 𝒙²₃₁ + 𝒙²₃₁.
+[𝒙²₃₀ ↦ '𝒙²][𝒛₂₁ ↦ '𝒚¹ ⋅ '𝒙² + '𝒙²][𝒙²₃₁ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  5₍D₎.
+5. object 𝒙²₁₀.
+  𝒙²₁₀ ⋅ s('𝒚¹) = s('𝒚¹) ⋅ 𝒙²₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 𝒚¹₁₀₁ ⋅ 𝒙¹₁₀₁.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ '𝒓 = '𝒓 ⋅ '𝒕
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒓][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 ⋅ '°𝒛₁₀ = '°𝒛₁₀ ⋅ '𝒕]
+∴ '𝒕 ⋅ '°𝒛₁₀ = '°𝒛₁₀ ⋅ '𝒕
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ 𝒙¹₂₀₁ ⋅ 𝒚¹₂₀₁ = 𝒚¹₂₀₁ ⋅ 𝒙¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0).
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1o. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⇒ 𝒔 ⋅ 𝒕 = 𝒔 ⋅ 𝒓
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒙², 𝒚².
+  0 ⋅ 𝒙² = 0 ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  0 ⋅ '𝒙² = 0 ⋅ '𝒚²
+succeeded:
+  T1D: T1l; T1l.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ 0 ⋅ '𝒙²][𝒚₁₀ ↦ 0 ⋅ '𝒚²]
+∴ 0 ⋅ '𝒙² = 𝒛₁₀, 0 ⋅ '𝒚² = 𝒛₁₀
+lemma T1l. object 𝒕₂₀.
+  0 ⋅ 𝒕₂₀ = 0
+lemma T1l. object 𝒕₂₁.
+  0 ⋅ 𝒕₂₁ = 0
+[𝒕₂₀ ↦ '𝒙²][𝒛₁₀ ↦ 0][𝒕₂₁ ↦ '𝒚²]
+∎
+
+
+Proving 2. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⇒ 0 ⋅ 𝒙² = 0 ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⇒ 0 ⋅ '𝒙² = 0 ⋅ '𝒚²
+succeeded:
+  DT: 1.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² = '𝒚²][𝑩₁₀ ↦ 0 ⋅ '𝒙² = 0 ⋅ '𝒚²][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² = '𝒚² ⊢ 0 ⋅ '𝒙² = 0 ⋅ '𝒚²
+1. object 𝒙²₂₀, 𝒚²₂₀.
+  0 ⋅ 𝒙²₂₀ = 0 ⋅ 𝒚²₂₀.
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  2₍D₎.
+2. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ = 𝒚²₁₀ ⇒ 0 ⋅ 𝒙²₁₀ = 0 ⋅ 𝒚²₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒛¹₁₀₁ ⋅ 𝒙¹₁₀₁ = 𝒛¹₁₀₁ ⋅ 𝒚¹₁₀₁.
+[𝒛¹₁₀₁ ↦ 0][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⇒ '𝒛¹ ⋅ 𝒙² = '𝒛¹ ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⇒ '𝒛¹ ⋅ '𝒙² = '𝒛¹ ⋅ '𝒚²
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒛¹₁₀₁ ⋅ 𝒙¹₁₀₁ = 𝒛¹₁₀₁ ⋅ 𝒚¹₁₀₁.
+[𝒛¹₁₀₁ ↦ '𝒛¹][𝒙¹₁₀₁ ↦ '𝒙²][𝒚¹₁₀₁ ↦ '𝒚²]
+∎
+
+
+
+Proving a. object 𝒙², 𝒚².
+  𝒙² = 𝒚² ⊢ s('𝒛¹) ⋅ 𝒙² = s('𝒛¹) ⋅ 𝒚²
+Proving a1. s('𝒛¹) ⋅ '𝒙² = '𝒛¹ ⋅ '𝒙² + '𝒙².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒛¹) ⋅ '𝒙² = '𝒛¹ ⋅ '𝒙² + '𝒙²
+succeeded:
+  T1m.
+lemma T1m. object 𝒓₁₀, 𝒕₁₀.
+  s(𝒕₁₀) ⋅ 𝒓₁₀ = 𝒕₁₀ ⋅ 𝒓₁₀ + 𝒓₁₀
+[𝒕₁₀ ↦ '𝒛¹][𝒓₁₀ ↦ '𝒙²]
+∎
+
+
+Proving a2. s('𝒛¹) ⋅ '𝒚² = '𝒛¹ ⋅ '𝒚² + '𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒚²
+Proof count: 1
+
+Proof of
+  s('𝒛¹) ⋅ '𝒚² = '𝒛¹ ⋅ '𝒚² + '𝒚²
+succeeded:
+  T1m.
+lemma T1m. object 𝒓₁₀, 𝒕₁₀.
+  s(𝒕₁₀) ⋅ 𝒓₁₀ = 𝒕₁₀ ⋅ 𝒓₁₀ + 𝒓₁₀
+[𝒕₁₀ ↦ '𝒛¹][𝒓₁₀ ↦ '𝒚²]
+∎
+
+
+Proving a3. '𝒛¹ ⋅ '𝒙² = '𝒛¹ ⋅ '𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒛¹ ⋅ '𝒙² = '𝒛¹ ⋅ '𝒚²
+succeeded:
+  MP: premise a; 1.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒛¹ ⋅ '𝒙² = '𝒛¹ ⋅ '𝒚²]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒛¹ ⋅ '𝒙² = '𝒛¹ ⋅ '𝒚²
+premise a. object '𝒙², '𝒚².
+  '𝒙² = '𝒚².
+1. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ = 𝒚²₂₁ ⇒ '𝒛¹ ⋅ 𝒙²₂₁ = '𝒛¹ ⋅ 𝒚²₂₁.
+[𝑨₁₀ ↦ '𝒙² = '𝒚²][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving a4. '𝒛¹ ⋅ '𝒙² + '𝒙² = '𝒛¹ ⋅ '𝒚² + '𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒛¹ ⋅ '𝒙² + '𝒙² = '𝒛¹ ⋅ '𝒚² + '𝒚²
+succeeded:
+  T1C: T1I; T1E: premise a; a3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒛¹ ⋅ '𝒙² + '𝒙²][𝒛₁₀ ↦ '𝒛¹ ⋅ '𝒚² + '𝒚²]
+∴ '𝒛¹ ⋅ '𝒙² + '𝒙² = 𝒚₁₀, 𝒚₁₀ = '𝒛¹ ⋅ '𝒚² + '𝒚²
+lemma T1I. object 𝒓₂₀, 𝒔₂₀, 𝒕₂₀.
+  𝒕₂₀ = 𝒓₂₀ ⊢ 𝒔₂₀ + 𝒕₂₀ = 𝒔₂₀ + 𝒓₂₀
+lemma T1E. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ = 𝒓₂₁ ⊢ 𝒕₂₁ + 𝒔₂₁ = 𝒓₂₁ + 𝒔₂₁
+[𝒔₂₀ ↦ '𝒛¹ ⋅ '𝒙²][𝒕₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒛¹ ⋅ '𝒙² + 𝒓₂₀][𝒕₂₁ ↦ '𝒛¹ ⋅ '𝒙²][𝒔₂₁ ↦ 𝒓₂₀][𝒓₂₁ ↦ '𝒛¹ ⋅ '𝒚²][𝒓₂₀ ↦ '𝒚²]
+∴ '𝒙² = '𝒚², '𝒛¹ ⋅ '𝒙² = '𝒛¹ ⋅ '𝒚²
+premise a. object '𝒙², '𝒚².
+  '𝒙² = '𝒚².
+a3. '𝒛¹ ⋅ '𝒙² = '𝒛¹ ⋅ '𝒚².
+I
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² = '𝒚² ⊢ s('𝒛¹) ⋅ '𝒙² = s('𝒛¹) ⋅ '𝒚²
+succeeded:
+  T1C: a1; T1D: a4; a2.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒛¹) ⋅ '𝒙²][𝒛₁₀ ↦ s('𝒛¹) ⋅ '𝒚²][𝚪₍₀₎₁₀ ↦ s('𝒛¹) ⋅ '𝒙² = 𝒚₁₀][𝚪₍₁₎₁₀ ↦ 𝒚₁₀ = s('𝒛¹) ⋅ '𝒚²][𝚪₁₀ ↦ □]
+∴ '𝒙² = '𝒚² ⊢ s('𝒛¹) ⋅ '𝒙² = 𝒚₁₀, 𝒚₁₀ = s('𝒛¹) ⋅ '𝒚²
+a1. s('𝒛¹) ⋅ '𝒙² = '𝒛¹ ⋅ '𝒙² + '𝒙².
+lemma T1D. object 𝒙₂₁, 𝒚₂₁, 𝒛₂₁.
+  𝒙₂₁ = 𝒛₂₁, 𝒚₂₁ = 𝒛₂₁ ⊢ 𝒙₂₁ = 𝒚₂₁
+[𝒚₁₀ ↦ '𝒛¹ ⋅ '𝒙² + '𝒙²][𝒙₂₁ ↦ '𝒛¹ ⋅ '𝒙² + '𝒙²][𝒚₂₁ ↦ s('𝒛¹) ⋅ '𝒚²][𝚪₍₀₎₂₁ ↦ '𝒛¹ ⋅ '𝒙² + '𝒙² = 𝒛₂₁][𝚪₍₁₎₂₁ ↦ s('𝒛¹) ⋅ '𝒚² = 𝒛₂₁][𝚪₂₁ ↦ □]
+∴ '𝒙² = '𝒚² ⊢ '𝒛¹ ⋅ '𝒙² + '𝒙² = 𝒛₂₁, s('𝒛¹) ⋅ '𝒚² = 𝒛₂₁
+a4. '𝒛¹ ⋅ '𝒙² + '𝒙² = '𝒛¹ ⋅ '𝒚² + '𝒚².
+a2. s('𝒛¹) ⋅ '𝒚² = '𝒛¹ ⋅ '𝒚² + '𝒚².
+[𝒛₂₁ ↦ '𝒛¹ ⋅ '𝒚² + '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  DT₍D₎: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ = 𝒚¹₁₀₁ ⇒ 𝒛¹₁₀₁ ⋅ 𝒙¹₁₀₁ = 𝒛¹₁₀₁ ⋅ 𝒚¹₁₀₁.
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝑨₁₀ ↦ '𝒙¹₁₀₁ = '𝒚¹₁₀₁][𝑩₁₀ ↦ s('𝒛¹) ⋅ '𝒙¹₁₀₁ = s('𝒛¹) ⋅ '𝒚¹₁₀₁][𝜞₁₀ ↦ 𝐴('𝒛¹)]
+∴ 𝐴('𝒛¹), '𝒙¹₁₀₁ = '𝒚¹₁₀₁ ⊢ s('𝒛¹) ⋅ '𝒙¹₁₀₁ = s('𝒛¹) ⋅ '𝒚¹₁₀₁
+a. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ = 𝒚²₂₀ ⊢ s('𝒛¹) ⋅ 𝒙²₂₀ = s('𝒛¹) ⋅ 𝒚²₂₀
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁][𝒚²₂₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⇒ '𝒔 ⋅ '𝒕 = '𝒔 ⋅ '𝒓
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 = '𝒓 ⇒ '°𝒛₁₀ ⋅ '𝒕 = '°𝒛₁₀ ⋅ '𝒓]
+∴ '𝒕 = '𝒓 ⇒ '°𝒛₁₀ ⋅ '𝒕 = '°𝒛₁₀ ⋅ '𝒓
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁, 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔₍𝒙¹₂₀₁,𝒚¹₂₀₁₎ 𝒙¹₂₀₁ = 𝒚¹₂₀₁ ⇒ 𝒛¹₂₀₁ ⋅ 𝒙¹₂₀₁ = 𝒛¹₂₀₁ ⋅ 𝒚¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][𝒚¹₂₀₁ ↦ '𝒓][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T1O. object 𝒓, 𝒔, 𝒕.
+  𝒕 = 𝒓 ⊢ 𝒔 ⋅ 𝒕 = 𝒔 ⋅ 𝒓
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 = '𝒓 ⊢ '𝒔 ⋅ '𝒕 = '𝒔 ⋅ '𝒓
+succeeded:
+  MP: premise ⊢; T1o.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒔 ⋅ '𝒕 = '𝒔 ⋅ '𝒓][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒔 ⋅ '𝒕 = '𝒔 ⋅ '𝒓][𝚪₁₀ ↦ □]
+∴ '𝒕 = '𝒓 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒔 ⋅ '𝒕 = '𝒔 ⋅ '𝒓
+premise ⊢. object '𝒓, '𝒕.
+  '𝒕 = '𝒓.
+lemma T1o. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ = 𝒓₂₁ ⇒ 𝒔₂₁ ⋅ 𝒕₂₁ = 𝒔₂₁ ⋅ 𝒓₂₁
+[𝑨₁₀ ↦ '𝒕 = '𝒓][𝒕₂₁ ↦ '𝒕][𝒓₂₁ ↦ '𝒓][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T2a. object 𝒓, 𝒔, 𝒕.
+  𝒕 ⋅ (𝒓 + 𝒔) = 𝒕 ⋅ 𝒓 + 𝒕 ⋅ 𝒔
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒚².
+  𝒚² + 0 = 𝒚².
+Proof succeeded.
+Variable: '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² + 0 = '𝒚²
+succeeded:
+  S5.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒚²]
+∎
+
+
+Proving 2. object 𝒙².
+  𝒙² ⋅ 0 = 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ 0 = 0
+succeeded:
+  S7.
+axiom S7. object 𝑥₁₀.
+  𝑥₁₀ ⋅ 0 = 0.
+[𝑥₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 3. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² + 0) = 𝒙² ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² + 0) = '𝒙² ⋅ '𝒚²
+succeeded:
+  T1O: 1.
+lemma T1O. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ ⋅ 𝒕₁₀ = 𝒔₁₀ ⋅ 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙²][𝒕₁₀ ↦ '𝒚² + 0][𝒓₁₀ ↦ '𝒚²]
+∴ '𝒚² + 0 = '𝒚²
+1. object 𝒚²₂₀.
+  𝒚²₂₀ + 0 = 𝒚²₂₀.
+[𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 4. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² + 𝒙² ⋅ 0 = 𝒙² ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² + '𝒙² ⋅ 0 = '𝒙² ⋅ '𝒚²
+succeeded:
+  T1C: T1I; S5: 2.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ 0][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚²]
+∴ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ 0 = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ '𝒚²
+lemma T1I. object 𝒓₂₀, 𝒔₂₀, 𝒕₂₀.
+  𝒕₂₀ = 𝒓₂₀ ⊢ 𝒔₂₀ + 𝒕₂₀ = 𝒔₂₀ + 𝒓₂₀
+axiom S5. object 𝑥₂₁.
+  𝑥₂₁ + 0 = 𝑥₂₁.
+[𝒔₂₀ ↦ '𝒙² ⋅ '𝒚²][𝒕₂₀ ↦ '𝒙² ⋅ 0][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚² + 𝒓₂₀][𝑥₂₁ ↦ '𝒙² ⋅ '𝒚²][𝒓₂₀ ↦ 0]
+∴ '𝒙² ⋅ 0 = 0
+2. object 𝒙²₃₀.
+  𝒙²₃₀ ⋅ 0 = 0.
+[𝒙²₃₀ ↦ '𝒙²]
+∎
+
+
+Proving 5. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² + 0) = 𝒙² ⋅ 𝒚² + 𝒙² ⋅ 0.
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² + 0) = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ 0
+succeeded:
+  T1D: 3; 4.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ ('𝒚² + 0)][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ 0]
+∴ '𝒙² ⋅ ('𝒚² + 0) = 𝒛₁₀, '𝒙² ⋅ '𝒚² + '𝒙² ⋅ 0 = 𝒛₁₀
+3. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ (𝒚²₂₀ + 0) = 𝒙²₂₀ ⋅ 𝒚²₂₀.
+4. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ ⋅ 𝒚²₂₁ + 𝒙²₂₁ ⋅ 0 = 𝒙²₂₁ ⋅ 𝒚²₂₁.
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚²][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  5₍D₎.
+5. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ ⋅ (𝒚²₁₀ + 0) = 𝒙²₁₀ ⋅ 𝒚²₁₀ + 𝒙²₁₀ ⋅ 0.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ (𝒚¹₁₀₁ + 𝒛¹₁₀₁) = 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ + 𝒙¹₁₀₁ ⋅ 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ 0][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² + '𝒛¹) = 𝒙² ⋅ 𝒚² + 𝒙² ⋅ '𝒛¹.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² + '𝒛¹) = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ (𝒚¹₁₀₁ + 𝒛¹₁₀₁) = 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ + 𝒙¹₁₀₁ ⋅ 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ '𝒛¹][𝒙¹₁₀₁ ↦ '𝒙²][𝒚¹₁₀₁ ↦ '𝒚²]
+∎
+
+
+Proving 2. object 𝒚².
+  𝒚² + s('𝒛¹) = s(𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 3. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² + s('𝒛¹)) = 𝒙² ⋅ s(𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² + s('𝒛¹)) = '𝒙² ⋅ s('𝒚² + '𝒛¹)
+succeeded:
+  T1O: 2.
+lemma T1O. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ ⋅ 𝒕₁₀ = 𝒔₁₀ ⋅ 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙²][𝒕₁₀ ↦ '𝒚² + s('𝒛¹)][𝒓₁₀ ↦ s('𝒚² + '𝒛¹)]
+∴ '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹)
+2. object 𝒚²₂₀.
+  𝒚²₂₀ + s('𝒛¹) = s(𝒚²₂₀ + '𝒛¹).
+[𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 4. object 𝒙², 𝒚².
+  𝒙² ⋅ s(𝒚² + '𝒛¹) = 𝒙² ⋅ (𝒚² + '𝒛¹) + 𝒙².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚² + '𝒛¹) = '𝒙² ⋅ ('𝒚² + '𝒛¹) + '𝒙²
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒚² + '𝒛¹]
+∎
+
+
+Proving 5. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² + '𝒛¹) + 𝒙² = 𝒙² ⋅ 𝒚² + 𝒙² ⋅ '𝒛¹ + 𝒙².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² + '𝒛¹) + '𝒙² = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙²
+succeeded:
+  T1E: 1.
+lemma T1E. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ '𝒙² ⋅ ('𝒚² + '𝒛¹)][𝒔₁₀ ↦ '𝒙²][𝒓₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹]
+∴ '𝒙² ⋅ ('𝒚² + '𝒛¹) = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹
+1. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ (𝒚²₂₀ + '𝒛¹) = 𝒙²₂₀ ⋅ 𝒚²₂₀ + 𝒙²₂₀ ⋅ '𝒛¹.
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 6. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² + 𝒙² ⋅ s('𝒛¹) = 𝒙² ⋅ 𝒚² + (𝒙² ⋅ '𝒛¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² + '𝒙² ⋅ s('𝒛¹) = '𝒙² ⋅ '𝒚² + ('𝒙² ⋅ '𝒛¹ + '𝒙²)
+succeeded:
+  T1I: S8.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙² ⋅ '𝒚²][𝒕₁₀ ↦ '𝒙² ⋅ s('𝒛¹)][𝒓₁₀ ↦ '𝒙² ⋅ '𝒛¹ + '𝒙²]
+∴ '𝒙² ⋅ s('𝒛¹) = '𝒙² ⋅ '𝒛¹ + '𝒙²
+axiom S8. object 𝑥₂₀, 𝑦₂₀.
+  𝑥₂₀ ⋅ s(𝑦₂₀) = 𝑥₂₀ ⋅ 𝑦₂₀ + 𝑥₂₀.
+[𝑥₂₀ ↦ '𝒙²][𝑦₂₀ ↦ '𝒛¹]
+∎
+
+
+Proving 7. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² + 𝒙² ⋅ '𝒛¹ + 𝒙² = 𝒙² ⋅ 𝒚² + (𝒙² ⋅ '𝒛¹ + 𝒙²).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙² = '𝒙² ⋅ '𝒚² + ('𝒙² ⋅ '𝒛¹ + '𝒙²)
+succeeded:
+  T1j.
+lemma T1j. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ + 𝒓₁₀ + 𝒔₁₀ = 𝒕₁₀ + (𝒓₁₀ + 𝒔₁₀)
+[𝒕₁₀ ↦ '𝒙² ⋅ '𝒚²][𝒓₁₀ ↦ '𝒙² ⋅ '𝒛¹][𝒔₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 8. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² + s('𝒛¹)) = 𝒙² ⋅ 𝒚² + 𝒙² ⋅ '𝒛¹ + 𝒙².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² + s('𝒛¹)) = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙²
+succeeded:
+  T1C: T1C; 5: 3; 4.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ ('𝒚² + s('𝒛¹))][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙²]
+∴ '𝒙² ⋅ ('𝒚² + s('𝒛¹)) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙²
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+5. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ ⋅ (𝒚²₂₁ + '𝒛¹) + 𝒙²₂₁ = 𝒙²₂₁ ⋅ 𝒚²₂₁ + 𝒙²₂₁ ⋅ '𝒛¹ + 𝒙²₂₁.
+[𝒙₂₀ ↦ '𝒙² ⋅ ('𝒚² + s('𝒛¹))][𝒛₂₀ ↦ 𝒚₁₀][𝒚₁₀ ↦ 𝒙²₂₁ ⋅ (𝒚²₂₁ + '𝒛¹) + 𝒙²₂₁][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∴ '𝒙² ⋅ ('𝒚² + s('𝒛¹)) = 𝒚₂₀, 𝒚₂₀ = '𝒙² ⋅ ('𝒚² + '𝒛¹) + '𝒙²
+3. object 𝒙²₃₀, 𝒚²₃₀.
+  𝒙²₃₀ ⋅ (𝒚²₃₀ + s('𝒛¹)) = 𝒙²₃₀ ⋅ s(𝒚²₃₀ + '𝒛¹).
+4. object 𝒙²₃₁, 𝒚²₃₁.
+  𝒙²₃₁ ⋅ s(𝒚²₃₁ + '𝒛¹) = 𝒙²₃₁ ⋅ (𝒚²₃₁ + '𝒛¹) + 𝒙²₃₁.
+[𝒙²₃₀ ↦ '𝒙²][𝒚²₃₀ ↦ '𝒚²][𝒚₂₀ ↦ '𝒙² ⋅ s('𝒚² + '𝒛¹)][𝒙²₃₁ ↦ '𝒙²][𝒚²₃₁ ↦ '𝒚²]
+∎
+
+
+Proving 9. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² + 𝒙² ⋅ s('𝒛¹) = 𝒙² ⋅ 𝒚² + 𝒙² ⋅ '𝒛¹ + 𝒙².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² + '𝒙² ⋅ s('𝒛¹) = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙²
+succeeded:
+  T1D: 6; 7.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ s('𝒛¹)][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙²]
+∴ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ s('𝒛¹) = 𝒛₁₀, '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙² = 𝒛₁₀
+6. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ 𝒚²₂₀ + 𝒙²₂₀ ⋅ s('𝒛¹) = 𝒙²₂₀ ⋅ 𝒚²₂₀ + (𝒙²₂₀ ⋅ '𝒛¹ + 𝒙²₂₀).
+7. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ ⋅ 𝒚²₂₁ + 𝒙²₂₁ ⋅ '𝒛¹ + 𝒙²₂₁ = 𝒙²₂₁ ⋅ 𝒚²₂₁ + (𝒙²₂₁ ⋅ '𝒛¹ + 𝒙²₂₁).
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚² + ('𝒙² ⋅ '𝒛¹ + '𝒙²)][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving 10. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² + s('𝒛¹)) = 𝒙² ⋅ 𝒚² + 𝒙² ⋅ s('𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² + s('𝒛¹)) = '𝒙² ⋅ '𝒚² + '𝒙² ⋅ s('𝒛¹)
+succeeded:
+  T1D: 8; 9.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ ('𝒚² + s('𝒛¹))][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ s('𝒛¹)]
+∴ '𝒙² ⋅ ('𝒚² + s('𝒛¹)) = 𝒛₁₀, '𝒙² ⋅ '𝒚² + '𝒙² ⋅ s('𝒛¹) = 𝒛₁₀
+8. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ (𝒚²₂₀ + s('𝒛¹)) = 𝒙²₂₀ ⋅ 𝒚²₂₀ + 𝒙²₂₀ ⋅ '𝒛¹ + 𝒙²₂₀.
+9. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ ⋅ 𝒚²₂₁ + 𝒙²₂₁ ⋅ s('𝒛¹) = 𝒙²₂₁ ⋅ 𝒚²₂₁ + 𝒙²₂₁ ⋅ '𝒛¹ + 𝒙²₂₁.
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒛₁₀ ↦ '𝒙² ⋅ '𝒚² + '𝒙² ⋅ '𝒛¹ + '𝒙²][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  10₍D₎.
+10. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ ⋅ (𝒚²₁₀ + s('𝒛¹)) = 𝒙²₁₀ ⋅ 𝒚²₁₀ + 𝒙²₁₀ ⋅ s('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ (𝒚¹₁₀₁ + 𝒛¹₁₀₁) = 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ + 𝒙¹₁₀₁ ⋅ 𝒛¹₁₀₁.
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ ('𝒓 + '𝒔) = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 ⋅ ('𝒓 + '°𝒛₁₀) = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '°𝒛₁₀]
+∴ '𝒕 ⋅ ('𝒓 + '°𝒛₁₀) = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '°𝒛₁₀
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁, 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔₍𝒙¹₂₀₁,𝒚¹₂₀₁₎ 𝒙¹₂₀₁ ⋅ (𝒚¹₂₀₁ + 𝒛¹₂₀₁) = 𝒙¹₂₀₁ ⋅ 𝒚¹₂₀₁ + 𝒙¹₂₀₁ ⋅ 𝒛¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][𝒚¹₂₀₁ ↦ '𝒓][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T2b. object 𝒓, 𝒔, 𝒕.
+  (𝒓 + 𝒔) ⋅ 𝒕 = 𝒓 ⋅ 𝒕 + 𝒔 ⋅ 𝒕
+Proving 1. ('𝒓 + '𝒔) ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  ('𝒓 + '𝒔) ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔
+succeeded:
+  T1C: T1n; T2a.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ ('𝒓 + '𝒔) ⋅ '𝒕][𝒛₁₀ ↦ '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔]
+∴ ('𝒓 + '𝒔) ⋅ '𝒕 = 𝒚₁₀, 𝒚₁₀ = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔
+lemma T1n. object 𝒓₂₀, 𝒕₂₀.
+  𝒕₂₀ ⋅ 𝒓₂₀ = 𝒓₂₀ ⋅ 𝒕₂₀
+lemma T2a. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ ⋅ (𝒓₂₁ + 𝒔₂₁) = 𝒕₂₁ ⋅ 𝒓₂₁ + 𝒕₂₁ ⋅ 𝒔₂₁
+[𝒕₂₀ ↦ '𝒓 + '𝒔][𝒓₂₀ ↦ '𝒕][𝒚₁₀ ↦ '𝒕 ⋅ ('𝒓 + '𝒔)][𝒕₂₁ ↦ '𝒕][𝒓₂₁ ↦ '𝒓][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+Proving 2. '𝒓 ⋅ '𝒕 + '𝒔 ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒓 ⋅ '𝒕 + '𝒔 ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕
+succeeded:
+  T1E: T1n.
+lemma T1E. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ '𝒓 ⋅ '𝒕][𝒔₁₀ ↦ '𝒔 ⋅ '𝒕][𝒓₁₀ ↦ '𝒕 ⋅ '𝒓]
+∴ '𝒓 ⋅ '𝒕 = '𝒕 ⋅ '𝒓
+lemma T1n. object 𝒓₂₀, 𝒕₂₀.
+  𝒕₂₀ ⋅ 𝒓₂₀ = 𝒓₂₀ ⋅ 𝒕₂₀
+[𝒕₂₀ ↦ '𝒓][𝒓₂₀ ↦ '𝒕]
+∎
+
+
+Proving 3. '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔
+succeeded:
+  T1I: T1n.
+lemma T1I. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ + 𝒕₁₀ = 𝒔₁₀ + 𝒓₁₀
+[𝒔₁₀ ↦ '𝒕 ⋅ '𝒓][𝒕₁₀ ↦ '𝒔 ⋅ '𝒕][𝒓₁₀ ↦ '𝒕 ⋅ '𝒔]
+∴ '𝒔 ⋅ '𝒕 = '𝒕 ⋅ '𝒔
+lemma T1n. object 𝒓₂₀, 𝒕₂₀.
+  𝒕₂₀ ⋅ 𝒓₂₀ = 𝒓₂₀ ⋅ 𝒕₂₀
+[𝒕₂₀ ↦ '𝒔][𝒓₂₀ ↦ '𝒕]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  ('𝒓 + '𝒔) ⋅ '𝒕 = '𝒓 ⋅ '𝒕 + '𝒔 ⋅ '𝒕
+succeeded:
+  T1D: T1D; 2: 1; 3.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ ('𝒓 + '𝒔) ⋅ '𝒕][𝒚₁₀ ↦ '𝒓 ⋅ '𝒕 + '𝒔 ⋅ '𝒕]
+∴ ('𝒓 + '𝒔) ⋅ '𝒕 = 𝒛₁₀, '𝒓 ⋅ '𝒕 + '𝒔 ⋅ '𝒕 = 𝒛₁₀
+lemma T1D. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒛₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒚₂₀
+2. '𝒓 ⋅ '𝒕 + '𝒔 ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕.
+[𝒙₂₀ ↦ ('𝒓 + '𝒔) ⋅ '𝒕][𝒚₂₀ ↦ 𝒛₁₀][𝒛₁₀ ↦ '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕]
+∴ ('𝒓 + '𝒔) ⋅ '𝒕 = 𝒛₂₀, '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕 = 𝒛₂₀
+1. ('𝒓 + '𝒔) ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔.
+3. '𝒕 ⋅ '𝒓 + '𝒔 ⋅ '𝒕 = '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔.
+[𝒛₂₀ ↦ '𝒕 ⋅ '𝒓 + '𝒕 ⋅ '𝒔]
+∎
+
+
+
+Proving lemma T2c. object 𝒓, 𝒔, 𝒕.
+  𝒕 ⋅ 𝒓 ⋅ 𝒔 = 𝒕 ⋅ (𝒓 ⋅ 𝒔)
+
+Proving i. 𝐴(0)
+Proving 1. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² ⋅ 0 = 0.
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² ⋅ 0 = 0
+succeeded:
+  S7.
+axiom S7. object 𝑥₁₀.
+  𝑥₁₀ ⋅ 0 = 0.
+[𝑥₁₀ ↦ '𝒙² ⋅ '𝒚²]
+∎
+
+
+Proving 2. object 𝒚².
+  𝒚² ⋅ 0 = 0.
+Proof succeeded.
+Variable: '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² ⋅ 0 = 0
+succeeded:
+  S7.
+axiom S7. object 𝑥₁₀.
+  𝑥₁₀ ⋅ 0 = 0.
+[𝑥₁₀ ↦ '𝒚²]
+∎
+
+
+Proving 3. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² ⋅ 0) = 𝒚² ⋅ 0 ⋅ 𝒙².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² ⋅ 0) = '𝒚² ⋅ 0 ⋅ '𝒙²
+succeeded:
+  T1n.
+lemma T1n. object 𝒓₁₀, 𝒕₁₀.
+  𝒕₁₀ ⋅ 𝒓₁₀ = 𝒓₁₀ ⋅ 𝒕₁₀
+[𝒕₁₀ ↦ '𝒙²][𝒓₁₀ ↦ '𝒚² ⋅ 0]
+∎
+
+
+Proving 4. object 𝒙², 𝒚².
+  𝒚² ⋅ 0 ⋅ 𝒙² = 0 ⋅ 𝒙².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² ⋅ 0 ⋅ '𝒙² = 0 ⋅ '𝒙²
+succeeded:
+  T1K: 2.
+lemma T1K. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ ⋅ 𝒔₁₀ = 𝒓₁₀ ⋅ 𝒔₁₀
+[𝒕₁₀ ↦ '𝒚² ⋅ 0][𝒔₁₀ ↦ '𝒙²][𝒓₁₀ ↦ 0]
+∴ '𝒚² ⋅ 0 = 0
+2. object 𝒚²₂₀.
+  𝒚²₂₀ ⋅ 0 = 0.
+[𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 5. object 𝒙².
+  0 ⋅ 𝒙² = 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  0 ⋅ '𝒙² = 0
+succeeded:
+  T1C: T1n; S7.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ 0 ⋅ '𝒙²][𝒛₁₀ ↦ 0]
+∴ 0 ⋅ '𝒙² = 𝒚₁₀, 𝒚₁₀ = 0
+lemma T1n. object 𝒓₂₀, 𝒕₂₀.
+  𝒕₂₀ ⋅ 𝒓₂₀ = 𝒓₂₀ ⋅ 𝒕₂₀
+axiom S7. object 𝑥₂₁.
+  𝑥₂₁ ⋅ 0 = 0.
+[𝒕₂₀ ↦ 0][𝒓₂₀ ↦ '𝒙²][𝒚₁₀ ↦ '𝒙² ⋅ 0][𝑥₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 6. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² ⋅ 0) = 0.
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² ⋅ 0) = 0
+succeeded:
+  T1C: T1C; 5: 3; 4.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ 0)][𝒛₁₀ ↦ 0]
+∴ '𝒙² ⋅ ('𝒚² ⋅ 0) = 𝒚₁₀, 𝒚₁₀ = 0
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+5. object 𝒙²₂₁.
+  0 ⋅ 𝒙²₂₁ = 0.
+[𝒙₂₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ 0)][𝒛₂₀ ↦ 𝒚₁₀][𝒚₁₀ ↦ 0 ⋅ 𝒙²₂₁]
+∴ '𝒙² ⋅ ('𝒚² ⋅ 0) = 𝒚₂₀, 𝒚₂₀ = 0 ⋅ 𝒙²₂₁
+3. object 𝒙²₃₀, 𝒚²₃₀.
+  𝒙²₃₀ ⋅ (𝒚²₃₀ ⋅ 0) = 𝒚²₃₀ ⋅ 0 ⋅ 𝒙²₃₀.
+4. object 𝒙²₃₁, 𝒚²₃₁.
+  𝒚²₃₁ ⋅ 0 ⋅ 𝒙²₃₁ = 0 ⋅ 𝒙²₃₁.
+[𝒙²₃₀ ↦ '𝒙²][𝒚²₃₀ ↦ '𝒚²][𝒚₂₀ ↦ '𝒚² ⋅ 0 ⋅ '𝒙²][𝒚²₃₁ ↦ '𝒚²][𝒙²₃₁ ↦ '𝒙²][𝒙²₂₁ ↦ '𝒙²]
+∎
+
+
+Proving 7. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² ⋅ 0 = 𝒙² ⋅ (𝒚² ⋅ 0).
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² ⋅ 0 = '𝒙² ⋅ ('𝒚² ⋅ 0)
+succeeded:
+  T1D: 1; 6.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ '𝒚² ⋅ 0][𝒚₁₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ 0)]
+∴ '𝒙² ⋅ '𝒚² ⋅ 0 = 𝒛₁₀, '𝒙² ⋅ ('𝒚² ⋅ 0) = 𝒛₁₀
+1. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ 𝒚²₂₀ ⋅ 0 = 0.
+6. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ ⋅ (𝒚²₂₁ ⋅ 0) = 0.
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒛₁₀ ↦ 0][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  7₍D₎.
+7. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ ⋅ 𝒚²₁₀ ⋅ 0 = 𝒙²₁₀ ⋅ (𝒚²₁₀ ⋅ 0).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁ = 𝒙¹₁₀₁ ⋅ (𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁).
+[𝒛¹₁₀₁ ↦ 0][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² ⋅ '𝒛¹ = 𝒙² ⋅ (𝒚² ⋅ '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² ⋅ '𝒛¹ = '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹)
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁ = 𝒙¹₁₀₁ ⋅ (𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁).
+[𝒛¹₁₀₁ ↦ '𝒛¹][𝒙¹₁₀₁ ↦ '𝒙²][𝒚¹₁₀₁ ↦ '𝒚²]
+∎
+
+
+Proving 2. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² ⋅ s('𝒛¹) = 𝒙² ⋅ 𝒚² ⋅ '𝒛¹ + 𝒙² ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² ⋅ s('𝒛¹) = '𝒙² ⋅ '𝒚² ⋅ '𝒛¹ + '𝒙² ⋅ '𝒚²
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙² ⋅ '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 3. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² ⋅ '𝒛¹ + 𝒙² ⋅ 𝒚² = 𝒙² ⋅ (𝒚² ⋅ '𝒛¹) + 𝒙² ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² ⋅ '𝒛¹ + '𝒙² ⋅ '𝒚² = '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹) + '𝒙² ⋅ '𝒚²
+succeeded:
+  T1E: 1.
+lemma T1E. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒕₁₀ + 𝒔₁₀ = 𝒓₁₀ + 𝒔₁₀
+[𝒕₁₀ ↦ '𝒙² ⋅ '𝒚² ⋅ '𝒛¹][𝒔₁₀ ↦ '𝒙² ⋅ '𝒚²][𝒓₁₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹)]
+∴ '𝒙² ⋅ '𝒚² ⋅ '𝒛¹ = '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹)
+1. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ 𝒚²₂₀ ⋅ '𝒛¹ = 𝒙²₂₀ ⋅ (𝒚²₂₀ ⋅ '𝒛¹).
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 4. object 𝒚².
+  𝒚² ⋅ s('𝒛¹) = 𝒚² ⋅ '𝒛¹ + 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² ⋅ s('𝒛¹) = '𝒚² ⋅ '𝒛¹ + '𝒚²
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving 5. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² ⋅ '𝒛¹ + 𝒚²) = 𝒙² ⋅ (𝒚² ⋅ '𝒛¹) + 𝒙² ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹ + '𝒚²) = '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹) + '𝒙² ⋅ '𝒚²
+succeeded:
+  T2a.
+lemma T2a. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ ⋅ (𝒓₁₀ + 𝒔₁₀) = 𝒕₁₀ ⋅ 𝒓₁₀ + 𝒕₁₀ ⋅ 𝒔₁₀
+[𝒕₁₀ ↦ '𝒙²][𝒓₁₀ ↦ '𝒚² ⋅ '𝒛¹][𝒔₁₀ ↦ '𝒚²]
+∎
+
+
+Proving 6. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² ⋅ s('𝒛¹)) = 𝒙² ⋅ (𝒚² ⋅ '𝒛¹ + 𝒚²).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹)) = '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹ + '𝒚²)
+succeeded:
+  T1O: 4.
+lemma T1O. object 𝒓₁₀, 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ = 𝒓₁₀ ⊢ 𝒔₁₀ ⋅ 𝒕₁₀ = 𝒔₁₀ ⋅ 𝒓₁₀
+[𝒔₁₀ ↦ '𝒙²][𝒕₁₀ ↦ '𝒚² ⋅ s('𝒛¹)][𝒓₁₀ ↦ '𝒚² ⋅ '𝒛¹ + '𝒚²]
+∴ '𝒚² ⋅ s('𝒛¹) = '𝒚² ⋅ '𝒛¹ + '𝒚²
+4. object 𝒚²₂₀.
+  𝒚²₂₀ ⋅ s('𝒛¹) = 𝒚²₂₀ ⋅ '𝒛¹ + 𝒚²₂₀.
+[𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving 7. object 𝒙², 𝒚².
+  𝒙² ⋅ (𝒚² ⋅ s('𝒛¹)) = 𝒙² ⋅ (𝒚² ⋅ '𝒛¹) + 𝒙² ⋅ 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹)) = '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹) + '𝒙² ⋅ '𝒚²
+succeeded:
+  T1C: 6; 5.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹))][𝒛₁₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹) + '𝒙² ⋅ '𝒚²]
+∴ '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹)) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹) + '𝒙² ⋅ '𝒚²
+6. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ (𝒚²₂₀ ⋅ s('𝒛¹)) = 𝒙²₂₀ ⋅ (𝒚²₂₀ ⋅ '𝒛¹ + 𝒚²₂₀).
+5. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ ⋅ (𝒚²₂₁ ⋅ '𝒛¹ + 𝒚²₂₁) = 𝒙²₂₁ ⋅ (𝒚²₂₁ ⋅ '𝒛¹) + 𝒙²₂₁ ⋅ 𝒚²₂₁.
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒚₁₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹ + '𝒚²)][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∎
+
+
+Proving 8. object 𝒙², 𝒚².
+  𝒙² ⋅ 𝒚² ⋅ s('𝒛¹) = 𝒙² ⋅ (𝒚² ⋅ s('𝒛¹)).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚² ⋅ s('𝒛¹) = '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹))
+succeeded:
+  T1C: 2; T1D: 3; 7.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ '𝒚² ⋅ s('𝒛¹)][𝒛₁₀ ↦ '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹))]
+∴ '𝒙² ⋅ '𝒚² ⋅ s('𝒛¹) = 𝒚₁₀, 𝒚₁₀ = '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹))
+2. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ ⋅ 𝒚²₂₀ ⋅ s('𝒛¹) = 𝒙²₂₀ ⋅ 𝒚²₂₀ ⋅ '𝒛¹ + 𝒙²₂₀ ⋅ 𝒚²₂₀.
+lemma T1D. object 𝒙₂₁, 𝒚₂₁, 𝒛₂₁.
+  𝒙₂₁ = 𝒛₂₁, 𝒚₂₁ = 𝒛₂₁ ⊢ 𝒙₂₁ = 𝒚₂₁
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²][𝒚₁₀ ↦ '𝒙² ⋅ '𝒚² ⋅ '𝒛¹ + '𝒙² ⋅ '𝒚²][𝒙₂₁ ↦ '𝒙² ⋅ '𝒚² ⋅ '𝒛¹ + '𝒙² ⋅ '𝒚²][𝒚₂₁ ↦ '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹))]
+∴ '𝒙² ⋅ '𝒚² ⋅ '𝒛¹ + '𝒙² ⋅ '𝒚² = 𝒛₂₁, '𝒙² ⋅ ('𝒚² ⋅ s('𝒛¹)) = 𝒛₂₁
+3. object 𝒙²₃₀, 𝒚²₃₀.
+  𝒙²₃₀ ⋅ 𝒚²₃₀ ⋅ '𝒛¹ + 𝒙²₃₀ ⋅ 𝒚²₃₀ = 𝒙²₃₀ ⋅ (𝒚²₃₀ ⋅ '𝒛¹) + 𝒙²₃₀ ⋅ 𝒚²₃₀.
+7. object 𝒙²₃₁, 𝒚²₃₁.
+  𝒙²₃₁ ⋅ (𝒚²₃₁ ⋅ s('𝒛¹)) = 𝒙²₃₁ ⋅ (𝒚²₃₁ ⋅ '𝒛¹) + 𝒙²₃₁ ⋅ 𝒚²₃₁.
+[𝒙²₃₀ ↦ '𝒙²][𝒚²₃₀ ↦ '𝒚²][𝒛₂₁ ↦ '𝒙² ⋅ ('𝒚² ⋅ '𝒛¹) + '𝒙² ⋅ '𝒚²][𝒙²₃₁ ↦ '𝒙²][𝒚²₃₁ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  8₍D₎.
+8. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ ⋅ 𝒚²₁₀ ⋅ s('𝒛¹) = 𝒙²₁₀ ⋅ (𝒚²₁₀ ⋅ s('𝒛¹)).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁ = 𝒙¹₁₀₁ ⋅ (𝒚¹₁₀₁ ⋅ 𝒛¹₁₀₁).
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ '𝒓 ⋅ '𝒔 = '𝒕 ⋅ ('𝒓 ⋅ '𝒔)
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 ⋅ '𝒓 ⋅ '°𝒛₁₀ = '𝒕 ⋅ ('𝒓 ⋅ '°𝒛₁₀)]
+∴ '𝒕 ⋅ '𝒓 ⋅ '°𝒛₁₀ = '𝒕 ⋅ ('𝒓 ⋅ '°𝒛₁₀)
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁, 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔₍𝒙¹₂₀₁,𝒚¹₂₀₁₎ 𝒙¹₂₀₁ ⋅ 𝒚¹₂₀₁ ⋅ 𝒛¹₂₀₁ = 𝒙¹₂₀₁ ⋅ (𝒚¹₂₀₁ ⋅ 𝒛¹₂₀₁).
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][𝒚¹₂₀₁ ↦ '𝒓][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T2d. object 𝒓, 𝒔, 𝒕.
+  𝒕 + 𝒔 = 𝒓 + 𝒔 ⇒ 𝒕 = 𝒓
+
+Proving i. 𝐴(0)
+
+Proving a. object 𝒙², 𝒚².
+  𝒙² + 0 = 𝒚² + 0 ⊢ 𝒙² = 𝒚²
+Proving result.
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + 0 = '𝒚² + 0 ⊢ '𝒙² = '𝒚²
+succeeded:
+  T1C: T1C; S5: T1B: S5.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙²][𝒛₁₀ ↦ '𝒚²][𝚪₍₀₎₁₀ ↦ '𝒙² = 𝒚₁₀][𝚪₍₁₎₁₀ ↦ 𝒚₁₀ = '𝒚²][𝚪₁₀ ↦ □]
+∴ '𝒙² + 0 = '𝒚² + 0 ⊢ '𝒙² = 𝒚₁₀, 𝒚₁₀ = '𝒚²
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+axiom S5. object 𝑥₂₁.
+  𝑥₂₁ + 0 = 𝑥₂₁.
+[𝒙₂₀ ↦ '𝒙²][𝒛₂₀ ↦ 𝒚₁₀][𝚪₍₀₎₂₀ ↦ '𝒙² = 𝒚₂₀][𝒚₂₀ ↦ '𝒙² + 0][𝒚₁₀ ↦ '𝒚² + 0][𝚪₂₀ ↦ □][𝑥₂₁ ↦ '𝒚²]
+∴ '𝒙² + 0 = '𝒚² + 0 ⊢ '𝒙² = '𝒙² + 0
+lemma T1B. object 𝒙₃₀, 𝒚₃₀.
+  𝒙₃₀ = 𝒚₃₀ ⊢ 𝒚₃₀ = 𝒙₃₀
+[𝒚₃₀ ↦ '𝒙²][𝒙₃₀ ↦ '𝒙² + 0]
+∴ '𝒙² + 0 = '𝒚² + 0 ⊢ '𝒙² + 0 = '𝒙²
+axiom S5. object 𝑥₄₀.
+  𝑥₄₀ + 0 = 𝑥₄₀.
+[𝑥₄₀ ↦ '𝒙²]
+∎
+
+
+Proving 1. object 𝒙², 𝒚².
+  𝒙² + 0 = 𝒚² + 0 ⇒ 𝒙² = 𝒚².
+Proof succeeded.
+Variables: '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + 0 = '𝒚² + 0 ⇒ '𝒙² = '𝒚²
+succeeded:
+  DT: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² + 0 = '𝒚² + 0][𝑩₁₀ ↦ '𝒙² = '𝒚²][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² + 0 = '𝒚² + 0 ⊢ '𝒙² = '𝒚²
+a. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ + 0 = 𝒚²₂₀ + 0 ⊢ 𝒙²₂₀ = 𝒚²₂₀
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  1₍D₎.
+1. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ + 0 = 𝒚²₁₀ + 0 ⇒ 𝒙²₁₀ = 𝒚²₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒛¹₁₀₁ = 𝒚¹₁₀₁ + 𝒛¹₁₀₁ ⇒ 𝒙¹₁₀₁ = 𝒚¹₁₀₁.
+[𝒛¹₁₀₁ ↦ 0][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒛¹.
+  𝐴(𝒛¹) ⊢ 𝐴(s(𝒛¹))
+Proving 1. object 𝒙², 𝒚².
+  𝒙² + '𝒛¹ = 𝒚² + '𝒛¹ ⇒ 𝒙² = 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒛¹ = '𝒚² + '𝒛¹ ⇒ '𝒙² = '𝒚²
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒛¹.
+  𝐴('𝒛¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒛¹₁₀₁ = 𝒚¹₁₀₁ + 𝒛¹₁₀₁ ⇒ 𝒙¹₁₀₁ = 𝒚¹₁₀₁.
+[𝒛¹₁₀₁ ↦ '𝒛¹][𝒙¹₁₀₁ ↦ '𝒙²][𝒚¹₁₀₁ ↦ '𝒚²]
+∎
+
+
+
+Proving a. object 𝒙², 𝒚².
+  𝒙² + s('𝒛¹) = 𝒚² + s('𝒛¹) ⊢ 𝒙² = 𝒚²
+Proving a0. '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹)
+succeeded:
+  premise a.
+premise a. object '𝒛¹, '𝒙², '𝒚².
+  '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹).
+I
+∎
+
+
+Proving a1. s('𝒙² + '𝒛¹) = '𝒙² + s('𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒛¹) = '𝒙² + s('𝒛¹)
+succeeded:
+  T1B: S6.
+lemma T1B. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ = 𝒚₁₀ ⊢ 𝒚₁₀ = 𝒙₁₀
+[𝒚₁₀ ↦ s('𝒙² + '𝒛¹)][𝒙₁₀ ↦ '𝒙² + s('𝒛¹)]
+∴ '𝒙² + s('𝒛¹) = s('𝒙² + '𝒛¹)
+axiom S6. object 𝑥₂₀, 𝑦₂₀.
+  𝑥₂₀ + s(𝑦₂₀) = s(𝑥₂₀ + 𝑦₂₀).
+[𝑥₂₀ ↦ '𝒙²][𝑦₂₀ ↦ '𝒛¹]
+∎
+
+
+Proving a2. '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ '𝒚²][𝑦₁₀ ↦ '𝒛¹]
+∎
+
+
+Proving a3. s('𝒙² + '𝒛¹) = s('𝒚² + '𝒛¹).
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒛¹) = s('𝒚² + '𝒛¹)
+succeeded:
+  T1C: T1C; a2: a1; a0.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒙² + '𝒛¹)][𝒛₁₀ ↦ s('𝒚² + '𝒛¹)]
+∴ s('𝒙² + '𝒛¹) = 𝒚₁₀, 𝒚₁₀ = s('𝒚² + '𝒛¹)
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+a2. '𝒚² + s('𝒛¹) = s('𝒚² + '𝒛¹).
+[𝒙₂₀ ↦ s('𝒙² + '𝒛¹)][𝒛₂₀ ↦ 𝒚₁₀][𝒚₁₀ ↦ '𝒚² + s('𝒛¹)]
+∴ s('𝒙² + '𝒛¹) = 𝒚₂₀, 𝒚₂₀ = '𝒚² + s('𝒛¹)
+a1. s('𝒙² + '𝒛¹) = '𝒙² + s('𝒛¹).
+a0. '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹).
+[𝒚₂₀ ↦ '𝒙² + s('𝒛¹)]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹) ⊢ '𝒙² = '𝒚²
+succeeded:
+  MP: S4a; 1: a3.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² = '𝒚²][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒙² = '𝒚²][𝚪₁₀ ↦ □]
+∴ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹) ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙² = '𝒚²
+rule S4a. object 𝑥₂₀, 𝑦₂₀.
+  s(𝑥₂₀) = s(𝑦₂₀) ⊢ 𝑥₂₀ = 𝑦₂₀.
+1. object 𝒙²₂₁, 𝒚²₂₁.
+  𝒙²₂₁ + '𝒛¹ = 𝒚²₂₁ + '𝒛¹ ⇒ 𝒙²₂₁ = 𝒚²₂₁.
+[𝑨₁₀ ↦ 𝑥₂₀ = 𝑦₂₀][𝑥₂₀ ↦ 𝒙²₂₁ + '𝒛¹][𝑦₂₀ ↦ 𝒚²₂₁ + '𝒛¹][𝒙²₂₁ ↦ '𝒙²][𝒚²₂₁ ↦ '𝒚²]
+∴ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹) ⊢ s('𝒙² + '𝒛¹) = s('𝒚² + '𝒛¹)
+a3. s('𝒙² + '𝒛¹) = s('𝒚² + '𝒛¹).
+I
+∎
+
+
+Proving 2. object 𝒙², 𝒚².
+  𝒙² + s('𝒛¹) = 𝒚² + s('𝒛¹) ⇒ 𝒙² = 𝒚².
+Proof succeeded.
+Variables: '𝒛¹, '𝒙², '𝒚²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹) ⇒ '𝒙² = '𝒚²
+succeeded:
+  DT: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹)][𝑩₁₀ ↦ '𝒙² = '𝒚²][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² + s('𝒛¹) = '𝒚² + s('𝒛¹) ⊢ '𝒙² = '𝒚²
+a. object 𝒙²₂₀, 𝒚²₂₀.
+  𝒙²₂₀ + s('𝒛¹) = 𝒚²₂₀ + s('𝒛¹) ⊢ 𝒙²₂₀ = 𝒚²₂₀
+[𝒙²₂₀ ↦ '𝒙²][𝒚²₂₀ ↦ '𝒚²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒛¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒛¹) ⊢ 𝐴(s('𝒛¹))
+succeeded:
+  2₍D₎.
+2. object 𝒙²₁₀, 𝒚²₁₀.
+  𝒙²₁₀ + s('𝒛¹) = 𝒚²₁₀ + s('𝒛¹) ⇒ 𝒙²₁₀ = 𝒚²₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁, 𝒛¹₁₀₁.
+  𝐴(𝒛¹₁₀₁) ≔₍𝒙¹₁₀₁,𝒚¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒛¹₁₀₁ = 𝒚¹₁₀₁ + 𝒛¹₁₀₁ ⇒ 𝒙¹₁₀₁ = 𝒚¹₁₀₁.
+[𝒛¹₁₀₁ ↦ s('𝒛¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁][𝒚²₁₀ ↦ '𝒚¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = '𝒓 + '𝒔 ⇒ '𝒕 = '𝒓
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 + '°𝒛₁₀ = '𝒓 + '°𝒛₁₀ ⇒ '𝒕 = '𝒓]
+∴ '𝒕 + '°𝒛₁₀ = '𝒓 + '°𝒛₁₀ ⇒ '𝒕 = '𝒓
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁, 𝒛¹₂₀₁.
+  𝐴(𝒛¹₂₀₁) ≔₍𝒙¹₂₀₁,𝒚¹₂₀₁₎ 𝒙¹₂₀₁ + 𝒛¹₂₀₁ = 𝒚¹₂₀₁ + 𝒛¹₂₀₁ ⇒ 𝒙¹₂₀₁ = 𝒚¹₂₀₁.
+[𝑷₂₀ ↦ 𝐴][𝒛¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀][𝒚¹₂₀₁ ↦ '𝒓]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒛¹₃₁.
+  𝐴(𝒛¹₃₁) ⊢ 𝐴(s(𝒛¹₃₁))
+[𝒛¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T2D. object 𝒓, 𝒔, 𝒕.
+  𝒕 + 𝒔 = 𝒓 + 𝒔 ⊢ 𝒕 = 𝒓
+Proving result.
+Proof succeeded.
+Variables: '𝒓, '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = '𝒓 + '𝒔 ⊢ '𝒕 = '𝒓
+succeeded:
+  MP: premise ⊢; T2d.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 = '𝒓][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒕 = '𝒓][𝚪₁₀ ↦ □]
+∴ '𝒕 + '𝒔 = '𝒓 + '𝒔 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 = '𝒓
+premise ⊢. object '𝒓, '𝒔, '𝒕.
+  '𝒕 + '𝒔 = '𝒓 + '𝒔.
+lemma T2d. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ + 𝒔₂₁ = 𝒓₂₁ + 𝒔₂₁ ⇒ 𝒕₂₁ = 𝒓₂₁
+[𝑨₁₀ ↦ '𝒕 + '𝒔 = '𝒓 + '𝒔][𝒕₂₁ ↦ '𝒕][𝒔₂₁ ↦ '𝒔][𝒓₂₁ ↦ '𝒓]
+∎
+
+
+
+Proving lemma T3a. object 𝒕.
+  𝒕 + 1 = s(𝒕)
+Proving result.
+Proof succeeded.
+Variable: '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + 1 = s('𝒕)
+succeeded:
+  T1C: S6₍n1₎; S2a: S5.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒕 + 1][𝒛₁₀ ↦ s('𝒕)]
+∴ '𝒕 + 1 = 𝒚₁₀, 𝒚₁₀ = s('𝒕)
+axiom S6. object 𝑥₂₀, 𝑦₂₀.
+  𝑥₂₀ + s(𝑦₂₀) = s(𝑥₂₀ + 𝑦₂₀).
+definition n1. 
+  1 ≔ s(0).
+rule S2a. object 𝑥₂₁, 𝑦₂₁.
+  𝑥₂₁ = 𝑦₂₁ ⊢ s(𝑥₂₁) = s(𝑦₂₁).
+[𝑥₂₀ ↦ '𝒕][𝑦₂₀ ↦ 0][𝒚₁₀ ↦ s('𝒕 + 0)][𝑥₂₁ ↦ '𝒕 + 0][𝑦₂₁ ↦ '𝒕]
+∴ '𝒕 + 0 = '𝒕
+axiom S5. object 𝑥₃₀.
+  𝑥₃₀ + 0 = 𝑥₃₀.
+[𝑥₃₀ ↦ '𝒕]
+∎
+
+
+
+Proving lemma T3b. object 𝒕.
+  𝒕 ⋅ 1 = 𝒕
+Proving result.
+Proof succeeded.
+Variable: '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ 1 = '𝒕
+succeeded:
+  T1C: T1C; T1B: S8₍n1₎; T1E; T1f: S7.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒕 ⋅ 1][𝒛₁₀ ↦ '𝒕]
+∴ '𝒕 ⋅ 1 = 𝒚₁₀, 𝒚₁₀ = '𝒕
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+lemma T1B. object 𝒙₂₁, 𝒚₂₁.
+  𝒙₂₁ = 𝒚₂₁ ⊢ 𝒚₂₁ = 𝒙₂₁
+[𝒙₂₀ ↦ '𝒕 ⋅ 1][𝒛₂₀ ↦ 𝒚₁₀][𝒚₂₁ ↦ 𝒚₁₀][𝒙₂₁ ↦ '𝒕]
+∴ '𝒕 ⋅ 1 = 𝒚₂₀, 𝒚₂₀ = 𝒚₁₀, '𝒕 = 𝒚₁₀
+axiom S8. object 𝑥₃₀, 𝑦₃₀.
+  𝑥₃₀ ⋅ s(𝑦₃₀) = 𝑥₃₀ ⋅ 𝑦₃₀ + 𝑥₃₀.
+definition n1. 
+  1 ≔ s(0).
+lemma T1E. object 𝒓₃₁, 𝒔₃₁, 𝒕₃₁.
+  𝒕₃₁ = 𝒓₃₁ ⊢ 𝒕₃₁ + 𝒔₃₁ = 𝒓₃₁ + 𝒔₃₁
+lemma T1f. object 𝒕₃₂.
+  𝒕₃₂ = 0 + 𝒕₃₂
+[𝑥₃₀ ↦ '𝒕][𝑦₃₀ ↦ 0][𝒚₂₀ ↦ '𝒕 ⋅ 0 + '𝒕][𝒕₃₁ ↦ '𝒕 ⋅ 0][𝒔₃₁ ↦ '𝒕][𝒚₁₀ ↦ 𝒓₃₁ + '𝒕][𝒕₃₂ ↦ '𝒕][𝒓₃₁ ↦ 0]
+∴ '𝒕 ⋅ 0 = 0
+axiom S7. object 𝑥₄₀.
+  𝑥₄₀ ⋅ 0 = 0.
+[𝑥₄₀ ↦ '𝒕]
+∎
+
+
+
+Proving lemma T3c. object 𝒕.
+  𝒕 ⋅ 2 = 𝒕 + 𝒕
+Proving result.
+Proof succeeded.
+Variable: '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ 2 = '𝒕 + '𝒕
+succeeded:
+  T1C: S8₍n2₎; T1E: T3b.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒕 ⋅ 2][𝒛₁₀ ↦ '𝒕 + '𝒕]
+∴ '𝒕 ⋅ 2 = 𝒚₁₀, 𝒚₁₀ = '𝒕 + '𝒕
+axiom S8. object 𝑥₂₀, 𝑦₂₀.
+  𝑥₂₀ ⋅ s(𝑦₂₀) = 𝑥₂₀ ⋅ 𝑦₂₀ + 𝑥₂₀.
+definition n2. 
+  2 ≔ s(1).
+lemma T1E. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ = 𝒓₂₁ ⊢ 𝒕₂₁ + 𝒔₂₁ = 𝒓₂₁ + 𝒔₂₁
+[𝑥₂₀ ↦ '𝒕][𝑦₂₀ ↦ 1][𝒚₁₀ ↦ '𝒕 ⋅ 1 + '𝒕][𝒕₂₁ ↦ '𝒕 ⋅ 1][𝒔₂₁ ↦ '𝒕][𝒓₂₁ ↦ '𝒕]
+∴ '𝒕 ⋅ 1 = '𝒕
+lemma T3b. object 𝒕₃₀.
+  𝒕₃₀ ⋅ 1 = 𝒕₃₀
+[𝒕₃₀ ↦ '𝒕]
+∎
+
+
+
+Proving lemma T3d. object 𝒔, 𝒕.
+  𝒕 + 𝒔 = 0 ⇒ 𝒕 = 0 ∧ 𝒔 = 0
+Proving i. 𝐴(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  DT₍D₎: CI: T1D; T1a: T1B; T1B: S5.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ = 0 ⇒ 𝒙¹₁₀₁ = 0 ∧ 𝒚¹₁₀₁ = 0.
+[𝒚¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ + 0 = 0][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 0 ∧ 0 = 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙¹₁₀₁ + 0 = 0 ⊢ '𝒙¹₁₀₁ = 0 ∧ 0 = 0
+rule CI. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑩₂₀ ⊢ 𝑨₂₀ ∧ 𝑩₂₀.
+[𝑨₂₀ ↦ '𝒙¹₁₀₁ = 0][𝑩₂₀ ↦ 0 = 0][𝚪₍₀₎₂₀ ↦ '𝒙¹₁₀₁ = 0][𝚪₍₁₎₂₀ ↦ 0 = 0][𝚪₂₀ ↦ □]
+∴ '𝒙¹₁₀₁ + 0 = 0 ⊢ '𝒙¹₁₀₁ = 0, 0 = 0
+lemma T1D. object 𝒙₃₀, 𝒚₃₀, 𝒛₃₀.
+  𝒙₃₀ = 𝒛₃₀, 𝒚₃₀ = 𝒛₃₀ ⊢ 𝒙₃₀ = 𝒚₃₀
+lemma T1a. object 𝒙₃₁.
+  𝒙₃₁ = 𝒙₃₁
+[𝒙₃₀ ↦ '𝒙¹₁₀₁][𝒚₃₀ ↦ 0][𝚪₍₀₎₃₀ ↦ '𝒙¹₁₀₁ = 𝒛₃₀][𝚪₍₁₎₃₀ ↦ 0 = 𝒛₃₀][𝚪₃₀ ↦ □][𝒙₃₁ ↦ 0]
+∴ '𝒙¹₁₀₁ + 0 = 0 ⊢ '𝒙¹₁₀₁ = 𝒛₃₀, 0 = 𝒛₃₀
+lemma T1B. object 𝒙₄₀, 𝒚₄₀.
+  𝒙₄₀ = 𝒚₄₀ ⊢ 𝒚₄₀ = 𝒙₄₀
+lemma T1B. object 𝒙₄₁, 𝒚₄₁.
+  𝒙₄₁ = 𝒚₄₁ ⊢ 𝒚₄₁ = 𝒙₄₁
+[𝒚₄₀ ↦ '𝒙¹₁₀₁][𝒙₄₀ ↦ 𝒛₃₀][𝒚₄₁ ↦ 0][𝒙₄₁ ↦ 𝒛₃₀][𝒛₃₀ ↦ '𝒙¹₁₀₁ + 0]
+∴ '𝒙¹₁₀₁ + 0 = 0 ⊢ '𝒙¹₁₀₁ + 0 = '𝒙¹₁₀₁
+axiom S5. object 𝑥₅₀.
+  𝑥₅₀ + 0 = 𝑥₅₀.
+[𝑥₅₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  s(𝒙² + '𝒚¹) ≠ 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒚¹) ≠ 0
+succeeded:
+  MP₍NE₎: S3₍NE₎; IC: T1b.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+[𝑥₁₀₁ ↦ s('𝒙² + '𝒚¹)][𝑦₁₀₁ ↦ 0][𝑩₁₀ ↦ ¬s('𝒙² + '𝒚¹) = 0]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ ¬s('𝒙² + '𝒚¹) = 0
+axiom S3. object 𝑥₂₀.
+  0 ≠ s(𝑥₂₀).
+definition NE. object 𝑥₂₀₁, 𝑦₂₀₁.
+  𝑥₂₀₁ ≠ 𝑦₂₀₁ ≔ ¬𝑥₂₀₁ = 𝑦₂₀₁.
+rule IC. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁ ⇒ 𝑩₂₁ ⊢ ¬𝑩₂₁ ⇒ ¬𝑨₂₁.
+[𝑥₂₀₁ ↦ 0][𝑦₂₀₁ ↦ s(𝑥₂₀)][𝑨₁₀ ↦ ¬0 = s(𝑥₂₀)][𝑩₂₁ ↦ 0 = s(𝑥₂₀)][𝑨₂₁ ↦ s('𝒙² + '𝒚¹) = 0]
+∴ s('𝒙² + '𝒚¹) = 0 ⇒ 0 = s(𝑥₂₀)
+lemma T1b. object 𝒙₃₀, 𝒚₃₀.
+  𝒙₃₀ = 𝒚₃₀ ⇒ 𝒚₃₀ = 𝒙₃₀
+[𝒙₃₀ ↦ s('𝒙² + '𝒚¹)][𝒚₃₀ ↦ 0][𝑥₂₀ ↦ '𝒙² + '𝒚¹]
+∎
+
+
+Proving 2. object 𝒙².
+  s(𝒙² + '𝒚¹) ≠ 0 ⇒ 𝒙² + s('𝒚¹) ≠ 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒚¹) ≠ 0 ⇒ '𝒙² + s('𝒚¹) ≠ 0
+succeeded:
+  IC₍NE, NE₎: DT: T1C: T1B: S6.
+rule IC. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ⇒ 𝑩₁₀ ⊢ ¬𝑩₁₀ ⇒ ¬𝑨₁₀.
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+definition NE. object 𝑥₁₀₂, 𝑦₁₀₂.
+  𝑥₁₀₂ ≠ 𝑦₁₀₂ ≔ ¬𝑥₁₀₂ = 𝑦₁₀₂.
+[𝑥₁₀₁ ↦ s('𝒙² + '𝒚¹)][𝑦₁₀₁ ↦ 0][𝑩₁₀ ↦ s('𝒙² + '𝒚¹) = 0][𝑥₁₀₂ ↦ '𝒙² + s('𝒚¹)][𝑦₁₀₂ ↦ 0][𝑨₁₀ ↦ '𝒙² + s('𝒚¹) = 0]
+∴ '𝒙² + s('𝒚¹) = 0 ⇒ s('𝒙² + '𝒚¹) = 0
+postulate DT. formula sequence 𝜞₂₀ formula 𝑨₂₀, 𝑩₂₀.
+  𝜞₂₀, 𝑨₂₀ ⊢ 𝑩₂₀ ⊩ 𝜞₂₀ ⊢ 𝑨₂₀ ⇒ 𝑩₂₀.
+[𝑨₂₀ ↦ '𝒙² + s('𝒚¹) = 0][𝑩₂₀ ↦ s('𝒙² + '𝒚¹) = 0][𝜞₂₀ ↦ ⦰]
+∴ '𝒙² + s('𝒚¹) = 0 ⊢ s('𝒙² + '𝒚¹) = 0
+lemma T1C. object 𝒙₃₀, 𝒚₃₀, 𝒛₃₀.
+  𝒙₃₀ = 𝒚₃₀, 𝒚₃₀ = 𝒛₃₀ ⊢ 𝒙₃₀ = 𝒛₃₀
+[𝒙₃₀ ↦ s('𝒙² + '𝒚¹)][𝒛₃₀ ↦ 0][𝚪₍₀₎₃₀ ↦ s('𝒙² + '𝒚¹) = 𝒚₃₀][𝒚₃₀ ↦ '𝒙² + s('𝒚¹)][𝚪₃₀ ↦ □]
+∴ '𝒙² + s('𝒚¹) = 0 ⊢ s('𝒙² + '𝒚¹) = '𝒙² + s('𝒚¹)
+lemma T1B. object 𝒙₄₀, 𝒚₄₀.
+  𝒙₄₀ = 𝒚₄₀ ⊢ 𝒚₄₀ = 𝒙₄₀
+[𝒚₄₀ ↦ s('𝒙² + '𝒚¹)][𝒙₄₀ ↦ '𝒙² + s('𝒚¹)]
+∴ '𝒙² + s('𝒚¹) = 0 ⊢ '𝒙² + s('𝒚¹) = s('𝒙² + '𝒚¹)
+axiom S6. object 𝑥₅₀, 𝑦₅₀.
+  𝑥₅₀ + s(𝑦₅₀) = s(𝑥₅₀ + 𝑦₅₀).
+[𝑥₅₀ ↦ '𝒙²][𝑦₅₀ ↦ '𝒚¹]
+∎
+
+
+Proving 3. object 𝒙².
+  𝒙² + s('𝒚¹) ≠ 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚¹) ≠ 0
+succeeded:
+  MP: 1; 2.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² + s('𝒚¹) ≠ 0]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙² + s('𝒚¹) ≠ 0
+1. object 𝒙²₂₀.
+  s(𝒙²₂₀ + '𝒚¹) ≠ 0.
+2. object 𝒙²₂₁.
+  s(𝒙²₂₁ + '𝒚¹) ≠ 0 ⇒ 𝒙²₂₁ + s('𝒚¹) ≠ 0.
+[𝑨₁₀ ↦ s(𝒙²₂₀ + '𝒚¹) ≠ 0][𝒙²₂₁ ↦ 𝒙²₂₀][𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  DT₍D₎: NC: 3₍NE₎.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ = 0 ⇒ 𝒙¹₁₀₁ = 0 ∧ 𝒚¹₁₀₁ = 0.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝑨₁₀ ↦ '𝒙¹₁₀₁ + s('𝒚¹) = 0][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 0 ∧ s('𝒚¹) = 0][𝜞₁₀ ↦ 𝐴('𝒚¹)]
+∴ 𝐴('𝒚¹), '𝒙¹₁₀₁ + s('𝒚¹) = 0 ⊢ '𝒙¹₁₀₁ = 0 ∧ s('𝒚¹) = 0
+rule NC. formula 𝑨₂₀, 𝑩₂₀.
+  ¬𝑨₂₀, 𝑨₂₀ ⊢ 𝑩₂₀.
+[𝑩₂₀ ↦ '𝒙¹₁₀₁ = 0 ∧ s('𝒚¹) = 0][𝚪₍₀₎₂₀ ↦ ¬𝑨₂₀][𝑨₂₀ ↦ '𝒙¹₁₀₁ + s('𝒚¹) = 0][𝚪₂₀ ↦ □]
+∴ 𝐴('𝒚¹), '𝒙¹₁₀₁ + s('𝒚¹) = 0 ⊢ ¬'𝒙¹₁₀₁ + s('𝒚¹) = 0
+3. object 𝒙²₃₀.
+  𝒙²₃₀ + s('𝒚¹) ≠ 0.
+definition NE. object 𝑥₃₀₁, 𝑦₃₀₁.
+  𝑥₃₀₁ ≠ 𝑦₃₀₁ ≔ ¬𝑥₃₀₁ = 𝑦₃₀₁.
+[𝑥₃₀₁ ↦ 𝒙²₃₀ + s('𝒚¹)][𝑦₃₀₁ ↦ 0][𝒙²₃₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = 0 ⇒ '𝒕 = 0 ∧ '𝒔 = 0
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 + '°𝒛₁₀ = 0 ⇒ '𝒕 = 0 ∧ '°𝒛₁₀ = 0]
+∴ '𝒕 + '°𝒛₁₀ = 0 ⇒ '𝒕 = 0 ∧ '°𝒛₁₀ = 0
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ 𝒙¹₂₀₁ + 𝒚¹₂₀₁ = 0 ⇒ 𝒙¹₂₀₁ = 0 ∧ 𝒚¹₂₀₁ = 0.
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0).
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T3D. object 𝒔, 𝒕.
+  𝒕 + 𝒔 = 0 ⊢ 𝒕 = 0 ∧ 𝒔 = 0
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = 0 ⊢ '𝒕 = 0 ∧ '𝒔 = 0
+succeeded:
+  MP: premise ⊢; T3d.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 = 0 ∧ '𝒔 = 0][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒕 = 0 ∧ '𝒔 = 0][𝚪₁₀ ↦ □]
+∴ '𝒕 + '𝒔 = 0 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 = 0 ∧ '𝒔 = 0
+premise ⊢. object '𝒔, '𝒕.
+  '𝒕 + '𝒔 = 0.
+lemma T3d. object 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ + 𝒔₂₁ = 0 ⇒ 𝒕₂₁ = 0 ∧ 𝒔₂₁ = 0
+[𝑨₁₀ ↦ '𝒕 + '𝒔 = 0][𝒕₂₁ ↦ '𝒕][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T3e. object 𝒔, 𝒕.
+  𝒕 ⋅ 𝒔 = 0 ⇒ 𝒕 = 0 ∨ 𝒔 = 0
+Proving i. 𝐴(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  DT₍D₎: DI2: T1a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 0 ⇒ 𝒙¹₁₀₁ = 0 ∨ 𝒚¹₁₀₁ = 0.
+[𝒚¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = 0][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 0 ∨ 0 = 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙¹₁₀₁ ⋅ 0 = 0 ⊢ '𝒙¹₁₀₁ = 0 ∨ 0 = 0
+rule DI2. formula 𝑨₂₀, 𝑩₂₀.
+  𝑩₂₀ ⊢ 𝑨₂₀ ∨ 𝑩₂₀.
+[𝑨₂₀ ↦ '𝒙¹₁₀₁ = 0][𝑩₂₀ ↦ 0 = 0]
+∴ '𝒙¹₁₀₁ ⋅ 0 = 0 ⊢ 0 = 0
+lemma T1a. object 𝒙₃₀.
+  𝒙₃₀ = 𝒙₃₀
+[𝒙₃₀ ↦ 0]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) = 0 ⇒ 𝒙² ⋅ '𝒚¹ + 𝒙² = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = 0 ⇒ '𝒙² ⋅ '𝒚¹ + '𝒙² = 0
+succeeded:
+  DT: T1C: T1D: T1a; S8.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² ⋅ s('𝒚¹) = 0][𝑩₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² = 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² ⋅ s('𝒚¹) = 0 ⊢ '𝒙² ⋅ '𝒚¹ + '𝒙² = 0
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+[𝒙₂₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝒛₂₀ ↦ 0][𝚪₍₀₎₂₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² = 𝒚₂₀][𝒚₂₀ ↦ '𝒙² ⋅ s('𝒚¹)][𝚪₂₀ ↦ □]
+∴ '𝒙² ⋅ s('𝒚¹) = 0 ⊢ '𝒙² ⋅ '𝒚¹ + '𝒙² = '𝒙² ⋅ s('𝒚¹)
+lemma T1D. object 𝒙₃₀, 𝒚₃₀, 𝒛₃₀.
+  𝒙₃₀ = 𝒛₃₀, 𝒚₃₀ = 𝒛₃₀ ⊢ 𝒙₃₀ = 𝒚₃₀
+[𝒙₃₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝒚₃₀ ↦ '𝒙² ⋅ s('𝒚¹)][𝚪₍₀₎₃₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² = 𝒛₃₀][𝚪₍₁₎₃₀ ↦ '𝒙² ⋅ s('𝒚¹) = 𝒛₃₀][𝚪₃₀ ↦ □]
+∴ '𝒙² ⋅ s('𝒚¹) = 0 ⊢ '𝒙² ⋅ '𝒚¹ + '𝒙² = 𝒛₃₀, '𝒙² ⋅ s('𝒚¹) = 𝒛₃₀
+lemma T1a. object 𝒙₄₀.
+  𝒙₄₀ = 𝒙₄₀
+axiom S8. object 𝑥₄₁, 𝑦₄₁.
+  𝑥₄₁ ⋅ s(𝑦₄₁) = 𝑥₄₁ ⋅ 𝑦₄₁ + 𝑥₄₁.
+[𝒙₄₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝒛₃₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝑥₄₁ ↦ '𝒙²][𝑦₄₁ ↦ '𝒚¹]
+∎
+
+
+Proving 2. object 𝒙².
+  𝒙² ⋅ '𝒚¹ + 𝒙² = 0 ⇒ 𝒙² = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + '𝒙² = 0 ⇒ '𝒙² = 0
+succeeded:
+  DT: CE2: T3D.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² = 0][𝑩₁₀ ↦ '𝒙² = 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² ⋅ '𝒚¹ + '𝒙² = 0 ⊢ '𝒙² = 0
+rule CE2. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀ ∧ 𝑩₂₀ ⊢ 𝑩₂₀.
+[𝑩₂₀ ↦ '𝒙² = 0]
+∴ '𝒙² ⋅ '𝒚¹ + '𝒙² = 0 ⊢ 𝑨₂₀ ∧ '𝒙² = 0
+lemma T3D. object 𝒔₃₀, 𝒕₃₀.
+  𝒕₃₀ + 𝒔₃₀ = 0 ⊢ 𝒕₃₀ = 0 ∧ 𝒔₃₀ = 0
+[𝑨₂₀ ↦ 𝒕₃₀ = 0][𝒔₃₀ ↦ '𝒙²][𝒕₃₀ ↦ '𝒙² ⋅ '𝒚¹]
+∎
+
+
+Proving 3. object 𝒙².
+  𝒙² = 0 ⇒ 𝒙² = 0 ∨ s('𝒚¹) = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² = 0 ⇒ '𝒙² = 0 ∨ s('𝒚¹) = 0
+succeeded:
+  DT: DI1.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² = 0][𝑩₁₀ ↦ '𝒙² = 0 ∨ s('𝒚¹) = 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² = 0 ⊢ '𝒙² = 0 ∨ s('𝒚¹) = 0
+rule DI1. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀ ⊢ 𝑨₂₀ ∨ 𝑩₂₀.
+[𝑨₂₀ ↦ '𝒙² = 0][𝑩₂₀ ↦ s('𝒚¹) = 0]
+∎
+
+
+Proving 4. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) = 0 ⇒ 𝒙² = 0 ∨ s('𝒚¹) = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = 0 ⇒ '𝒙² = 0 ∨ s('𝒚¹) = 0
+succeeded:
+  ICh: ICh; 3: 1; 2.
+rule ICh. formula 𝑨₁₀, 𝑩₁₀, 𝑪₁₀.
+  𝑨₁₀ ⇒ 𝑩₁₀, 𝑩₁₀ ⇒ 𝑪₁₀ ⊢ 𝑨₁₀ ⇒ 𝑪₁₀.
+[𝑨₁₀ ↦ '𝒙² ⋅ s('𝒚¹) = 0][𝑪₁₀ ↦ '𝒙² = 0 ∨ s('𝒚¹) = 0]
+∴ '𝒙² ⋅ s('𝒚¹) = 0 ⇒ 𝑩₁₀, 𝑩₁₀ ⇒ '𝒙² = 0 ∨ s('𝒚¹) = 0
+rule ICh. formula 𝑨₂₀, 𝑩₂₀, 𝑪₂₀.
+  𝑨₂₀ ⇒ 𝑩₂₀, 𝑩₂₀ ⇒ 𝑪₂₀ ⊢ 𝑨₂₀ ⇒ 𝑪₂₀.
+3. object 𝒙²₂₁.
+  𝒙²₂₁ = 0 ⇒ 𝒙²₂₁ = 0 ∨ s('𝒚¹) = 0.
+[𝑨₂₀ ↦ '𝒙² ⋅ s('𝒚¹) = 0][𝑪₂₀ ↦ 𝑩₁₀][𝑩₁₀ ↦ 𝒙²₂₁ = 0][𝒙²₂₁ ↦ '𝒙²]
+∴ '𝒙² ⋅ s('𝒚¹) = 0 ⇒ 𝑩₂₀, 𝑩₂₀ ⇒ '𝒙² = 0
+1. object 𝒙²₃₀.
+  𝒙²₃₀ ⋅ s('𝒚¹) = 0 ⇒ 𝒙²₃₀ ⋅ '𝒚¹ + 𝒙²₃₀ = 0.
+2. object 𝒙²₃₁.
+  𝒙²₃₁ ⋅ '𝒚¹ + 𝒙²₃₁ = 0 ⇒ 𝒙²₃₁ = 0.
+[𝒙²₃₀ ↦ '𝒙²][𝑩₂₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² = 0][𝒙²₃₁ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  4₍D₎.
+4. object 𝒙²₁₀.
+  𝒙²₁₀ ⋅ s('𝒚¹) = 0 ⇒ 𝒙²₁₀ = 0 ∨ s('𝒚¹) = 0.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 0 ⇒ 𝒙¹₁₀₁ = 0 ∨ 𝒚¹₁₀₁ = 0.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝒙²₁₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ '𝒔 = 0 ⇒ '𝒕 = 0 ∨ '𝒔 = 0
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 ⋅ '°𝒛₁₀ = 0 ⇒ '𝒕 = 0 ∨ '°𝒛₁₀ = 0]
+∴ '𝒕 ⋅ '°𝒛₁₀ = 0 ⇒ '𝒕 = 0 ∨ '°𝒛₁₀ = 0
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ 𝒙¹₂₀₁ ⋅ 𝒚¹₂₀₁ = 0 ⇒ 𝒙¹₂₀₁ = 0 ∨ 𝒚¹₂₀₁ = 0.
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0).
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T3E. object 𝒔, 𝒕.
+  𝒕 ⋅ 𝒔 = 0 ⊢ 𝒕 = 0 ∨ 𝒔 = 0
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ '𝒔 = 0 ⊢ '𝒕 = 0 ∨ '𝒔 = 0
+succeeded:
+  MP: premise ⊢; T3e.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 = 0 ∨ '𝒔 = 0][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒕 = 0 ∨ '𝒔 = 0][𝚪₁₀ ↦ □]
+∴ '𝒕 ⋅ '𝒔 = 0 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 = 0 ∨ '𝒔 = 0
+premise ⊢. object '𝒔, '𝒕.
+  '𝒕 ⋅ '𝒔 = 0.
+lemma T3e. object 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ ⋅ 𝒔₂₁ = 0 ⇒ 𝒕₂₁ = 0 ∨ 𝒔₂₁ = 0
+[𝑨₁₀ ↦ '𝒕 ⋅ '𝒔 = 0][𝒕₂₁ ↦ '𝒕][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T3Ea. object 𝒔, 𝒕.
+  𝒕 ≠ 0, 𝒕 ⋅ 𝒔 = 0 ⊢ 𝒔 = 0
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ≠ 0, '𝒕 ⋅ '𝒔 = 0 ⊢ '𝒔 = 0
+succeeded:
+  DS1₍NE₎: T3E.
+rule DS1. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ∨ 𝑩₁₀, ¬𝑨₁₀ ⊢ 𝑩₁₀.
+definition NE. object 𝑥₁₀₂, 𝑦₁₀₂.
+  𝑥₁₀₂ ≠ 𝑦₁₀₂ ≔ ¬𝑥₁₀₂ = 𝑦₁₀₂.
+[𝑩₁₀ ↦ '𝒔 = 0][𝚪₍₀₎₁₀ ↦ 𝑨₁₀ ∨ '𝒔 = 0][𝑥₁₀₂ ↦ '𝒕][𝑦₁₀₂ ↦ 0][𝑨₁₀ ↦ '𝒕 = 0][𝚪₁₀ ↦ □]
+∴ '𝒕 ≠ 0, '𝒕 ⋅ '𝒔 = 0 ⊢ '𝒕 = 0 ∨ '𝒔 = 0
+lemma T3E. object 𝒔₂₀, 𝒕₂₀.
+  𝒕₂₀ ⋅ 𝒔₂₀ = 0 ⊢ 𝒕₂₀ = 0 ∨ 𝒔₂₀ = 0
+[𝒕₂₀ ↦ '𝒕][𝒔₂₀ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T3Eb. object 𝒔, 𝒕.
+  𝒔 ≠ 0, 𝒕 ⋅ 𝒔 = 0 ⊢ 𝒕 = 0
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒔 ≠ 0, '𝒕 ⋅ '𝒔 = 0 ⊢ '𝒕 = 0
+succeeded:
+  DS2: T3E; premise ⊢₀₍NE₎.
+rule DS2. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ∨ 𝑩₁₀, ¬𝑩₁₀ ⊢ 𝑨₁₀.
+[𝑨₁₀ ↦ '𝒕 = 0][𝚪₍₀₎₁₀ ↦ '𝒕 = 0 ∨ 𝑩₁₀][𝚪₍₁₎₁₀ ↦ ¬𝑩₁₀][𝚪₁₀ ↦ □]
+∴ '𝒔 ≠ 0, '𝒕 ⋅ '𝒔 = 0 ⊢ '𝒕 = 0 ∨ 𝑩₁₀, ¬𝑩₁₀
+lemma T3E. object 𝒔₂₀, 𝒕₂₀.
+  𝒕₂₀ ⋅ 𝒔₂₀ = 0 ⊢ 𝒕₂₀ = 0 ∨ 𝒔₂₀ = 0
+premise ⊢₀. object '𝒔.
+  '𝒔 ≠ 0.
+definition NE. object 𝑥₂₁₁, 𝑦₂₁₁.
+  𝑥₂₁₁ ≠ 𝑦₂₁₁ ≔ ¬𝑥₂₁₁ = 𝑦₂₁₁.
+[𝒕₂₀ ↦ '𝒕][𝑩₁₀ ↦ 𝒔₂₀ = 0][𝒔₂₀ ↦ '𝒔][𝑥₂₁₁ ↦ '𝒔][𝑦₂₁₁ ↦ 0]
+∎
+
+
+
+Proving lemma T3f. object 𝒔, 𝒕.
+  𝒕 + 𝒔 = 1 ⇒ 𝒕 = 0 ∧ 𝒔 = 1 ∨ 𝒕 = 1 ∧ 𝒔 = 0
+Proving i. 𝐴(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  DT₍D₎: DI2: CI: T1D; T1a: T1B; T1B: S5.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ = 1 ⇒ 𝒙¹₁₀₁ = 0 ∧ 𝒚¹₁₀₁ = 1 ∨ 𝒙¹₁₀₁ = 1 ∧ 𝒚¹₁₀₁ = 0.
+[𝒚¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ + 0 = 1][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 0 ∧ 0 = 1 ∨ '𝒙¹₁₀₁ = 1 ∧ 0 = 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙¹₁₀₁ + 0 = 1 ⊢ '𝒙¹₁₀₁ = 0 ∧ 0 = 1 ∨ '𝒙¹₁₀₁ = 1 ∧ 0 = 0
+rule DI2. formula 𝑨₂₀, 𝑩₂₀.
+  𝑩₂₀ ⊢ 𝑨₂₀ ∨ 𝑩₂₀.
+[𝑨₂₀ ↦ '𝒙¹₁₀₁ = 0 ∧ 0 = 1][𝑩₂₀ ↦ '𝒙¹₁₀₁ = 1 ∧ 0 = 0]
+∴ '𝒙¹₁₀₁ + 0 = 1 ⊢ '𝒙¹₁₀₁ = 1 ∧ 0 = 0
+rule CI. formula 𝑨₃₀, 𝑩₃₀.
+  𝑨₃₀, 𝑩₃₀ ⊢ 𝑨₃₀ ∧ 𝑩₃₀.
+[𝑨₃₀ ↦ '𝒙¹₁₀₁ = 1][𝑩₃₀ ↦ 0 = 0][𝚪₍₀₎₃₀ ↦ '𝒙¹₁₀₁ = 1][𝚪₍₁₎₃₀ ↦ 0 = 0][𝚪₃₀ ↦ □]
+∴ '𝒙¹₁₀₁ + 0 = 1 ⊢ '𝒙¹₁₀₁ = 1, 0 = 0
+lemma T1D. object 𝒙₄₀, 𝒚₄₀, 𝒛₄₀.
+  𝒙₄₀ = 𝒛₄₀, 𝒚₄₀ = 𝒛₄₀ ⊢ 𝒙₄₀ = 𝒚₄₀
+lemma T1a. object 𝒙₄₁.
+  𝒙₄₁ = 𝒙₄₁
+[𝒙₄₀ ↦ '𝒙¹₁₀₁][𝒚₄₀ ↦ 1][𝚪₍₀₎₄₀ ↦ '𝒙¹₁₀₁ = 𝒛₄₀][𝚪₍₁₎₄₀ ↦ 1 = 𝒛₄₀][𝚪₄₀ ↦ □][𝒙₄₁ ↦ 0]
+∴ '𝒙¹₁₀₁ + 0 = 1 ⊢ '𝒙¹₁₀₁ = 𝒛₄₀, 1 = 𝒛₄₀
+lemma T1B. object 𝒙₅₀, 𝒚₅₀.
+  𝒙₅₀ = 𝒚₅₀ ⊢ 𝒚₅₀ = 𝒙₅₀
+lemma T1B. object 𝒙₅₁, 𝒚₅₁.
+  𝒙₅₁ = 𝒚₅₁ ⊢ 𝒚₅₁ = 𝒙₅₁
+[𝒚₅₀ ↦ '𝒙¹₁₀₁][𝒙₅₀ ↦ 𝒛₄₀][𝒚₅₁ ↦ 1][𝒙₅₁ ↦ 𝒛₄₀][𝒛₄₀ ↦ '𝒙¹₁₀₁ + 0]
+∴ '𝒙¹₁₀₁ + 0 = 1 ⊢ '𝒙¹₁₀₁ + 0 = '𝒙¹₁₀₁
+axiom S5. object 𝑥₆₀.
+  𝑥₆₀ + 0 = 𝑥₆₀.
+[𝑥₆₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  𝒙² + s('𝒚¹) = 1 ⊢ s(𝒙² + '𝒚¹) = 1.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚¹) = 1 ⊢ s('𝒙² + '𝒚¹) = 1
+succeeded:
+  T1C: T1B: S6.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒙² + '𝒚¹)][𝒛₁₀ ↦ 1][𝚪₍₀₎₁₀ ↦ s('𝒙² + '𝒚¹) = 𝒚₁₀][𝒚₁₀ ↦ '𝒙² + s('𝒚¹)][𝚪₁₀ ↦ □]
+∴ '𝒙² + s('𝒚¹) = 1 ⊢ s('𝒙² + '𝒚¹) = '𝒙² + s('𝒚¹)
+lemma T1B. object 𝒙₂₀, 𝒚₂₀.
+  𝒙₂₀ = 𝒚₂₀ ⊢ 𝒚₂₀ = 𝒙₂₀
+[𝒚₂₀ ↦ s('𝒙² + '𝒚¹)][𝒙₂₀ ↦ '𝒙² + s('𝒚¹)]
+∴ '𝒙² + s('𝒚¹) = 1 ⊢ '𝒙² + s('𝒚¹) = s('𝒙² + '𝒚¹)
+axiom S6. object 𝑥₃₀, 𝑦₃₀.
+  𝑥₃₀ + s(𝑦₃₀) = s(𝑥₃₀ + 𝑦₃₀).
+[𝑥₃₀ ↦ '𝒙²][𝑦₃₀ ↦ '𝒚¹]
+∎
+
+
+Proving 2. object 𝒙².
+  s(𝒙² + '𝒚¹) = 1 ⊢ 𝒙² + '𝒚¹ = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  s('𝒙² + '𝒚¹) = 1 ⊢ '𝒙² + '𝒚¹ = 0
+succeeded:
+  MP: premise ⊢; S4₍n1₎.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² + '𝒚¹ = 0][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒙² + '𝒚¹ = 0][𝚪₁₀ ↦ □]
+∴ s('𝒙² + '𝒚¹) = 1 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙² + '𝒚¹ = 0
+premise ⊢. object '𝒚¹, '𝒙².
+  s('𝒙² + '𝒚¹) = 1.
+axiom S4. object 𝑥₂₁, 𝑦₂₁.
+  s(𝑥₂₁) = s(𝑦₂₁) ⇒ 𝑥₂₁ = 𝑦₂₁.
+definition n1. 
+  1 ≔ s(0).
+[𝑨₁₀ ↦ s('𝒙² + '𝒚¹) = 1][𝑥₂₁ ↦ '𝒙² + '𝒚¹][𝑦₂₁ ↦ 0]
+∎
+
+
+Proving 3. object 𝒙².
+  𝒙² + '𝒚¹ = 0 ⊢ 𝒙² = 0 ∧ '𝒚¹ = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒚¹ = 0 ⊢ '𝒙² = 0 ∧ '𝒚¹ = 0
+succeeded:
+  T3D.
+lemma T3D. object 𝒔₁₀, 𝒕₁₀.
+  𝒕₁₀ + 𝒔₁₀ = 0 ⊢ 𝒕₁₀ = 0 ∧ 𝒔₁₀ = 0
+[𝒕₁₀ ↦ '𝒙²][𝒔₁₀ ↦ '𝒚¹]
+∎
+
+
+Proving 4. '𝒚¹ = 0 ⊢ s('𝒚¹) = 1.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  '𝒚¹ = 0 ⊢ s('𝒚¹) = 1
+succeeded:
+  MP: premise ⊢; S2₍n1₎.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ s('𝒚¹) = 1][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ s('𝒚¹) = 1][𝚪₁₀ ↦ □]
+∴ '𝒚¹ = 0 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ s('𝒚¹) = 1
+premise ⊢. object '𝒚¹.
+  '𝒚¹ = 0.
+axiom S2. object 𝑥₂₁, 𝑦₂₁.
+  𝑥₂₁ = 𝑦₂₁ ⇒ s(𝑥₂₁) = s(𝑦₂₁).
+definition n1. 
+  1 ≔ s(0).
+[𝑨₁₀ ↦ '𝒚¹ = 0][𝑥₂₁ ↦ '𝒚¹][𝑦₂₁ ↦ 0]
+∎
+
+
+Proving 5. object 𝒙².
+  𝒙² = 0, '𝒚¹ = 0 ⊢ 𝒙² = 0 ∧ s('𝒚¹) = 1 ∨ 𝒙² = 1 ∧ s('𝒚¹) = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² = 0, '𝒚¹ = 0 ⊢ '𝒙² = 0 ∧ s('𝒚¹) = 1 ∨ '𝒙² = 1 ∧ s('𝒚¹) = 0
+succeeded:
+  DI: CI: 4.
+postulate DI. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ⊢ 𝑨₁₀ ∨ 𝑩₁₀; 𝑩₁₀ ⊢ 𝑨₁₀ ∨ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² = 0 ∧ s('𝒚¹) = 1][𝑩₁₀ ↦ '𝒙² = 1 ∧ s('𝒚¹) = 0]
+∴ '𝒙² = 0, '𝒚¹ = 0 ⊢ '𝒙² = 0 ∧ s('𝒚¹) = 1
+rule CI. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑩₂₀ ⊢ 𝑨₂₀ ∧ 𝑩₂₀.
+[𝑨₂₀ ↦ '𝒙² = 0][𝑩₂₀ ↦ s('𝒚¹) = 1][𝚪₍₁₎₂₀ ↦ s('𝒚¹) = 1][𝚪₂₀ ↦ □]
+∴ '𝒙² = 0, '𝒚¹ = 0 ⊢ s('𝒚¹) = 1
+4. '𝒚¹ = 0 ⊢ s('𝒚¹) = 1.
+I
+∎
+
+
+Proving 6. object 𝒙².
+  𝒙² + '𝒚¹ = 0 ⊢ 𝒙² = 0 ∧ s('𝒚¹) = 1 ∨ 𝒙² = 1 ∧ s('𝒚¹) = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + '𝒚¹ = 0 ⊢ '𝒙² = 0 ∧ s('𝒚¹) = 1 ∨ '𝒙² = 1 ∧ s('𝒚¹) = 0
+succeeded:
+  5: CE; CE: 3; 3.
+5. object 𝒙²₁₀.
+  𝒙²₁₀ = 0, '𝒚¹ = 0 ⊢ 𝒙²₁₀ = 0 ∧ s('𝒚¹) = 1 ∨ 𝒙²₁₀ = 1 ∧ s('𝒚¹) = 0.
+[𝒙²₁₀ ↦ '𝒙²][𝚪₍₀₎₁₀ ↦ '𝒙² = 0][𝚪₍₁₎₁₀ ↦ '𝒚¹ = 0][𝚪₁₀ ↦ □]
+∴ '𝒙² + '𝒚¹ = 0 ⊢ '𝒙² = 0, '𝒚¹ = 0
+rule CE. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀ ∧ 𝑩₂₀ ⊢ 𝑨₂₀, 𝑩₂₀.
+rule CE. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁ ∧ 𝑩₂₁ ⊢ 𝑨₂₁, 𝑩₂₁.
+[𝑨₂₀ ↦ '𝒙² = 0][𝑩₂₁ ↦ '𝒚¹ = 0]
+∴ '𝒙² + '𝒚¹ = 0 ⊢ '𝒙² = 0 ∧ 𝑩₂₀; '𝒙² + '𝒚¹ = 0 ⊢ 𝑨₂₁ ∧ '𝒚¹ = 0
+3. object 𝒙²₃₀.
+  𝒙²₃₀ + '𝒚¹ = 0 ⊢ 𝒙²₃₀ = 0 ∧ '𝒚¹ = 0.
+3. object 𝒙²₃₁.
+  𝒙²₃₁ + '𝒚¹ = 0 ⊢ 𝒙²₃₁ = 0 ∧ '𝒚¹ = 0.
+[𝒙²₃₀ ↦ '𝒙²][𝑩₂₀ ↦ '𝒚¹ = 0][𝑨₂₁ ↦ 𝒙²₃₁ = 0][𝒙²₃₁ ↦ '𝒙²]
+∎
+
+
+Proving 7. object 𝒙².
+  𝒙² + s('𝒚¹) = 1 ⊢ 𝒙² + '𝒚¹ = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² + s('𝒚¹) = 1 ⊢ '𝒙² + '𝒚¹ = 0
+succeeded:
+  2: 1.
+2. object 𝒙²₁₀.
+  s(𝒙²₁₀ + '𝒚¹) = 1 ⊢ 𝒙²₁₀ + '𝒚¹ = 0.
+[𝒙²₁₀ ↦ '𝒙²]
+∴ '𝒙² + s('𝒚¹) = 1 ⊢ s('𝒙² + '𝒚¹) = 1
+1. object 𝒙²₂₀.
+  𝒙²₂₀ + s('𝒚¹) = 1 ⊢ s(𝒙²₂₀ + '𝒚¹) = 1.
+[𝒙²₂₀ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  DT₍D₎: 6: 7.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ + 𝒚¹₁₀₁ = 1 ⇒ 𝒙¹₁₀₁ = 0 ∧ 𝒚¹₁₀₁ = 1 ∨ 𝒙¹₁₀₁ = 1 ∧ 𝒚¹₁₀₁ = 0.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝑨₁₀ ↦ '𝒙¹₁₀₁ + s('𝒚¹) = 1][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 0 ∧ s('𝒚¹) = 1 ∨ '𝒙¹₁₀₁ = 1 ∧ s('𝒚¹) = 0][𝜞₁₀ ↦ 𝐴('𝒚¹)]
+∴ 𝐴('𝒚¹), '𝒙¹₁₀₁ + s('𝒚¹) = 1 ⊢ '𝒙¹₁₀₁ = 0 ∧ s('𝒚¹) = 1 ∨ '𝒙¹₁₀₁ = 1 ∧ s('𝒚¹) = 0
+6. object 𝒙²₂₀.
+  𝒙²₂₀ + '𝒚¹ = 0 ⊢ 𝒙²₂₀ = 0 ∧ s('𝒚¹) = 1 ∨ 𝒙²₂₀ = 1 ∧ s('𝒚¹) = 0.
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁]
+∴ 𝐴('𝒚¹), '𝒙¹₁₀₁ + s('𝒚¹) = 1 ⊢ '𝒙¹₁₀₁ + '𝒚¹ = 0
+7. object 𝒙²₃₀.
+  𝒙²₃₀ + s('𝒚¹) = 1 ⊢ 𝒙²₃₀ + '𝒚¹ = 0.
+[𝒙²₃₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = 1 ⇒ '𝒕 = 0 ∧ '𝒔 = 1 ∨ '𝒕 = 1 ∧ '𝒔 = 0
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 + '°𝒛₁₀ = 1 ⇒ '𝒕 = 0 ∧ '°𝒛₁₀ = 1 ∨ '𝒕 = 1 ∧ '°𝒛₁₀ = 0]
+∴ '𝒕 + '°𝒛₁₀ = 1 ⇒ '𝒕 = 0 ∧ '°𝒛₁₀ = 1 ∨ '𝒕 = 1 ∧ '°𝒛₁₀ = 0
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ 𝒙¹₂₀₁ + 𝒚¹₂₀₁ = 1 ⇒ 𝒙¹₂₀₁ = 0 ∧ 𝒚¹₂₀₁ = 1 ∨ 𝒙¹₂₀₁ = 1 ∧ 𝒚¹₂₀₁ = 0.
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0).
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T3F. object 𝒔, 𝒕.
+  𝒕 + 𝒔 = 1 ⊢ 𝒕 = 0 ∧ 𝒔 = 1 ∨ 𝒕 = 1 ∧ 𝒔 = 0
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 + '𝒔 = 1 ⊢ '𝒕 = 0 ∧ '𝒔 = 1 ∨ '𝒕 = 1 ∧ '𝒔 = 0
+succeeded:
+  MP: premise ⊢; T3f.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 = 0 ∧ '𝒔 = 1 ∨ '𝒕 = 1 ∧ '𝒔 = 0][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒕 = 0 ∧ '𝒔 = 1 ∨ '𝒕 = 1 ∧ '𝒔 = 0][𝚪₁₀ ↦ □]
+∴ '𝒕 + '𝒔 = 1 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 = 0 ∧ '𝒔 = 1 ∨ '𝒕 = 1 ∧ '𝒔 = 0
+premise ⊢. object '𝒔, '𝒕.
+  '𝒕 + '𝒔 = 1.
+lemma T3f. object 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ + 𝒔₂₁ = 1 ⇒ 𝒕₂₁ = 0 ∧ 𝒔₂₁ = 1 ∨ 𝒕₂₁ = 1 ∧ 𝒔₂₁ = 0
+[𝑨₁₀ ↦ '𝒕 + '𝒔 = 1][𝒕₂₁ ↦ '𝒕][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma EqRN. object 𝒙, 𝒚.
+  𝒙 ≠ 𝒚 ⊢ 𝒚 ≠ 𝒙
+Proving 1. '𝒚 = '𝒙 ⇒ '𝒙 = '𝒚.
+Proof succeeded.
+Variables: '𝒙, '𝒚
+Proof count: 1
+
+Proof of
+  '𝒚 = '𝒙 ⇒ '𝒙 = '𝒚
+succeeded:
+  T1b.
+lemma T1b. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ = 𝒚₁₀ ⇒ 𝒚₁₀ = 𝒙₁₀
+[𝒙₁₀ ↦ '𝒚][𝒚₁₀ ↦ '𝒙]
+∎
+
+
+Proving 2. '𝒙 ≠ '𝒚 ⇒ '𝒚 ≠ '𝒙.
+Proof succeeded.
+Variables: '𝒙, '𝒚
+Proof count: 1
+
+Proof of
+  '𝒙 ≠ '𝒚 ⇒ '𝒚 ≠ '𝒙
+succeeded:
+  IC₍NE, NE₎: 1.
+rule IC. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ⇒ 𝑩₁₀ ⊢ ¬𝑩₁₀ ⇒ ¬𝑨₁₀.
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+definition NE. object 𝑥₁₀₂, 𝑦₁₀₂.
+  𝑥₁₀₂ ≠ 𝑦₁₀₂ ≔ ¬𝑥₁₀₂ = 𝑦₁₀₂.
+[𝑥₁₀₁ ↦ '𝒙][𝑦₁₀₁ ↦ '𝒚][𝑩₁₀ ↦ '𝒙 = '𝒚][𝑥₁₀₂ ↦ '𝒚][𝑦₁₀₂ ↦ '𝒙][𝑨₁₀ ↦ '𝒚 = '𝒙]
+∴ '𝒚 = '𝒙 ⇒ '𝒙 = '𝒚
+1. '𝒚 = '𝒙 ⇒ '𝒙 = '𝒚.
+I
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚
+Proof count: 1
+
+Proof of
+  '𝒙 ≠ '𝒚 ⊢ '𝒚 ≠ '𝒙
+succeeded:
+  MP: premise ⊢; 2.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒚 ≠ '𝒙][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒚 ≠ '𝒙][𝚪₁₀ ↦ □]
+∴ '𝒙 ≠ '𝒚 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒚 ≠ '𝒙
+premise ⊢. object '𝒙, '𝒚.
+  '𝒙 ≠ '𝒚.
+2. '𝒙 ≠ '𝒚 ⇒ '𝒚 ≠ '𝒙.
+[𝑨₁₀ ↦ '𝒙 ≠ '𝒚]
+∎
+
+
+
+Proving lemma EqTrN. object 𝒙, 𝒚, 𝒛.
+  𝒙 = 𝒚, 𝒚 ≠ 𝒛 ⊢ 𝒙 ≠ 𝒛
+Proving 0. '𝒙 = '𝒚.
+Proof succeeded.
+Variables: '𝒙, '𝒚
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒚
+succeeded:
+  premise EqTrN₀.
+premise EqTrN₀. object '𝒙, '𝒚.
+  '𝒙 = '𝒚.
+I
+∎
+
+
+Proving 1. ¬'𝒚 = '𝒛.
+Proof succeeded.
+Variables: '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  ¬'𝒚 = '𝒛
+succeeded:
+  premise EqTrN₁₍NE₎.
+premise EqTrN₁. object '𝒚, '𝒛.
+  '𝒚 ≠ '𝒛.
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+[𝑥₁₀₁ ↦ '𝒚][𝑦₁₀₁ ↦ '𝒛]
+∎
+
+
+Proving 2. '𝒙 = '𝒛 ⊢ ¬'𝒚 = '𝒛.
+Proof succeeded.
+Variables: '𝒙, '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒛 ⊢ ¬'𝒚 = '𝒛
+succeeded:
+  1.
+1. ¬'𝒚 = '𝒛.
+I
+∎
+
+
+Proving 3. '𝒙 = '𝒛 ⊢ '𝒚 = '𝒛.
+Proof succeeded.
+Variables: '𝒙, '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒛 ⊢ '𝒚 = '𝒛
+succeeded:
+  T1D: T1D; T1D: T1a; 0; T1a.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒚][𝒚₁₀ ↦ '𝒛][𝚪₍₀₎₁₀ ↦ '𝒚 = 𝒛₁₀][𝚪₍₁₎₁₀ ↦ '𝒛 = 𝒛₁₀][𝚪₁₀ ↦ □]
+∴ '𝒙 = '𝒛 ⊢ '𝒚 = 𝒛₁₀, '𝒛 = 𝒛₁₀
+lemma T1D. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒛₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒚₂₀
+lemma T1D. object 𝒙₂₁, 𝒚₂₁, 𝒛₂₁.
+  𝒙₂₁ = 𝒛₂₁, 𝒚₂₁ = 𝒛₂₁ ⊢ 𝒙₂₁ = 𝒚₂₁
+[𝒙₂₀ ↦ '𝒚][𝒚₂₀ ↦ 𝒛₁₀][𝚪₍₀₎₂₀ ↦ '𝒚 = 𝒛₂₀][𝚪₍₁₎₂₀ ↦ 𝒛₁₀ = 𝒛₂₀][𝚪₂₀ ↦ □][𝒙₂₁ ↦ '𝒛][𝒚₂₁ ↦ 𝒛₁₀][𝚪₍₀₎₂₁ ↦ '𝒛 = 𝒛₂₁][𝒛₁₀ ↦ '𝒙][𝒛₂₁ ↦ '𝒛][𝚪₂₁ ↦ □]
+∴ '𝒙 = '𝒛 ⊢ '𝒚 = 𝒛₂₀, '𝒙 = 𝒛₂₀; '𝒙 = '𝒛 ⊢ '𝒛 = '𝒛
+lemma T1a. object 𝒙₃₀.
+  𝒙₃₀ = 𝒙₃₀
+0. '𝒙 = '𝒚.
+lemma T1a. object 𝒙₃₂.
+  𝒙₃₂ = 𝒙₃₂
+[𝒙₃₀ ↦ '𝒚][𝒛₂₀ ↦ '𝒚][𝒙₃₂ ↦ '𝒛]
+∎
+
+
+Proving 4. ¬'𝒙 = '𝒛.
+Proof succeeded.
+Variables: '𝒙, '𝒛
+Proof count: 1
+
+Proof of
+  ¬'𝒙 = '𝒛
+succeeded:
+  RA: 3; 2.
+postulate RA. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀; 𝜞₁₀, 𝑨₁₀ ⊢ ¬𝑩₁₀ ⊩ 𝜞₁₀ ⊢ ¬𝑨₁₀.
+[𝑨₁₀ ↦ '𝒙 = '𝒛][𝜞₁₀ ↦ ⦰]
+∴ '𝒙 = '𝒛 ⊢ 𝑩₁₀; '𝒙 = '𝒛 ⊢ ¬𝑩₁₀
+3. '𝒙 = '𝒛 ⊢ '𝒚 = '𝒛.
+2. '𝒙 = '𝒛 ⊢ ¬'𝒚 = '𝒛.
+[𝑩₁₀ ↦ '𝒚 = '𝒛]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒙, '𝒚, '𝒛
+Proof count: 1
+
+Proof of
+  '𝒙 = '𝒚, '𝒚 ≠ '𝒛 ⊢ '𝒙 ≠ '𝒛
+succeeded:
+  4₍NE₎.
+4. ¬'𝒙 = '𝒛.
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+[𝑥₁₀₁ ↦ '𝒙][𝑦₁₀₁ ↦ '𝒛]
+∎
+
+
+
+Proving lemma T3g. object 𝒔, 𝒕.
+  𝒕 ⋅ 𝒔 = 1 ⇒ 𝒕 = 1 ∧ 𝒔 = 1
+
+Proving i. 𝐴(0)
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  IRP1₍D₎: MT: DT; S3₍NE₎: T1D₍n1₎: T1B; T1B: S7.
+rule IRP1. formula 𝑨₁₀, 𝑩₁₀.
+  ¬𝑨₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 1 ⇒ 𝒙¹₁₀₁ = 1 ∧ 𝒚¹₁₀₁ = 1.
+[𝒚¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = 1][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 1 ∧ 0 = 1]
+∴ ¬'𝒙¹₁₀₁ ⋅ 0 = 1
+rule MT. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀ ⇒ 𝑩₂₀, ¬𝑩₂₀ ⊢ ¬𝑨₂₀.
+[𝑨₂₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = 1]
+∴ '𝒙¹₁₀₁ ⋅ 0 = 1 ⇒ 𝑩₂₀, ¬𝑩₂₀
+postulate DT. formula sequence 𝜞₃₀ formula 𝑨₃₀, 𝑩₃₀.
+  𝜞₃₀, 𝑨₃₀ ⊢ 𝑩₃₀ ⊩ 𝜞₃₀ ⊢ 𝑨₃₀ ⇒ 𝑩₃₀.
+axiom S3. object 𝑥₃₁.
+  0 ≠ s(𝑥₃₁).
+definition NE. object 𝑥₃₁₁, 𝑦₃₁₁.
+  𝑥₃₁₁ ≠ 𝑦₃₁₁ ≔ ¬𝑥₃₁₁ = 𝑦₃₁₁.
+[𝑨₃₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = 1][𝑩₃₀ ↦ 𝑩₂₀][𝜞₃₀ ↦ ⦰][𝑥₃₁₁ ↦ 0][𝑦₃₁₁ ↦ s(𝑥₃₁)][𝑩₂₀ ↦ 0 = s(𝑥₃₁)]
+∴ '𝒙¹₁₀₁ ⋅ 0 = 1 ⊢ 0 = s(𝑥₃₁)
+lemma T1D. object 𝒙₄₀, 𝒚₄₀, 𝒛₄₀.
+  𝒙₄₀ = 𝒛₄₀, 𝒚₄₀ = 𝒛₄₀ ⊢ 𝒙₄₀ = 𝒚₄₀
+definition n1. 
+  1 ≔ s(0).
+[𝒙₄₀ ↦ 0][𝒚₄₀ ↦ 1][𝑥₃₁ ↦ 0][𝚪₍₀₎₄₀ ↦ 0 = 𝒛₄₀][𝚪₍₁₎₄₀ ↦ 1 = 𝒛₄₀][𝚪₄₀ ↦ □]
+∴ '𝒙¹₁₀₁ ⋅ 0 = 1 ⊢ 0 = 𝒛₄₀, 1 = 𝒛₄₀
+lemma T1B. object 𝒙₅₀, 𝒚₅₀.
+  𝒙₅₀ = 𝒚₅₀ ⊢ 𝒚₅₀ = 𝒙₅₀
+lemma T1B. object 𝒙₅₁, 𝒚₅₁.
+  𝒙₅₁ = 𝒚₅₁ ⊢ 𝒚₅₁ = 𝒙₅₁
+[𝒚₅₀ ↦ 0][𝒙₅₀ ↦ 𝒛₄₀][𝒚₅₁ ↦ 1][𝒙₅₁ ↦ 𝒛₄₀][𝒛₄₀ ↦ '𝒙¹₁₀₁ ⋅ 0]
+∴ '𝒙¹₁₀₁ ⋅ 0 = 1 ⊢ '𝒙¹₁₀₁ ⋅ 0 = 0
+axiom S7. object 𝑥₆₀.
+  𝑥₆₀ ⋅ 0 = 0.
+[𝑥₆₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving 1. object 𝒙².
+  𝒙² ⋅ 0 = 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ 0 = 0
+succeeded:
+  S7.
+axiom S7. object 𝑥₁₀.
+  𝑥₁₀ ⋅ 0 = 0.
+[𝑥₁₀ ↦ '𝒙²]
+∎
+
+
+Proving 2a. object 𝒙².
+  𝒙² ⋅ 0 ≠ 1.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ 0 ≠ 1
+succeeded:
+  EqTrN: 1; S3₍n1₎.
+lemma EqTrN. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ ≠ 𝒛₁₀ ⊢ 𝒙₁₀ ≠ 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ 0][𝒛₁₀ ↦ 1]
+∴ '𝒙² ⋅ 0 = 𝒚₁₀, 𝒚₁₀ ≠ 1
+1. object 𝒙²₂₀.
+  𝒙²₂₀ ⋅ 0 = 0.
+axiom S3. object 𝑥₂₁.
+  0 ≠ s(𝑥₂₁).
+definition n1. 
+  1 ≔ s(0).
+[𝒙²₂₀ ↦ '𝒙²][𝒚₁₀ ↦ 0][𝑥₂₁ ↦ 0]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  IRP1₍D₎: 2a₍NE₎.
+rule IRP1. formula 𝑨₁₀, 𝑩₁₀.
+  ¬𝑨₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 1 ⇒ 𝒙¹₁₀₁ = 1 ∧ 𝒚¹₁₀₁ = 1.
+[𝒚¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = 1][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 1 ∧ 0 = 1]
+∴ ¬'𝒙¹₁₀₁ ⋅ 0 = 1
+2a. object 𝒙²₂₀.
+  𝒙²₂₀ ⋅ 0 ≠ 1.
+definition NE. object 𝑥₂₀₁, 𝑦₂₀₁.
+  𝑥₂₀₁ ≠ 𝑦₂₀₁ ≔ ¬𝑥₂₀₁ = 𝑦₂₀₁.
+[𝑥₂₀₁ ↦ 𝒙²₂₀ ⋅ 0][𝑦₂₀₁ ↦ 1][𝒙²₂₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving 2. ¬0 = 1.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  ¬0 = 1
+succeeded:
+  S3₍n1, NE₎.
+axiom S3. object 𝑥₁₀.
+  0 ≠ s(𝑥₁₀).
+definition n1. 
+  1 ≔ s(0).
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+[𝑥₁₀₁ ↦ 0][𝑦₁₀₁ ↦ s(𝑥₁₀)][𝑥₁₀ ↦ 0]
+∎
+
+
+Proving 3. object 𝒙².
+  𝒙² ⋅ 0 = 1 ⊢ 0 = 1.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ 0 = 1 ⊢ 0 = 1
+succeeded:
+  T1D: T1B; T1B: 1.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ 0][𝒚₁₀ ↦ 1][𝚪₍₀₎₁₀ ↦ 0 = 𝒛₁₀][𝚪₍₁₎₁₀ ↦ 1 = 𝒛₁₀][𝚪₁₀ ↦ □]
+∴ '𝒙² ⋅ 0 = 1 ⊢ 0 = 𝒛₁₀, 1 = 𝒛₁₀
+lemma T1B. object 𝒙₂₀, 𝒚₂₀.
+  𝒙₂₀ = 𝒚₂₀ ⊢ 𝒚₂₀ = 𝒙₂₀
+lemma T1B. object 𝒙₂₁, 𝒚₂₁.
+  𝒙₂₁ = 𝒚₂₁ ⊢ 𝒚₂₁ = 𝒙₂₁
+[𝒚₂₀ ↦ 0][𝒙₂₀ ↦ 𝒛₁₀][𝒚₂₁ ↦ 1][𝒙₂₁ ↦ 𝒛₁₀][𝒛₁₀ ↦ '𝒙² ⋅ 0]
+∴ '𝒙² ⋅ 0 = 1 ⊢ '𝒙² ⋅ 0 = 0
+1. object 𝒙²₃₀.
+  𝒙²₃₀ ⋅ 0 = 0.
+[𝒙²₃₀ ↦ '𝒙²]
+∎
+
+
+Proving 4. object 𝒙².
+  ¬𝒙² ⋅ 0 = 1.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  ¬'𝒙² ⋅ 0 = 1
+succeeded:
+  MT: DT; 2: 3.
+rule MT. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ⇒ 𝑩₁₀, ¬𝑩₁₀ ⊢ ¬𝑨₁₀.
+[𝑨₁₀ ↦ '𝒙² ⋅ 0 = 1]
+∴ '𝒙² ⋅ 0 = 1 ⇒ 𝑩₁₀, ¬𝑩₁₀
+postulate DT. formula sequence 𝜞₂₀ formula 𝑨₂₀, 𝑩₂₀.
+  𝜞₂₀, 𝑨₂₀ ⊢ 𝑩₂₀ ⊩ 𝜞₂₀ ⊢ 𝑨₂₀ ⇒ 𝑩₂₀.
+2. ¬0 = 1.
+[𝑨₂₀ ↦ '𝒙² ⋅ 0 = 1][𝑩₂₀ ↦ 𝑩₁₀][𝜞₂₀ ↦ ⦰][𝑩₁₀ ↦ 0 = 1]
+∴ '𝒙² ⋅ 0 = 1 ⊢ 0 = 1
+3. object 𝒙²₃₀.
+  𝒙²₃₀ ⋅ 0 = 1 ⊢ 0 = 1.
+[𝒙²₃₀ ↦ '𝒙²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  IRP1₍D₎: 4.
+rule IRP1. formula 𝑨₁₀, 𝑩₁₀.
+  ¬𝑨₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 1 ⇒ 𝒙¹₁₀₁ = 1 ∧ 𝒚¹₁₀₁ = 1.
+[𝒚¹₁₀₁ ↦ 0][𝑨₁₀ ↦ '𝒙¹₁₀₁ ⋅ 0 = 1][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 1 ∧ 0 = 1]
+∴ ¬'𝒙¹₁₀₁ ⋅ 0 = 1
+4. object 𝒙²₂₀.
+  ¬𝒙²₂₀ ⋅ 0 = 1.
+[𝒙²₂₀ ↦ '𝒙¹₁₀₁]
+∎
+
+
+
+Proving ii. object 𝒚¹.
+  𝐴(𝒚¹) ⊢ 𝐴(s(𝒚¹))
+Proving 1. object 𝒙².
+  𝒙² ⋅ '𝒚¹ = 1 ⇒ 𝒙² = 1 ∧ '𝒚¹ = 1.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ = 1 ⇒ '𝒙² = 1 ∧ '𝒚¹ = 1
+succeeded:
+  premise ii₍D₎.
+premise ii. object '𝒚¹.
+  𝐴('𝒚¹).
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 1 ⇒ 𝒙¹₁₀₁ = 1 ∧ 𝒚¹₁₀₁ = 1.
+[𝒚¹₁₀₁ ↦ '𝒚¹][𝒙¹₁₀₁ ↦ '𝒙²]
+∎
+
+
+
+Proving a. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) = 1 ⊢ 𝒙² = 1
+Proving a0. '𝒙² ⋅ s('𝒚¹) = 1.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = 1
+succeeded:
+  premise a.
+premise a. object '𝒚¹, '𝒙².
+  '𝒙² ⋅ s('𝒚¹) = 1.
+I
+∎
+
+
+Proving a1. '𝒙² ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + '𝒙².
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + '𝒙²
+succeeded:
+  S8.
+axiom S8. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ ⋅ s(𝑦₁₀) = 𝑥₁₀ ⋅ 𝑦₁₀ + 𝑥₁₀.
+[𝑥₁₀ ↦ '𝒙²][𝑦₁₀ ↦ '𝒚¹]
+∎
+
+
+Proving a2. '𝒙² ⋅ '𝒚¹ + '𝒙² = 1.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ + '𝒙² = 1
+succeeded:
+  T1D: T1B; T1B: a1; a0.
+lemma T1D. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒛₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒚₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝒚₁₀ ↦ 1]
+∴ '𝒙² ⋅ '𝒚¹ + '𝒙² = 𝒛₁₀, 1 = 𝒛₁₀
+lemma T1B. object 𝒙₂₀, 𝒚₂₀.
+  𝒙₂₀ = 𝒚₂₀ ⊢ 𝒚₂₀ = 𝒙₂₀
+lemma T1B. object 𝒙₂₁, 𝒚₂₁.
+  𝒙₂₁ = 𝒚₂₁ ⊢ 𝒚₂₁ = 𝒙₂₁
+[𝒚₂₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙²][𝒙₂₀ ↦ 𝒛₁₀][𝒚₂₁ ↦ 1][𝒙₂₁ ↦ 𝒛₁₀]
+∴ 𝒛₁₀ = '𝒙² ⋅ '𝒚¹ + '𝒙², 𝒛₁₀ = 1
+a1. '𝒙² ⋅ s('𝒚¹) = '𝒙² ⋅ '𝒚¹ + '𝒙².
+a0. '𝒙² ⋅ s('𝒚¹) = 1.
+[𝒛₁₀ ↦ '𝒙² ⋅ s('𝒚¹)]
+∎
+
+
+Proving a3. '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1 ∨ '𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1 ∨ '𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0
+succeeded:
+  MP: a2; T3f.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1 ∨ '𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1 ∨ '𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0
+a2. '𝒙² ⋅ '𝒚¹ + '𝒙² = 1.
+lemma T3f. object 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ + 𝒔₂₁ = 1 ⇒ 𝒕₂₁ = 0 ∧ 𝒔₂₁ = 1 ∨ 𝒕₂₁ = 1 ∧ 𝒔₂₁ = 0
+[𝑨₁₀ ↦ '𝒙² ⋅ '𝒚¹ + '𝒙² = 1][𝒕₂₁ ↦ '𝒙² ⋅ '𝒚¹][𝒔₂₁ ↦ '𝒙²]
+∎
+
+
+Proving a4. '𝒙² ⋅ '𝒚¹ = 1 ⊢ '𝒙² = 1.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ = 1 ⊢ '𝒙² = 1
+succeeded:
+  CE1: MP: premise ⊢; 1.
+rule CE1. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ∧ 𝑩₁₀ ⊢ 𝑨₁₀.
+[𝑨₁₀ ↦ '𝒙² = 1]
+∴ '𝒙² ⋅ '𝒚¹ = 1 ⊢ '𝒙² = 1 ∧ 𝑩₁₀
+rule MP. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑨₂₀ ⇒ 𝑩₂₀ ⊢ 𝑩₂₀.
+[𝑩₂₀ ↦ '𝒙² = 1 ∧ 𝑩₁₀][𝚪₍₀₎₂₀ ↦ 𝑨₂₀][𝚪₍₁₎₂₀ ↦ 𝑨₂₀ ⇒ '𝒙² = 1 ∧ 𝑩₁₀][𝚪₂₀ ↦ □]
+∴ '𝒙² ⋅ '𝒚¹ = 1 ⊢ 𝑨₂₀, 𝑨₂₀ ⇒ '𝒙² = 1 ∧ 𝑩₁₀
+premise ⊢. object '𝒚¹, '𝒙².
+  '𝒙² ⋅ '𝒚¹ = 1.
+1. object 𝒙²₃₁.
+  𝒙²₃₁ ⋅ '𝒚¹ = 1 ⇒ 𝒙²₃₁ = 1 ∧ '𝒚¹ = 1.
+[𝑨₂₀ ↦ '𝒙² ⋅ '𝒚¹ = 1][𝒙²₃₁ ↦ '𝒙²][𝑩₁₀ ↦ '𝒚¹ = 1]
+∎
+
+
+Proving a4a. 1 ≠ 0.
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  1 ≠ 0
+succeeded:
+  EqRN: S3₍n1₎.
+lemma EqRN. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ ≠ 𝒚₁₀ ⊢ 𝒚₁₀ ≠ 𝒙₁₀
+[𝒚₁₀ ↦ 1][𝒙₁₀ ↦ 0]
+∴ 0 ≠ 1
+axiom S3. object 𝑥₂₀.
+  0 ≠ s(𝑥₂₀).
+definition n1. 
+  1 ≔ s(0).
+[𝑥₂₀ ↦ 0]
+∎
+
+
+Proving a5. '𝒙² = 1 ⊢ '𝒙² ≠ 0.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² = 1 ⊢ '𝒙² ≠ 0
+succeeded:
+  EqTrN: premise ⊢; a4a.
+lemma EqTrN. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ ≠ 𝒛₁₀ ⊢ 𝒙₁₀ ≠ 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙²][𝒛₁₀ ↦ 0][𝚪₍₀₎₁₀ ↦ '𝒙² = 𝒚₁₀][𝚪₍₁₎₁₀ ↦ 𝒚₁₀ ≠ 0][𝚪₁₀ ↦ □]
+∴ '𝒙² = 1 ⊢ '𝒙² = 𝒚₁₀, 𝒚₁₀ ≠ 0
+premise ⊢. object '𝒙².
+  '𝒙² = 1.
+a4a. 1 ≠ 0.
+[𝒚₁₀ ↦ 1]
+∎
+
+
+Proving a6. '𝒙² ⋅ '𝒚¹ = 1 ⊢ ¬'𝒙² = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ = 1 ⊢ ¬'𝒙² = 0
+succeeded:
+  a5₍NE₎: a4.
+a5. '𝒙² = 1 ⊢ '𝒙² ≠ 0.
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+[𝑥₁₀₁ ↦ '𝒙²][𝑦₁₀₁ ↦ 0]
+∴ '𝒙² ⋅ '𝒚¹ = 1 ⊢ '𝒙² = 1
+a4. '𝒙² ⋅ '𝒚¹ = 1 ⊢ '𝒙² = 1.
+I
+∎
+
+
+Proving a7. '𝒙² ⋅ '𝒚¹ = 1 ⇒ ¬'𝒙² = 0.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ = 1 ⇒ ¬'𝒙² = 0
+succeeded:
+  DT: a6.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝒙² ⋅ '𝒚¹ = 1][𝑩₁₀ ↦ ¬'𝒙² = 0][𝜞₁₀ ↦ ⦰]
+∴ '𝒙² ⋅ '𝒚¹ = 1 ⊢ ¬'𝒙² = 0
+a6. '𝒙² ⋅ '𝒚¹ = 1 ⊢ ¬'𝒙² = 0.
+I
+∎
+
+
+Proving a8. formula 𝑨³, 𝑩³.
+  (𝑨³ ⇒ ¬𝑩³) ⇒ ¬(𝑨³ ∧ 𝑩³).
+Proof succeeded.
+Variables: '𝑨³, '𝑩³
+Proof count: 1
+
+Proof of
+  ('𝑨³ ⇒ ¬'𝑩³) ⇒ ¬('𝑨³ ∧ '𝑩³)
+succeeded:
+  CE: 58b₍EQ₎.
+rule CE. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ∧ 𝑩₁₀ ⊢ 𝑨₁₀, 𝑩₁₀.
+[𝑨₁₀ ↦ ('𝑨³ ⇒ ¬'𝑩³) ⇒ ¬('𝑨³ ∧ '𝑩³)]
+∴ (('𝑨³ ⇒ ¬'𝑩³) ⇒ ¬('𝑨³ ∧ '𝑩³)) ∧ 𝑩₁₀
+rule 58b. formula 𝑨₂₀, 𝑩₂₀.
+   ⊢ 𝑨₂₀ ⇒ ¬𝑩₂₀ ⇔ ¬(𝑨₂₀ ∧ 𝑩₂₀).
+definition EQ. formula 𝑨₂₀₁, 𝑩₂₀₁.
+  𝑨₂₀₁ ⇔ 𝑩₂₀₁ ≔ (𝑨₂₀₁ ⇒ 𝑩₂₀₁) ∧ (𝑩₂₀₁ ⇒ 𝑨₂₀₁).
+[𝑨₂₀₁ ↦ 𝑨₂₀ ⇒ ¬𝑩₂₀][𝑩₂₀₁ ↦ ¬(𝑨₂₀ ∧ 𝑩₂₀)][𝑨₂₀ ↦ '𝑨³][𝑩₂₀ ↦ '𝑩³][𝑩₁₀ ↦ ¬('𝑨³ ∧ '𝑩³) ⇒ ('𝑨³ ⇒ ¬'𝑩³)]
+∎
+
+
+Proving a9. ¬('𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  ¬('𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0)
+succeeded:
+  MP: a7; a8.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ ¬('𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0)]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ ¬('𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0)
+a7. '𝒙² ⋅ '𝒚¹ = 1 ⇒ ¬'𝒙² = 0.
+a8. formula 𝑨³₂₁, 𝑩³₂₁.
+  (𝑨³₂₁ ⇒ ¬𝑩³₂₁) ⇒ ¬(𝑨³₂₁ ∧ 𝑩³₂₁).
+[𝑨₁₀ ↦ '𝒙² ⋅ '𝒚¹ = 1 ⇒ ¬'𝒙² = 0][𝑨³₂₁ ↦ '𝒙² ⋅ '𝒚¹ = 1][𝑩³₂₁ ↦ '𝒙² = 0]
+∎
+
+
+Proving a10. '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1
+succeeded:
+  DS2: a3; a9.
+rule DS2. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ∨ 𝑩₁₀, ¬𝑩₁₀ ⊢ 𝑨₁₀.
+[𝑨₁₀ ↦ '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1]
+∴ '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1 ∨ 𝑩₁₀, ¬𝑩₁₀
+a3. '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1 ∨ '𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0.
+a9. ¬('𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0).
+[𝑩₁₀ ↦ '𝒙² ⋅ '𝒚¹ = 1 ∧ '𝒙² = 0]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = 1 ⊢ '𝒙² = 1
+succeeded:
+  CE: a10.
+rule CE. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ∧ 𝑩₁₀ ⊢ 𝑨₁₀, 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² = 1]
+∴ '𝒙² ⋅ s('𝒚¹) = 1 ⊢ 𝑨₁₀ ∧ '𝒙² = 1
+a10. '𝒙² ⋅ '𝒚¹ = 0 ∧ '𝒙² = 1.
+[𝑨₁₀ ↦ '𝒙² ⋅ '𝒚¹ = 0]
+∎
+
+
+
+Proving b. object 𝒙².
+  𝒙² ⋅ s('𝒚¹) = 1 ⊢ s('𝒚¹) = 1
+Proving b0. '𝒙² ⋅ s('𝒚¹) = 1.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = 1
+succeeded:
+  premise b.
+premise b. object '𝒚¹, '𝒙².
+  '𝒙² ⋅ s('𝒚¹) = 1.
+I
+∎
+
+
+Proving b1. '𝒙² = 1.
+Proof succeeded.
+Variable: '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² = 1
+succeeded:
+  a: b0.
+a. object 𝒙²₁₀.
+  𝒙²₁₀ ⋅ s('𝒚¹) = 1 ⊢ 𝒙²₁₀ = 1
+[𝒙²₁₀ ↦ '𝒙²]
+∴ '𝒙² ⋅ s('𝒚¹) = 1
+b0. '𝒙² ⋅ s('𝒚¹) = 1.
+I
+∎
+
+
+Proving b2. '𝒙² ⋅ s('𝒚¹) = 1 ⋅ s('𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = 1 ⋅ s('𝒚¹)
+succeeded:
+  MP: b1; T1k.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒙² ⋅ s('𝒚¹) = 1 ⋅ s('𝒚¹)]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒙² ⋅ s('𝒚¹) = 1 ⋅ s('𝒚¹)
+b1. '𝒙² = 1.
+lemma T1k. object 𝒓₂₁, 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ = 𝒓₂₁ ⇒ 𝒕₂₁ ⋅ 𝒔₂₁ = 𝒓₂₁ ⋅ 𝒔₂₁
+[𝑨₁₀ ↦ '𝒙² = 1][𝒕₂₁ ↦ '𝒙²][𝒓₂₁ ↦ 1][𝒔₂₁ ↦ s('𝒚¹)]
+∎
+
+
+Proving b3. 1 ⋅ s('𝒚¹) = s('𝒚¹) ⋅ 1.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  1 ⋅ s('𝒚¹) = s('𝒚¹) ⋅ 1
+succeeded:
+  T1n.
+lemma T1n. object 𝒓₁₀, 𝒕₁₀.
+  𝒕₁₀ ⋅ 𝒓₁₀ = 𝒓₁₀ ⋅ 𝒕₁₀
+[𝒕₁₀ ↦ 1][𝒓₁₀ ↦ s('𝒚¹)]
+∎
+
+
+Proving b4. s('𝒚¹) ⋅ 1 = s('𝒚¹).
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  s('𝒚¹) ⋅ 1 = s('𝒚¹)
+succeeded:
+  T3b.
+lemma T3b. object 𝒕₁₀.
+  𝒕₁₀ ⋅ 1 = 𝒕₁₀
+[𝒕₁₀ ↦ s('𝒚¹)]
+∎
+
+
+Proving b5. '𝒙² ⋅ s('𝒚¹) = s('𝒚¹).
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = s('𝒚¹)
+succeeded:
+  T1C: T1C; b4: b2; b3.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ '𝒙² ⋅ s('𝒚¹)][𝒛₁₀ ↦ s('𝒚¹)]
+∴ '𝒙² ⋅ s('𝒚¹) = 𝒚₁₀, 𝒚₁₀ = s('𝒚¹)
+lemma T1C. object 𝒙₂₀, 𝒚₂₀, 𝒛₂₀.
+  𝒙₂₀ = 𝒚₂₀, 𝒚₂₀ = 𝒛₂₀ ⊢ 𝒙₂₀ = 𝒛₂₀
+b4. s('𝒚¹) ⋅ 1 = s('𝒚¹).
+[𝒙₂₀ ↦ '𝒙² ⋅ s('𝒚¹)][𝒛₂₀ ↦ 𝒚₁₀][𝒚₁₀ ↦ s('𝒚¹) ⋅ 1]
+∴ '𝒙² ⋅ s('𝒚¹) = 𝒚₂₀, 𝒚₂₀ = s('𝒚¹) ⋅ 1
+b2. '𝒙² ⋅ s('𝒚¹) = 1 ⋅ s('𝒚¹).
+b3. 1 ⋅ s('𝒚¹) = s('𝒚¹) ⋅ 1.
+[𝒚₂₀ ↦ 1 ⋅ s('𝒚¹)]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒚¹, '𝒙²
+Proof count: 1
+
+Proof of
+  '𝒙² ⋅ s('𝒚¹) = 1 ⊢ s('𝒚¹) = 1
+succeeded:
+  T1C: T1B: b5.
+lemma T1C. object 𝒙₁₀, 𝒚₁₀, 𝒛₁₀.
+  𝒙₁₀ = 𝒚₁₀, 𝒚₁₀ = 𝒛₁₀ ⊢ 𝒙₁₀ = 𝒛₁₀
+[𝒙₁₀ ↦ s('𝒚¹)][𝒛₁₀ ↦ 1][𝚪₍₀₎₁₀ ↦ s('𝒚¹) = 𝒚₁₀][𝒚₁₀ ↦ '𝒙² ⋅ s('𝒚¹)][𝚪₁₀ ↦ □]
+∴ '𝒙² ⋅ s('𝒚¹) = 1 ⊢ s('𝒚¹) = '𝒙² ⋅ s('𝒚¹)
+lemma T1B. object 𝒙₂₀, 𝒚₂₀.
+  𝒙₂₀ = 𝒚₂₀ ⊢ 𝒚₂₀ = 𝒙₂₀
+[𝒚₂₀ ↦ s('𝒚¹)][𝒙₂₀ ↦ '𝒙² ⋅ s('𝒚¹)]
+∴ '𝒙² ⋅ s('𝒚¹) = 1 ⊢ '𝒙² ⋅ s('𝒚¹) = s('𝒚¹)
+b5. '𝒙² ⋅ s('𝒚¹) = s('𝒚¹).
+I
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒚¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒚¹) ⊢ 𝐴(s('𝒚¹))
+succeeded:
+  DT₍D₎: CI: a; b.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁, 𝒚¹₁₀₁.
+  𝐴(𝒚¹₁₀₁) ≔₍𝒙¹₁₀₁₎ 𝒙¹₁₀₁ ⋅ 𝒚¹₁₀₁ = 1 ⇒ 𝒙¹₁₀₁ = 1 ∧ 𝒚¹₁₀₁ = 1.
+[𝒚¹₁₀₁ ↦ s('𝒚¹)][𝑨₁₀ ↦ '𝒙¹₁₀₁ ⋅ s('𝒚¹) = 1][𝑩₁₀ ↦ '𝒙¹₁₀₁ = 1 ∧ s('𝒚¹) = 1][𝜞₁₀ ↦ 𝐴('𝒚¹)]
+∴ 𝐴('𝒚¹), '𝒙¹₁₀₁ ⋅ s('𝒚¹) = 1 ⊢ '𝒙¹₁₀₁ = 1 ∧ s('𝒚¹) = 1
+rule CI. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑩₂₀ ⊢ 𝑨₂₀ ∧ 𝑩₂₀.
+[𝑨₂₀ ↦ '𝒙¹₁₀₁ = 1][𝑩₂₀ ↦ s('𝒚¹) = 1][𝚪₍₀₎₂₀ ↦ '𝒙¹₁₀₁ = 1][𝚪₍₁₎₂₀ ↦ s('𝒚¹) = 1][𝚪₂₀ ↦ □]
+∴ 𝐴('𝒚¹), '𝒙¹₁₀₁ ⋅ s('𝒚¹) = 1 ⊢ '𝒙¹₁₀₁ = 1, s('𝒚¹) = 1
+a. object 𝒙²₃₀.
+  𝒙²₃₀ ⋅ s('𝒚¹) = 1 ⊢ 𝒙²₃₀ = 1
+b. object 𝒙²₃₁.
+  𝒙²₃₁ ⋅ s('𝒚¹) = 1 ⊢ s('𝒚¹) = 1
+[𝒙²₃₀ ↦ '𝒙¹₁₀₁][𝒙²₃₁ ↦ '𝒙¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ '𝒔 = 1 ⇒ '𝒕 = 1 ∧ '𝒔 = 1
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒔][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '𝒕 ⋅ '°𝒛₁₀ = 1 ⇒ '𝒕 = 1 ∧ '°𝒛₁₀ = 1]
+∴ '𝒕 ⋅ '°𝒛₁₀ = 1 ⇒ '𝒕 = 1 ∧ '°𝒛₁₀ = 1
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁, 𝒚¹₂₀₁.
+  𝐴(𝒚¹₂₀₁) ≔₍𝒙¹₂₀₁₎ 𝒙¹₂₀₁ ⋅ 𝒚¹₂₀₁ = 1 ⇒ 𝒙¹₂₀₁ = 1 ∧ 𝒚¹₂₀₁ = 1.
+[𝑷₂₀ ↦ 𝐴][𝒚¹₂₀₁ ↦ °𝒙₂₀][𝒙¹₂₀₁ ↦ '𝒕][°𝒙₂₀ ↦ '°𝒛₁₀]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0)
+ii. object 𝒚¹₃₁.
+  𝐴(𝒚¹₃₁) ⊢ 𝐴(s(𝒚¹₃₁))
+[𝒚¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T3G. object 𝒔, 𝒕.
+  𝒕 ⋅ 𝒔 = 1 ⊢ 𝒕 = 1 ∧ 𝒔 = 1
+Proving result.
+Proof succeeded.
+Variables: '𝒔, '𝒕
+Proof count: 1
+
+Proof of
+  '𝒕 ⋅ '𝒔 = 1 ⊢ '𝒕 = 1 ∧ '𝒔 = 1
+succeeded:
+  MP: premise ⊢; T3g.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝒕 = 1 ∧ '𝒔 = 1][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ '𝒕 = 1 ∧ '𝒔 = 1][𝚪₁₀ ↦ □]
+∴ '𝒕 ⋅ '𝒔 = 1 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ '𝒕 = 1 ∧ '𝒔 = 1
+premise ⊢. object '𝒔, '𝒕.
+  '𝒕 ⋅ '𝒔 = 1.
+lemma T3g. object 𝒔₂₁, 𝒕₂₁.
+  𝒕₂₁ ⋅ 𝒔₂₁ = 1 ⇒ 𝒕₂₁ = 1 ∧ 𝒔₂₁ = 1
+[𝑨₁₀ ↦ '𝒕 ⋅ '𝒔 = 1][𝒕₂₁ ↦ '𝒕][𝒔₂₁ ↦ '𝒔]
+∎
+
+
+
+Proving lemma T3h. object 𝒕ₓ₍°𝑦⁰⁺¹₎.
+  𝒕ₓ₍°𝑦⁰⁺¹₎ ≠ 0 ⇒ ∃¹°𝑦⁰⁺¹ 𝒕ₓ₍°𝑦⁰⁺¹₎ = s(°𝑦⁰⁺¹)
+Proving i. 𝐴(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  𝐴(0)
+succeeded:
+  IRP2₍NE, D₎: T1a.
+rule IRP2. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀ ⊢ ¬𝑨₁₀ ⇒ 𝑩₁₀.
+definition NE. object 𝑥₁₀₂, 𝑦₁₀₂.
+  𝑥₁₀₂ ≠ 𝑦₁₀₂ ≔ ¬𝑥₁₀₂ = 𝑦₁₀₂.
+definition D. object 𝒙¹₁₀₁.
+  𝐴(𝒙¹₁₀₁) ≔ 𝒙¹₁₀₁ ≠ 0 ⇒ ∃¹°𝑤¹⁺¹₁₀₁ 𝒙¹₁₀₁ = s(°𝑤¹⁺¹₁₀₁).
+[𝒙¹₁₀₁ ↦ 0][𝑥₁₀₂ ↦ 0][𝑦₁₀₂ ↦ 0][𝑨₁₀ ↦ 0 = 0][𝑩₁₀ ↦ ∃¹°𝑤¹⁺¹₁₀₁ 0 = s(°𝑤¹⁺¹₁₀₁)]
+∴ 0 = 0
+lemma T1a. object 𝒙₂₀.
+  𝒙₂₀ = 𝒙₂₀
+[𝒙₂₀ ↦ 0]
+∎
+
+
+
+Proving ii. object 𝒙¹.
+  𝐴(𝒙¹) ⊢ 𝐴(s(𝒙¹))
+Proving 1. '𝒙¹ = 0 ∨ '𝒙¹ ≠ 0.
+Proof succeeded.
+Variable: '𝒙¹
+Proof count: 1
+
+Proof of
+  '𝒙¹ = 0 ∨ '𝒙¹ ≠ 0
+succeeded:
+  EML₍NE₎.
+rule EML. formula 𝑨₁₀.
+   ⊢ 𝑨₁₀ ∨ ¬𝑨₁₀.
+definition NE. object 𝑥₁₀₁, 𝑦₁₀₁.
+  𝑥₁₀₁ ≠ 𝑦₁₀₁ ≔ ¬𝑥₁₀₁ = 𝑦₁₀₁.
+[𝑨₁₀ ↦ '𝒙¹ = 0][𝑥₁₀₁ ↦ '𝒙¹][𝑦₁₀₁ ↦ 0]
+∎
+
+
+Proving 2. '𝒙¹ = 0 ⊢ ∃¹°𝑤²⁺¹ s('𝒙¹) = s(°𝑤²⁺¹).
+Proof succeeded.
+Variables: '𝒙¹, '°𝑤²⁺¹
+Proof count: 1
+
+Proof of
+  '𝒙¹ = 0 ⊢ ∃¹'°𝑤²⁺¹ s('𝒙¹) = s('°𝑤²⁺¹)
+succeeded:
+  ExIa: S2a.
+rule ExIa. formula 𝑨₁₀ object 𝒕₁₀, °𝒙₁₀.
+  𝑨₁₀[°𝒙₁₀ ⤇ 𝒕₁₀] ⊢ ∃¹°𝒙₁₀ 𝑨₁₀.
+[°𝒙₁₀ ↦ '°𝑤²⁺¹][𝑨₁₀ ↦ s('𝒙¹) = s('°𝑤²⁺¹)]
+∴ '𝒙¹ = 0 ⊢ s('𝒙¹) = s(𝒕₁₀)
+rule S2a. object 𝑥₂₀, 𝑦₂₀.
+  𝑥₂₀ = 𝑦₂₀ ⊢ s(𝑥₂₀) = s(𝑦₂₀).
+[𝑥₂₀ ↦ '𝒙¹][𝑦₂₀ ↦ 𝒕₁₀][𝒕₁₀ ↦ 0]
+∎
+
+
+
+Proving a. '𝒙¹ ≠ 0 ⊢ ∃¹°𝑤²⁺¹ s('𝒙¹) = s(°𝑤²⁺¹)
+Proving a1. ∃¹°𝑤³⁺¹ '𝒙¹ = s(°𝑤³⁺¹).
+Proof succeeded.
+Variables: '𝒙¹, '°𝑤³⁺¹
+Proof count: 1
+
+Proof of
+  ∃¹'°𝑤³⁺¹ '𝒙¹ = s('°𝑤³⁺¹)
+succeeded:
+  MP: premise a; premise ii₍D₎.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ ∃¹'°𝑤³⁺¹ '𝒙¹ = s('°𝑤³⁺¹)]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ ∃¹'°𝑤³⁺¹ '𝒙¹ = s('°𝑤³⁺¹)
+premise a. object '𝒙¹.
+  '𝒙¹ ≠ 0.
+premise ii. object '𝒙¹.
+  𝐴('𝒙¹).
+definition D. object 𝒙¹₂₁₁.
+  𝐴(𝒙¹₂₁₁) ≔ 𝒙¹₂₁₁ ≠ 0 ⇒ ∃¹°𝑤¹⁺¹₂₁₁ 𝒙¹₂₁₁ = s(°𝑤¹⁺¹₂₁₁).
+[𝑨₁₀ ↦ '𝒙¹ ≠ 0][𝒙¹₂₁₁ ↦ '𝒙¹][°𝑤¹⁺¹₂₁₁ ↦ '°𝑤³⁺¹]
+∎
+
+
+Proving a2. object 𝒚³.
+  '𝒙¹ = s(𝒚³) ⊢ s('𝒙¹) = s(s(𝒚³)).
+Proof succeeded.
+Variables: '𝒙¹, '𝒚³
+Proof count: 1
+
+Proof of
+  '𝒙¹ = s('𝒚³) ⊢ s('𝒙¹) = s(s('𝒚³))
+succeeded:
+  S2a.
+rule S2a. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ = 𝑦₁₀ ⊢ s(𝑥₁₀) = s(𝑦₁₀).
+[𝑥₁₀ ↦ '𝒙¹][𝑦₁₀ ↦ s('𝒚³)]
+∎
+
+
+Proving a3. object 𝒚³.
+  '𝒙¹ = s(𝒚³) ⊢ ∃¹°𝑤³⁺¹ s('𝒙¹) = s(°𝑤³⁺¹).
+Proof succeeded.
+Variables: '𝒙¹, '𝒚³, '°𝑤³⁺¹
+Proof count: 1
+
+Proof of
+  '𝒙¹ = s('𝒚³) ⊢ ∃¹'°𝑤³⁺¹ s('𝒙¹) = s('°𝑤³⁺¹)
+succeeded:
+  ExIa: a2.
+rule ExIa. formula 𝑨₁₀ object 𝒕₁₀, °𝒙₁₀.
+  𝑨₁₀[°𝒙₁₀ ⤇ 𝒕₁₀] ⊢ ∃¹°𝒙₁₀ 𝑨₁₀.
+[°𝒙₁₀ ↦ '°𝑤³⁺¹][𝑨₁₀ ↦ s('𝒙¹) = s('°𝑤³⁺¹)]
+∴ '𝒙¹ = s('𝒚³) ⊢ s('𝒙¹) = s(𝒕₁₀)
+a2. object 𝒚³₂₀.
+  '𝒙¹ = s(𝒚³₂₀) ⊢ s('𝒙¹) = s(s(𝒚³₂₀)).
+[𝒕₁₀ ↦ s(𝒚³₂₀)][𝒚³₂₀ ↦ '𝒚³]
+∎
+
+
+Proving a4. ∃²°𝑤³⁺² '𝒙¹ = s(°𝑤³⁺²) ⊢ ∃¹°𝑤³⁺¹ s('𝒙¹) = s(°𝑤³⁺¹).
+Proof succeeded.
+Variables: '𝒙¹, '°𝑤³⁺¹, '°𝑤³⁺²
+Proof count: 1
+
+Proof of
+  ∃²'°𝑤³⁺² '𝒙¹ = s('°𝑤³⁺²) ⊢ ∃¹'°𝑤³⁺¹ s('𝒙¹) = s('°𝑤³⁺¹)
+succeeded:
+  ExE: a3.
+postulate ExE. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀ object °𝒙₁₀.
+  °𝒙₁₀ not free in 𝑩₁₀; 𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀, ∃¹°𝒙₁₀ 𝑨₁₀ ⊢⁽°𝒙₁₀⁾ 𝑩₁₀.
+[𝑩₁₀ ↦ ∃¹'°𝑤³⁺¹ s('𝒙¹) = s('°𝑤³⁺¹)][°𝒙₁₀ ↦ '°𝑤³⁺²][𝑨₁₀ ↦ '𝒙¹ = s('°𝑤³⁺²)][𝜞₁₀ ↦ ⦰]
+∴ '𝒙¹ = s('°𝑤³⁺²) ⊢ ∃¹'°𝑤³⁺¹ s('𝒙¹) = s('°𝑤³⁺¹)
+a3. object 𝒚³₂₀.
+  '𝒙¹ = s(𝒚³₂₀) ⊢ ∃¹°𝑤³⁺¹₂₀ s('𝒙¹) = s(°𝑤³⁺¹₂₀).
+[°𝑤³⁺¹₂₀ ↦ '°𝑤³⁺¹][𝒚³₂₀ ↦ '°𝑤³⁺²]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒙¹, '°𝑤²⁺¹
+Proof count: 1
+
+Proof of
+  '𝒙¹ ≠ 0 ⊢ ∃¹'°𝑤²⁺¹ s('𝒙¹) = s('°𝑤²⁺¹)
+succeeded:
+  a4: a1.
+a4. ∃²°𝑤³⁺²₁₀ '𝒙¹ = s(°𝑤³⁺²₁₀) ⊢ ∃¹°𝑤³⁺¹₁₀ s('𝒙¹) = s(°𝑤³⁺¹₁₀).
+[°𝑤³⁺¹₁₀ ↦ '°𝑤²⁺¹]
+∴ '𝒙¹ ≠ 0 ⊢ ∃²°𝑤³⁺²₁₀ '𝒙¹ = s(°𝑤³⁺²₁₀)
+a1. ∃¹°𝑤³⁺¹₂₀ '𝒙¹ = s(°𝑤³⁺¹₂₀).
+[°𝑤³⁺¹₂₀ ↦ °𝑤³⁺²₁₀]
+∎
+
+
+Proving b. '𝒙¹ = 0 ∨ '𝒙¹ ≠ 0 ⊢ ∃¹°𝑤²⁺¹ s('𝒙¹) = s(°𝑤²⁺¹).
+Proof succeeded.
+Variables: '𝒙¹, '°𝑤²⁺¹
+Proof count: 1
+
+Proof of
+  '𝒙¹ = 0 ∨ '𝒙¹ ≠ 0 ⊢ ∃¹'°𝑤²⁺¹ s('𝒙¹) = s('°𝑤²⁺¹)
+succeeded:
+  PCa: 2; a.
+postulate PCa. formula 𝑨₁₀, 𝑩₁₀, 𝑪₁₀.
+  𝑨₁₀ ⊢ 𝑪₁₀; 𝑩₁₀ ⊢ 𝑪₁₀ ⊩ 𝑨₁₀ ∨ 𝑩₁₀ ⊢ 𝑪₁₀.
+[𝑪₁₀ ↦ ∃¹'°𝑤²⁺¹ s('𝒙¹) = s('°𝑤²⁺¹)][𝑨₁₀ ↦ '𝒙¹ = 0][𝑩₁₀ ↦ '𝒙¹ ≠ 0]
+∴ '𝒙¹ = 0 ⊢ ∃¹'°𝑤²⁺¹ s('𝒙¹) = s('°𝑤²⁺¹); '𝒙¹ ≠ 0 ⊢ ∃¹'°𝑤²⁺¹ s('𝒙¹) = s('°𝑤²⁺¹)
+2. '𝒙¹ = 0 ⊢ ∃¹°𝑤²⁺¹₂₀ s('𝒙¹) = s(°𝑤²⁺¹₂₀).
+a. '𝒙¹ ≠ 0 ⊢ ∃¹°𝑤²⁺¹₂₁ s('𝒙¹) = s(°𝑤²⁺¹₂₁)
+[°𝑤²⁺¹₂₀ ↦ '°𝑤²⁺¹][°𝑤²⁺¹₂₁ ↦ '°𝑤²⁺¹]
+∎
+
+
+Proving c. ∃¹°𝑤²⁺¹ s('𝒙¹) = s(°𝑤²⁺¹).
+Proof succeeded.
+Variables: '𝒙¹, '°𝑤²⁺¹
+Proof count: 1
+
+Proof of
+  ∃¹'°𝑤²⁺¹ s('𝒙¹) = s('°𝑤²⁺¹)
+succeeded:
+  b: 1.
+b. '𝒙¹ = 0 ∨ '𝒙¹ ≠ 0 ⊢ ∃¹°𝑤²⁺¹₁₀ s('𝒙¹) = s(°𝑤²⁺¹₁₀).
+[°𝑤²⁺¹₁₀ ↦ '°𝑤²⁺¹]
+∴ '𝒙¹ = 0 ∨ '𝒙¹ ≠ 0
+1. '𝒙¹ = 0 ∨ '𝒙¹ ≠ 0.
+I
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '𝒙¹
+Proof count: 1
+
+Proof of
+  𝐴('𝒙¹) ⊢ 𝐴(s('𝒙¹))
+succeeded:
+  IPC₍D₎: c.
+rule IPC. formula 𝑨₁₀, 𝑩₁₀.
+  𝑩₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+definition D. object 𝒙¹₁₀₁.
+  𝐴(𝒙¹₁₀₁) ≔ 𝒙¹₁₀₁ ≠ 0 ⇒ ∃¹°𝑤¹⁺¹₁₀₁ 𝒙¹₁₀₁ = s(°𝑤¹⁺¹₁₀₁).
+[𝒙¹₁₀₁ ↦ s('𝒙¹)][𝑨₁₀ ↦ s('𝒙¹) ≠ 0][𝑩₁₀ ↦ ∃¹°𝑤¹⁺¹₁₀₁ s('𝒙¹) = s(°𝑤¹⁺¹₁₀₁)]
+∴ 𝐴('𝒙¹) ⊢ ∃¹°𝑤¹⁺¹₁₀₁ s('𝒙¹) = s(°𝑤¹⁺¹₁₀₁)
+c. ∃¹°𝑤²⁺¹₂₀ s('𝒙¹) = s(°𝑤²⁺¹₂₀).
+[°𝑤²⁺¹₂₀ ↦ °𝑤¹⁺¹₁₀₁]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variables: '𝒕ₓ₍'°𝑦⁰⁺¹₎, '°𝑦⁰⁺¹
+Proof count: 1
+
+Proof of
+  '𝒕ₓ₍'°𝑦⁰⁺¹₎ ≠ 0 ⇒ ∃¹'°𝑦⁰⁺¹ '𝒕ₓ₍'°𝑦⁰⁺¹₎ = s('°𝑦⁰⁺¹)
+succeeded:
+  OVS: IR₍D₎: i; ii.
+rule OVS. formula 𝑪₁₀ object 𝒖₁₀, °𝒛₁₀.
+  𝑪₁₀ ⊢ 𝑪₁₀[°𝒛₁₀ ⤇ 𝒖₁₀].
+[𝒖₁₀ ↦ '𝒕ₓ₍'°𝑦⁰⁺¹₎][°𝒛₁₀ ↦ '°𝒛₁₀][𝑪₁₀ ↦ '°𝒛₁₀ ≠ 0 ⇒ ∃'°𝑦⁰⁺¹ '°𝒛₁₀ = s('°𝑦⁰⁺¹)]
+∴ '°𝒛₁₀ ≠ 0 ⇒ ∃'°𝑦⁰⁺¹ '°𝒛₁₀ = s('°𝑦⁰⁺¹)
+lemma IR. predicate variable 𝑷₂₀ object °𝒙₂₀.
+  𝑷₂₀(0); 𝑷₂₀(°𝒙₂₀) ⊢ 𝑷₂₀(s(°𝒙₂₀)) ⊩ 𝑷₂₀(°𝒙₂₀)
+definition D. object 𝒙¹₂₀₁.
+  𝐴(𝒙¹₂₀₁) ≔ 𝒙¹₂₀₁ ≠ 0 ⇒ ∃¹°𝑤¹⁺¹₂₀₁ 𝒙¹₂₀₁ = s(°𝑤¹⁺¹₂₀₁).
+[𝑷₂₀ ↦ 𝐴][𝒙¹₂₀₁ ↦ °𝒙₂₀][°𝒙₂₀ ↦ '°𝒛₁₀][°𝑤¹⁺¹₂₀₁ ↦ '°𝑦⁰⁺¹]
+∴ 𝐴(0); 𝐴('°𝒛₁₀) ⊢ 𝐴(s('°𝒛₁₀))
+i. 𝐴(0).
+ii. object 𝒙¹₃₁.
+  𝐴(𝒙¹₃₁) ⊢ 𝐴(s(𝒙¹₃₁))
+[𝒙¹₃₁ ↦ '°𝒛₁₀]
+∎
+
+
+
+Proving lemma T3H. object 𝒕ₓ₍°𝑦⁰⁺¹₎.
+  𝒕ₓ₍°𝑦⁰⁺¹₎ ≠ 0 ⊢ ∃¹°𝑦⁰⁺¹ 𝒕ₓ₍°𝑦⁰⁺¹₎ = s(°𝑦⁰⁺¹)
+Proving result.
+Proof succeeded.
+Variables: '𝒕ₓ₍'°𝑦⁰⁺¹₎, '°𝑦⁰⁺¹
+Proof count: 1
+
+Proof of
+  '𝒕ₓ₍'°𝑦⁰⁺¹₎ ≠ 0 ⊢ ∃¹'°𝑦⁰⁺¹ '𝒕ₓ₍'°𝑦⁰⁺¹₎ = s('°𝑦⁰⁺¹)
+succeeded:
+  MP: premise ⊢; T3h.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ ∃¹'°𝑦⁰⁺¹ '𝒕ₓ₍'°𝑦⁰⁺¹₎ = s('°𝑦⁰⁺¹)][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝚪₍₁₎₁₀ ↦ 𝑨₁₀ ⇒ ∃¹'°𝑦⁰⁺¹ '𝒕ₓ₍'°𝑦⁰⁺¹₎ = s('°𝑦⁰⁺¹)][𝚪₁₀ ↦ □]
+∴ '𝒕ₓ₍'°𝑦⁰⁺¹₎ ≠ 0 ⊢ 𝑨₁₀, 𝑨₁₀ ⇒ ∃¹'°𝑦⁰⁺¹ '𝒕ₓ₍'°𝑦⁰⁺¹₎ = s('°𝑦⁰⁺¹)
+premise ⊢. object '𝒕ₓ₍'°𝑦⁰⁺¹₎.
+  '𝒕ₓ₍'°𝑦⁰⁺¹₎ ≠ 0.
+lemma T3h. object 𝒕ₓ₍°𝑦⁰⁺¹₂₁₎₂₁.
+  𝒕ₓ₍°𝑦⁰⁺¹₂₁₎₂₁ ≠ 0 ⇒ ∃¹°𝑦⁰⁺¹₂₁ 𝒕ₓ₍°𝑦⁰⁺¹₂₁₎₂₁ = s(°𝑦⁰⁺¹₂₁)
+[𝑨₁₀ ↦ '𝒕ₓ₍'°𝑦⁰⁺¹₎ ≠ 0][𝒕ₓ₍°𝑦⁰⁺¹₂₁₎₂₁ ↦ '𝒕ₓ₍°𝑦⁰⁺¹₂₁↦'°𝑦⁰⁺¹₎][°𝑦⁰⁺¹₂₁ ↦ '°𝑦⁰⁺¹]
+∎
+
+

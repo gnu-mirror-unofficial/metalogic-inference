@@ -1,0 +1,17 @@
+— Begin: theory database issue-meta-6.
+
+theory TM.
+
+rule MP. formula 𝑨, 𝑩.
+  𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+axiom K0. formula 𝑩 object 𝒕, °𝒚.
+  ∀¹°𝒚 𝑩 ⇒ 𝑩[°𝒚 ⤇ 𝒕].
+
+lemma K. formula 𝑨 object 𝑡, °𝒙.
+  ∀¹°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝑡]
+result by MP: premise ⊢; K0. — MP: premise ⊢; K0.
+
+end theory TM.
+
+— End: theory database issue-meta-6.

@@ -1,0 +1,500 @@
+
+Proving lemma T1. object x.
+  x = x
+Proving result.
+Proof succeeded.
+Variable: 'x
+Proof count: 1
+
+Proof of
+  'x = 'x
+succeeded:
+  MP: S5; MP: S5; S1.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ 'x = 'x]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ 'x = 'x
+axiom S5. object 𝑥₂₀.
+  𝑥₂₀ + 0 = 𝑥₂₀.
+rule MP. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+[𝑨₁₀ ↦ 𝑥₂₀ + 0 = 𝑥₂₀][𝑩₂₁ ↦ 𝑥₂₀ + 0 = 𝑥₂₀ ⇒ 'x = 'x]
+∴ 𝑨₂₁, 𝑨₂₁ ⇒ (𝑥₂₀ + 0 = 𝑥₂₀ ⇒ 'x = 'x)
+axiom S5. object 𝑥₃₀.
+  𝑥₃₀ + 0 = 𝑥₃₀.
+axiom S1. object 𝑥₃₁, 𝑦₃₁, 𝑧₃₁.
+  𝑥₃₁ = 𝑦₃₁ ⇒ (𝑥₃₁ = 𝑧₃₁ ⇒ 𝑦₃₁ = 𝑧₃₁).
+[𝑨₂₁ ↦ 𝑥₃₀ + 0 = 𝑥₃₀][𝑥₃₁ ↦ 𝑥₃₀ + 0][𝑦₃₁ ↦ 𝑥₃₀][𝑥₃₀ ↦ 𝑥₂₀][𝑧₃₁ ↦ 𝑥₂₀][𝑥₂₀ ↦ 'x]
+∎
+
+
+
+Proving lemma T2. object x, y.
+  x = y ⇒ y = x
+Proving result.
+Proof succeeded.
+Variables: 'x, 'y
+Proof count: 1
+
+Proof of
+  'x = 'y ⇒ 'y = 'x
+succeeded:
+  DT: MP: T1; MP: S1.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ 'x = 'y][𝑩₁₀ ↦ 'y = 'x][𝜞₁₀ ↦ ⦰]
+∴ 'x = 'y ⊢ 'y = 'x
+rule MP. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑨₂₀ ⇒ 𝑩₂₀ ⊢ 𝑩₂₀.
+[𝑩₂₀ ↦ 'y = 'x][𝚪₍₀₎₂₀ ↦ 𝑨₂₀][𝚪₍₁₎₂₀ ↦ 𝑨₂₀ ⇒ 'y = 'x][𝚪₂₀ ↦ □]
+∴ 'x = 'y ⊢ 𝑨₂₀, 𝑨₂₀ ⇒ 'y = 'x
+lemma T1. object x₃₀.
+  x₃₀ = x₃₀
+rule MP. formula 𝑨₃₁, 𝑩₃₁.
+  𝑨₃₁, 𝑨₃₁ ⇒ 𝑩₃₁ ⊢ 𝑩₃₁.
+[𝑨₂₀ ↦ x₃₀ = x₃₀][𝑩₃₁ ↦ x₃₀ = x₃₀ ⇒ 'y = 'x][𝑨₃₁ ↦ 'x = 'y][𝚪₍₁₎₃₁ ↦ 'x = 'y ⇒ (x₃₀ = x₃₀ ⇒ 'y = 'x)][𝚪₃₁ ↦ □]
+∴ 'x = 'y ⊢ 'x = 'y ⇒ (x₃₀ = x₃₀ ⇒ 'y = 'x)
+axiom S1. object 𝑥₄₀, 𝑦₄₀, 𝑧₄₀.
+  𝑥₄₀ = 𝑦₄₀ ⇒ (𝑥₄₀ = 𝑧₄₀ ⇒ 𝑦₄₀ = 𝑧₄₀).
+[𝑥₄₀ ↦ 'x][𝑦₄₀ ↦ 'y][x₃₀ ↦ 'x][𝑧₄₀ ↦ 'x]
+∎
+
+
+
+Proving lemma X0CV. object 𝑥.
+  0 + 𝑥 = 𝑥
+Proving result.
+Proof succeeded.
+Variable: '𝑥
+Proof count: 1
+
+Proof of
+  0 + '𝑥 = '𝑥
+succeeded:
+  CVIr: S5; S1b: S6; S2b: premise ⊢: ineqr.
+rule CVIr. formula sequence 𝜞₁₀ formula 𝑩₁₀ object 𝒕₁₀, °𝒙₁₀, °𝒚₁₀, °𝒛₁₀.
+  ⦅𝜞₁₀ ⊢ (°𝒛₁₀ ↦ 𝑩₁₀)(0)¦𝜞₁₀, °𝒚₁₀ ≤ °𝒙₁₀ ⊢₍°𝒙₁₀₎ (°𝒛₁₀ ↦ 𝑩₁₀)(°𝒚₁₀) ⊩⁽°𝒚₁₀⁾₍°𝒙₁₀₎ 𝜞₁₀ ⊢ (°𝒛₁₀ ↦ 𝑩₁₀)(s(°𝒙₁₀))⦆ ⊪ 𝜞₁₀ ⊢ (°𝒛₁₀ ↦ 𝑩₁₀)(𝒕₁₀).
+[𝒕₁₀ ↦ '𝑥][°𝒛₁₀ ↦ '°𝒛₁₀][𝑩₁₀ ↦ 0 + '°𝒛₁₀ = '°𝒛₁₀][𝜞₁₀ ↦ ⦰]
+∴ ⦅ ⊢ 0 + 0 = 0¦°𝒚₁₀ ≤ °𝒙₁₀ ⊢ 0 + °𝒚₁₀ = °𝒚₁₀ ⊩⁽°𝒚₁₀⁾₍°𝒙₁₀₎  ⊢ 0 + s(°𝒙₁₀) = s(°𝒙₁₀)⦆
+axiom S5. object 𝑥₂₀.
+  𝑥₂₀ + 0 = 𝑥₂₀.
+rule S1b. object 𝑥₂₁, 𝑦₂₁, 𝑧₂₁.
+  𝑥₂₁ = 𝑦₂₁, 𝑦₂₁ = 𝑧₂₁ ⊢ 𝑥₂₁ = 𝑧₂₁.
+[𝑥₂₀ ↦ 0][𝑥₂₁ ↦ 0 + s(°𝒙₁₀)][𝑧₂₁ ↦ s(°𝒙₁₀)][𝚪₍₀₎₂₁ ↦ 0 + s(°𝒙₁₀) = 𝑦₂₁][𝚪₍₁₎₂₁ ↦ 𝑦₂₁ = s(°𝒙₁₀)][𝚪₂₁ ↦ □]
+∴ °𝒚₁₀ ≤ °𝒙₁₀ ⊢ 0 + °𝒚₁₀ = °𝒚₁₀ ⊩⁽°𝒚₁₀⁾₍°𝒙₁₀₎  ⊢ 0 + s(°𝒙₁₀) = 𝑦₂₁, 𝑦₂₁ = s(°𝒙₁₀)
+axiom S6. object 𝑥₃₀, 𝑦₃₀.
+  𝑥₃₀ + s(𝑦₃₀) = s(𝑥₃₀ + 𝑦₃₀).
+rule S2b. object 𝑥₃₁, 𝑦₃₁.
+  𝑥₃₁ = 𝑦₃₁ ⊢ s(𝑥₃₁) = s(𝑦₃₁).
+[𝑥₃₀ ↦ 0][𝑦₃₀ ↦ °𝒙₁₀][𝑦₂₁ ↦ s(0 + °𝒙₁₀)][𝑥₃₁ ↦ 0 + °𝒙₁₀][𝑦₃₁ ↦ °𝒙₁₀]
+∴ °𝒚₁₀ ≤ °𝒙₁₀ ⊢ 0 + °𝒚₁₀ = °𝒚₁₀ ⊩  ⊢ 0 + °𝒙₁₀ = °𝒙₁₀
+premise ⊢. object °𝒙₁₀, °𝒚₁₀.
+  °𝒚₁₀ ≤ °𝒙₁₀ ⊢ 0 + °𝒚₁₀ = °𝒚₁₀.
+[°𝒚₁₀ ↦⁰ ⁰ °𝒙₁₀][°𝒚₁₀ ↦⁰ ⁰ °𝒙₁₀]
+∴ °𝒚₁₀ ≤ °𝒙₁₀ ⊢ 0 + °𝒚₁₀ = °𝒚₁₀ ⊩  ⊢ °𝒚₁₀ ≤ °𝒙₁₀
+axiom ineqr. object 𝑥₅₀.
+  𝑥₅₀ ≤ 𝑥₅₀.
+[𝑥₅₀ ↦ °𝒚₁₀][°𝒚₁₀ ↦ °𝒙₁₀]
+∎
+
+
+
+Proving lemma CVIq. formula sequence 𝜞 formula 𝑩 object °𝒙, °𝒚.
+  𝜞 ⊢ (°𝒚 ↦ 𝑩)(0); 𝜞, ∀¹°𝒚: °𝒚 ≤ °𝒙 ⇒ (°𝒚 ↦ 𝑩)(°𝒚) ⊢₍°𝒙₎ (°𝒚 ↦ 𝑩)(s(°𝒙)) ⊩ 𝜞 ⊢ (°𝒚 ↦ 𝑩)(°𝒙)
+Proving result.
+Proof succeeded.
+Variables: '𝜞, '𝑩, '°𝒙, '°𝒚
+Proof count: 1
+
+Proof of
+  '𝜞 ⊢ ('°𝒚 ↦ '𝑩)(0); '𝜞, ∀¹'°𝒚: '°𝒚 ≤ '°𝒙 ⇒ ('°𝒚 ↦ '𝑩)('°𝒚) ⊢₍'°𝒙₎ ('°𝒚 ↦ '𝑩)(s('°𝒙)) ⊩ '𝜞 ⊢ ('°𝒚 ↦ '𝑩)('°𝒙)
+succeeded:
+  CVIA: DT.
+rule CVIA. formula 𝑨₁₀ object °𝒙₁₀, °𝒚₁₀.
+  (°𝒚₁₀ ↦ 𝑨₁₀)(0), (∀¹°𝒚₁₀: °𝒚₁₀ ≤ °𝒙₁₀ ⇒ (°𝒚₁₀ ↦ 𝑨₁₀)(°𝒚₁₀)) ⇒ (°𝒚₁₀ ↦ 𝑨₁₀)(s(°𝒙₁₀)) ⊢⁽¹ °𝒙₁₀⁾ (°𝒚₁₀ ↦ 𝑨₁₀)(°𝒙₁₀).
+[°𝒚₁₀ ↦ '°𝒚][𝑨₁₀ ↦ '𝑩][°𝒙₁₀ ↦ '°𝒙][𝚪₍₀₎₁₀ ↦ '𝑩['°𝒚 ⤇ 0]][𝚪₍₁₎₁₀ ↦ (∀¹'°𝒚: '°𝒚 ≤ '°𝒙 ⇒ '𝑩) ⇒ '𝑩['°𝒚 ⤇ s('°𝒙)]][𝚪₁₀ ↦ □]
+∴ '𝜞 ⊢ '𝑩['°𝒚 ⤇ 0]; '𝜞, ∀¹'°𝒚: '°𝒚 ≤ '°𝒙 ⇒ '𝑩 ⊢₍'°𝒙₎ '𝑩['°𝒚 ⤇ s('°𝒙)] ⊩ '𝜞 ⊢₍₁ '°𝒙₎ '𝑩['°𝒚 ⤇ 0], (∀¹'°𝒚: '°𝒚 ≤ '°𝒙 ⇒ '𝑩) ⇒ '𝑩['°𝒚 ⤇ s('°𝒙)]
+postulate DT. formula sequence 𝜞₂₁ formula 𝑨₂₁, 𝑩₂₁.
+  𝜞₂₁, 𝑨₂₁ ⊢ 𝑩₂₁ ⊩ 𝜞₂₁ ⊢ 𝑨₂₁ ⇒ 𝑩₂₁.
+[𝑨₂₁ ↦ ∀¹'°𝒚: '°𝒚 ≤ '°𝒙 ⇒ '𝑩][𝑩₂₁ ↦ '𝑩['°𝒚 ⤇ s('°𝒙)]][𝜞₂₁ ↦₍₀ ₀ '°𝒙₎ '𝜞]
+∎
+
+
+
+Proving lemma CVIs. formula sequence 𝜞 predicate variable 𝑷 object °𝒙, °𝒚.
+  𝜞 ⊢ 𝑷(0); 𝜞, ∀¹°𝒚: °𝒚 ≤ °𝒙 ⇒ 𝑷(°𝒚) ⊢₍°𝒙₎ 𝑷(s(°𝒙)) ⊩ 𝜞 ⊢ 𝑷(°𝒙)
+Proving result.
+Proof succeeded.
+Variables: '𝜞, '𝑷, '°𝒙, '°𝒚
+Proof count: 1
+
+Proof of
+  '𝜞 ⊢ '𝑷(0); '𝜞, ∀¹'°𝒚: '°𝒚 ≤ '°𝒙 ⇒ '𝑷('°𝒚) ⊢₍'°𝒙₎ '𝑷(s('°𝒙)) ⊩ '𝜞 ⊢ '𝑷('°𝒙)
+succeeded:
+  CVI2: DT.
+rule CVI2. predicate variable 𝑷₁₀ object °𝒙₁₀, °𝒚₁₀.
+  𝑷₁₀(0), (∀¹°𝒚₁₀: °𝒚₁₀ ≤ °𝒙₁₀ ⇒ 𝑷₁₀(°𝒚₁₀)) ⇒ 𝑷₁₀(s(°𝒙₁₀)) ⊢⁽¹ °𝒙₁₀⁾ 𝑷₁₀(°𝒙₁₀).
+[𝑷₁₀ ↦ '𝑷][°𝒙₁₀ ↦ '°𝒙][𝚪₍₀₎₁₀ ↦ '𝑷(0)][𝚪₍₁₎₁₀ ↦ (∀¹°𝒚₁₀: °𝒚₁₀ ≤ '°𝒙 ⇒ '𝑷(°𝒚₁₀)) ⇒ '𝑷(s('°𝒙))][𝚪₁₀ ↦ □]
+∴ '𝜞 ⊢ '𝑷(0); '𝜞, ∀¹'°𝒚: '°𝒚 ≤ '°𝒙 ⇒ '𝑷('°𝒚) ⊢₍'°𝒙₎ '𝑷(s('°𝒙)) ⊩ '𝜞 ⊢₍₁ '°𝒙₎ '𝑷(0), (∀¹°𝒚₁₀: °𝒚₁₀ ≤ '°𝒙 ⇒ '𝑷(°𝒚₁₀)) ⇒ '𝑷(s('°𝒙))
+postulate DT. formula sequence 𝜞₂₁ formula 𝑨₂₁, 𝑩₂₁.
+  𝜞₂₁, 𝑨₂₁ ⊢ 𝑩₂₁ ⊩ 𝜞₂₁ ⊢ 𝑨₂₁ ⇒ 𝑩₂₁.
+[𝑨₂₁ ↦ ∀¹°𝒚₁₀: °𝒚₁₀ ≤ '°𝒙 ⇒ '𝑷(°𝒚₁₀)][𝑩₂₁ ↦ '𝑷(s('°𝒙))][𝜞₂₁ ↦₍₀ ₀ '°𝒙₎ '𝜞][°𝒚₁₀ ↦ '°𝒚]
+∎
+
+
+
+Proving lemma IRa. predicate variable A.
+  A(0) ∧ ∀²°x⁰⁺²: A(°x⁰⁺²) ⇒ A(s(°x⁰⁺²)) ⊢ ∀¹°x⁰⁺¹ A(°x⁰⁺¹)
+Proving result.
+Proof succeeded.
+Variables: 'A, '°x⁰⁺¹, '°x⁰⁺²
+Proof count: 1
+
+Proof of
+  'A(0) ∧ ∀²'°x⁰⁺²: 'A('°x⁰⁺²) ⇒ 'A(s('°x⁰⁺²)) ⊢ ∀¹'°x⁰⁺¹ 'A('°x⁰⁺¹)
+succeeded:
+  MP: S9a.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ ∀¹'°x⁰⁺¹ 'A('°x⁰⁺¹)][𝑨₁₀ ↦ 'A(0) ∧ ∀²'°x⁰⁺²: 'A('°x⁰⁺²) ⇒ 'A(s('°x⁰⁺²))][𝚪₍₁₎₁₀ ↦ 'A(0) ∧ ∀²'°x⁰⁺²: 'A('°x⁰⁺²) ⇒ 'A(s('°x⁰⁺²)) ⇒ ∀¹'°x⁰⁺¹ 'A('°x⁰⁺¹)][𝚪₁₀ ↦ □]
+∴ 'A(0) ∧ ∀²'°x⁰⁺²: 'A('°x⁰⁺²) ⇒ 'A(s('°x⁰⁺²)) ⊢ 'A(0) ∧ ∀²'°x⁰⁺²: 'A('°x⁰⁺²) ⇒ 'A(s('°x⁰⁺²)) ⇒ ∀¹'°x⁰⁺¹ 'A('°x⁰⁺¹)
+axiom S9a. predicate variable 𝑷₂₀.
+  𝑷₂₀(0) ∧ ∀¹°𝑥⁰⁺¹₂₀: 𝑷₂₀(°𝑥⁰⁺¹₂₀) ⇒ 𝑷₂₀(s(°𝑥⁰⁺¹₂₀)) ⇒ ∀²°𝑥⁰⁺²₂₀ 𝑷₂₀(°𝑥⁰⁺²₂₀).
+[𝑷₂₀ ↦ 'A][°𝑥⁰⁺¹₂₀ ↦ '°x⁰⁺²][°𝑥⁰⁺²₂₀ ↦ '°x⁰⁺¹]
+∎
+
+
+
+Proving lemma IR1. predicate variable A.
+  A(0), ∀²°x⁰⁺²: A(°x⁰⁺²) ⇒ A(s(°x⁰⁺²)) ⊢ ∀¹°x⁰⁺¹ A(°x⁰⁺¹)
+Proving result.
+Proof succeeded.
+Variables: 'A, '°x⁰⁺¹, '°x⁰⁺²
+Proof count: 1
+
+Proof of
+  'A(0), ∀²'°x⁰⁺²: 'A('°x⁰⁺²) ⇒ 'A(s('°x⁰⁺²)) ⊢ ∀¹'°x⁰⁺¹ 'A('°x⁰⁺¹)
+succeeded:
+  IRa: CI.
+lemma IRa. predicate variable A₁₀.
+  A₁₀(0) ∧ ∀²°x⁰⁺²₁₀: A₁₀(°x⁰⁺²₁₀) ⇒ A₁₀(s(°x⁰⁺²₁₀)) ⊢ ∀¹°x⁰⁺¹₁₀ A₁₀(°x⁰⁺¹₁₀)
+[°x⁰⁺¹₁₀ ↦ '°x⁰⁺¹][A₁₀ ↦ 'A]
+∴ 'A(0), ∀²'°x⁰⁺²: 'A('°x⁰⁺²) ⇒ 'A(s('°x⁰⁺²)) ⊢ 'A(0) ∧ ∀²°x⁰⁺²₁₀: 'A(°x⁰⁺²₁₀) ⇒ 'A(s(°x⁰⁺²₁₀))
+rule CI. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑩₂₀ ⊢ 𝑨₂₀ ∧ 𝑩₂₀.
+[𝑨₂₀ ↦ 'A(0)][𝑩₂₀ ↦ ∀²°x⁰⁺²₁₀: 'A(°x⁰⁺²₁₀) ⇒ 'A(s(°x⁰⁺²₁₀))][𝚪₍₀₎₂₀ ↦ 'A(0)][°x⁰⁺²₁₀ ↦ '°x⁰⁺²][𝚪₂₀ ↦ □]
+∎
+
+
+
+Proving lemma X. object x.
+  0 + x = x
+Proving result.
+Proof succeeded.
+Variable: 'x
+Proof count: 1
+
+Proof of
+  0 + 'x = 'x
+succeeded:
+  IR: S5; S1b: S6; S2b.
+rule IR. formula sequence 𝜞₁₀ formula 𝑨₁₀ object 𝒕₁₀, °𝒙₁₀.
+  𝜞₁₀ ⊢ (°𝒚⁰⁺¹₁₀ ↦ 𝑨₁₀)(0); 𝜞₁₀, (°𝒚⁰⁺¹₁₀ ↦ 𝑨₁₀)(°𝒙₁₀) ⊢₍°𝒙₁₀₎ (°𝒚⁰⁺¹₁₀ ↦ 𝑨₁₀)(s(°𝒙₁₀)) ⊩ 𝜞₁₀ ⊢ (°𝒚⁰⁺¹₁₀ ↦ 𝑨₁₀)(𝒕₁₀).
+[𝒕₁₀ ↦ 'x][°𝒚⁰⁺¹₁₀ ↦ '°𝒚⁰⁺¹₁₀][𝑨₁₀ ↦ 0 + '°𝒚⁰⁺¹₁₀ = '°𝒚⁰⁺¹₁₀][𝜞₁₀ ↦ ⦰]
+∴  ⊢ 0 + 0 = 0; 0 + °𝒙₁₀ = °𝒙₁₀ ⊢ 0 + s(°𝒙₁₀) = s(°𝒙₁₀)
+axiom S5. object 𝑥₂₀.
+  𝑥₂₀ + 0 = 𝑥₂₀.
+rule S1b. object 𝑥₂₁, 𝑦₂₁, 𝑧₂₁.
+  𝑥₂₁ = 𝑦₂₁, 𝑦₂₁ = 𝑧₂₁ ⊢ 𝑥₂₁ = 𝑧₂₁.
+[𝑥₂₀ ↦ 0][𝑥₂₁ ↦ 0 + s(°𝒙₁₀)][𝑧₂₁ ↦ s(°𝒙₁₀)][𝚪₍₀₎₂₁ ↦ 0 + s(°𝒙₁₀) = 𝑦₂₁][𝚪₍₁₎₂₁ ↦ 𝑦₂₁ = s(°𝒙₁₀)][𝚪₂₁ ↦ □]
+∴ 0 + °𝒙₁₀ = °𝒙₁₀ ⊢ 0 + s(°𝒙₁₀) = 𝑦₂₁, 𝑦₂₁ = s(°𝒙₁₀)
+axiom S6. object 𝑥₃₀, 𝑦₃₀.
+  𝑥₃₀ + s(𝑦₃₀) = s(𝑥₃₀ + 𝑦₃₀).
+rule S2b. object 𝑥₃₁, 𝑦₃₁.
+  𝑥₃₁ = 𝑦₃₁ ⊢ s(𝑥₃₁) = s(𝑦₃₁).
+[𝑥₃₀ ↦ 0][𝑦₃₀ ↦ °𝒙₁₀][𝑦₂₁ ↦ s(0 + °𝒙₁₀)][𝑥₃₁ ↦ 0 + °𝒙₁₀][𝑦₃₁ ↦ °𝒙₁₀]
+∎
+
+
+
+Proving lemma X0. object x.
+  0 + x = x
+Proving result.
+Proof succeeded.
+Variable: 'x
+Proof count: 1
+
+Proof of
+  0 + 'x = 'x
+succeeded:
+  IRz: S5; S1b: S6; S2b.
+rule IRz. formula sequence 𝜞₁₀ formula 𝑨₁₀ object 𝒕₁₀, °𝒙₁₀.
+  𝜞₁₀ ⊢ (°𝒙₁₀ ↦ 𝑨₁₀)(0); 𝜞₁₀, 𝑨₁₀ ⊢₍°𝒙₁₀₎ (°𝒙₁₀ ↦ 𝑨₁₀)(s(°𝒙₁₀)) ⊩ 𝜞₁₀ ⊢ (°𝒙₁₀ ↦ 𝑨₁₀)(𝒕₁₀).
+[𝒕₁₀ ↦ 'x][°𝒙₁₀ ↦ '°𝒙₁₀][𝑨₁₀ ↦ 0 + '°𝒙₁₀ = '°𝒙₁₀][𝜞₁₀ ↦ ⦰]
+∴  ⊢ 0 + 0 = 0; 0 + '°𝒙₁₀ = '°𝒙₁₀ ⊢ 0 + s('°𝒙₁₀) = s('°𝒙₁₀)
+axiom S5. object 𝑥₂₀.
+  𝑥₂₀ + 0 = 𝑥₂₀.
+rule S1b. object 𝑥₂₁, 𝑦₂₁, 𝑧₂₁.
+  𝑥₂₁ = 𝑦₂₁, 𝑦₂₁ = 𝑧₂₁ ⊢ 𝑥₂₁ = 𝑧₂₁.
+[𝑥₂₀ ↦ 0][𝑥₂₁ ↦ 0 + s('°𝒙₁₀)][𝑧₂₁ ↦ s('°𝒙₁₀)][𝚪₍₀₎₂₁ ↦ 0 + s('°𝒙₁₀) = 𝑦₂₁][𝚪₍₁₎₂₁ ↦ 𝑦₂₁ = s('°𝒙₁₀)][𝚪₂₁ ↦ □]
+∴ 0 + '°𝒙₁₀ = '°𝒙₁₀ ⊢ 0 + s('°𝒙₁₀) = 𝑦₂₁, 𝑦₂₁ = s('°𝒙₁₀)
+axiom S6. object 𝑥₃₀, 𝑦₃₀.
+  𝑥₃₀ + s(𝑦₃₀) = s(𝑥₃₀ + 𝑦₃₀).
+rule S2b. object 𝑥₃₁, 𝑦₃₁.
+  𝑥₃₁ = 𝑦₃₁ ⊢ s(𝑥₃₁) = s(𝑦₃₁).
+[𝑥₃₀ ↦ 0][𝑦₃₀ ↦ '°𝒙₁₀][𝑦₂₁ ↦ s(0 + '°𝒙₁₀)][𝑥₃₁ ↦ 0 + '°𝒙₁₀][𝑦₃₁ ↦ '°𝒙₁₀]
+∎
+
+
+
+Proving lemma X1. ∀¹°x⁰⁺¹ 0 + °x⁰⁺¹ = °x⁰⁺¹
+Proving result.
+Proof succeeded.
+Variable: '°x⁰⁺¹
+Proof count: 1
+
+Proof of
+  ∀¹'°x⁰⁺¹ 0 + '°x⁰⁺¹ = '°x⁰⁺¹
+succeeded:
+  S9c: S5; Gen: DT: S1b: S6; MP: S2.
+postulate S9c. formula 𝑨₁₀ object °𝒙₁₀.
+  𝑨₁₀[°𝒙₁₀ ⤇ 0], ∀²°𝒙₁₀: 𝑨₁₀ ⇒ 𝑨₁₀[°𝒙₁₀ ⤇ s(°𝒙₁₀)] ⊢ ∀¹°𝒙₁₀ 𝑨₁₀.
+[°𝒙₁₀ ↦ '°x⁰⁺¹][𝑨₁₀ ↦ 0 + '°x⁰⁺¹ = '°x⁰⁺¹]
+∴ 0 + 0 = 0, ∀²'°x⁰⁺¹: 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⇒ 0 + s('°x⁰⁺¹) = s('°x⁰⁺¹)
+axiom S5. object 𝑥₂₀.
+  𝑥₂₀ + 0 = 𝑥₂₀.
+rule Gen. formula 𝑨₂₁ object °𝒙₂₁.
+  𝑨₂₁ ⊢⁽°𝒙₂₁⁾ ∀¹°𝒙₂₁ 𝑨₂₁.
+[𝑥₂₀ ↦ 0][°𝒙₂₁ ↦ '°x⁰⁺¹][𝑨₂₁ ↦ 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⇒ 0 + s('°x⁰⁺¹) = s('°x⁰⁺¹)]
+∴ 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⇒ 0 + s('°x⁰⁺¹) = s('°x⁰⁺¹)
+postulate DT. formula sequence 𝜞₃₀ formula 𝑨₃₀, 𝑩₃₀.
+  𝜞₃₀, 𝑨₃₀ ⊢ 𝑩₃₀ ⊩ 𝜞₃₀ ⊢ 𝑨₃₀ ⇒ 𝑩₃₀.
+[𝑨₃₀ ↦ 0 + '°x⁰⁺¹ = '°x⁰⁺¹][𝑩₃₀ ↦ 0 + s('°x⁰⁺¹) = s('°x⁰⁺¹)][𝜞₃₀ ↦ ⦰]
+∴ 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⊢ 0 + s('°x⁰⁺¹) = s('°x⁰⁺¹)
+rule S1b. object 𝑥₄₀, 𝑦₄₀, 𝑧₄₀.
+  𝑥₄₀ = 𝑦₄₀, 𝑦₄₀ = 𝑧₄₀ ⊢ 𝑥₄₀ = 𝑧₄₀.
+[𝑥₄₀ ↦ 0 + s('°x⁰⁺¹)][𝑧₄₀ ↦ s('°x⁰⁺¹)][𝚪₍₀₎₄₀ ↦ 0 + s('°x⁰⁺¹) = 𝑦₄₀][𝚪₍₁₎₄₀ ↦ 𝑦₄₀ = s('°x⁰⁺¹)][𝚪₄₀ ↦ □]
+∴ 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⊢ 0 + s('°x⁰⁺¹) = 𝑦₄₀, 𝑦₄₀ = s('°x⁰⁺¹)
+axiom S6. object 𝑥₅₀, 𝑦₅₀.
+  𝑥₅₀ + s(𝑦₅₀) = s(𝑥₅₀ + 𝑦₅₀).
+rule MP. formula 𝑨₅₁, 𝑩₅₁.
+  𝑨₅₁, 𝑨₅₁ ⇒ 𝑩₅₁ ⊢ 𝑩₅₁.
+[𝑥₅₀ ↦ 0][𝑦₅₀ ↦ '°x⁰⁺¹][𝑦₄₀ ↦ s(0 + '°x⁰⁺¹)][𝑩₅₁ ↦ s(0 + '°x⁰⁺¹) = s('°x⁰⁺¹)][𝑨₅₁ ↦ 0 + '°x⁰⁺¹ = '°x⁰⁺¹][𝚪₍₁₎₅₁ ↦ 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⇒ s(0 + '°x⁰⁺¹) = s('°x⁰⁺¹)][𝚪₅₁ ↦ □]
+∴ 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⊢ 0 + '°x⁰⁺¹ = '°x⁰⁺¹ ⇒ s(0 + '°x⁰⁺¹) = s('°x⁰⁺¹)
+axiom S2. object 𝑥₆₀, 𝑦₆₀.
+  𝑥₆₀ = 𝑦₆₀ ⇒ s(𝑥₆₀) = s(𝑦₆₀).
+[𝑥₆₀ ↦ 0 + '°x⁰⁺¹][𝑦₆₀ ↦ '°x⁰⁺¹]
+∎
+
+
+Proving 1. B(0).
+Proof succeeded.
+Variables: none
+Proof count: 1
+
+Proof of
+  B(0)
+succeeded:
+  S5₍D5₎.
+axiom S5. object 𝑥₁₀.
+  𝑥₁₀ + 0 = 𝑥₁₀.
+definition D5. object t¹₁₀₁.
+  B(t¹₁₀₁) ≔ 0 + t¹₁₀₁ = t¹₁₀₁.
+[t¹₁₀₁ ↦ 0][𝑥₁₀ ↦ 0]
+∎
+
+
+
+Proving a. object x¹.
+  B(x¹) ⊢ B(s(x¹))
+Proving a1. 0 + 'x¹ = 'x¹.
+Proof succeeded.
+Variable: 'x¹
+Proof count: 1
+
+Proof of
+  0 + 'x¹ = 'x¹
+succeeded:
+  premise a₍D5₎.
+premise a. object 'x¹.
+  B('x¹).
+definition D5. object t¹₁₀₁.
+  B(t¹₁₀₁) ≔ 0 + t¹₁₀₁ = t¹₁₀₁.
+[t¹₁₀₁ ↦ 'x¹]
+∎
+
+
+Proving a2. 0 + s('x¹) = s(0 + 'x¹).
+Proof succeeded.
+Variable: 'x¹
+Proof count: 1
+
+Proof of
+  0 + s('x¹) = s(0 + 'x¹)
+succeeded:
+  S6.
+axiom S6. object 𝑥₁₀, 𝑦₁₀.
+  𝑥₁₀ + s(𝑦₁₀) = s(𝑥₁₀ + 𝑦₁₀).
+[𝑥₁₀ ↦ 0][𝑦₁₀ ↦ 'x¹]
+∎
+
+
+Proving a3. s(0 + 'x¹) = s('x¹).
+Proof succeeded.
+Variable: 'x¹
+Proof count: 1
+
+Proof of
+  s(0 + 'x¹) = s('x¹)
+succeeded:
+  MP: a1; S2.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ s(0 + 'x¹) = s('x¹)]
+∴ 𝑨₁₀, 𝑨₁₀ ⇒ s(0 + 'x¹) = s('x¹)
+a1. 0 + 'x¹ = 'x¹.
+axiom S2. object 𝑥₂₁, 𝑦₂₁.
+  𝑥₂₁ = 𝑦₂₁ ⇒ s(𝑥₂₁) = s(𝑦₂₁).
+[𝑨₁₀ ↦ 0 + 'x¹ = 'x¹][𝑥₂₁ ↦ 0 + 'x¹][𝑦₂₁ ↦ 'x¹]
+∎
+
+
+Proving a4. 0 + s('x¹) = s('x¹).
+Proof succeeded.
+Variable: 'x¹
+Proof count: 1
+
+Proof of
+  0 + s('x¹) = s('x¹)
+succeeded:
+  S1b: a2; a3.
+rule S1b. object 𝑥₁₀, 𝑦₁₀, 𝑧₁₀.
+  𝑥₁₀ = 𝑦₁₀, 𝑦₁₀ = 𝑧₁₀ ⊢ 𝑥₁₀ = 𝑧₁₀.
+[𝑥₁₀ ↦ 0 + s('x¹)][𝑧₁₀ ↦ s('x¹)]
+∴ 0 + s('x¹) = 𝑦₁₀, 𝑦₁₀ = s('x¹)
+a2. 0 + s('x¹) = s(0 + 'x¹).
+a3. s(0 + 'x¹) = s('x¹).
+[𝑦₁₀ ↦ s(0 + 'x¹)]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: 'x¹
+Proof count: 1
+
+Proof of
+  B('x¹) ⊢ B(s('x¹))
+succeeded:
+  a4₍D5₎.
+a4. 0 + s('x¹) = s('x¹).
+definition D5. object t¹₁₀₁.
+  B(t¹₁₀₁) ≔ 0 + t¹₁₀₁ = t¹₁₀₁.
+[t¹₁₀₁ ↦ s('x¹)]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '°x⁰⁺¹
+Proof count: 1
+
+Proof of
+  ∀¹'°x⁰⁺¹ 0 + '°x⁰⁺¹ = '°x⁰⁺¹
+succeeded:
+  IR1₍D5₎: 1; Gen: DT: a.
+lemma IR1. predicate variable A₁₀.
+  A₁₀(0), ∀²°x⁰⁺²₁₀: A₁₀(°x⁰⁺²₁₀) ⇒ A₁₀(s(°x⁰⁺²₁₀)) ⊢ ∀¹°x⁰⁺¹₁₀ A₁₀(°x⁰⁺¹₁₀)
+definition D5. object t¹₁₀₁.
+  B(t¹₁₀₁) ≔ 0 + t¹₁₀₁ = t¹₁₀₁.
+[°x⁰⁺¹₁₀ ↦ '°x⁰⁺¹][A₁₀ ↦ B][t¹₁₀₁ ↦ '°x⁰⁺¹]
+∴ B(0), ∀²°x⁰⁺²₁₀: B(°x⁰⁺²₁₀) ⇒ B(s(°x⁰⁺²₁₀))
+1. B(0).
+rule Gen. formula 𝑨₂₁ object °𝒙₂₁.
+  𝑨₂₁ ⊢⁽°𝒙₂₁⁾ ∀¹°𝒙₂₁ 𝑨₂₁.
+[°𝒙₂₁ ↦ °x⁰⁺²₁₀][𝑨₂₁ ↦ B(°x⁰⁺²₁₀) ⇒ B(s(°x⁰⁺²₁₀))]
+∴ B(°x⁰⁺²₁₀) ⇒ B(s(°x⁰⁺²₁₀))
+postulate DT. formula sequence 𝜞₃₀ formula 𝑨₃₀, 𝑩₃₀.
+  𝜞₃₀, 𝑨₃₀ ⊢ 𝑩₃₀ ⊩ 𝜞₃₀ ⊢ 𝑨₃₀ ⇒ 𝑩₃₀.
+[𝑨₃₀ ↦ B(°x⁰⁺²₁₀)][𝑩₃₀ ↦ B(s(°x⁰⁺²₁₀))][𝜞₃₀ ↦ ⦰]
+∴ B(°x⁰⁺²₁₀) ⊢ B(s(°x⁰⁺²₁₀))
+a. object x¹₄₀.
+  B(x¹₄₀) ⊢ B(s(x¹₄₀))
+[x¹₄₀ ↦ °x⁰⁺²₁₀]
+∎
+
+
+Proving 2. object x¹.
+  B(x¹) ⇒ B(s(x¹)).
+Proof succeeded.
+Variable: 'x¹
+Proof count: 1
+
+Proof of
+  B('x¹) ⇒ B(s('x¹))
+succeeded:
+  DT: a.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ B('x¹)][𝑩₁₀ ↦ B(s('x¹))][𝜞₁₀ ↦ ⦰]
+∴ B('x¹) ⊢ B(s('x¹))
+a. object x¹₂₀.
+  B(x¹₂₀) ⊢ B(s(x¹₂₀))
+[x¹₂₀ ↦ 'x¹]
+∎
+
+
+Proving 3. ∀¹°x¹⁺¹: B(°x¹⁺¹) ⇒ B(s(°x¹⁺¹)).
+Proof succeeded.
+Variable: '°x¹⁺¹
+Proof count: 1
+
+Proof of
+  ∀¹'°x¹⁺¹: B('°x¹⁺¹) ⇒ B(s('°x¹⁺¹))
+succeeded:
+  Gen: 2.
+rule Gen. formula 𝑨₁₀ object °𝒙₁₀.
+  𝑨₁₀ ⊢⁽°𝒙₁₀⁾ ∀¹°𝒙₁₀ 𝑨₁₀.
+[°𝒙₁₀ ↦ '°x¹⁺¹][𝑨₁₀ ↦ B('°x¹⁺¹) ⇒ B(s('°x¹⁺¹))]
+∴ B('°x¹⁺¹) ⇒ B(s('°x¹⁺¹))
+2. object x¹₂₀.
+  B(x¹₂₀) ⇒ B(s(x¹₂₀)).
+[x¹₂₀ ↦ '°x¹⁺¹]
+∎
+
+
+Proving 4. ∀¹°x¹⁺¹ B(°x¹⁺¹).
+Proof succeeded.
+Variable: '°x¹⁺¹
+Proof count: 1
+
+Proof of
+  ∀¹'°x¹⁺¹ B('°x¹⁺¹)
+succeeded:
+  IR1: 1; 3.
+lemma IR1. predicate variable A₁₀.
+  A₁₀(0), ∀²°x⁰⁺²₁₀: A₁₀(°x⁰⁺²₁₀) ⇒ A₁₀(s(°x⁰⁺²₁₀)) ⊢ ∀¹°x⁰⁺¹₁₀ A₁₀(°x⁰⁺¹₁₀)
+[°x⁰⁺¹₁₀ ↦ '°x¹⁺¹][A₁₀ ↦ B]
+∴ B(0), ∀²°x⁰⁺²₁₀: B(°x⁰⁺²₁₀) ⇒ B(s(°x⁰⁺²₁₀))
+1. B(0).
+3. ∀¹°x¹⁺¹₂₁: B(°x¹⁺¹₂₁) ⇒ B(s(°x¹⁺¹₂₁)).
+[°x¹⁺¹₂₁ ↦ °x⁰⁺²₁₀]
+∎
+
+
+Proving result.
+Proof succeeded.
+Variable: '°x⁰⁺¹
+Proof count: 1
+
+Proof of
+  ∀¹'°x⁰⁺¹ 0 + '°x⁰⁺¹ = '°x⁰⁺¹
+succeeded:
+  4₍D5₎.
+4. ∀¹°x¹⁺¹₁₀ B(°x¹⁺¹₁₀).
+definition D5. object t¹₁₀₁.
+  B(t¹₁₀₁) ≔ 0 + t¹₁₀₁ = t¹₁₀₁.
+[°x¹⁺¹₁₀ ↦ '°x⁰⁺¹][t¹₁₀₁ ↦ '°x⁰⁺¹]
+∎
+
+

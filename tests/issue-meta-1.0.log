@@ -1,0 +1,72 @@
+
+Proving corollary A. formula 𝑨, 𝑩, 𝑪.
+  𝑨 ⇒ 𝑩, 𝑩 ⇒ 𝑪 ⊢ 𝑨 ⇒ 𝑪
+Proving result.
+Proof succeeded.
+Variables: '𝑨, '𝑩, '𝑪
+Proof count: 1
+
+Proof of
+  '𝑨 ⇒ '𝑩, '𝑩 ⇒ '𝑪 ⊢ '𝑨 ⇒ '𝑪
+succeeded:
+  DT: MP: MP.
+postulate DT. formula sequence 𝜞₁₀ formula 𝑨₁₀, 𝑩₁₀.
+  𝜞₁₀, 𝑨₁₀ ⊢ 𝑩₁₀ ⊩ 𝜞₁₀ ⊢ 𝑨₁₀ ⇒ 𝑩₁₀.
+[𝑨₁₀ ↦ '𝑨][𝑩₁₀ ↦ '𝑪][𝜞₁₀ ↦ '𝑨 ⇒ '𝑩, '𝑩 ⇒ '𝑪]
+∴ '𝑨 ⇒ '𝑩, '𝑩 ⇒ '𝑪, '𝑨 ⊢ '𝑪
+rule MP. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑨₂₀ ⇒ 𝑩₂₀ ⊢ 𝑩₂₀.
+[𝑩₂₀ ↦ '𝑪][𝚪₍₀₎₂₀ ↦ 𝑨₂₀][𝑨₂₀ ↦ '𝑩][𝚪₂₀ ↦ □]
+∴ '𝑨 ⇒ '𝑩, '𝑩 ⇒ '𝑪, '𝑨 ⊢ '𝑩
+rule MP. formula 𝑨₃₀, 𝑩₃₀.
+  𝑨₃₀, 𝑨₃₀ ⇒ 𝑩₃₀ ⊢ 𝑩₃₀.
+[𝑩₃₀ ↦ '𝑩][𝑨₃₀ ↦ '𝑨][𝚪₍₁₎₃₀ ↦ '𝑨 ⇒ '𝑩][𝚪₃₀ ↦ □]
+∎
+
+
+
+Proving corollary B. formula 𝑨, 𝑩, 𝑪.
+  𝑨 ⇒ 𝑩, 𝑩 ⇒ 𝑪, 𝑨 ⊢ 𝑪
+Proving result.
+Proof succeeded.
+Variables: '𝑨, '𝑩, '𝑪
+Proof count: 1
+
+Proof of
+  '𝑨 ⇒ '𝑩, '𝑩 ⇒ '𝑪, '𝑨 ⊢ '𝑪
+succeeded:
+  MP: MP.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ '𝑪][𝚪₍₀₎₁₀ ↦ 𝑨₁₀][𝑨₁₀ ↦ '𝑩][𝚪₁₀ ↦ □]
+∴ '𝑨 ⇒ '𝑩, '𝑩 ⇒ '𝑪, '𝑨 ⊢ '𝑩
+rule MP. formula 𝑨₂₀, 𝑩₂₀.
+  𝑨₂₀, 𝑨₂₀ ⇒ 𝑩₂₀ ⊢ 𝑩₂₀.
+[𝑩₂₀ ↦ '𝑩][𝑨₂₀ ↦ '𝑨][𝚪₍₁₎₂₀ ↦ '𝑨 ⇒ '𝑩][𝚪₂₀ ↦ □]
+∎
+
+
+
+Proving lemma IR0. predicate variable 𝑷 object °𝒙.
+  𝑷(0); 𝑷(°𝒙) ⊢ 𝑷(s(°𝒙)) ⊩ 𝑷(°𝒙)
+Proving result.
+Proof succeeded.
+Variables: '𝑷, '°𝒙
+Proof count: 1
+
+Proof of
+  '𝑷(0); '𝑷('°𝒙) ⊢ '𝑷(s('°𝒙)) ⊩ '𝑷('°𝒙)
+succeeded:
+  IR2: premise ⊢₀; DT.
+rule IR2. predicate variable 𝑷₁₀ object °𝒙₁₀.
+  𝑷₁₀(0), 𝑷₁₀(°𝒙₁₀) ⇒ 𝑷₁₀(s(°𝒙₁₀)) ⊢ 𝑷₁₀(°𝒙₁₀).
+[𝑷₁₀ ↦ '𝑷][°𝒙₁₀ ↦ '°𝒙]
+∴ '𝑷(0); '𝑷('°𝒙) ⊢ '𝑷(s('°𝒙)) ⊩ '𝑷(0), '𝑷('°𝒙) ⇒ '𝑷(s('°𝒙))
+premise ⊢₀. predicate variable '𝑷.
+  '𝑷(0).
+postulate DT. formula sequence 𝜞₂₁ formula 𝑨₂₁, 𝑩₂₁.
+  𝜞₂₁, 𝑨₂₁ ⊢ 𝑩₂₁ ⊩ 𝜞₂₁ ⊢ 𝑨₂₁ ⇒ 𝑩₂₁.
+[𝑨₂₁ ↦ '𝑷('°𝒙)][𝑩₂₁ ↦ '𝑷(s('°𝒙))][𝜞₂₁ ↦ ⦰]
+∎
+
+

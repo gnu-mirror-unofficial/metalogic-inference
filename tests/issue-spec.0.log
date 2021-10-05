@@ -1,0 +1,240 @@
+
+Proving lemma A11. object °𝑥.
+  °𝑥 = °𝑥
+Proving result.
+Proof succeeded.
+Variable: '°𝑥
+Proof count: 1
+
+Proof of
+  '°𝑥 = '°𝑥
+succeeded:
+  I1.
+axiom I1. object °𝒙₁₀.
+  °𝒙₁₀ = °𝒙₁₀.
+[°𝒙₁₀ ↦ '°𝑥]
+∎
+
+
+
+Proving lemma A12. object 𝑥.
+  𝑥 = 𝑥
+Proving result.
+Proof failed.
+Variable: '𝑥
+Proof count: 0
+
+
+
+
+Proving lemma A21. object °𝑥.
+  °𝑥 = °𝑥
+Proving result.
+Proof succeeded.
+Variable: '°𝑥
+Proof count: 1
+
+Proof of
+  '°𝑥 = '°𝑥
+succeeded:
+  I2.
+axiom I2. object 𝒙₁₀.
+  𝒙₁₀ = 𝒙₁₀.
+[𝒙₁₀ ↦ '°𝑥]
+∎
+
+
+
+Proving lemma A22. object 𝑥.
+  𝑥 = 𝑥
+Proving result.
+Proof succeeded.
+Variable: '𝑥
+Proof count: 1
+
+Proof of
+  '𝑥 = '𝑥
+succeeded:
+  I2.
+axiom I2. object 𝒙₁₀.
+  𝒙₁₀ = 𝒙₁₀.
+[𝒙₁₀ ↦ '𝑥]
+∎
+
+
+
+Proving lemma B11. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+Proving result.
+Proof failed.
+Variables: '°𝑥, '°𝑦
+Proof count: 0
+
+
+
+
+Proving lemma B12. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+Proving result.
+Proof failed.
+Variables: '𝑥, '𝑦
+Proof count: 0
+
+
+
+
+Proving lemma B21. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+Proving result.
+Proof failed.
+Variables: '°𝑥, '°𝑦
+Proof count: 0
+
+
+
+
+Proving lemma B22. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+Proving result.
+Proof failed.
+Variables: '𝑥, '𝑦
+Proof count: 0
+
+
+
+
+Proving lemma C11. object °𝑥.
+  °𝑥 = °𝑥
+Proving result.
+Proof succeeded.
+Variable: '°𝑥
+Proof count: 1
+
+Proof of
+  '°𝑥 = '°𝑥
+succeeded:
+  P1.
+axiom P1. object °𝒙₁₀, °𝒚₁₀.
+  °𝒙₁₀ = °𝒚₁₀.
+[°𝒙₁₀ ↦ '°𝑥][°𝒚₁₀ ↦ '°𝑥]
+∎
+
+
+
+Proving lemma C12. object 𝑥.
+  𝑥 = 𝑥
+Proving result.
+Proof failed.
+Variable: '𝑥
+Proof count: 0
+
+
+
+
+Proving lemma C21. object °𝑥.
+  °𝑥 = °𝑥
+Proving result.
+Proof succeeded.
+Variable: '°𝑥
+Proof count: 1
+
+Proof of
+  '°𝑥 = '°𝑥
+succeeded:
+  P2.
+axiom P2. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ = 𝒚₁₀.
+[𝒙₁₀ ↦ '°𝑥][𝒚₁₀ ↦ '°𝑥]
+∎
+
+
+
+Proving lemma C22. object 𝑥.
+  𝑥 = 𝑥
+Proving result.
+Proof succeeded.
+Variable: '𝑥
+Proof count: 1
+
+Proof of
+  '𝑥 = '𝑥
+succeeded:
+  P2.
+axiom P2. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ = 𝒚₁₀.
+[𝒙₁₀ ↦ '𝑥][𝒚₁₀ ↦ '𝑥]
+∎
+
+
+
+Proving lemma D11. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+Proving result.
+Proof succeeded.
+Variables: '°𝑥, '°𝑦
+Proof count: 1
+
+Proof of
+  '°𝑥 = '°𝑦
+succeeded:
+  P1.
+axiom P1. object °𝒙₁₀, °𝒚₁₀.
+  °𝒙₁₀ = °𝒚₁₀.
+[°𝒙₁₀ ↦ '°𝑥][°𝒚₁₀ ↦ '°𝑦]
+∎
+
+
+
+Proving lemma D12. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+Proving result.
+Proof succeeded.
+Variables: '𝑥, '𝑦
+Proof count: 1
+
+Proof of
+  '𝑥 = '𝑦
+succeeded:
+  P2.
+axiom P2. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ = 𝒚₁₀.
+[𝒙₁₀ ↦ '𝑥][𝒚₁₀ ↦ '𝑦]
+∎
+
+
+
+Proving lemma D21. object °𝑥, °𝑦.
+  °𝑥 = °𝑦
+Proving result.
+Proof succeeded.
+Variables: '°𝑥, '°𝑦
+Proof count: 1
+
+Proof of
+  '°𝑥 = '°𝑦
+succeeded:
+  P2.
+axiom P2. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ = 𝒚₁₀.
+[𝒙₁₀ ↦ '°𝑥][𝒚₁₀ ↦ '°𝑦]
+∎
+
+
+
+Proving lemma D22. object 𝑥, 𝑦.
+  𝑥 = 𝑦
+Proving result.
+Proof succeeded.
+Variables: '𝑥, '𝑦
+Proof count: 1
+
+Proof of
+  '𝑥 = '𝑦
+succeeded:
+  P2.
+axiom P2. object 𝒙₁₀, 𝒚₁₀.
+  𝒙₁₀ = 𝒚₁₀.
+[𝒙₁₀ ↦ '𝑥][𝒚₁₀ ↦ '𝑦]
+∎
+
+

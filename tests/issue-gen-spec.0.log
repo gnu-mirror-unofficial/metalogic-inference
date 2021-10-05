@@ -1,0 +1,18 @@
+
+Proving lemma C. object °𝑥, °𝑦.
+  s(°𝑥) ≠ 0 ⊢⁽°𝑥⁾ s(°𝑦) ≠ 0
+Proving result.
+Proof succeeded.
+Variables: '°𝑥, '°𝑦
+Proof count: 1
+
+Proof of
+  s('°𝑥) ≠ 0 ⊢⁽'°𝑥⁾ s('°𝑦) ≠ 0
+succeeded:
+  premise C.
+premise C. object °𝑥.
+  s(°𝑥) ≠ 0 ⊢⁽°𝑥⁾.
+[°𝑥 ↦⁰ ⁰ '°𝑦]
+∎
+
+

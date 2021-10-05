@@ -1,0 +1,29 @@
+— Begin: theory database sample-0.
+
+theory Smp.
+
+rule MP. formula 𝑨, 𝑩.
+  𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+rule CE1. formula 𝑨, 𝑩.
+  𝑨 ∧ 𝑩 ⊢ 𝑨.
+
+rule CE2. formula 𝑨, 𝑩.
+  𝑨 ∧ 𝑩 ⊢ 𝑩.
+
+rule DI1. formula 𝑨, 𝑩.
+  𝑨 ⊢ 𝑨 ∨ 𝑩.
+
+rule DI2. formula 𝑨, 𝑩.
+  𝑩 ⊢ 𝑨 ∨ 𝑩.
+
+rule DS1. formula 𝑨, 𝑩.
+  𝑨 ∨ 𝑩, ¬𝑨 ⊢ 𝑩.
+
+lemma S1a. formula 𝑨, 𝑩, 𝑪, 𝑫, 𝑬, 𝑭.
+  (𝑨 ∨ 𝑩) ∧ ¬𝑪, ¬𝑪 ⇒ 𝑫 ∧ ¬𝑨, 𝑩 ⇒ 𝑨 ∨ 𝑬 ⊢ 𝑬 ∨ 𝑭
+result by DI1: DS1: MP; CE2: DS1; MP: CE1; CE2; CE2: MP: CE2. — DI1: DS1: MP; CE2: DS1; MP: CE1; CE2; CE2: MP: CE2.
+
+end theory Smp.
+
+— End: theory database sample-0.

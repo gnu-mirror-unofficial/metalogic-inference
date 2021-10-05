@@ -1,0 +1,971 @@
+% In order to see math styled letters and indices, use the following two inputs,
+% followed by the stixfont command after the texinfo input:
+\input luaotfload.sty
+\input luatex-math-modified.tex
+
+\input texinfo @c -*-texinfo-*-
+
+
+@comment %**start of header
+@setfilename mli.info
+@documentencoding UTF-8
+@documentlanguage en
+@include version.texi
+@settitle MetaLogic Inference @value{VERSION}
+@setchapternewpage odd
+
+@finalout
+
+@c SMALL BOOK version
+@c This edition has been formatted so that you can format and print it in
+@c the smallbook format.
+@c @smallbook
+
+@c Set following if you want to document %default-prec and %no-default-prec.
+@c This feature is experimental and may change in future MLI versions.
+@c @set defaultprec
+
+@ifnotinfo
+@syncodeindex fn cp
+@syncodeindex vr cp
+@syncodeindex tp cp
+@end ifnotinfo
+@ifinfo
+@synindex fn cp
+@synindex vr cp
+@synindex tp cp
+@end ifinfo
+@comment %**end of header
+
+@copying
+
+This manual (@value{UPDATED}) is for GNU MLI (version
+@value{VERSION}), the GNU MetaLogic Inference program.
+
+Copyright @copyright{} 2017 Hans Åberg
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License,
+Version 1.3 or any later version published by the Free Software
+Foundation; with no Invariant Sections, with the Front-Cover texts
+being ``A GNU Manual,'' and with the Back-Cover Texts as in
+(a) below.  A copy of the license is included in the section entitled
+``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF
+supports it in developing GNU and promoting software
+freedom.''
+@end quotation
+@end copying
+
+@dircategory Software development
+@direntry
+* mli: (mli).       GNU MetaLogic Inference Program
+@end direntry
+
+@titlepage
+@title MLI
+@subtitle The MetaLogic Inference Program
+@subtitle @value{UPDATED}, MLI Version @value{VERSION}
+
+@author by Hans Åberg
+
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@sp 2
+Published by the Free Software Foundation @*
+51 Franklin Street, Fifth Floor @*
+Boston, MA  02110-1301  USA @*
+Printed copies are available from the Free Software Foundation.@*
+ISBN 1-234567-89-0
+@sp 2
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top MLI
+@insertcopying
+@end ifnottex
+
+@menu
+* Introduction::
+* Conditions::
+* Copying::         The GNU General Public License: copy and share.
+
+
+Tutorial sections
+
+* Concepts::      The Concepts of MLI.
+* Examples::      Simple explained examples.
+
+Reference sections
+
+* Input File::    Writing MLI declarations and rules.
+* Interface::     User in interface.
+* Algorithm::     The MLI inference algorithm.
+
+* Debugging::     Understanding and debugging MLI source code.
+
+* Invocation::    How to run MLI
+
+
+Reference sections:
+* Table of Symbols::    MLI keywords, with explanation.
+* Glossary::            Basic concepts are explained.
+* Bibliography::        Publications cited in this manual.
+* Index of Terms::      Cross-references to the text.
+
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+The Concepts of MLI
+
+* Metatheory and Object Theory:: Formal structure of mathematics.
+* Formal Theories and Formal Proofs:: Formal structure of mathematics.
+* Proof Trees and Unification:: Formal structure of mathematics.
+* The Propositional Calculus:: Formal structure of mathematics.
+* The Predicate Calculus (Quantification Theory):: Formal structure of mathematics.
+* Theory with Equality:: Formal structure of mathematics.
+* Formal Number Theory:: Formal structure of mathematics.
+* Axiomatic Set Theory:: Formal structure of mathematics.
+
+Examples
+
+* Simple Propositional Calculus:: Examples
+
+* Nested proofs::   Simple Propositional Calculus.
+
+
+Debugging
+
+* MLI Options::       The options available described in detail.
+* Option Cross Key::  Alphabetical list of options.
+
+
+@end detailmenu
+@end menu
+
+@node Introduction
+@unnumbered Introduction
+@cindex introduction
+
+@dfn{MLI}, the MetaLogic Inference program, is a theorem prover that supports breadth-first proof tree searches, and unification branching where the substitutions may have attached conditions. It starts at the metatheory level, by defining axioms and rules of inference for the metamathematics of your choice, proceeding towards the mathematical object theory.
+
+This edition corresponds to version @value{VERSION} of MLI.
+
+@node Conditions
+@unnumbered Conditions for Using MLI
+
+The distribution terms for MLI-generated proofs permit using them with free citizens,
+as long as it does not contravene International Conventions of Humans Rights.
+
+@node Copying
+@unnumbered GNU GENERAL PUBLIC LICENSE
+@include gpl-3.0.texi
+
+@node Concepts
+@chapter The Concepts of MLI
+
+This chapter introduces some basic metalogical concepts without which the MLI program will not make much sense, both in details and general structure. If you are not already well versed in metamathematics, this chapter may be of benefit. There is though no particular about MLI relative what is found in the standard literature.
+
+@menu
+* Metatheory and Object Theory:: Formal structure of mathematics.
+* Formal Theories and Formal Proofs:: Formal structure of mathematics.
+* Proof Trees and Unification:: Formal structure of mathematics.
+* The Propositional Calculus:: Formal structure of mathematics.
+* The Predicate Calculus (Quantification Theory):: Formal structure of mathematics.
+* Theory with Equality:: Formal structure of mathematics.
+* Formal Number Theory:: Formal structure of mathematics.
+* Axiomatic Set Theory:: Formal structure of mathematics.
+@end menu
+
+
+@node Metatheory and Object Theory
+@section Metatheory and Object Theory
+
+@cindex mathematics
+@cindex metamathematics
+@cindex metalogic
+
+@cindex metatheory
+@cindex theory, meta
+@cindex object theory
+@cindex theory, object
+
+
+
+Standard mathematics deals with mathematical objects, such as numbers and sets, and other logical objects, which are described using logical statements. There is in general no direct way to asses the truth of these statements, so instead, one is using proofs, following certain rules that they must obey. The mathematical objects and statements belong to the @dfn{object theory}, whereas the proofs belong to the @dfn{metatheory}.
+
+
+@cindex naive set theory
+@cindex set theory, naive
+@cindex axiomatic set theory
+@cindex set theory, axiomatic
+
+Standard mathematics uses mathematical objects and logical reasoning around them in an intuitive manners, which may, using computer terminology, be described as an interface towards the underlying formal metamathematical (metalogical) theory. For example, mathematicians use @dfn{naive set theory}, whereas the formal metamathematics defines different systems of @dfn{axiomatic set theory}, that act as an implementation, and is typically not used directly in the standard mathematics. MLI start at this formal level, but allows interfaces be built in the form of @dfn{theories} which approach that of standard mathematics.
+
+
+@cindex consistent formal theory
+@cindex formal theory, consistent
+
+The formalization of mathematics and metamathematics started in the early 1900s, though the distinction between the two is earlier, in an attempt to resolve certain paradoxes, that roughly can be describes as being caused by self-reference, similar to functions and macros in computing that end up in non-termination (or infinite loop). The hope was to fairly quickly develop a @dfn{consistent} formal theory, i.e., without logical contradictions, but the result was unexpected:
+
+
+@cindex first order logic
+@cindex quantifiers
+@cindex theorem without proof
+@cindex Cantor diagonal proof
+@cindex Gödel incompleteness theorem
+@cindex diagonal proof, Cantor
+@cindex incompleteness theorem, Gödel
+@cindex algebraic number
+@cindex number, algebraic
+@cindex transcendental number
+@cindex number, transcendental
+
+If roughly adding a @dfn{first order logic}, i.e., with @dfn{quantifiers} of the mathematical objects, but not of the logical statements, plus the axioms of natural numbers including mathematical induction, then not all statements have a proof: Similar to the the Cantor proof of the set of real numbers having a larger cardinality than a countable set, Gödel found that the set of proofs can be enumerated, but not the set of logical statements in a first order logic containing the natural numbers and the induction axiom. Thus, there must be a lot of statements that have no proof, but one has not found any explicit such statement. For comparison, the set of algebraic numbers is countable, and the set of real numbers is uncountable, but one have found a lot of explicit transcendental numbers, i.e., numbers that are not algebraic, like @math{e} and @math{π}, etc.
+
+@cindex algorithm
+@cindex generalized Turing machine
+@cindex Turing machine, generalized
+
+The set of proofs correspond in a certain sense to the set of algorithms that a computer in the form of a generalized Turing machine, with infinite time and memory, can produce.
+
+
+@node Formal Theories and Formal Proofs
+@section Formal Theories and Formal Proofs
+
+@cindex formal theory
+@cindex well-formed formula
+@cindex formula, well-formed
+@cindex rule of inference
+@cindex inference, rule of
+@cindex postulate
+@cindex axiom
+@cindex direct consequence
+@cindex mathematical boldface
+@cindex boldface, mathematical
+@cindex mathematical italic
+@cindex italic, mathematical
+@cindex proves symbol
+@cindex symbol, proves
+@cindex clause
+@cindex clause head
+@cindex head, clause
+@cindex clause body
+@cindex body, clause
+
+@cindex notation, constant
+@cindex notation, variable
+
+
+A @dfn{formal theory} has a countable infinite set of symbols @math{𝒮}, and a superset of @dfn{(well-formed) formulas} @math{ℱ}, formed by certain rules. In addition, there are @dfn{rules of inference}, also called @dfn{postulate}, defined as @dfn{relations} of the form
+@display
+@math{𝑷_0, …, 𝑷_{𝑘-1} ⊢ 𝑷}
+@end display
+which allows one to check satisfiability for members @math{𝐹_0, …, 𝐹_{𝑘 - 1}} and @math{𝐹} of @math{ℱ}, in which case, one says that formula @math{𝐹} is a @dfn{direct consequence} of the formulas @math{𝐹_0, …, 𝐹_{𝑘 - 1}}, the application of this specific rule explicitly given or implied by the context. The letter @math{𝑷} is here in boldface as a suggestion of representing a multitude, usually infinite, of formulas in @math{ℱ}, and in italic as a suggestion is is a variable that can be substituted, but these are just conventions to aid human readability, and are not required by MLI. Constants are then typically rendered in an upright font, but these conventions are not rigorously adhered to.
+
+Here, we allow @math{𝑘 = 0, 1, …}; when @math{𝑘 = 0} it is called an @dfn{axiom}, otherwise, when @math{𝑘 > 0} a @dfn{rule}. In traditional computing terminology, the formula @math{𝐹} is called the @dfn{head} and the formula sequence @math{𝐹_0, …, 𝐹_{𝑘 - 1}} the @dfn{body} of the rule of inference, the latter which is also called a @dfn{clause}.
+
+
+@cindex Prolog, stack order
+@cindex first-depth proof tree search
+@cindex proof tree search, first-depth
+
+For those familiar with Prolog, the same may be written
+@math{𝑷 \,{:}{-} 𝑷_0, …, 𝑷_{𝑘-1}}
+implying that the body @math{𝑷_0, …, 𝑷_{𝑘-1}} is executed in strict stack order, which is also called a @dfn{first-depth} proof tree search. A problem with this Prolog interpretation is that the shallower parts of the proof tree will not be searched if there are new alternatives added that make the search infinite.
+
+
+@cindex first-breadth proof tree search
+@cindex proof tree search, first-breadth
+
+In formal proof theory is there is no such implied proof order, and MLI supports the use of @dfn{first-breadth} proof tree searches, making sure that the shallowest depth of the proof tree search always deepens, thus systematically exhausting the full proof tree. In fact, one may write @math{𝑷_0, …, 𝑷_{𝑘-1}} as a set @math{𝓟} and write @math{𝓟 ⊢ 𝑷}.
+
+
+@cindex modus ponens
+@cindex MP
+@cindex metalogic variable
+@cindex variable, metalogic
+@cindex implication symbol
+@cindex symbol, implication
+@cindex mathematical style
+@cindex style, mathematical
+
+A fundamental inference rule is @dfn{modus ponens}, abbreviated @dfn{MP}:
+@display
+@math{𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩}
+@end display
+That is, @math{𝑩} is a direct consequence of @math{𝑨} and @math{𝑨 ⇒ 𝑩}, or alternatively @math{𝑨} and @math{𝑨 ⇒ 𝑩} allows one to infer (prove) @math{𝑩}, or for short, @math{𝑨} and @math{𝑨 ⇒ 𝑩} proves @math{𝑩}.
+In MLI, the corresponding code is
+@example
+rule MP. formula 𝑨, 𝑩. 𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+@end example
+Here, it is necessary to indicate that it is an inference rule (@code{rule}) and name it (@code{MP}), to explicitly type the variables @code{𝑨} and @code{𝑩} representing formulas in a substitution, and to terminate the statement with a dot. The choice of mathematical style for @code{𝑨} and @code{𝑩} is arbitrary, but the parser expects the symbols @code{⇒} and @code{⊢}, which are tied to the object theory and the metatheory respectively, and have suitable precedences for the pretty-printing. Spaces are needed just to separate certain symbols, such as identifiers, and layout does not matter. Variables occurring frequently can be declared in the body of the context they belong to, for example:
+@example
+formal system.
+  formula 𝑨, 𝑩.
+  rule MP. 𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+end formal system.
+@end example
+
+
+@cindex formal proof
+@cindex provability
+
+A @dfn{formal proof} of a statement @math{𝑄} is then a sequence of formulas @math{𝑄_0, …, 𝑄_{n-1}} such that each @math{𝑄_𝑖} is a direct consequence of the preceding formulas. In other words, each @math{𝑄_𝑖} appears in the head of a rule of inference, with its body having formulas preceding it, unless it is an axiom, requiring no further validation. Thus, the set of @dfn{provable} formulas is generated by the axioms, and iteratively applying the rules of inference.
+
+A notation for this is
+@display
+@math{𝑄_0, …, 𝑄_{𝑘-1} ⊢_𝒜 𝑄}
+@end display
+where @math{𝒜} is the set of inference rules and statements treated as axioms, requiring no further validation. Often, though, the index @math{𝒜} is often dropped, implied by the context, giving rise to the notation
+@display
+@math{𝑄_0, …, 𝑄_{𝑘-1} ⊢ 𝑄}
+@end display
+which confusingly looks exactly the same as for the one rules above. In practise, though, it is convenient, as the latter may be treated as a rule of inference if one for some reason would like treat it as a conjecture, and examine its consequences.
+
+In addition, in practice, the @math{𝑄_𝑖} are required to only be already proved statements, and not necessarily direct consequences of a rule of inference, as it then can be expanded into a formal proof at will. Just as in the case of fules of inference, one may indicate the set of formulas already proven by a letter @math{𝒬}, and write @math{𝒬 ⊢_𝒜 𝑄} or @math{𝒬 ⊢ 𝑄} if @math{𝑄} follows from them, but this notation implies that there is a strict order among them in which the deduction has been carried out.
+
+This type of notation, though, is convenient in MLI, as the program can do searches among formulas to find a valid proof. Each proof will then imply a strict deduction order. There may be more than one proof and deduction order, but normally, one is just interested in finding one.
+Using the @dfn{generalization axiom} (cf.@ @ref{Bibliography,,Mendelson 1964}, sec.@ 2.3)
+@example
+rule Gen. formula 𝑨. 𝑨 ⊢ ∀𝒙 𝑨.
+@end example
+a statement with a long proof may look like
+@example
+lemma X2. formula A, C.
+  A, ∀x A ⇒ C ⊢ ∀x C.
+proof.
+  1. A by premise.
+  2. ∀x A by 1, Gen.
+  3. ∀x A ⇒ C by premise.
+  4. C by 2, 3, MP.
+  conclusion by 4, Gen.
+∎
+@end example
+but by the MLI proof searching capabilities, shortened to
+@example
+lemma X2. formula A, C.
+  A, ∀x A ⇒ C ⊢ ∀x C.
+proof.
+  conclusion by Gen, premise, MP.
+∎
+@end example
+Here, @code{conclusion} indicates the right hand side of the @code{⊢} (or head of the clause), and @code{premise} indicates any of the statements of the left hand side of the @code{⊢} (or member of the body of the clause). The long proof has the advantage of being being more specific, resulting in a shorter proof tree search, but the short proof is more convenient for experienced users, though a too unspecific proof may result in overflow in the use of computer resources, time and space. Given a short proof, a long proof can be extracted from the log file by enabling suitable tracing; @pxref{Debugging}.
+
+@node Proof Trees and Unification
+@section Proof Trees and Unification
+
+@cindex proof tree
+@cindex unification
+@cindex substitution
+
+In practice, though one has a statement, and wants to find a proof for it, as a means of verification. Then, one may search the set of inference rules from matching of their heads by a process called @dfn{unification}, which in MLI produces a set of substitutions with a condition attached to each. When a match is found, that is, the set is non-empty, and apply in succession the substitution of the matching rule and add its condition. This produces new set of formulas that much be searched backwards, until hopefully one branch results in just axioms that need no further verification.
+
+@cindex goal
+
+The set of conditions that must be proved is in computing called @dfn{goals}. One typically starts off with just one goal, which during the proof tree search expands, until it finally can be reduced to zero via axioms or other already proved statements. It may happen, though, that the proof tree search becomes too large, or extensive, and must be picked down, and has been mentioned before, in general, not all statements have proofs. @xref{Metatheory and Object Theory}.
+
+
+@cindex free in
+@cindex not free in
+@cindex Kleenean algebra
+@cindex algebra, Kleenean
+
+
+— Condition @dfn{free in} and type @dfn{Kleenean}.
+
+
+@node The Propositional Calculus
+@section The Propositional Calculus
+
+@cindex propositional calculus
+@cindex calculus, propositional
+@cindex modus ponens
+@cindex quantifiers
+@cindex tautology
+@cindex metatheorem
+@cindex excluded middle
+@cindex Boolean logic
+@cindex intuitionistic propositional calculus
+@cindex Heyting algebra
+
+The simplest of formal systems, the @dfn{propositional calculus}, has only logic axioms and one rule of inference, @dfn{modus ponens}, and thus no @dfn{quantifiers}. A statement which is true for all substitutions of its logical variables is called a @dfn{tautology}. A fundamental @dfn{metatheorem}, or a theorem about the metatheory, for the propositional calculus is that a statement is provable exactly when it is a tautology. Thus, to prove a statement, one can plug in all truth values in a @dfn{truth table} and verify that the statement expression is true—the metatheorem guarantees there is proof. Alternatively, one can find a proof, and then the truth table verification becomes unnecessary. Since if there are @math{𝑘} variables, there will be @math{2^𝑘} possibilities to verify, this will quickly become difficult to work out, at least by hand, even though a computer might still be able to do it. But for an infinitude of formulas, one will have to resort to the proofs alone. This is in fact what happens when adding quantifiers.
+
+This said so far relates to the Boolean logic, where every statement with no variables is true or false, also called the @dfn{excluded middle}. An alternative logic theory is @dfn{intuitionistic propositional calculus}, which does not have the excluded middle axiom, and leads to a @dfn{Heyting algebra} logic.
+
+
+@cindex ⇒
+@cindex logical implication
+@cindex implication, logical
+@cindex ¬
+@cindex logical negation
+@cindex negation, logical
+@cindex consistent
+@cindex ∧
+@cindex logical and
+@cindex and, logical
+@cindex ∨
+@cindex logical or
+@cindex or logical
+@cindex ⇔
+@cindex logical equivalence
+@cindex equivalence, logical
+@cindex definition
+@cindex 𝕥
+@cindex logical true
+@cindex true, logical
+@cindex 𝕗
+@cindex logical false
+@cindex false, logical
+@cindex logical atom
+@cindex atom, logical
+@cindex constant
+@cindex deduction theorem
+@cindex theorem, deduction
+@cindex classical system
+@cindex system, classical
+@cindex intuitionistic system
+@cindex system, intuitionistic
+
+
+For future reference, here is the complete MLI code for the propositional calculus by Łukasiewicz @code{LL} in file @code{std/LL.mli}, cf.@ @ref{Bibliography,,Mendelson 1964}. It has just three axioms, and two symbols, unary prefix @dfn{logical negation} @code{¬} and binary infix @dfn{logical implication} @code{⇒}, making it easy to show that it is @dfn{consistent}, that is, having no contradictions, in which case, it would collapse, becoming nonsensical. The other logical symbols, @dfn{logical and} @code{∧} and @dfn{logical or} @code{∨}, as well as @dfn{logical equivalence} @code{⇔}, are introduced as @dfn{definitions}. From the formal point of view, they are not thought of as being a part of the formal system, but are expanded into the axiomatic theory with fewer primitives, simplifying proofs, but form the point of a user interface, there is no practical difference from a theory having them defined as part of axioms. In addition, the truth values @dfn{logical true} @code{𝕥} and @dfn{logical false} @code{𝕗} are not a part of these logical theories, but are here entered as constants, called @dfn{atoms}. And the @dfn{deduction theorem} (DT) is a @dfn{metatheorem}, and therefore entered as an axiom.
+
+@cindex LL
+
+@example
+theory L. -- Propositional calculus by Łukasiewicz, cf. Mendelson, p. 31:
+  formal system.
+    atom 𝕗, 𝕥. -- False, true. Not in core of theory L.
+    formula 𝑨, 𝑩, 𝑪.
+
+  -- These axioms are called A1-A3 in Mendelson:
+  axiom L1. 𝑨 ⇒ (𝑩 ⇒ 𝑨).
+  axiom L2. (𝑨 ⇒ (𝑩 ⇒ 𝑪)) ⇒ ((𝑨 ⇒ 𝑩) ⇒ (𝑨 ⇒ 𝑪)).
+  axiom L3. (¬𝑩 ⇒ ¬𝑨) ⇒ ((¬𝑩 ⇒ 𝑨) ⇒ 𝑩).
+
+  -- Modus ponens:
+  rule MP. 𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+  -- Deduction theorem:
+  postulate DT. formula 𝑨, 𝑩. (𝑨 ⊢ 𝑩) ⊢ 𝑨 ⇒ 𝑩.
+
+  definition D1. 𝑨 ∧ 𝑩 ≔ ¬(𝑨 ⇒ ¬𝑩).  
+  definition D2. 𝑨 ∨ 𝑩 ≔ (¬𝑨) ⇒ 𝑩.
+  definition D3. 𝑨 ⇔ 𝑩 ≔ (𝑨 ⇒ 𝑩) ∧ (𝑩 ⇒ 𝑨).
+  axiom D4. 𝕥.
+  definition D5. 𝕗 ≔ ¬𝕥.
+
+  end formal system.
+end theory L.
+@end example
+
+@cindex LK
+@cindex LI
+
+These axioms are for the @dfn{classical system}, where the values are Boolean algebra truth @code{𝕥} or false @code{𝕗}. For the @dfn{intuitionistic system}, see the theory @code{LI} in file @code{std/LI.mli}, which is the same as the Kleene theory @code{LK} in file @code{std/LK.mli} with the exception of an axiom for logical negation: The classical axiom @code{
+¬¬𝑨 ⇒ 𝑨} is in intuitionistic logic replaced by @code{¬𝑨 ⇒ (𝑨 ⇒ 𝑩)}.
+
+@cindex LHA
+@cindex LR
+
+There are other axiomatizations as well: Hilbert-Ackerman @code{LHA} in file @code{std/LHA.mli}, Rosser @code{LR} in file @code{std/LR.mli}.
+
+
+@node The Predicate Calculus (Quantification Theory)
+@section The Predicate Calculus (Quantification Theory)
+
+@cindex predicate calculus
+@cindex calculus, predicate
+@cindex quantification theory
+@cindex theory, quantification
+@cindex first order theory
+@cindex theory, first order
+
+
+@node Theory with Equality
+@section Theory with Equality
+
+@cindex theory with equality
+@cindex equality, theory with
+
+
+
+@node Formal Number Theory
+@section Formal Number Theory
+
+@cindex number theory, formal
+@cindex theory, formal number
+@cindex theory, number
+
+
+
+@node Axiomatic Set Theory
+@section Axiomatic Set Theory
+
+@cindex axiomatic set theory
+@cindex theory, axiomatic set
+@cindex set theory, axiomatic
+@cindex theory, axiomatic set
+@cindex theory, set
+
+
+
+@node Examples
+@chapter Examples
+@cindex simple examples
+@cindex examples, simple
+
+With the help of examples, we will now show some basic features: How to write a long and short proofs, and to convert them, making condensed proofs more efficient with respect to used computer resources, and some basic debugging.
+
+
+@menu
+* Simple Propositional Calculus:: Examples
+@end menu
+
+
+@node Simple Propositional Calculus
+@section Simple Propositional Calculus
+
+@cindex deduction theorem
+@cindex DT
+@cindex lemma
+@cindex proposition
+@cindex theorem
+@cindex corollary
+@cindex subproof
+@cindex claim
+
+The point of departure is the propositional calculus, or logic theory, by Łukasiewicz, called @code{LL} in the MLI library file @code{std/LL.mli}. We run through some of the theorems in connection with the Deduction Theorem (DT). The text here is self-contained, so no immediate outside sources are required for an immediate understanding of the examples, but for a comparison, see for example @ref{Bibliography,,Mendelson 1964}.
+
+@menu
+* Nested proofs::   Simple Propositional Calculus.
+@end menu
+
+
+In the proof of that the theory LL satisfies the Deduction Theorem DT, it is needed that for all formulas @code{𝑨}, one can prove @code{𝑨 ⇒ 𝑨}, which in MLI code becomes:
+@example
+lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+@end example
+As the name contains a non-alphanumerical character, the dot, it must be put in quotes. Here we call it a @code{lemma}, as it is intended as assistance in the proof of the upcoming theorem, the Deduction Theorem, but it is logically equivalent to a @code{theorem}. Other, logically equivalent, names that might be used are @code{proposition}, a less important theorem, and @code{corollary}, though to be consequence of another theorem. Subproof statements are labeled with @code{claim}—see below.
+
+The statement is about provability, that there is a formal proof of @code{𝑨 ⇒ 𝑨}, and to make that explicit, the symbol @code{⊢}, like this:
+@example
+lemma “XL.1”. formula 𝑨. ⊢ 𝑨 ⇒ 𝑨.
+@end example
+These two forms are treated as though equivalent by adding the @code{⊢} internally in implicit conversions at need.
+
+The next step is to add a proof and let MLI verify it. For that, the statement must be put in a theory, and the theory LL must be included. The full example comes with the distribution. For your convenience, the proof is added; we start with a long proof:
+@example
+lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+proof.
+  1. ((𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨))) by A2.
+  2. 𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨) by A1.
+  3. (𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨) by MP, 1, 2.
+  4. 𝑨 ⇒ (𝑨 ⇒ 𝑨) by A1.
+  conclusion by MP, 3, 4.
+∎
+@end example
+Now run @code{mli} on the input file, and check the output in the corresponding @code{.mlo} file, to see that it has been verified: MLI writes the parts that failed with @code{[*unproved*]}, so if no such parts are found, the proof passed.
+
+
+@cindex non-termination
+@cindex breadth-first proof tree search
+@cindex proof tree search, breadth-first
+@cindex search, breadth-first proof tree
+@cindex redundant proof line
+@cindex proof line, redundant
+
+To see how this works, take away the @code{MP} (along with the trailing comma) in the example code above, rerun @code {mli}, and recheck the @code{.mlo} file. Then these lines along with the statement itself will be marked with @code{[*unproved*]}. If one leaves the @code{MP}, and takes away something else, then MLI will end up in non-termination, or an infinite, unending, proof search: As modus ponens MP can always be used in a search, it will cause the proof tree to expand exponentially, until computer resources run out, or a limit in the program is reached. There seem to be no simple way around this, with respect to MP, but to be careful with the use of modus ponens MP.
+
+Since MLI tries to prove all lines, this will happen if one line has this type of proof error. However, it may happen that one proof line fails, but it is not required for the proof of the statement, being redundant. Then MLI will mark this proof line with @code{[*unproved*]}, and add an additional comment that it was needed in the proof of the statement. To see this, alter the statement above to
+@example
+lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+proof.
+  1. ((𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨))) by A2.
+  2. 𝑨 ⇒ ((𝑨 ⇒ 𝑨) ⇒ 𝑨) by A1.
+  3. (𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨) by MP, 1, 2.
+  3a. (𝑨 ⇒ (𝑨 ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨) by 1, 2.
+  4. 𝑨 ⇒ (𝑨 ⇒ 𝑨) by A1.
+  conclusion by MP, 3, 3a, 4.
+∎
+@end example
+Here, the proof is identical to the one before, except that a proof line @code{3a} is added, which cannot be proved as MP has been removed, and it is further called for in the @code{conclusion} proof line. Then rerun @code{mli} and check the @code{.mlo} file it writes. This time, MLI does not end up in non-termination, as there actually is a proof. The proof line @code{3a} is marked @code{[*unproved*]}, and right before the end of proof marker @code{∎}, there is the comment
+@example
+[*Statement is proved, but some proof lines are unproved.*]
+@end example
+
+As the list of statements in each proof line is but a suggestion to MLI what to search when constructing the proof tree, it continues to search even after it has found a failing line. It is also possible that a proof line is proved, but not required in the statement proof, or one might even want to look for more than one proof, though the default is to just find one, which usually is a short one, in view of the breadth-first proof tree search.
+
+Now, let's make a short proof: From the proof above, we can see that it is proved using A1, A2 and MP. As MLI uses a breadth-first proof tree search. So write
+@example
+lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+proof.
+  conclusion by A1, A2, MP.
+∎
+@end example
+Then rerun @code{mli} and check the @code {.mlo} file to verify it has been proved.
+
+Even though this style of proof is more like that of mathematicians coming by and giving a talk, it might be good to get to know the details sometimes, and also verify that the proof is correct by hand. So reverse this process: getting a long, detailed proof from the short, condensed one, and along with that, the substitutions used. So change the above code, by inserting the debugging commands @code{trace_result}…@code{untrace_result}, to
+@example
+trace_result
+lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+proof.
+  conclusion by A1, A2, MP.
+∎
+untrace_result
+@end example
+Then rerun @code{mli}, and this time check the @code{.log} file:
+
+Here, @code{trace_result} turns on writing the proof results to the @code{.log} file, and @code{untrace_result} turns it off again, to avoid this file becoming too large and hard to read. These debugging commands are not a part of the language itself, but the lexer just puts on/off a suitable flag for the purpose. So they can be put just about anywhere in the input file, but as the parser may use a lookahead token, the flag may be altered out sync with what is expected. In particular, the parser may decide to read the next token after the @code{∎} before starting to write out the proof, and then @code{untrace_result} will be turned off when the write out starts. So if that happens, @code{untrace_result} must be moved to a later point in the input code, one language token should suffice.
+
+The code in the @code{.log} file looks something like this:
+@example
+Proving lemma XL.1. formula 𝑨.
+  ⊢ 𝑨 ⇒ 𝑨.
+Proving conclusion.
+Proof succeeded.
+Variable: 𝑨
+Proof count: 1
+
+Proof of
+  𝑨 ⇒ 𝑨
+succeeded:
+  MP: A1; MP: A1; A2.
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+ ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+axiom A1. formula 𝑨₂₀, 𝑩₂₀.
+  ⊢ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀).
+rule MP. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+[𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)][𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]
+ ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+axiom A1. formula 𝑨₃₀, 𝑩₃₀.
+  ⊢ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀).
+axiom A2. formula 𝑨₃₁, 𝑩₃₁, 𝑪₃₁.
+  ⊢ (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₃₁ ⇒ 𝑩₃₁) ⇒ (𝑨₃₁ ⇒ 𝑪₃₁)).
+[𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)][𝑨₃₀ ↦ 𝑨₃₁][𝑩₃₀ ↦ 𝑩₃₁][𝑨₃₁ ↦ 𝑪₃₁][𝑨₂₀ ↦ 𝑪₃₁][𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁][𝑪₃₁ ↦ 𝑨]
+∎
+@end example
+
+
+@cindex proof line
+
+Let's jog through the different components of this output. The first part
+@example
+Proving lemma XL.1. formula 𝑨.
+  ⊢ 𝑨 ⇒ 𝑨.
+Proving conclusion.
+Proof succeeded.
+Variable: 𝑨
+@end example
+gives the statement, and the following line @code{Proving conclusion} says which proof line of the full proof it concerns, in this case the conclusion part of the proof, as the proof only has one line. After that, a list of the variables in the statement.
+
+The lines that follow
+@example
+Proof of
+  𝑨 ⇒ 𝑨
+succeeded:
+  MP: A1; MP: A1; A2.
+@end example
+gives the statement of the proof line, says that the proof succeeded, and gives a description of the proof search it found: Each part delimited by semicolons is a sequence of statements used to transform the list of goals to a new list of goals. The colons separates the different levels in the proof tree. One can also use commas betweem the smicolons, specifying a set of statements to be used in the search. This will occur in the case of definitions, that later the behavior of the unifier, rather than causing specific unification. Thus, the this is a specification for a single branch in the proof search tree.
+
+It is in fact possible to enter such semicolons into the statement of the proof, helping the engine to limit the search, taking up less computer resources in terms of time and space. The alternate form in the @code{.mlo} file would be
+@example
+lemma “XL.1”. formula 𝑨. 𝑨 ⇒ 𝑨.
+proof.
+  conclusion by MP: A1; MP: A1; A2.
+∎
+@end example
+The output in the @code{.mlo} will be different, giving the semicolons as well, but the output into the @code{.log} by @code{trace_result} will not change, as this is what the program does anyway.
+
+The last part, up to the end of proof marker @code{∎}, shows a number of reductions to already proved statements. It gives the substitutions found, along with details of the variable renumbering of the applied statements.
+@example
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+ ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+axiom A1. formula 𝑨₂₀, 𝑩₂₀.
+  ⊢ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀).
+rule MP. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+[𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)][𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]
+ ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+axiom A1. formula 𝑨₃₀, 𝑩₃₀.
+  ⊢ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀).
+axiom A2. formula 𝑨₃₁, 𝑩₃₁, 𝑪₃₁.
+  ⊢ (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₃₁ ⇒ 𝑩₃₁) ⇒ (𝑨₃₁ ⇒ 𝑪₃₁)).
+[𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)][𝑨₃₀ ↦ 𝑨₃₁][𝑩₃₀ ↦ 𝑩₃₁][𝑨₃₁ ↦ 𝑪₃₁][𝑨₂₀ ↦ 𝑪₃₁][𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁][𝑪₃₁ ↦ 𝑨]
+∎
+@end example
+These variables should be read as matrix component numbers, so @code{𝑩₂₃} is “B two three”. If the index numbers require two digits, they will be separated by a subscript "+", and there may be a superscript number for nested proof depth and a third subscript number for definition degree, as well.
+
+The actual numbers are other otherwise irrelevant, except for that the same renamed variable gets the same number everywhere: Whenever a proved statement is applied, its variables are renumbered, so as to not clash with any existing variables. The use of multiple indices is just one way to implement it; a single index, or some other method to avoid variable clashes, might do just as well.
+
+Let's work these substitutions by hand, in part to see how it works, and to check that the program did it right. The first part is
+@example
+  𝑨 ⇒ 𝑨
+rule MP. formula 𝑨₁₀, 𝑩₁₀.
+  𝑨₁₀, 𝑨₁₀ ⇒ 𝑩₁₀ ⊢ 𝑩₁₀.
+[𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+ ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+@end example
+with the first line the statement be proved, and the next modus ponens MP with the variables renumbered. Thereafter follows a substitution, followed by the new list of goals, marked by a @code{⊣}, resulting in the application of it:
+@example
+[𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]
+ ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+@end example
+Here, the substitution has only one components @code{[𝑩₁₀ ↦ 𝑨 ⇒ 𝑨]}, but if there are several such brackets, they are applied from left to right. Replacing @code{𝑩₁₀} with @code{𝑨 ⇒ 𝑨} in the renumbered MP does result in
+@example
+ ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+@end example
+so so far, it is all right.
+
+The next part is
+@example
+ ⊣ 𝑨₁₀, 𝑨₁₀ ⇒ (𝑨 ⇒ 𝑨)
+axiom A1. formula 𝑨₂₀, 𝑩₂₀.
+  ⊢ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀).
+rule MP. formula 𝑨₂₁, 𝑩₂₁.
+  𝑨₂₁, 𝑨₂₁ ⇒ 𝑩₂₁ ⊢ 𝑩₂₁.
+[𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)][𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]
+ ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+@end example
+Here, the substitution has two brackets, and as noted above, they should applied left to right, so first @code{[𝑨₁₀ ↦ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)]}, and thereafter @code{[𝑩₂₁ ↦ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)]}. Applying the first one to the list of goals to be proved at the top, and marked with @code{⊣}, gives
+@example
+ ⊣ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀), (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)
+@end example
+while applying it to the renumbered MP results in nothing as it does not contain the variable @code{𝑨₁₀}. Applying the second substitution to the list of goals does not change the latter, as it does not contain the variable @code{𝑩₂₁}, but when applied to MP, there results
+@example
+rule MP. formula 𝑨₂₃, 𝑩₂₃.
+  𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)) ⊢ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨).
+@end example
+
+Now, the first goal @code{⊣ 𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)} is valid by axiom A1, and the second goal @code{⊣ (𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨)} can by the substituted MP, replacing the conclusion (or head) by the premise (or body), be replaced by
+@example
+ ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+@end example
+which indeed the program statement above from the reductions of axiom A1 and rule MP.
+
+The final reduction is then
+@example
+ ⊣ 𝑨₂₁, 𝑨₂₁ ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+axiom A1. formula 𝑨₃₀, 𝑩₃₀.
+  ⊢ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀).
+axiom A2. formula 𝑨₃₁, 𝑩₃₁, 𝑪₃₁.
+  ⊢ (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₃₁ ⇒ 𝑩₃₁) ⇒ (𝑨₃₁ ⇒ 𝑪₃₁)).
+[𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)][𝑨₃₀ ↦ 𝑨₃₁][𝑩₃₀ ↦ 𝑩₃₁][𝑨₃₁ ↦ 𝑪₃₁][𝑨₂₀ ↦ 𝑪₃₁][𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁][𝑪₃₁ ↦ 𝑨]
+∎
+@end example
+
+The substitution is now a bit longer, having seven brackets, but applying it to the two goals top in the example gives
+@example
+-- By [𝑨₂₁ ↦ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)]:
+ ⊣ 𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀), (𝑨₃₀ ⇒ (𝑩₃₀ ⇒ 𝑨₃₀)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+-- By [𝑨₃₀ ↦ 𝑨₃₁]:
+ ⊣ 𝑨₃₁ ⇒ (𝑩₃₀ ⇒ 𝑨₃₁), (𝑨₃₁ ⇒ (𝑩₃₀ ⇒ 𝑨₃₁)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+-- By [𝑩₃₀ ↦ 𝑩₃₁]:
+ ⊣ 𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑨₃₁), (𝑨₃₁ ⇒ (𝑩₃₁ ⇒ 𝑨₃₁)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+-- By [𝑨₃₁ ↦ 𝑪₃₁]:
+ ⊣ 𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁), (𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑨₂₀ ⇒ (𝑩₂₀ ⇒ 𝑨₂₀)) ⇒ (𝑨 ⇒ 𝑨))
+
+-- By [𝑨₂₀ ↦ 𝑪₃₁]:
+ ⊣ 𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁), (𝑪₃₁ ⇒ (𝑩₃₁ ⇒ 𝑪₃₁)) ⇒ ((𝑪₃₁ ⇒ (𝑩₂₀ ⇒ 𝑪₃₁)) ⇒ (𝑨 ⇒ 𝑨))
+-- By [𝑩₃₁ ↦ 𝑩₂₀ ⇒ 𝑪₃₁]:
+ ⊣ 𝑪₃₁ ⇒ ((𝑩₂₀ ⇒ 𝑪₃₁) ⇒ 𝑪₃₁), (𝑪₃₁ ⇒ ((𝑩₂₀ ⇒ 𝑪₃₁) ⇒ 𝑪₃₁)) ⇒ ((𝑪₃₁ ⇒ (𝑩₂₀ ⇒ 𝑪₃₁)) ⇒ (𝑨 ⇒ 𝑨))
+
+-- By [𝑪₃₁ ↦ 𝑨]:
+ ⊣ 𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨), (𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑩₂₀ ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨))
+∎
+@end example
+The same substitution applied to the renumbered axiom A1 gives
+@example
+  ⊢ 𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨).
+@end example
+proving the first goal, and applied to the renumbered axiom A2 gives
+@example
+  ⊢ (𝑨 ⇒ ((𝑩₂₀ ⇒ 𝑨) ⇒ 𝑨)) ⇒ ((𝑨 ⇒ (𝑩₂₀ ⇒ 𝑨)) ⇒ (𝑨 ⇒ 𝑨)).
+@end example
+which is the second goal.
+
+Thus, this series of reductions led to a proof.
+
+— Timing of the different proof versions.
+
+
+@node Nested proofs
+@subsection Nested proofs
+
+@cindex nested proof
+@cindex proof, nested
+@cindex subproof
+@cindex depth
+
+A statement proof can be nested with subproofs, to facilitate writing writing proofs by hand, but are otherwise logically equivalent to unnested proofs. It is a common style, when writing proofs by hand, to make intermediate statements that are proved, and then picked together in the full proof of the statement, and supporting that, helps making proofs structured, and requires less work when translating a handwritten proof into code.
+
+A substatement with subproof is called @code{claim}, which in turn can have further nested levels, here called the @dfn{depth}, of statements and proofs.
+
+
+
+@node Input File
+@chapter MLI Input Files
+
+
+@node Interface
+@chapter User Interface.
+
+
+@node Algorithm
+@chapter The MLI Inference Algorithm.
+
+
+@node Debugging
+@chapter Understanding and Debugging MLI Source Code.
+
+
+@c ================================================= Invoking MLI
+
+@node Invocation
+@chapter Invoking MLI
+
+@cindex invoking MLI
+@cindex MLI invocation
+@cindex options for invoking MLI
+
+The usual way to invoke MLI is as follows:
+@example
+mli @var{infile}
+@end example
+
+Here @var{infile} is the input file name, which usually ends in
+@samp{.mli}. This file can in turn include other files, like libraries.
+If the parsing and interpretation are successful, two output files
+are produced: One, by default ending in @samp{.mlo}, with pretty-printing of the
+statements processed and their provability status indicated, and a log file,
+by default ending in @samp{.log}, with proving process details, as
+chosen by the tracing commands in the input files.
+
+If @var{infile} does not end with @samp{.mli}, then @samp{.mlo} resp. @samp{.log}
+are merely appended to the whole name, which also becomes the theory name. These
+names can be overridden by the options below.
+
+@menu
+* MLI Options::     The options described in detail,
+* Option Cross Key::  Long alphabetical list of options.
+@end menu
+
+
+@node MLI Options
+@section MLI Options
+
+MLI supports only modern option names beginning with indicated with @samp{--}.
+
+For processing, an input file must be given, with optional prefix @code{--input=}.
+
+@table @option
+
+@item --help
+Display help text, including a command line options summary, and exit.
+
+@item --version
+Output version and program information, and exit
+
+
+@item [--input=]@var{file}
+Read input from @var{file}. The prefix @code{--input=} is optional.
+If @var{file} ends with @samp{.mli}, the @var{filename
+base} is what precedes it, otherwise, it is the whole infile filename.
+The @var{filename base} is used to determine the default names for the output files.
+
+@item --output=@var{file}
+Write output to @var{file}. If this option is not given, the output file name is the
+@var{filename base} followed by @samp{.mlo}.
+
+@item --log=@var{file}     
+Write log output to @var{file}. If this option is not given, the log file name is the
+@var{filename base} followed by @samp{.log}.
+
+@item --include=@var{dir}
+Add include directory @var{dir}, ahead of the default library directory named in the variable
+@code{DATADIR} passed to the Makefile.
+Multiple occurrences will cause the directories to
+be searched in the same order as they are given, left-to-right, on the command line.
+The name @var{dir} is passed as is to the shell, though if it does not end with
+@code{/}, it is added in the search.
+
+@item --theory=@var{name}
+Name the input file theory database to @var{name}. If this option is not given, the
+theory name is the same as the @var{filename base}.
+
+@item --verbose
+More information to the standard output.
+
+
+@end table
+
+
+@node Option Cross Key
+@section Option Cross Key
+
+Alphabetical list of options.
+
+
+@c ==== Table of Symbols ====
+
+@node Table of Symbols
+@appendix MLI Symbols
+@cindex MLI symbols, table of
+@cindex symbols in MLI, table of
+
+
+@deffn {Symbol} theorem
+Indicates a named theorem.
+@end deffn
+
+
+@node Glossary
+@appendix Glossary
+@cindex glossary
+
+@table @asis
+@item Theorem
+A statement that is true in the object theory. A theorem may or may not have a proof,
+and in the latter case, there is in general no way to determine whether it is true.
+@end table
+
+
+@node Bibliography
+@unnumbered Bibliography
+
+@table @asis
+
+@item [Kleene 1952]
+Stephen Cole Kleene, "Introduction to Metamathematics", 1952, seventh reprint 1974,
+North Holland ISBN 978-0-7204-2103-3, American Elsevier ISBN 978-0-444-10088-7.
+
+@item [Mendelson 1964]
+Elliott Mendelson, "Introduction to Mathematical Logic", 1964, first edition, Van Nostrand, 
+Library of Congress Control Number ISBN 9780442053000.
+
+@end table
+
+
+@node Index of Terms
+@unnumbered Index of Terms
+
+@printindex cp
+
+@bye
+
+
+
+

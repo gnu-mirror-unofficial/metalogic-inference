@@ -1,0 +1,33 @@
+— Begin: theory database issue-induction-2.
+
+theory TS1.
+
+rule OVS. formula 𝑪 object 𝒖, °𝒛.
+  𝑪 ⊢⁽°𝒛⁾ 𝑪[°𝒛 ⤇ 𝒖].
+
+rule OVSO. formula 𝑪 object 𝒖, °𝒛.
+  𝑪 ⊢ 𝑪[°𝒛 ⤇ 𝒖].
+
+lemma Q2a0 [*unproved*]. object °𝑥, 𝒕.
+  𝑃(°𝑥) ⊢ 𝑃(𝒕)
+[*unproved*] result by OVS: premise Q2a0.
+
+lemma Q2a. object °𝑥, 𝒕.
+  𝑃(°𝑥) ⊢⁽°𝑥⁾ 𝑃(𝒕)
+result by OVS: premise ⊢. — OVS: premise ⊢.
+
+lemma Q2b. object °𝑥, °𝑦, 𝒕.
+  𝑃(°𝑥, °𝑦) ⊢⁽°𝑥 °𝑦⁾ 𝑃(𝒕, 𝒕)
+result by OVS: premise ⊢. — OVS: premise ⊢.
+
+lemma Q2c. object °𝑥, 𝒕.
+  𝑃(°𝑥) ⊢⁽°𝑥⁾ 𝑃(𝒕)
+result by OVS: . — OVS: premise ⊢.
+
+lemma Q2d. object °𝑥, °𝑦, 𝒕.
+  𝑃(°𝑥, °𝑦) ⊢⁽°𝑥 °𝑦⁾ 𝑃(𝒕, 𝒕)
+result by OVS: . — OVS: premise ⊢.
+
+end theory TS1.
+
+— End: theory database issue-induction-2.

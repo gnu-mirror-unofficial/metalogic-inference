@@ -1,0 +1,256 @@
+— Begin: theory database TS1.
+
+theory LM.
+
+axiom A1. formula 𝑨, 𝑩.
+  𝑨 ⇒ (𝑩 ⇒ 𝑨).
+
+axiom A2. formula 𝑨, 𝑩, 𝑪.
+  (𝑨 ⇒ (𝑩 ⇒ 𝑪)) ⇒ ((𝑨 ⇒ 𝑩) ⇒ (𝑨 ⇒ 𝑪)).
+
+axiom A3. formula 𝑨, 𝑩.
+  (¬𝑩 ⇒ ¬𝑨) ⇒ ((¬𝑩 ⇒ 𝑨) ⇒ 𝑩).
+
+rule MP. formula 𝑨, 𝑩.
+  𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+postulate DT. formula sequence 𝜞 formula 𝑨, 𝑩.
+  𝜞, 𝑨 ⊢ 𝑩 ⊩ 𝜞 ⊢ 𝑨 ⇒ 𝑩.
+
+definition D1. formula 𝑨, 𝑩.
+  𝑨 ∧ 𝑩 ≔ ¬(𝑨 ⇒ ¬𝑩).
+
+definition D2. formula 𝑨, 𝑩.
+  𝑨 ∨ 𝑩 ≔ ¬𝑨 ⇒ 𝑩.
+
+definition D3. formula 𝑨, 𝑩.
+  𝑨 ⇔ 𝑩 ≔ (𝑨 ⇒ 𝑩) ∧ (𝑩 ⇒ 𝑨).
+
+axiom D4. 
+  𝕥.
+
+definition D5. 
+  𝕗 ≔ ¬𝕥.
+
+end theory LM.
+
+
+theory KM.
+  include theory LM.
+
+rule K1. formula 𝑨 object 𝑡, °𝒙.
+  ∀°𝒙 𝑨 ⊢ 𝑨[°𝒙 ⤇ 𝑡].
+
+axiom K2. formula 𝑨, 𝑩 object °𝒙.
+  °𝒙 not free in 𝑨 ⊩ (∀°𝒙: 𝑨 ⇒ 𝑩) ⇒ (𝑨 ⇒ ∀°𝒙 𝑩).
+
+rule Gen. formula 𝑨 object °𝒙.
+  𝑨 ⊢⁽°𝒙⁾ ∀°𝒙 𝑨.
+
+rule Ex. formula 𝑨 object 𝒕, °𝒙.
+  𝒕 free for °𝒙 in 𝑨 ⊩ 𝑨[°𝒙 ⤇ 𝒕] ⊢ ∃°𝒙 𝑨.
+
+postulate K3. formula sequence 𝜞 formula 𝑨, 𝑩 object °𝒙.
+  𝜞, 𝑨 ⊢ 𝑩 ⊩ 𝜞, ∃°𝒙 𝑨 ⊢ 𝑩.
+
+end theory KM.
+
+
+theory SM.
+  include theory KM.
+
+axiom S1. object 𝑥, 𝑦, 𝑧.
+  𝑥 = 𝑦 ⇒ (𝑥 = 𝑧 ⇒ 𝑦 = 𝑧).
+
+axiom S2. object 𝑥, 𝑦.
+  𝑥 = 𝑦 ⇒ s(𝑥) = s(𝑦).
+
+axiom S3. object 𝑥.
+  0 ≠ s(𝑥).
+
+axiom S3a. object 𝑥.
+  ¬0 = s(𝑥).
+
+axiom S4. object 𝑥, 𝑦.
+  s(𝑥) = s(𝑦) ⇒ 𝑥 = 𝑦.
+
+axiom S5. object 𝑥.
+  𝑥 + 0 = 𝑥.
+
+axiom S6. object 𝑥, 𝑦.
+  𝑥 + s(𝑦) = s(𝑥 + 𝑦).
+
+axiom S7. object 𝑥.
+  𝑥 ⋅ 0 = 0.
+
+axiom S8. object 𝑥, 𝑦.
+  𝑥 ⋅ s(𝑦) = 𝑥 ⋅ 𝑦 + 𝑥.
+
+rule S1a. object 𝑥, 𝑦, 𝑧.
+  𝑥 = 𝑦, 𝑥 = 𝑧 ⊢ 𝑦 = 𝑧.
+
+rule S2a. object 𝑥, 𝑦.
+  𝑥 = 𝑦 ⊢ s(𝑥) = s(𝑦).
+
+rule S4a. object 𝑥, 𝑦.
+  s(𝑥) = s(𝑦) ⊢ 𝑥 = 𝑦.
+
+axiom S9a. predicate variable 𝑷.
+  𝑷(0) ∧ ∀°𝑥: 𝑷(°𝑥) ⇒ 𝑷(s(°𝑥)) ⇒ ∀°𝑥 𝑷(°𝑥).
+
+axiom S9b. formula 𝑨 object °𝒙.
+  𝑨[°𝒙 ⤇ 0] ∧ ∀°𝒙: 𝑨 ⇒ 𝑨[°𝒙 ⤇ s(°𝒙)] ⇒ ∀°𝒙 𝑨.
+
+postulate S9c. formula 𝑨 object °𝒙.
+  𝑨[°𝒙 ⤇ 0], ∀°𝒙: 𝑨 ⇒ 𝑨[°𝒙 ⤇ s(°𝒙)] ⊢ ∀°𝒙 𝑨.
+
+definition NE. object 𝑥, 𝑦.
+  𝑥 ≠ 𝑦 ≔ ¬𝑥 = 𝑦.
+
+definition SL. object 𝑥, 𝑦.
+  𝑥 < 𝑦 ≔ ∃°𝒘: ¬°𝒘 = 0 ∧ 𝑥 + °𝒘 = 𝑦.
+
+definition SLA. object 𝑥, 𝑦.
+  𝑥 < 𝑦 ≔ ∃°𝑤: ¬°𝑤 = 0 ∧ 𝑥 + °𝑤 = 𝑦.
+
+definition SLE. object 𝑥, 𝑦.
+  𝑥 ≤ 𝑦 ≔ 𝑥 < 𝑦 ∨ 𝑥 = 𝑦.
+
+definition SG. object 𝑥, 𝑦.
+  𝑥 > 𝑦 ≔ 𝑦 < 𝑥.
+
+definition SGE. object 𝑥, 𝑦.
+  𝑥 ≥ 𝑦 ≔ 𝑦 ≤ 𝑥.
+
+definition SNL. object 𝑥, 𝑦.
+  𝑥 ≮ 𝑦 ≔ ¬𝑥 < 𝑦.
+
+definition SNLE. object 𝑥, 𝑦.
+  𝑥 ≤ 𝑦 ≔ ¬𝑥 ≤ 𝑦.
+
+definition SNG. object 𝑥, 𝑦.
+  𝑥 ≯ 𝑦 ≔ ¬𝑥 > 𝑦.
+
+definition SNGE. object 𝑥, 𝑦.
+  𝑥 ≱ 𝑦 ≔ ¬𝑥 ≥ 𝑦.
+
+definition n1. 
+  1 ≔ s(0).
+
+definition n2. 
+  2 ≔ s(1).
+
+definition n3. 
+  3 ≔ s(2).
+
+definition n4. 
+  4 ≔ s(3).
+
+end theory SM.
+
+
+theory TS1.
+  include theory SM.
+
+rule TA1. formula 𝑨.
+  𝑨 ⊢ 𝑨 ∧ 𝑨.
+
+rule TA2. formula 𝑨, 𝑩, 𝑪.
+  𝑩, 𝑨 ∧ 𝑩 ⇒ 𝑪 ⊢ 𝑨 ⇒ 𝑪.
+
+rule CI. formula 𝑨, 𝑩.
+  𝑨, 𝑩 ⊢ 𝑨 ∧ 𝑩.
+
+rule CVIA. formula 𝑨 object °𝒙, °𝒚.
+  (°𝒚 ↦ 𝑨)(0), (∀°𝒚: °𝒚 ≤ °𝒙 ⇒ (°𝒚 ↦ 𝑨)(°𝒚)) ⇒ (°𝒚 ↦ 𝑨)(s(°𝒙)) ⊢⁽¹ °𝒙⁾ (°𝒚 ↦ 𝑨)(°𝒙).
+
+rule CVIr. formula sequence 𝜞 formula 𝑩 object 𝒕, °𝒙, °𝒚, °𝒛.
+  ⦅𝜞 ⊢ (°𝒛 ↦ 𝑩)(0)¦𝜞, °𝒚 ≤ °𝒙 ⊢₍°𝒙₎ (°𝒛 ↦ 𝑩)(°𝒚) ⊩⁽°𝒚⁾₍°𝒙₎ 𝜞 ⊢ (°𝒛 ↦ 𝑩)(s(°𝒙))⦆ ⊪ 𝜞 ⊢ (°𝒛 ↦ 𝑩)(𝒕).
+
+rule CVI2. predicate variable 𝑷 object °𝒙, °𝒚.
+  𝑷(0), (∀°𝒚: °𝒚 ≤ °𝒙 ⇒ 𝑷(°𝒚)) ⇒ 𝑷(s(°𝒙)) ⊢⁽¹ °𝒙⁾ 𝑷(°𝒙).
+
+rule IR. formula sequence 𝜞 formula 𝑨 object 𝒕, °𝒙.
+  𝜞 ⊢ (°𝒚 ↦ 𝑨)(0); 𝜞, (°𝒚 ↦ 𝑨)(°𝒙) ⊢₍°𝒙₎ (°𝒚 ↦ 𝑨)(s(°𝒙)) ⊩ 𝜞 ⊢ (°𝒚 ↦ 𝑨)(𝒕).
+
+rule IRz. formula sequence 𝜞 formula 𝑨 object 𝒕, °𝒙.
+  𝜞 ⊢ (°𝒙 ↦ 𝑨)(0); 𝜞, 𝑨 ⊢₍°𝒙₎ (°𝒙 ↦ 𝑨)(s(°𝒙)) ⊩ 𝜞 ⊢ (°𝒙 ↦ 𝑨)(𝒕).
+
+axiom ineqr. object 𝑥.
+  𝑥 ≤ 𝑥.
+
+rule S1b. object 𝑥, 𝑦, 𝑧.
+  𝑥 = 𝑦, 𝑦 = 𝑧 ⊢ 𝑥 = 𝑧.
+
+rule S2b. object 𝑥, 𝑦.
+  𝑥 = 𝑦 ⊢ s(𝑥) = s(𝑦).
+
+axiom S5. object 𝑥.
+  𝑥 + 0 = 𝑥.
+
+axiom S6. object 𝑥, 𝑦.
+  𝑥 + s(𝑦) = s(𝑥 + 𝑦).
+
+lemma T1. object x.
+  x = x
+result by MP, TA1, S1, S5. — MP: S5; MP: S5; S1.
+
+lemma T2. object x, y.
+  x = y ⇒ y = x
+result by DT: MP: T1; MP: S1. — DT: MP: T1; MP: S1.
+
+lemma X0CV. object 𝑥.
+  0 + 𝑥 = 𝑥
+result by CVIr: S5; S1b: S6; S2b: premise ⊢: ineqr. — CVIr: S5; S1b: S6; S2b: premise ⊢: ineqr.
+
+lemma CVIq. formula sequence 𝜞 formula 𝑩 object °𝒙, °𝒚.
+  𝜞 ⊢ (°𝒚 ↦ 𝑩)(0); 𝜞, ∀°𝒚: °𝒚 ≤ °𝒙 ⇒ (°𝒚 ↦ 𝑩)(°𝒚) ⊢₍°𝒙₎ (°𝒚 ↦ 𝑩)(s(°𝒙)) ⊩ 𝜞 ⊢ (°𝒚 ↦ 𝑩)(°𝒙)
+result by CVIA: DT. — CVIA: DT.
+
+lemma CVIs. formula sequence 𝜞 predicate variable 𝑷 object °𝒙, °𝒚.
+  𝜞 ⊢ 𝑷(0); 𝜞, ∀°𝒚: °𝒚 ≤ °𝒙 ⇒ 𝑷(°𝒚) ⊢₍°𝒙₎ 𝑷(s(°𝒙)) ⊩ 𝜞 ⊢ 𝑷(°𝒙)
+result by CVI2: DT. — CVI2: DT.
+
+lemma IRa. predicate variable A.
+  A(0) ∧ ∀°x: A(°x) ⇒ A(s(°x)) ⊢ ∀°x A(°x)
+result by MP: S9a. — MP: S9a.
+
+lemma IR1. predicate variable A.
+  A(0), ∀°x: A(°x) ⇒ A(s(°x)) ⊢ ∀°x A(°x)
+result by IRa: CI. — IRa: CI.
+
+lemma X. object x.
+  0 + x = x
+result by IR: S5; S1b: S6; S2b. — IR: S5; S1b: S6; S2b.
+
+lemma X0. object x.
+  0 + x = x
+result by IRz: S5; S1b: S6; S2b. — IRz: S5; S1b: S6; S2b.
+
+lemma X1. ∀°x 0 + °x = °x
+proof
+  result by S9c: S5; Gen: DT: S1b: S6; MP: S2. — S9c: S5; Gen: DT: S1b: S6; MP: S2.
+  definition D5. object t.
+    B(t) ≔ 0 + t = t.
+  1. B(0) by D5, S5. — S5₍D5₎.
+  a. object x.
+    B(x) ⊢ B(s(x))
+  proof
+    a1. 0 + x = x by D5, premise a. — premise a₍D5₎.
+    a2. 0 + s(x) = s(0 + x) by S6. — S6.
+    a3. s(0 + x) = s(x) by MP: S2, a1. — MP: a1; S2.
+    a4. 0 + s(x) = s(x) by a2, a3, S1b. — S1b: a2; a3.
+    result by D5, a4. — a4₍D5₎.
+  ∎
+  result by IR1, D5: 1; Gen: DT: a. — IR1₍D5₎: 1; Gen: DT: a.
+  2. object x.
+    B(x) ⇒ B(s(x)) by DT, a. — DT: a.
+  3. ∀°x: B(°x) ⇒ B(s(°x)) by Gen, 2. — Gen: 2.
+  4. ∀°x B(°x) by IR1, 1, 3. — IR1: 1; 3.
+  result by D5, 4. — 4₍D5₎.
+[* Number of concluding proof lines: 3, all proved. *]
+∎
+
+end theory TS1.
+
+— End: theory database TS1.

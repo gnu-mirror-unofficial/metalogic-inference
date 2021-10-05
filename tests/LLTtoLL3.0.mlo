@@ -1,0 +1,109 @@
+— Begin: theory database LLTtoLL3.
+
+theory LLT.
+
+axiom A1. formula 𝑨, 𝑩, 𝑪, 𝑫, 𝑬, 𝑭, 𝑮, 𝑯.
+  ((𝑨 ⇒ (𝑩 ⇒ 𝑨)) ⇒ (((¬𝑪 ⇒ (𝑫 ⇒ ¬𝑬)) ⇒ ((𝑪 ⇒ (𝑫 ⇒ 𝑭)) ⇒ ((𝑬 ⇒ 𝑫) ⇒ (𝑬 ⇒ 𝑭)))) ⇒ 𝑮)) ⇒ (𝑯 ⇒ 𝑮).
+
+rule MP. formula 𝑨, 𝑩.
+  𝑨, 𝑨 ⇒ 𝑩 ⊢ 𝑩.
+
+postulate DT. formula sequence 𝜞 formula 𝑨, 𝑩.
+  𝜞, 𝑨 ⊢ 𝑩 ⊩ 𝜞 ⊢ 𝑨 ⇒ 𝑩.
+
+definition D1. formula 𝑨, 𝑩.
+  𝑨 ∧ 𝑩 ≔ ¬(𝑨 ⇒ ¬𝑩).
+
+definition D2. formula 𝑨, 𝑩.
+  𝑨 ∨ 𝑩 ≔ ¬𝑨 ⇒ 𝑩.
+
+definition D3. formula 𝑨, 𝑩.
+  𝑨 ⇔ 𝑩 ≔ (𝑨 ⇒ 𝑩) ∧ (𝑩 ⇒ 𝑨).
+
+axiom D4. 
+  𝕥.
+
+definition D5. 
+  𝕗 ≔ ¬𝕥.
+
+end theory LLT.
+
+
+theory LLTtoLL3.
+  include theory LLT.
+
+lemma TL2. formula 𝑨, 𝑩, 𝑪.
+  𝑨 ⇒ (𝑩 ⇒ (𝑪 ⇒ 𝑩))
+result by MP: A1; A1. — MP: A1; A1.
+
+proposition LL3A1. formula 𝑨, 𝑩.
+  𝑨 ⇒ (𝑩 ⇒ 𝑨)
+result by MP: TL2; TL2. — MP: TL2; TL2.
+
+lemma TL4. formula 𝑨, 𝑩, 𝑪, 𝑫.
+  (¬𝑨 ⇒ (𝑩 ⇒ ¬𝑪)) ⇒ ((𝑨 ⇒ (𝑩 ⇒ 𝑫)) ⇒ ((𝑪 ⇒ 𝑩) ⇒ (𝑪 ⇒ 𝑫)))
+result by MP: A1; MP: MP; A1: TL2; A1. — MP: A1; MP: MP; A1: TL2; A1.
+
+proposition LL3A2. formula 𝑨, 𝑩, 𝑪.
+  (𝑨 ⇒ (𝑩 ⇒ 𝑪)) ⇒ ((𝑨 ⇒ 𝑩) ⇒ (𝑨 ⇒ 𝑪))
+result by MP: LL3A1; TL4. — MP: LL3A1; TL4.
+
+lemma TL6. formula p.
+  p ⇒ p
+result by MP: LL3A1; MP: LL3A1; LL3A2. — MP: LL3A1; MP: LL3A1; LL3A2.
+
+lemma TL7. formula p, q, r.
+  (q ⇒ r) ⇒ ((p ⇒ (q ⇒ r)) ⇒ ((p ⇒ q) ⇒ (p ⇒ r)))
+result by MP: LL3A2; LL3A1. — MP: LL3A2; LL3A1.
+
+lemma TL8. formula p, q, r.
+  (q ⇒ r) ⇒ ((p ⇒ q) ⇒ (p ⇒ r))
+result by MP: LL3A1; MP: TL7; LL3A2. — MP: LL3A1; MP: TL7; LL3A2.
+
+lemma TL9. formula p, q, r.
+  ((q ⇒ r) ⇒ (p ⇒ q)) ⇒ ((q ⇒ r) ⇒ (p ⇒ r))
+result by MP: TL8; LL3A2. — MP: TL8; LL3A2.
+
+lemma TL10. formula p, q, r.
+  (p ⇒ q) ⇒ (((q ⇒ r) ⇒ (p ⇒ q)) ⇒ ((q ⇒ r) ⇒ (p ⇒ r)))
+result by MP: TL9; LL3A1. — MP: TL9; LL3A1.
+
+lemma TL11. formula p, q, r.
+  (p ⇒ q) ⇒ ((q ⇒ r) ⇒ (p ⇒ r))
+result by MP: LL3A1; MP: TL10; LL3A2. — MP: LL3A1; MP: TL10; LL3A2.
+
+lemma TL12. formula p, q, r.
+  ((p ⇒ q) ⇒ (p ⇒ r)) ⇒ (q ⇒ (p ⇒ q))
+result by MP: LL3A1; LL3A1. — MP: LL3A1; LL3A1.
+
+lemma TL13. formula p, q, r.
+  ((p ⇒ q) ⇒ (p ⇒ r)) ⇒ (q ⇒ (p ⇒ r))
+result by MP: TL12; MP: TL8; LL3A2. — MP: TL12; MP: TL8; LL3A2.
+
+lemma TL14. formula p, q, r.
+  (p ⇒ (q ⇒ r)) ⇒ (q ⇒ (p ⇒ r))
+result by MP: LL3A2; MP: MP; LL3A2: TL13; LL3A1. — MP: LL3A2; MP: MP; LL3A2: TL13; LL3A1.
+
+lemma TL15. formula p, q, r.
+  ((p ⇒ q) ⇒ r) ⇒ (q ⇒ r)
+result by MP: LL3A1; TL11. — MP: LL3A1; TL11.
+
+lemma TL16. formula p, q, s.
+  (¬p ⇒ (s ⇒ ¬q)) ⇒ ((q ⇒ s) ⇒ (q ⇒ p))
+result by MP: LL3A1; MP: TL4; TL14. — MP: LL3A1; MP: TL4; TL14.
+
+lemma TL17. formula p, q, s.
+  (s ⇒ (¬p ⇒ ¬q)) ⇒ ((q ⇒ s) ⇒ (q ⇒ p))
+result by MP: TL16; MP: TL14; TL11. — MP: TL16; MP: TL14; TL11.
+
+lemma TL18. formula p, q.
+  (q ⇒ (¬p ⇒ ¬q)) ⇒ (q ⇒ p)
+result by MP: TL6; TL17. — MP: TL6; TL17.
+
+proposition LL3A3. formula 𝑨, 𝑩.
+  (¬𝑨 ⇒ ¬𝑩) ⇒ (𝑩 ⇒ 𝑨)
+result by MP: TL18; TL15. — MP: TL18; TL15.
+
+end theory LLTtoLL3.
+
+— End: theory database LLTtoLL3.
