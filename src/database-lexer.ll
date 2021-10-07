@@ -17,6 +17,11 @@
 
 %{
 
+#if (YY_FLEX_MAJOR_VERSION < 2 || (YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION < 6)\
+  || (YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION == 6 && YY_FLEX_SUBMINOR_VERSION < 4))
+#error "Flex version 2.6.4 or later required."
+#endif
+
 #include "database-parser.hh"
 
 #include <iostream>
@@ -52,8 +57,6 @@ mli::database_parser::token_type declared_token = mli::free_variable_context;
 int declared_type = 0;
 
 int current_token = 0;
-
-std::istream* current_istream;
 
 std::stack<YY_BUFFER_STATE> include_stack;
 std::stack<mli::location_type> location_stack;
@@ -216,7 +219,6 @@ utf8char    [\x09\x0A\x0D\x20-\x7E]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-
 %{
   mli::semantic_type& yylval = *yylvalp;
   mli::location_type& yylloc = *yyllocp;
-  current_istream = yyin;
 
   if (current_token != 0) { int tok = current_token; current_token = 0; return tok; }
 
@@ -242,32 +244,28 @@ utf8char    [\x09\x0A\x0D\x20-\x7E]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-
 
   std::string path = str; // Full path of file str relative dir directory paths if needed.
 
-  yyin = new std::ifstream(str);
+  auto fbp = new std::filebuf();
+  fbp->open(str, std::ios_base::in);
 
-  if (!*yyin) {
-    delete yyin;
-    yyin = nullptr;
-
+  if (!fbp->is_open()) {
     // Opening file str failed, so try with directory paths prepended:
     for (auto& i: dirs) {
       path = (i.back() == '/')? i : i + "/";
       path += str;
-      yyin = new std::ifstream(path);
 
-      if (!*yyin) {
-        delete yyin;
-        yyin = nullptr;
-        continue;
-      }
-      break;
+      fbp->open(path, std::ios_base::in);
+
+      if (fbp->is_open())
+        break;
     }
 
-    if (yyin == nullptr) {
+    if (!fbp->is_open()) {
+      delete fbp;
       throw mli::database_parser::syntax_error(yylloc, "File " + str + " not found.");
     }
   }
 
-  current_istream = yyin;
+  yyin.rdbuf(fbp);
 
   filename_stack.push(str);
   filepath_stack.push(path);
@@ -797,11 +795,11 @@ utf8char    [\x09\x0A\x0D\x20-\x7E]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-
 
 
 "{—"  { yylloc.step();
-    int r = directive_read(*yyin, yylloc);
+    int r = directive_read(yyin, yylloc);
 
     if (r != 0) {
       BEGIN(INITIAL);
-      throw mli::database_parser::syntax_error(yylloc, "Directive syntax error.");
+      return mli::database_parser::token::MLIerror;
     }
 }
 
@@ -875,13 +873,11 @@ utf8char    [\x09\x0A\x0D\x20-\x7E]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-
   if (include_stack.empty())
     return EOF;
 
-  delete yyin; // yyin is not deleted by yy_delete_buffer.
-  yyin = nullptr;
+  delete yyin.rdbuf();
 
   yy_delete_buffer(YY_CURRENT_BUFFER);
   yy_switch_to_buffer(include_stack.top());
   include_stack.pop();
-  current_istream = yyin;
 
   yylloc = location_stack.top();
   location_stack.pop();

@@ -86,6 +86,8 @@
 
       int yylex(); // Defined in database-lexer.cc.
 
+      std::istream& in() { return yyin; }
+
       int operator()(mli::semantic_type* x) { yylvalp = x;  return yylex(); }
       int operator()(mli::semantic_type* x, mli::location_type* y) { yylvalp = x;  yyllocp = y;  return yylex(); }
     };
@@ -93,7 +95,7 @@
   } // namespace mli
 
 
-#line 97 "../../mli-root/src/database-parser.hh"
+#line 99 "../../mli-root/src/database-parser.hh"
 
 
 # include <cstdlib> // std::abort
@@ -237,7 +239,7 @@
 
 #line 22 "../../mli-root/src/database-parser.yy"
 namespace mli {
-#line 241 "../../mli-root/src/database-parser.hh"
+#line 243 "../../mli-root/src/database-parser.hh"
 
 
 
@@ -1290,11 +1292,11 @@ namespace mli {
 
 #line 22 "../../mli-root/src/database-parser.yy"
 } // mli
-#line 1294 "../../mli-root/src/database-parser.hh"
+#line 1296 "../../mli-root/src/database-parser.hh"
 
 
 // "%code provides" blocks.
-#line 91 "../../mli-root/src/database-parser.yy"
+#line 93 "../../mli-root/src/database-parser.yy"
 
 
   namespace mli {
@@ -1323,7 +1325,7 @@ namespace mli {
   } // namespace mli
 
 
-#line 1327 "../../mli-root/src/database-parser.hh"
+#line 1329 "../../mli-root/src/database-parser.hh"
 
 
 #endif // !YY_MLI_MLI_ROOT_SRC_DATABASE_PARSER_HH_INCLUDED

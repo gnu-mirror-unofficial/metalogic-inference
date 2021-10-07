@@ -79,6 +79,8 @@
 
       int yylex(); // Defined in database-lexer.cc.
 
+      std::istream& in() { return yyin; }
+
       int operator()(mli::semantic_type* x) { yylvalp = x;  return yylex(); }
       int operator()(mli::semantic_type* x, mli::location_type* y) { yylvalp = x;  yyllocp = y;  return yylex(); }
     };
@@ -2429,13 +2431,12 @@ function_term_identifier:
 
 %%
 
-  extern std::istream* current_istream;
   extern std::istream::pos_type line_position;
 
 namespace mli {
 
   void database_parser::error(const location_type& loc, const std::string& errstr) {
-    diagnostic(loc, errstr, *current_istream, line_position);
+    diagnostic(loc, errstr, mlilex.in(), line_position);
   }
 
 

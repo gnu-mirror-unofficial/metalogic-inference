@@ -85,6 +85,8 @@
 
       int yylex(); // Defined in directive-lexer.cc.
 
+      std::istream& in() { return yyin; }
+
       int operator()(mli::semantic_type* x) { yylvalp = x;  return yylex(); }
       int operator()(mli::semantic_type* x, mli::location_type* y) { yylvalp = x;  yyllocp = y;  return yylex(); }
     };
@@ -92,7 +94,7 @@
   } // namespace mli
 
 
-#line 96 "../../mli-root/src/directive-parser.hh"
+#line 98 "../../mli-root/src/directive-parser.hh"
 
 
 # include <cstdlib> // std::abort
@@ -236,7 +238,7 @@
 
 #line 22 "../../mli-root/src/directive-parser.yy"
 namespace mli {
-#line 240 "../../mli-root/src/directive-parser.hh"
+#line 242 "../../mli-root/src/directive-parser.hh"
 
 
 
@@ -1136,11 +1138,11 @@ namespace mli {
 
 #line 22 "../../mli-root/src/directive-parser.yy"
 } // mli
-#line 1140 "../../mli-root/src/directive-parser.hh"
+#line 1142 "../../mli-root/src/directive-parser.hh"
 
 
 // "%code provides" blocks.
-#line 89 "../../mli-root/src/directive-parser.yy"
+#line 91 "../../mli-root/src/directive-parser.yy"
 
 
   namespace mli {
@@ -1165,7 +1167,7 @@ namespace mli {
   } // namespace mli
 
 
-#line 1169 "../../mli-root/src/directive-parser.hh"
+#line 1171 "../../mli-root/src/directive-parser.hh"
 
 
 #endif // !YY_MLI_MLI_ROOT_SRC_DIRECTIVE_PARSER_HH_INCLUDED

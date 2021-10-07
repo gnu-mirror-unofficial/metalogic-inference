@@ -67,7 +67,7 @@ int main(int argc, char *argv[], char* envp[]) {
     std::cout << i.first << " = " << i.second << std::endl;
 #endif
 
-#if 0 // debug.hh
+#if 0 // debug-mli
   mli::precedence_init();
   return EXIT_SUCCESS;
 #endif
@@ -200,7 +200,9 @@ int main(int argc, char *argv[], char* envp[]) {
       std::string name("--directive");
       mli::location_type loc;
       loc.initialize(&name);
-      mli::directive_read(str, loc);
+      int r = mli::directive_read(str, loc);
+      if (r != 0)
+        return EXIT_FAILURE;
       continue;
     }
 

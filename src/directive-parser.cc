@@ -44,7 +44,7 @@
 
 
 // Unqualified %code blocks.
-#line 115 "../../mli-root/src/directive-parser.yy"
+#line 117 "../../mli-root/src/directive-parser.yy"
 
 
   // #define YYDEBUG 1
@@ -778,13 +778,13 @@ namespace mli {
           switch (yyn)
             {
   case 3: // file: file_contents
-#line 602 "../../mli-root/src/directive-parser.yy"
+#line 604 "../../mli-root/src/directive-parser.yy"
                   {}
 #line 784 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 4: // file: error
-#line 603 "../../mli-root/src/directive-parser.yy"
+#line 605 "../../mli-root/src/directive-parser.yy"
           {
       declaration_context = false;
       directive_bound_variable_type = free_variable_context;
@@ -794,67 +794,67 @@ namespace mli {
     break;
 
   case 5: // file_contents: file_contents command
-#line 612 "../../mli-root/src/directive-parser.yy"
+#line 614 "../../mli-root/src/directive-parser.yy"
                           {}
 #line 800 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 6: // file_contents: command
-#line 613 "../../mli-root/src/directive-parser.yy"
+#line 615 "../../mli-root/src/directive-parser.yy"
                           {}
 #line 806 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 7: // command: diagnostic_statement
-#line 618 "../../mli-root/src/directive-parser.yy"
+#line 620 "../../mli-root/src/directive-parser.yy"
                          {}
 #line 812 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 8: // command: trace_statement
-#line 619 "../../mli-root/src/directive-parser.yy"
+#line 621 "../../mli-root/src/directive-parser.yy"
                     {}
 #line 818 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 9: // command: proof_strictness
-#line 620 "../../mli-root/src/directive-parser.yy"
+#line 622 "../../mli-root/src/directive-parser.yy"
                      {}
 #line 824 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 10: // command: limits
-#line 621 "../../mli-root/src/directive-parser.yy"
+#line 623 "../../mli-root/src/directive-parser.yy"
            {}
 #line 830 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 11: // diagnostic_statement: "diagnostic" diagnostic_type diagnostic
-#line 626 "../../mli-root/src/directive-parser.yy"
+#line 628 "../../mli-root/src/directive-parser.yy"
                                             { unused_variable = the_directive_type; }
 #line 836 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 12: // diagnostic_type: "ignored"
-#line 631 "../../mli-root/src/directive-parser.yy"
+#line 633 "../../mli-root/src/directive-parser.yy"
               { the_directive_type = false; }
 #line 842 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 13: // diagnostic_type: "warning"
-#line 632 "../../mli-root/src/directive-parser.yy"
+#line 634 "../../mli-root/src/directive-parser.yy"
               { the_directive_type = undefined; }
 #line 848 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 14: // diagnostic_type: "error"
-#line 633 "../../mli-root/src/directive-parser.yy"
+#line 635 "../../mli-root/src/directive-parser.yy"
               { the_directive_type = true; }
 #line 854 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 16: // trace_statement: trace_qualifier trace_type
-#line 643 "../../mli-root/src/directive-parser.yy"
+#line 645 "../../mli-root/src/directive-parser.yy"
                              {
     if (set_trace)
       trace_value |= trace_flag;
@@ -865,169 +865,169 @@ namespace mli {
     break;
 
   case 17: // trace_qualifier: "trace"
-#line 653 "../../mli-root/src/directive-parser.yy"
+#line 655 "../../mli-root/src/directive-parser.yy"
             { set_trace = true; }
 #line 871 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 18: // trace_qualifier: "untrace"
-#line 654 "../../mli-root/src/directive-parser.yy"
+#line 656 "../../mli-root/src/directive-parser.yy"
               { set_trace = false; }
 #line 877 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 19: // trace_type: "all"
-#line 659 "../../mli-root/src/directive-parser.yy"
+#line 661 "../../mli-root/src/directive-parser.yy"
           { trace_flag = trace_all; }
 #line 883 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 20: // trace_type: "null"
-#line 660 "../../mli-root/src/directive-parser.yy"
+#line 662 "../../mli-root/src/directive-parser.yy"
            { trace_flag = trace_null; }
 #line 889 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 21: // trace_type: "empty"
-#line 661 "../../mli-root/src/directive-parser.yy"
+#line 663 "../../mli-root/src/directive-parser.yy"
             { trace_flag = trace_empty; }
 #line 895 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 22: // trace_type: "result"
-#line 662 "../../mli-root/src/directive-parser.yy"
+#line 664 "../../mli-root/src/directive-parser.yy"
              { trace_flag = trace_result; }
 #line 901 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 23: // trace_type: "proof"
-#line 663 "../../mli-root/src/directive-parser.yy"
+#line 665 "../../mli-root/src/directive-parser.yy"
             { trace_flag = trace_proof; }
 #line 907 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 24: // trace_type: "solve"
-#line 664 "../../mli-root/src/directive-parser.yy"
+#line 666 "../../mli-root/src/directive-parser.yy"
             { trace_flag = trace_solve; }
 #line 913 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 25: // trace_type: "prooftree"
-#line 665 "../../mli-root/src/directive-parser.yy"
+#line 667 "../../mli-root/src/directive-parser.yy"
                 { trace_flag = trace_prooftree; }
 #line 919 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 26: // trace_type: "unify"
-#line 666 "../../mli-root/src/directive-parser.yy"
+#line 668 "../../mli-root/src/directive-parser.yy"
             { trace_flag = trace_unify; }
 #line 925 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 27: // trace_type: "split"
-#line 667 "../../mli-root/src/directive-parser.yy"
+#line 669 "../../mli-root/src/directive-parser.yy"
             { trace_flag = trace_split; }
 #line 931 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 28: // trace_type: "substitute"
-#line 668 "../../mli-root/src/directive-parser.yy"
+#line 670 "../../mli-root/src/directive-parser.yy"
                  { trace_flag = trace_substitute; }
 #line 937 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 29: // trace_type: "statement"
-#line 669 "../../mli-root/src/directive-parser.yy"
+#line 671 "../../mli-root/src/directive-parser.yy"
                 { trace_flag = trace_statement; }
 #line 943 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 30: // trace_type: "database"
-#line 670 "../../mli-root/src/directive-parser.yy"
+#line 672 "../../mli-root/src/directive-parser.yy"
                { trace_flag = trace_database; }
 #line 949 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 31: // trace_type: "formula" "type"
-#line 671 "../../mli-root/src/directive-parser.yy"
+#line 673 "../../mli-root/src/directive-parser.yy"
                      { trace_flag = trace_formula_type; }
 #line 955 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 32: // trace_type: "unspecializable"
-#line 672 "../../mli-root/src/directive-parser.yy"
+#line 674 "../../mli-root/src/directive-parser.yy"
                       { trace_flag = trace_unspecializable; }
 #line 961 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 33: // trace_type: "variable" "type"
-#line 673 "../../mli-root/src/directive-parser.yy"
+#line 675 "../../mli-root/src/directive-parser.yy"
                       { trace_flag = trace_variable_type; }
 #line 967 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 34: // trace_type: "variable" "label"
-#line 674 "../../mli-root/src/directive-parser.yy"
+#line 676 "../../mli-root/src/directive-parser.yy"
                        { trace_flag = trace_variable_label; }
 #line 973 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 35: // trace_type: "structure" "type"
-#line 675 "../../mli-root/src/directive-parser.yy"
+#line 677 "../../mli-root/src/directive-parser.yy"
                        { trace_flag = trace_structure_type; }
 #line 979 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 36: // trace_type: "thread"
-#line 676 "../../mli-root/src/directive-parser.yy"
+#line 678 "../../mli-root/src/directive-parser.yy"
              { trace_flag = trace_thread; }
 #line 985 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 37: // trace_type: "level"
-#line 677 "../../mli-root/src/directive-parser.yy"
+#line 679 "../../mli-root/src/directive-parser.yy"
             { trace_flag = trace_level; }
 #line 991 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 38: // proof_strictness: "strict" "proof"
-#line 682 "../../mli-root/src/directive-parser.yy"
+#line 684 "../../mli-root/src/directive-parser.yy"
                           { mli::strict_proof = true; }
 #line 997 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 39: // proof_strictness: "conditional" "proof"
-#line 683 "../../mli-root/src/directive-parser.yy"
+#line 685 "../../mli-root/src/directive-parser.yy"
                           { mli::strict_proof = false; }
 #line 1003 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 40: // limits: "thread" "count" integer
-#line 688 "../../mli-root/src/directive-parser.yy"
+#line 690 "../../mli-root/src/directive-parser.yy"
                                 { thread_count = (difference_type)ref_cast<integer&>(yystack_[0].value.object); }
 #line 1009 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 41: // limits: "level" "max" "natural number value"
-#line 689 "../../mli-root/src/directive-parser.yy"
+#line 691 "../../mli-root/src/directive-parser.yy"
                                           { level_max = (size_type)ref_cast<integer&>(yystack_[0].value.object); }
 #line 1015 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 42: // limits: "sublevel" "max" "natural number value"
-#line 690 "../../mli-root/src/directive-parser.yy"
+#line 692 "../../mli-root/src/directive-parser.yy"
                                              { sublevel_max = (size_type)ref_cast<integer&>(yystack_[0].value.object); }
 #line 1021 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 43: // limits: "proof" "count" "natural number value"
-#line 691 "../../mli-root/src/directive-parser.yy"
+#line 693 "../../mli-root/src/directive-parser.yy"
                                             { proof_count = (size_type)ref_cast<integer&>(yystack_[0].value.object); }
 #line 1027 "../../mli-root/src/directive-parser.cc"
     break;
 
   case 44: // limits: "unify" "count" "max" "natural number value"
-#line 692 "../../mli-root/src/directive-parser.yy"
+#line 694 "../../mli-root/src/directive-parser.yy"
                                                   { unify_count_max = (size_type)ref_cast<integer&>(yystack_[0].value.object); }
 #line 1033 "../../mli-root/src/directive-parser.cc"
     break;
@@ -1535,11 +1535,11 @@ namespace mli {
   const short
   directive_parser::yyrline_[] =
   {
-       0,   601,   601,   602,   603,   612,   613,   618,   619,   620,
-     621,   626,   631,   632,   633,   638,   643,   653,   654,   659,
-     660,   661,   662,   663,   664,   665,   666,   667,   668,   669,
-     670,   671,   672,   673,   674,   675,   676,   677,   682,   683,
-     688,   689,   690,   691,   692,   697,   698
+       0,   603,   603,   604,   605,   614,   615,   620,   621,   622,
+     623,   628,   633,   634,   635,   640,   645,   655,   656,   661,
+     662,   663,   664,   665,   666,   667,   668,   669,   670,   671,
+     672,   673,   674,   675,   676,   677,   678,   679,   684,   685,
+     690,   691,   692,   693,   694,   699,   700
   };
 
   void
@@ -1636,7 +1636,7 @@ namespace mli {
 } // mli
 #line 1638 "../../mli-root/src/directive-parser.cc"
 
-#line 703 "../../mli-root/src/directive-parser.yy"
+#line 705 "../../mli-root/src/directive-parser.yy"
 
 
 #include <sstream>
@@ -1647,13 +1647,11 @@ namespace mli {
 namespace mli {
 
   void directive_parser::error(const location_type& loc, const std::string& errstr) {
-    diagnostic(loc, errstr, *current_istream, line_position);
+    diagnostic(loc, errstr, mlilex.in(), line_position);
   }
 
 
   int directive_read(std::istream& is, mli::location_type& loc) {
-    current_istream = &is;
-
     mli::directive_lexer lex(is, std::cout);
 
     mli::directive_parser p(lex, loc);

@@ -77,6 +77,8 @@
 
       int yylex(); // Defined in directive-lexer.cc.
 
+      std::istream& in() { return yyin; }
+
       int operator()(mli::semantic_type* x) { yylvalp = x;  return yylex(); }
       int operator()(mli::semantic_type* x, mli::location_type* y) { yylvalp = x;  yyllocp = y;  return yylex(); }
     };
@@ -710,13 +712,11 @@ integer:
 namespace mli {
 
   void directive_parser::error(const location_type& loc, const std::string& errstr) {
-    diagnostic(loc, errstr, *current_istream, line_position);
+    diagnostic(loc, errstr, mlilex.in(), line_position);
   }
 
 
   int directive_read(std::istream& is, mli::location_type& loc) {
-    current_istream = &is;
-
     mli::directive_lexer lex(is, std::cout);
 
     mli::directive_parser p(lex, loc);

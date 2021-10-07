@@ -61,6 +61,9 @@
 #define NEW_SUBSTITUTION_FORMULA_UNIFY 1
 #define DEBUG_SUBSTITUTION_FORMULA_UNIFY 0
 
+#define NEW_LEXER 1
+
+
 namespace mli {
 
   // std::string operator<=> not defined in C++20:

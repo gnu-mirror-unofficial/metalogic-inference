@@ -1,6 +1,6 @@
-#line 2 "../../mli-root/src/directive-lexer.cc"
+#line 1 "../../mli-root/src/directive-lexer.cc"
 
-#line 4 "../../mli-root/src/directive-lexer.cc"
+#line 3 "../../mli-root/src/directive-lexer.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -8,8 +8,8 @@
 
 #define FLEX_SCANNER
 #define YY_FLEX_MAJOR_VERSION 2
-#define YY_FLEX_MINOR_VERSION 5
-#define YY_FLEX_SUBMINOR_VERSION 37
+#define YY_FLEX_MINOR_VERSION 6
+#define YY_FLEX_SUBMINOR_VERSION 4
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
 #endif
@@ -21,6 +21,24 @@
      * altogether.
      */
     #define yyFlexLexer mli1FlexLexer
+
+#ifdef yyalloc
+#define mli1alloc_ALREADY_DEFINED
+#else
+#define yyalloc mli1alloc
+#endif
+
+#ifdef yyrealloc
+#define mli1realloc_ALREADY_DEFINED
+#else
+#define yyrealloc mli1realloc
+#endif
+
+#ifdef yyfree
+#define mli1free_ALREADY_DEFINED
+#else
+#define yyfree mli1free
+#endif
 
 /* First, we deal with  platform-specific or compiler-specific issues. */
 
@@ -88,73 +106,67 @@ typedef unsigned int flex_uint32_t;
 #define UINT32_MAX             (4294967295U)
 #endif
 
+#ifndef SIZE_MAX
+#define SIZE_MAX               (~(size_t)0)
+#endif
+
 #endif /* ! C99 */
 
 #endif /* ! FLEXINT_H */
 
 /* begin standard C++ headers. */
-#include <iostream> 
+#include <iostream>
 #include <errno.h>
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
 /* end standard C++ headers. */
 
-#ifdef __cplusplus
-
-/* The "const" storage-class-modifier is valid. */
-#define YY_USE_CONST
-
-#else	/* ! __cplusplus */
-
-/* C99 requires __STDC__ to be defined as 1. */
-#if defined (__STDC__)
-
-#define YY_USE_CONST
-
-#endif	/* defined (__STDC__) */
-#endif	/* ! __cplusplus */
-
-#ifdef YY_USE_CONST
+/* TODO: this is always defined, so inline it */
 #define yyconst const
+
+#if defined(__GNUC__) && __GNUC__ >= 3
+#define yynoreturn __attribute__((__noreturn__))
 #else
-#define yyconst
+#define yynoreturn
 #endif
 
 /* Returned upon end-of-file. */
 #define YY_NULL 0
 
-/* Promotes a possibly negative, possibly signed char to an unsigned
- * integer for use as an array index.  If the signed char is negative,
- * we want to instead treat it as an 8-bit unsigned char, hence the
- * double cast.
+/* Promotes a possibly negative, possibly signed char to an
+ *   integer in range [0..255] for use as an array index.
  */
-#define YY_SC_TO_UI(c) ((unsigned int) (unsigned char) c)
+#define YY_SC_TO_UI(c) ((YY_CHAR) (c))
 
 /* Enter a start condition.  This macro really ought to take a parameter,
  * but we do it the disgusting crufty way forced on us by the ()-less
  * definition of BEGIN.
  */
 #define BEGIN (yy_start) = 1 + 2 *
-
 /* Translate the current start state into a value that can be later handed
  * to BEGIN to return to the state.  The YYSTATE alias is for lex
  * compatibility.
  */
 #define YY_START (((yy_start) - 1) / 2)
 #define YYSTATE YY_START
-
 /* Action number for EOF rule of a given start state. */
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
-
 /* Special action meaning "start processing a new file". */
 #define YY_NEW_FILE yyrestart( yyin  )
-
 #define YY_END_OF_BUFFER_CHAR 0
 
 /* Size of default input buffer. */
 #ifndef YY_BUF_SIZE
+#ifdef __ia64__
+/* On IA-64, the buffer size is 16k, not 8k.
+ * Moreover, YY_BUF_SIZE is 2*YY_READ_BUF_SIZE in the general case.
+ * Ditto for the __ia64__ case accordingly.
+ */
+#define YY_BUF_SIZE 32768
+#else
 #define YY_BUF_SIZE 16384
+#endif /* __ia64__ */
 #endif
 
 /* The state buf must be large enough to hold one state per character in the main buffer.
@@ -171,13 +183,14 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 typedef size_t yy_size_t;
 #endif
 
-extern yy_size_t yyleng;
+extern int yyleng;
 
 #define EOB_ACT_CONTINUE_SCAN 0
 #define EOB_ACT_END_OF_FILE 1
 #define EOB_ACT_LAST_MATCH 2
-
+    
     #define YY_LESS_LINENO(n)
+    #define YY_LINENO_REWIND_TO(ptr)
     
 /* Return all but the first "n" matched characters back to the input stream. */
 #define yyless(n) \
@@ -192,7 +205,6 @@ extern yy_size_t yyleng;
 		YY_DO_BEFORE_ACTION; /* set up yytext again */ \
 		} \
 	while ( 0 )
-
 #define unput(c) yyunput( c, (yytext_ptr)  )
 
 #ifndef YY_STRUCT_YY_BUFFER_STATE
@@ -200,7 +212,7 @@ extern yy_size_t yyleng;
 struct yy_buffer_state
 	{
 
-	std::istream* yy_input_file;
+	std::streambuf* yy_input_file;
 
 	char *yy_ch_buf;		/* input buffer */
 	char *yy_buf_pos;		/* current position in input buffer */
@@ -208,12 +220,12 @@ struct yy_buffer_state
 	/* Size of input buffer in bytes, not including room for EOB
 	 * characters.
 	 */
-	yy_size_t yy_buf_size;
+	int yy_buf_size;
 
 	/* Number of characters read into yy_ch_buf, not including EOB
 	 * characters.
 	 */
-	yy_size_t yy_n_chars;
+	int yy_n_chars;
 
 	/* Whether we "own" the buffer - i.e., we know we created it,
 	 * and can realloc() it to grow it, and should free() it to
@@ -236,7 +248,7 @@ struct yy_buffer_state
 
     int yy_bs_lineno; /**< The line count. */
     int yy_bs_column; /**< The column count. */
-    
+
 	/* Whether to try to fill the input buffer when we reach the
 	 * end of it.
 	 */
@@ -270,18 +282,16 @@ struct yy_buffer_state
 #define YY_CURRENT_BUFFER ( (yy_buffer_stack) \
                           ? (yy_buffer_stack)[(yy_buffer_stack_top)] \
                           : NULL)
-
 /* Same as previous macro, but useful when we know that the buffer stack is not
  * NULL or when we need an lvalue. For internal use only.
  */
 #define YY_CURRENT_BUFFER_LVALUE (yy_buffer_stack)[(yy_buffer_stack_top)]
 
-void *mli1alloc (yy_size_t  );
-void *mli1realloc (void *,yy_size_t  );
-void mli1free (void *  );
+void *yyalloc ( yy_size_t  );
+void *yyrealloc ( void *, yy_size_t  );
+void yyfree ( void *  );
 
 #define yy_new_buffer yy_create_buffer
-
 #define yy_set_interactive(is_interactive) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){ \
@@ -291,7 +301,6 @@ void mli1free (void *  );
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
 	}
-
 #define yy_set_bol(at_bol) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){\
@@ -301,13 +310,11 @@ void mli1free (void *  );
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
 	}
-
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
 #define YY_SKIP_YYWRAP
-
-typedef unsigned char YY_CHAR;
+typedef flex_uint8_t YY_CHAR;
 
 #define yytext_ptr yytext
 #define YY_INTERACTIVE
@@ -328,11 +335,10 @@ int yyFlexLexer::yylex()
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	yyleng = (size_t) (yy_cp - yy_bp); \
+	yyleng = (int) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-
 #define YY_NUM_RULES 146
 #define YY_END_OF_BUFFER 147
 /* This struct is not used in this scanner,
@@ -342,7 +348,7 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[585] =
+static const flex_int16_t yy_accept[585] =
     {   0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -410,7 +416,7 @@ static yyconst flex_int16_t yy_accept[585] =
         0,    0,    4,    0
     } ;
 
-static yyconst flex_int32_t yy_ec[256] =
+static const YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         4,    4,    2,    1,    1,    1,    1,    1,    1,    1,
@@ -432,7 +438,7 @@ static yyconst flex_int32_t yy_ec[256] =
        91,   92,   93,   94,   95,   96,   97,   98,   99,  100,
       101,  102,  103,  104,  105,  106,  107,  108,  109,  110,
       111,  112,  113,  114,  115,  116,  117,  118,  119,  120,
-      121,   57,    1,  122,  123,  123,  123,  123,  123,  123,
+      121,    1,    1,  122,  123,  123,  123,  123,  123,  123,
 
       123,  123,  123,  123,  123,  124,  125,  123,  123,  123,
       123,  123,  123,  123,  123,  123,  123,  123,  123,  123,
@@ -442,7 +448,7 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_int32_t yy_meta[133] =
+static const YY_CHAR yy_meta[133] =
     {   0,
         1,    1,    2,    1,    1,    3,    1,    1,    1,    1,
         1,    1,    1,    4,    4,    5,    5,    5,    5,    5,
@@ -461,7 +467,7 @@ static yyconst flex_int32_t yy_meta[133] =
         1,    1
     } ;
 
-static yyconst flex_int16_t yy_base[606] =
+static const flex_int16_t yy_base[606] =
     {   0,
         0,    0,    0,    0, 2606, 2580,  130,  131,    0,    0,
       132,  133,  134,  135,    0,    0,    0,    0,    0,    0,
@@ -532,7 +538,7 @@ static yyconst flex_int16_t yy_base[606] =
      2735,  135, 2738, 2740, 2742
     } ;
 
-static yyconst flex_int16_t yy_def[606] =
+static const flex_int16_t yy_def[606] =
     {   0,
       584,    1,  585,  585,  586,  586,  587,  587,  585,  585,
       588,  588,  589,  589,  585,  585,  585,  585,  585,  585,
@@ -603,7 +609,7 @@ static yyconst flex_int16_t yy_def[606] =
       584,  584,  584,  584,  584
     } ;
 
-static yyconst flex_int16_t yy_nxt[2885] =
+static const flex_int16_t yy_nxt[2885] =
     {   0,
        24,   25,   26,   27,   28,   29,   28,   30,   31,   32,
        33,   34,   35,   36,   36,   37,   38,   39,   40,   41,
@@ -924,7 +930,7 @@ static yyconst flex_int16_t yy_nxt[2885] =
       584,  584,  584,  584
     } ;
 
-static yyconst flex_int16_t yy_chk[2885] =
+static const flex_int16_t yy_chk[2885] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -1303,15 +1309,7 @@ extern std::istream::pos_type current_position, line_position;
 std::vector<std::string> directive_strs;
 mli::kleenean directive_directive_type = false;
 
-
-
-
-
-
-
-
-
-
+#line 1312 "../../mli-root/src/directive-lexer.cc"
 
 /*
 whitespace
@@ -1329,7 +1327,8 @@ whitespace
 /* UTF-8 character with valid Unicode code point. */
 #line 179 "../../mli-root/src/directive-lexer.ll"
 #define YY_USER_ACTION  yylloc.columns(yyleng); current_position += yyleng;
-#line 1333 "../../mli-root/src/directive-lexer.cc"
+#line 1330 "../../mli-root/src/directive-lexer.cc"
+#line 1331 "../../mli-root/src/directive-lexer.cc"
 
 #define INITIAL 0
 #define comment 1
@@ -1356,11 +1355,11 @@ whitespace
 #endif
 
 #ifndef yytext_ptr
-static void yy_flex_strncpy (char *,yyconst char *,int );
+static void yy_flex_strncpy ( char *, const char *, int );
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen (yyconst char * );
+static int yy_flex_strlen ( const char * );
 #endif
 
 #ifndef YY_NO_INPUT
@@ -1369,7 +1368,12 @@ static int yy_flex_strlen (yyconst char * );
 
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
+#ifdef __ia64__
+/* On IA-64, the buffer size is 16k, not 8k */
+#define YY_READ_BUF_SIZE 16384
+#else
 #define YY_READ_BUF_SIZE 8192
+#endif /* __ia64__ */
 #endif
 
 /* Copy whatever the last rule matched to the standard output. */
@@ -1383,7 +1387,7 @@ static int yy_flex_strlen (yyconst char * );
 #ifndef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
 \
-	if ( (result = LexerInput( (char *) buf, max_size )) < 0 ) \
+	if ( (int)(result = LexerInput( (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 
 #endif
@@ -1425,7 +1429,7 @@ static int yy_flex_strlen (yyconst char * );
 
 /* Code executed at the end of each rule. */
 #ifndef YY_BREAK
-#define YY_BREAK break;
+#define YY_BREAK /*LINTED*/break;
 #endif
 
 #define YY_RULE_SETUP \
@@ -1435,23 +1439,10 @@ static int yy_flex_strlen (yyconst char * );
  */
 YY_DECL
 {
-	register yy_state_type yy_current_state;
-	register char *yy_cp, *yy_bp;
-	register int yy_act;
+	yy_state_type yy_current_state;
+	char *yy_cp, *yy_bp;
+	int yy_act;
     
-#line 183 "../../mli-root/src/directive-lexer.ll"
-
-
-  mli::semantic_type& yylval = *yylvalp;
-  mli::location_type& yylloc = *yyllocp;
-
-  if (directive_current_token != 0) { int tok = directive_current_token; directive_current_token = 0; return tok; }
-
-  yylloc.step();
-
-
-#line 1454 "../../mli-root/src/directive-lexer.cc"
-
 	if ( !(yy_init) )
 		{
 		(yy_init) = 1;
@@ -1464,10 +1455,10 @@ YY_DECL
 			(yy_start) = 1;	/* first start state */
 
 		if ( ! yyin )
-			yyin = & std::cin;
+			yyin.rdbuf(std::cin.rdbuf());
 
 		if ( ! yyout )
-			yyout = & std::cout;
+			yyout.rdbuf(std::cout.rdbuf());
 
 		if ( ! YY_CURRENT_BUFFER ) {
 			yyensure_buffer_stack ();
@@ -1478,7 +1469,22 @@ YY_DECL
 		yy_load_buffer_state(  );
 		}
 
-	while ( 1 )		/* loops until end-of-file is reached */
+	{
+#line 183 "../../mli-root/src/directive-lexer.ll"
+
+
+#line 186 "../../mli-root/src/directive-lexer.ll"
+  mli::semantic_type& yylval = *yylvalp;
+  mli::location_type& yylloc = *yyllocp;
+
+  if (directive_current_token != 0) { int tok = directive_current_token; directive_current_token = 0; return tok; }
+
+  yylloc.step();
+
+
+#line 1485 "../../mli-root/src/directive-lexer.cc"
+
+	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
 		yy_cp = (yy_c_buf_p);
 
@@ -1494,7 +1500,7 @@ YY_DECL
 yy_match:
 		do
 			{
-			register YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)];
+			YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)] ;
 			if ( yy_accept[yy_current_state] )
 				{
 				(yy_last_accepting_state) = yy_current_state;
@@ -1504,9 +1510,9 @@ yy_match:
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
 				if ( yy_current_state >= 585 )
-					yy_c = yy_meta[(unsigned int) yy_c];
+					yy_c = yy_meta[yy_c];
 				}
-			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
 		while ( yy_base[yy_current_state] != 2752 );
@@ -1535,467 +1541,467 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 193 "../../mli-root/src/directive-lexer.ll"
+#line 194 "../../mli-root/src/directive-lexer.ll"
 { yylloc.step(); }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 194 "../../mli-root/src/directive-lexer.ll"
+#line 195 "../../mli-root/src/directive-lexer.ll"
 { yylloc.lines(yyleng); yylloc.step(); line_position = current_position; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 197 "../../mli-root/src/directive-lexer.ll"
+#line 198 "../../mli-root/src/directive-lexer.ll"
 { expand_implicit_premise = true; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 198 "../../mli-root/src/directive-lexer.ll"
+#line 199 "../../mli-root/src/directive-lexer.ll"
 { expand_implicit_premise = false; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 201 "../../mli-root/src/directive-lexer.ll"
+#line 202 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::count_key; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 202 "../../mli-root/src/directive-lexer.ll"
+#line 203 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::max_key; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 203 "../../mli-root/src/directive-lexer.ll"
+#line 204 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::level_key; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 204 "../../mli-root/src/directive-lexer.ll"
+#line 205 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::sublevel_key; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 207 "../../mli-root/src/directive-lexer.ll"
+#line 208 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::diagnostic_key; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 208 "../../mli-root/src/directive-lexer.ll"
+#line 209 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::ignored_key; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 209 "../../mli-root/src/directive-lexer.ll"
+#line 210 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::warning_key; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 210 "../../mli-root/src/directive-lexer.ll"
+#line 211 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::error_key; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 212 "../../mli-root/src/directive-lexer.ll"
+#line 213 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::unused_key; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 213 "../../mli-root/src/directive-lexer.ll"
+#line 214 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::variable_key; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 214 "../../mli-root/src/directive-lexer.ll"
+#line 215 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::type_key; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 215 "../../mli-root/src/directive-lexer.ll"
+#line 216 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::label_key; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 218 "../../mli-root/src/directive-lexer.ll"
+#line 219 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::trace_key; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 219 "../../mli-root/src/directive-lexer.ll"
+#line 220 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::untrace_key; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 222 "../../mli-root/src/directive-lexer.ll"
+#line 223 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::conditional_key; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 223 "../../mli-root/src/directive-lexer.ll"
+#line 224 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::strict_key; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 226 "../../mli-root/src/directive-lexer.ll"
+#line 227 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::all_key; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 227 "../../mli-root/src/directive-lexer.ll"
+#line 228 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::none_key; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 228 "../../mli-root/src/directive-lexer.ll"
+#line 229 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::no_key; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 231 "../../mli-root/src/directive-lexer.ll"
+#line 232 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::null_key; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 232 "../../mli-root/src/directive-lexer.ll"
+#line 233 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::empty_key; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 233 "../../mli-root/src/directive-lexer.ll"
+#line 234 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::result_key; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 234 "../../mli-root/src/directive-lexer.ll"
+#line 235 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::proof_key; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 235 "../../mli-root/src/directive-lexer.ll"
+#line 236 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::solve_key; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 236 "../../mli-root/src/directive-lexer.ll"
+#line 237 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::prooftree_key; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 237 "../../mli-root/src/directive-lexer.ll"
+#line 238 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::unify_key; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 238 "../../mli-root/src/directive-lexer.ll"
+#line 239 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::split_key; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 239 "../../mli-root/src/directive-lexer.ll"
+#line 240 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::substitute_key; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 240 "../../mli-root/src/directive-lexer.ll"
+#line 241 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::statement_key; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 241 "../../mli-root/src/directive-lexer.ll"
+#line 242 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::database_key; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 242 "../../mli-root/src/directive-lexer.ll"
+#line 243 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::formula_key; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 243 "../../mli-root/src/directive-lexer.ll"
+#line 244 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::unspecializable_key; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 244 "../../mli-root/src/directive-lexer.ll"
+#line 245 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::structure_key; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 245 "../../mli-root/src/directive-lexer.ll"
+#line 246 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::thread_key; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 248 "../../mli-root/src/directive-lexer.ll"
+#line 249 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::include_key; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 249 "../../mli-root/src/directive-lexer.ll"
+#line 250 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::end_key; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 252 "../../mli-root/src/directive-lexer.ll"
+#line 253 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::implies_key; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 253 "../../mli-root/src/directive-lexer.ll"
+#line 254 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::impliedby_key; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 254 "../../mli-root/src/directive-lexer.ll"
+#line 255 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::equivalent_key; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 256 "../../mli-root/src/directive-lexer.ll"
+#line 257 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::logical_and_key; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 257 "../../mli-root/src/directive-lexer.ll"
+#line 258 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::logical_or_key; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 258 "../../mli-root/src/directive-lexer.ll"
+#line 259 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::logical_not_key; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 260 "../../mli-root/src/directive-lexer.ll"
+#line 261 "../../mli-root/src/directive-lexer.ll"
 { directive_declaration_context = false;
        directive_bound_variable_type = free_variable_context;
        return mli::directive_parser::token::colon_key; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 263 "../../mli-root/src/directive-lexer.ll"
+#line 264 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::comma_key; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 264 "../../mli-root/src/directive-lexer.ll"
+#line 265 "../../mli-root/src/directive-lexer.ll"
 { directive_declaration_context = false;
        directive_bound_variable_type = free_variable_context;
        return mli::directive_parser::token::period_key; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 268 "../../mli-root/src/directive-lexer.ll"
+#line 269 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::semicolon_key; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 271 "../../mli-root/src/directive-lexer.ll"
+#line 272 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::less_key; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 272 "../../mli-root/src/directive-lexer.ll"
+#line 273 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::greater_key; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 273 "../../mli-root/src/directive-lexer.ll"
+#line 274 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::less_or_equal_key; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 274 "../../mli-root/src/directive-lexer.ll"
+#line 275 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::greater_or_equal_key; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 276 "../../mli-root/src/directive-lexer.ll"
+#line 277 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::not_less_key; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 277 "../../mli-root/src/directive-lexer.ll"
+#line 278 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::not_greater_key; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 278 "../../mli-root/src/directive-lexer.ll"
+#line 279 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::not_less_or_equal_key; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 279 "../../mli-root/src/directive-lexer.ll"
+#line 280 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::not_greater_or_equal_key; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 281 "../../mli-root/src/directive-lexer.ll"
+#line 282 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::equal_key; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 282 "../../mli-root/src/directive-lexer.ll"
+#line 283 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::not_equal_key; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 285 "../../mli-root/src/directive-lexer.ll"
+#line 286 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::mapsto_key; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 287 "../../mli-root/src/directive-lexer.ll"
+#line 288 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::degree_key; }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 290 "../../mli-root/src/directive-lexer.ll"
+#line 291 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::left_parenthesis_key; }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 291 "../../mli-root/src/directive-lexer.ll"
+#line 292 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::right_parenthesis_key; }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 293 "../../mli-root/src/directive-lexer.ll"
+#line 294 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::superscript_left_parenthesis_key; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 294 "../../mli-root/src/directive-lexer.ll"
+#line 295 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::superscript_right_parenthesis_key; }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 296 "../../mli-root/src/directive-lexer.ll"
+#line 297 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::subscript_left_parenthesis_key; }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 297 "../../mli-root/src/directive-lexer.ll"
+#line 298 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::subscript_right_parenthesis_key; }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 300 "../../mli-root/src/directive-lexer.ll"
+#line 301 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::left_bracket_key; }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 301 "../../mli-root/src/directive-lexer.ll"
+#line 302 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::right_bracket_key; }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 303 "../../mli-root/src/directive-lexer.ll"
+#line 304 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::left_angle_bracket_key; }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 304 "../../mli-root/src/directive-lexer.ll"
+#line 305 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::right_angle_bracket_key; }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 306 "../../mli-root/src/directive-lexer.ll"
+#line 307 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::left_brace_key; }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 307 "../../mli-root/src/directive-lexer.ll"
+#line 308 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::vertical_line_key; }
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 308 "../../mli-root/src/directive-lexer.ll"
+#line 309 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::right_brace_key; }
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 310 "../../mli-root/src/directive-lexer.ll"
+#line 311 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::tilde_key; }
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 312 "../../mli-root/src/directive-lexer.ll"
+#line 313 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::mult_key; }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 313 "../../mli-root/src/directive-lexer.ll"
+#line 314 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::plus_key; }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 314 "../../mli-root/src/directive-lexer.ll"
+#line 315 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::minus_key; }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 316 "../../mli-root/src/directive-lexer.ll"
+#line 317 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::if_key; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 317 "../../mli-root/src/directive-lexer.ll"
+#line 318 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::then_key; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 318 "../../mli-root/src/directive-lexer.ll"
+#line 319 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::else_key; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 320 "../../mli-root/src/directive-lexer.ll"
+#line 321 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::while_key; }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 321 "../../mli-root/src/directive-lexer.ll"
+#line 322 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::do_key; }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 322 "../../mli-root/src/directive-lexer.ll"
+#line 323 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::loop_key; }
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 323 "../../mli-root/src/directive-lexer.ll"
+#line 324 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::for_key; }
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 325 "../../mli-root/src/directive-lexer.ll"
+#line 326 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::break_key; }
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 326 "../../mli-root/src/directive-lexer.ll"
+#line 327 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::continue_key; }
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 328 "../../mli-root/src/directive-lexer.ll"
+#line 329 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::throw_key; }
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 329 "../../mli-root/src/directive-lexer.ll"
+#line 330 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::try_key; }
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 330 "../../mli-root/src/directive-lexer.ll"
+#line 331 "../../mli-root/src/directive-lexer.ll"
 { return mli::directive_parser::token::catch_key; }
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 333 "../../mli-root/src/directive-lexer.ll"
+#line 334 "../../mli-root/src/directive-lexer.ll"
 {
   get_text;
   yylval.object = ref<integer>(mli::make, yytext);
@@ -2004,7 +2010,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 339 "../../mli-root/src/directive-lexer.ll"
+#line 340 "../../mli-root/src/directive-lexer.ll"
 {
   get_text;
   yylval.object = ref<integer>(make, yytext);
@@ -2013,7 +2019,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 348 "../../mli-root/src/directive-lexer.ll"
+#line 349 "../../mli-root/src/directive-lexer.ll"
 {
   get_text;
 
@@ -2024,18 +2030,18 @@ YY_RULE_SETUP
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 357 "../../mli-root/src/directive-lexer.ll"
+#line 358 "../../mli-root/src/directive-lexer.ll"
 { get_text; return mli::directive_parser::token::label_key; }
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 360 "../../mli-root/src/directive-lexer.ll"
+#line 361 "../../mli-root/src/directive-lexer.ll"
 { yylval.text.clear(); BEGIN(any_identifier); }
 	YY_BREAK
 
 case 97:
 YY_RULE_SETUP
-#line 363 "../../mli-root/src/directive-lexer.ll"
+#line 364 "../../mli-root/src/directive-lexer.ll"
 { /* Closing quote - all done. Text now in yylval.text. */
     BEGIN(INITIAL);
 
@@ -2047,7 +2053,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 372 "../../mli-root/src/directive-lexer.ll"
+#line 373 "../../mli-root/src/directive-lexer.ll"
 {
     BEGIN(INITIAL);
     throw mli::directive_parser::syntax_error(yylloc,
@@ -2056,17 +2062,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 377 "../../mli-root/src/directive-lexer.ll"
+#line 378 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += "“"; }
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 378 "../../mli-root/src/directive-lexer.ll"
+#line 379 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += "”"; }
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 380 "../../mli-root/src/directive-lexer.ll"
+#line 381 "../../mli-root/src/directive-lexer.ll"
 { /* Octal escape sequence. */
 	  int result;
 	  std::sscanf(yytext + 1, "%o", &result);
@@ -2080,7 +2086,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 391 "../../mli-root/src/directive-lexer.ll"
+#line 392 "../../mli-root/src/directive-lexer.ll"
 { /* Hexadecimal escape sequence. */
 	  int result;
 	  std::sscanf(yytext + 2, "%x", &result);
@@ -2095,14 +2101,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 403 "../../mli-root/src/directive-lexer.ll"
+#line 404 "../../mli-root/src/directive-lexer.ll"
 { /* Hexadecimal escape sequence to give UTF-8 characters. */
     yylval.text += to_utf8(std::stoul(yytext + 2, nullptr, 16));
 	}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 407 "../../mli-root/src/directive-lexer.ll"
+#line 408 "../../mli-root/src/directive-lexer.ll"
 {
     BEGIN(INITIAL);
     throw mli::directive_parser::syntax_error(yylloc,
@@ -2111,58 +2117,58 @@ YY_RULE_SETUP
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 413 "../../mli-root/src/directive-lexer.ll"
+#line 414 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\\'; }
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 414 "../../mli-root/src/directive-lexer.ll"
+#line 415 "../../mli-root/src/directive-lexer.ll"
 { ; /* Non-character, used to delimit numeric escapes */ }
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 416 "../../mli-root/src/directive-lexer.ll"
+#line 417 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\a'; }
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 417 "../../mli-root/src/directive-lexer.ll"
+#line 418 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\b'; }
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 418 "../../mli-root/src/directive-lexer.ll"
+#line 419 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\f'; }
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 419 "../../mli-root/src/directive-lexer.ll"
+#line 420 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\n'; }
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 420 "../../mli-root/src/directive-lexer.ll"
+#line 421 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\r'; }
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 421 "../../mli-root/src/directive-lexer.ll"
+#line 422 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\t'; }
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 422 "../../mli-root/src/directive-lexer.ll"
+#line 423 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\v'; }
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 424 "../../mli-root/src/directive-lexer.ll"
+#line 425 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += the_text; }
 	YY_BREAK
 case 115:
 /* rule 115 can match eol */
 YY_RULE_SETUP
-#line 425 "../../mli-root/src/directive-lexer.ll"
+#line 426 "../../mli-root/src/directive-lexer.ll"
 {
     BEGIN(INITIAL); yylloc.lines(yyleng); yylloc.step(); line_position = current_position;
     throw mli::directive_parser::syntax_error(yylloc, "Newline in string.");
@@ -2171,24 +2177,24 @@ YY_RULE_SETUP
 
 case 116:
 YY_RULE_SETUP
-#line 433 "../../mli-root/src/directive-lexer.ll"
+#line 434 "../../mli-root/src/directive-lexer.ll"
 { BEGIN(line_comment); }
 	YY_BREAK
 case 117:
 /* rule 117 can match eol */
 YY_RULE_SETUP
-#line 435 "../../mli-root/src/directive-lexer.ll"
+#line 436 "../../mli-root/src/directive-lexer.ll"
 { BEGIN(INITIAL); yylloc.lines(1); yylloc.step(); line_position = current_position; }
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 438 "../../mli-root/src/directive-lexer.ll"
+#line 439 "../../mli-root/src/directive-lexer.ll"
 { BEGIN(block_comment); directive_comment_level = 1; }
 	YY_BREAK
 /* Block comments. */
 case 119:
 YY_RULE_SETUP
-#line 441 "../../mli-root/src/directive-lexer.ll"
+#line 442 "../../mli-root/src/directive-lexer.ll"
 { /* End of the comment. */
     if (--directive_comment_level == 0) {
       BEGIN INITIAL;
@@ -2197,27 +2203,27 @@ YY_RULE_SETUP
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 447 "../../mli-root/src/directive-lexer.ll"
+#line 448 "../../mli-root/src/directive-lexer.ll"
 { directive_comment_level++; }
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 448 "../../mli-root/src/directive-lexer.ll"
+#line 449 "../../mli-root/src/directive-lexer.ll"
 {}
 	YY_BREAK
 case 122:
 /* rule 122 can match eol */
 YY_RULE_SETUP
-#line 449 "../../mli-root/src/directive-lexer.ll"
+#line 450 "../../mli-root/src/directive-lexer.ll"
 { yylloc.lines(yyleng); yylloc.step(); line_position = current_position; }
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 450 "../../mli-root/src/directive-lexer.ll"
+#line 451 "../../mli-root/src/directive-lexer.ll"
 { /* Stray characters ignored, including — and [. */ }
 	YY_BREAK
 case YY_STATE_EOF(block_comment):
-#line 452 "../../mli-root/src/directive-lexer.ll"
+#line 453 "../../mli-root/src/directive-lexer.ll"
 {
     BEGIN(INITIAL);
     throw mli::directive_parser::syntax_error(yylloc,
@@ -2227,7 +2233,7 @@ case YY_STATE_EOF(block_comment):
 
 case 124:
 YY_RULE_SETUP
-#line 459 "../../mli-root/src/directive-lexer.ll"
+#line 460 "../../mli-root/src/directive-lexer.ll"
 {
   std::cout << "Dash" << std::endl;
   BEGIN(INITIAL);
@@ -2236,19 +2242,19 @@ YY_RULE_SETUP
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 466 "../../mli-root/src/directive-lexer.ll"
+#line 467 "../../mli-root/src/directive-lexer.ll"
 { yylval.text.clear(); BEGIN(C_string); }
 	YY_BREAK
 
 case 126:
 YY_RULE_SETUP
-#line 470 "../../mli-root/src/directive-lexer.ll"
+#line 471 "../../mli-root/src/directive-lexer.ll"
 { /* Closing quote - all done. */ BEGIN(INITIAL); return mli::directive_parser::token::plain_name; }
 	YY_BREAK
 case 127:
 /* rule 127 can match eol */
 YY_RULE_SETUP
-#line 471 "../../mli-root/src/directive-lexer.ll"
+#line 472 "../../mli-root/src/directive-lexer.ll"
 {
     BEGIN(INITIAL); yylloc.lines(yyleng); yylloc.step(); line_position = current_position;
     throw mli::directive_parser::syntax_error(yylloc, "Unterminated C-string.");
@@ -2256,7 +2262,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 476 "../../mli-root/src/directive-lexer.ll"
+#line 477 "../../mli-root/src/directive-lexer.ll"
 { /* Octal escape sequence. */
 	  int result;
 	  std::sscanf(yytext + 1, "%o", &result);
@@ -2270,7 +2276,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 487 "../../mli-root/src/directive-lexer.ll"
+#line 488 "../../mli-root/src/directive-lexer.ll"
 { /* Hexadecimal escape sequence. */
 	  int result;
 	  std::sscanf(yytext + 2, "%x", &result);
@@ -2284,7 +2290,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 498 "../../mli-root/src/directive-lexer.ll"
+#line 499 "../../mli-root/src/directive-lexer.ll"
 {
     BEGIN(INITIAL);
     throw mli::directive_parser::syntax_error(yylloc,
@@ -2293,83 +2299,83 @@ YY_RULE_SETUP
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 504 "../../mli-root/src/directive-lexer.ll"
+#line 505 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\\'; }
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 505 "../../mli-root/src/directive-lexer.ll"
+#line 506 "../../mli-root/src/directive-lexer.ll"
 { ; /* Non-character, used to delimit numeric escapes */ }
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 507 "../../mli-root/src/directive-lexer.ll"
+#line 508 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\a'; }
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 508 "../../mli-root/src/directive-lexer.ll"
+#line 509 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\b'; }
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 509 "../../mli-root/src/directive-lexer.ll"
+#line 510 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\f'; }
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 510 "../../mli-root/src/directive-lexer.ll"
+#line 511 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\n'; }
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 511 "../../mli-root/src/directive-lexer.ll"
+#line 512 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\r'; }
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 512 "../../mli-root/src/directive-lexer.ll"
+#line 513 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\t'; }
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 513 "../../mli-root/src/directive-lexer.ll"
+#line 514 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += '\v'; }
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 515 "../../mli-root/src/directive-lexer.ll"
+#line 516 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += yytext[1]; }
 	YY_BREAK
 case 141:
 /* rule 141 can match eol */
 YY_RULE_SETUP
-#line 516 "../../mli-root/src/directive-lexer.ll"
+#line 517 "../../mli-root/src/directive-lexer.ll"
 { yylval.text += yytext[1]; yylloc.lines(yyleng); yylloc.step(); line_position = current_position; }
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-#line 517 "../../mli-root/src/directive-lexer.ll"
+#line 518 "../../mli-root/src/directive-lexer.ll"
 { /* " */ yylval.text += the_text; }
 	YY_BREAK
 
 case 143:
 /* rule 143 can match eol */
 YY_RULE_SETUP
-#line 521 "../../mli-root/src/directive-lexer.ll"
+#line 522 "../../mli-root/src/directive-lexer.ll"
 { get_text;
   throw mli::directive_parser::syntax_error(yylloc, "invalid character \"" + yylval.text + "\""); }
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 524 "../../mli-root/src/directive-lexer.ll"
+#line 525 "../../mli-root/src/directive-lexer.ll"
 { std::stringstream ss;
         ss << std::hex << std::uppercase << (unsigned)(unsigned char)yytext[0] << "ₓ";
         throw mli::directive_parser::syntax_error(yylloc, "invalid byte " + ss.str()); }
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 528 "../../mli-root/src/directive-lexer.ll"
+#line 529 "../../mli-root/src/directive-lexer.ll"
 { return EOF; }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
@@ -2382,15 +2388,15 @@ case YY_STATE_EOF(find_set_variable):
 case YY_STATE_EOF(find_vertical_line):
 case YY_STATE_EOF(include_file):
 case YY_STATE_EOF(logic_prefix):
-#line 530 "../../mli-root/src/directive-lexer.ll"
+#line 531 "../../mli-root/src/directive-lexer.ll"
 { return EOF; }
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 532 "../../mli-root/src/directive-lexer.ll"
+#line 533 "../../mli-root/src/directive-lexer.ll"
 ECHO;
 	YY_BREAK
-#line 2394 "../../mli-root/src/directive-lexer.cc"
+#line 2399 "../../mli-root/src/directive-lexer.cc"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2413,7 +2419,7 @@ ECHO;
 			 * back-up) that will match for the new input source.
 			 */
 			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin;
+			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin.rdbuf();
 			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
@@ -2519,14 +2525,33 @@ ECHO;
 			"fatal flex scanner internal error--no action found" );
 	} /* end of action switch */
 		} /* end of scanning one token */
+	} /* end of user's declarations */
 } /* end of yylex */
 
 /* The contents of this function are C++ specific, so the () macro is not used.
+ * This constructor simply maintains backward compatibility.
+ * DEPRECATED
  */
-yyFlexLexer::yyFlexLexer( std::istream* arg_yyin, std::ostream* arg_yyout )
+yyFlexLexer::yyFlexLexer( std::istream* arg_yyin, std::ostream* arg_yyout ):
+	yyin(arg_yyin ? arg_yyin->rdbuf() : std::cin.rdbuf()),
+	yyout(arg_yyout ? arg_yyout->rdbuf() : std::cout.rdbuf())
 {
-	yyin = arg_yyin;
-	yyout = arg_yyout;
+	ctor_common();
+}
+
+/* The contents of this function are C++ specific, so the () macro is not used.
+ */
+yyFlexLexer::yyFlexLexer( std::istream& arg_yyin, std::ostream& arg_yyout ):
+	yyin(arg_yyin.rdbuf()),
+	yyout(arg_yyout.rdbuf())
+{
+	ctor_common();
+}
+
+/* The contents of this function are C++ specific, so the () macro is not used.
+ */
+void yyFlexLexer::ctor_common()
+{
 	yy_c_buf_p = 0;
 	yy_init = 0;
 	yy_start = 0;
@@ -2543,7 +2568,7 @@ yyFlexLexer::yyFlexLexer( std::istream* arg_yyin, std::ostream* arg_yyout )
 	yy_start_stack_ptr = yy_start_stack_depth = 0;
 	yy_start_stack = NULL;
 
-	yy_buffer_stack = 0;
+	yy_buffer_stack = NULL;
 	yy_buffer_stack_top = 0;
 	yy_buffer_stack_max = 0;
 
@@ -2556,23 +2581,36 @@ yyFlexLexer::yyFlexLexer( std::istream* arg_yyin, std::ostream* arg_yyout )
 yyFlexLexer::~yyFlexLexer()
 {
 	delete [] yy_state_buf;
-	mli1free(yy_start_stack  );
+	yyfree( yy_start_stack  );
 	yy_delete_buffer( YY_CURRENT_BUFFER );
-	mli1free(yy_buffer_stack  );
+	yyfree( yy_buffer_stack  );
+}
+
+/* The contents of this function are C++ specific, so the () macro is not used.
+ */
+void yyFlexLexer::switch_streams( std::istream& new_in, std::ostream& new_out )
+{
+	// was if( new_in )
+	yy_delete_buffer( YY_CURRENT_BUFFER );
+	yy_switch_to_buffer( yy_create_buffer( new_in, YY_BUF_SIZE  ) );
+
+	// was if( new_out )
+	yyout.rdbuf(new_out.rdbuf());
 }
 
 /* The contents of this function are C++ specific, so the () macro is not used.
  */
 void yyFlexLexer::switch_streams( std::istream* new_in, std::ostream* new_out )
 {
-	if ( new_in )
-		{
-		yy_delete_buffer( YY_CURRENT_BUFFER );
-		yy_switch_to_buffer( yy_create_buffer( new_in, YY_BUF_SIZE  ) );
-		}
+	if( ! new_in ) {
+		new_in = &yyin;
+	}
 
-	if ( new_out )
-		yyout = new_out;
+	if ( ! new_out ) {
+		new_out = &yyout;
+	}
+
+	switch_streams(*new_in, *new_out);
 }
 
 #ifdef YY_INTERACTIVE
@@ -2581,33 +2619,33 @@ int yyFlexLexer::LexerInput( char* buf, int /* max_size */ )
 int yyFlexLexer::LexerInput( char* buf, int max_size )
 #endif
 {
-	if ( yyin->eof() || yyin->fail() )
+	if ( yyin.eof() || yyin.fail() )
 		return 0;
 
 #ifdef YY_INTERACTIVE
-	yyin->get( buf[0] );
+	yyin.get( buf[0] );
 
-	if ( yyin->eof() )
+	if ( yyin.eof() )
 		return 0;
 
-	if ( yyin->bad() )
+	if ( yyin.bad() )
 		return -1;
 
 	return 1;
 
 #else
-	(void) yyin->read( buf, max_size );
+	(void) yyin.read( buf, max_size );
 
-	if ( yyin->bad() )
+	if ( yyin.bad() )
 		return -1;
 	else
-		return yyin->gcount();
+		return yyin.gcount();
 #endif
 }
 
 void yyFlexLexer::LexerOutput( const char* buf, int size )
 {
-	(void) yyout->write( buf, size );
+	(void) yyout.write( buf, size );
 }
 
 /* yy_get_next_buffer - try to read in a new buffer
@@ -2619,9 +2657,9 @@ void yyFlexLexer::LexerOutput( const char* buf, int size )
  */
 int yyFlexLexer::yy_get_next_buffer()
 {
-    	register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
-	register char *source = (yytext_ptr);
-	register int number_to_move, i;
+    	char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
+	char *source = (yytext_ptr);
+	int number_to_move, i;
 	int ret_val;
 
 	if ( (yy_c_buf_p) > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] )
@@ -2650,7 +2688,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	/* Try to read more data. */
 
 	/* First move last chars to start of buffer. */
-	number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr)) - 1;
+	number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr) - 1);
 
 	for ( i = 0; i < number_to_move; ++i )
 		*(dest++) = *(source++);
@@ -2663,7 +2701,7 @@ int yyFlexLexer::yy_get_next_buffer()
 
 	else
 		{
-			yy_size_t num_to_read =
+			int num_to_read =
 			YY_CURRENT_BUFFER_LVALUE->yy_buf_size - number_to_move - 1;
 
 		while ( num_to_read <= 0 )
@@ -2677,7 +2715,7 @@ int yyFlexLexer::yy_get_next_buffer()
 
 			if ( b->yy_is_our_buffer )
 				{
-				yy_size_t new_size = b->yy_buf_size * 2;
+				int new_size = b->yy_buf_size * 2;
 
 				if ( new_size <= 0 )
 					b->yy_buf_size += b->yy_buf_size / 8;
@@ -2686,11 +2724,12 @@ int yyFlexLexer::yy_get_next_buffer()
 
 				b->yy_ch_buf = (char *)
 					/* Include room in for 2 EOB chars. */
-					mli1realloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
+					yyrealloc( (void *) b->yy_ch_buf,
+							 (yy_size_t) (b->yy_buf_size + 2)  );
 				}
 			else
 				/* Can't grow it, we don't own it. */
-				b->yy_ch_buf = 0;
+				b->yy_ch_buf = NULL;
 
 			if ( ! b->yy_ch_buf )
 				YY_FATAL_ERROR(
@@ -2732,12 +2771,15 @@ int yyFlexLexer::yy_get_next_buffer()
 	else
 		ret_val = EOB_ACT_CONTINUE_SCAN;
 
-	if ((yy_size_t) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+	if (((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
-		yy_size_t new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
-		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) mli1realloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
+		int new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
+		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) yyrealloc(
+			(void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf, (yy_size_t) new_size  );
 		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
 			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
+		/* "- 2" to take care of EOB's */
+		YY_CURRENT_BUFFER_LVALUE->yy_buf_size = (int) (new_size - 2);
 	}
 
 	(yy_n_chars) += number_to_move;
@@ -2753,14 +2795,14 @@ int yyFlexLexer::yy_get_next_buffer()
 
     yy_state_type yyFlexLexer::yy_get_previous_state()
 {
-	register yy_state_type yy_current_state;
-	register char *yy_cp;
+	yy_state_type yy_current_state;
+	char *yy_cp;
     
 	yy_current_state = (yy_start);
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
-		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
+		YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 57);
 		if ( yy_accept[yy_current_state] )
 			{
 			(yy_last_accepting_state) = yy_current_state;
@@ -2770,9 +2812,9 @@ int yyFlexLexer::yy_get_next_buffer()
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
 			if ( yy_current_state >= 585 )
-				yy_c = yy_meta[(unsigned int) yy_c];
+				yy_c = yy_meta[yy_c];
 			}
-		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 		}
 
 	return yy_current_state;
@@ -2785,10 +2827,10 @@ int yyFlexLexer::yy_get_next_buffer()
  */
     yy_state_type yyFlexLexer::yy_try_NUL_trans( yy_state_type yy_current_state )
 {
-	register int yy_is_jam;
-    	register char *yy_cp = (yy_c_buf_p);
+	int yy_is_jam;
+    	char *yy_cp = (yy_c_buf_p);
 
-	register YY_CHAR yy_c = 1;
+	YY_CHAR yy_c = 57;
 	if ( yy_accept[yy_current_state] )
 		{
 		(yy_last_accepting_state) = yy_current_state;
@@ -2798,17 +2840,18 @@ int yyFlexLexer::yy_get_next_buffer()
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
 		if ( yy_current_state >= 585 )
-			yy_c = yy_meta[(unsigned int) yy_c];
+			yy_c = yy_meta[yy_c];
 		}
-	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 	yy_is_jam = (yy_current_state == 584);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
 
-    void yyFlexLexer::yyunput( int c, register char* yy_bp)
+#ifndef YY_NO_UNPUT
+    void yyFlexLexer::yyunput( int c, char* yy_bp)
 {
-	register char *yy_cp;
+	char *yy_cp;
     
     yy_cp = (yy_c_buf_p);
 
@@ -2818,10 +2861,10 @@ int yyFlexLexer::yy_get_next_buffer()
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 		{ /* need to shift things up to make room */
 		/* +2 for EOB chars. */
-		register yy_size_t number_to_move = (yy_n_chars) + 2;
-		register char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
+		int number_to_move = (yy_n_chars) + 2;
+		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
 					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
-		register char *source =
+		char *source =
 				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
 
 		while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
@@ -2830,7 +2873,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		yy_cp += (int) (dest - source);
 		yy_bp += (int) (dest - source);
 		YY_CURRENT_BUFFER_LVALUE->yy_n_chars =
-			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
+			(yy_n_chars) = (int) YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
 
 		if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 			YY_FATAL_ERROR( "flex scanner push-back overflow" );
@@ -2842,6 +2885,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	(yy_hold_char) = *yy_cp;
 	(yy_c_buf_p) = yy_cp;
 }
+#endif
 
     int yyFlexLexer::yyinput()
 {
@@ -2861,7 +2905,7 @@ int yyFlexLexer::yy_get_next_buffer()
 
 		else
 			{ /* need more input */
-			yy_size_t offset = (yy_c_buf_p) - (yytext_ptr);
+			int offset = (int) ((yy_c_buf_p) - (yytext_ptr));
 			++(yy_c_buf_p);
 
 			switch ( yy_get_next_buffer(  ) )
@@ -2885,7 +2929,7 @@ int yyFlexLexer::yy_get_next_buffer()
 				case EOB_ACT_END_OF_FILE:
 					{
 					if ( yywrap(  ) )
-						return EOF;
+						return 0;
 
 					if ( ! (yy_did_buffer_switch_on_eof) )
 						YY_NEW_FILE;
@@ -2915,7 +2959,7 @@ int yyFlexLexer::yy_get_next_buffer()
  * 
  * @note This function does not reset the start condition to @c INITIAL .
  */
-    void yyFlexLexer::yyrestart( std::istream* input_file )
+    void yyFlexLexer::yyrestart( std::istream& input_file )
 {
     
 	if ( ! YY_CURRENT_BUFFER ){
@@ -2926,6 +2970,19 @@ int yyFlexLexer::yy_get_next_buffer()
 
 	yy_init_buffer( YY_CURRENT_BUFFER, input_file );
 	yy_load_buffer_state(  );
+}
+
+/** Delegate to the new version that takes an istream reference.
+ * @param input_file A readable stream.
+ * 
+ * @note This function does not reset the start condition to @c INITIAL .
+ */
+void yyFlexLexer::yyrestart( std::istream* input_file )
+{
+	if( ! input_file ) {
+		input_file = &yyin;
+	}
+	yyrestart( *input_file );
 }
 
 /** Switch to a different input buffer.
@@ -2967,7 +3024,7 @@ int yyFlexLexer::yy_get_next_buffer()
 {
     	(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
 	(yytext_ptr) = (yy_c_buf_p) = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
-	yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
+	yyin.rdbuf(YY_CURRENT_BUFFER_LVALUE->yy_input_file);
 	(yy_hold_char) = *(yy_c_buf_p);
 }
 
@@ -2977,11 +3034,11 @@ int yyFlexLexer::yy_get_next_buffer()
  * 
  * @return the allocated buffer state.
  */
-    YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream* file, int size )
+    YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream& file, int size )
 {
 	YY_BUFFER_STATE b;
     
-	b = (YY_BUFFER_STATE) mli1alloc(sizeof( struct yy_buffer_state )  );
+	b = (YY_BUFFER_STATE) yyalloc( sizeof( struct yy_buffer_state )  );
 	if ( ! b )
 		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
@@ -2990,7 +3047,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	/* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
 	 */
-	b->yy_ch_buf = (char *) mli1alloc(b->yy_buf_size + 2  );
+	b->yy_ch_buf = (char *) yyalloc( (yy_size_t) (b->yy_buf_size + 2)  );
 	if ( ! b->yy_ch_buf )
 		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
@@ -2999,6 +3056,17 @@ int yyFlexLexer::yy_get_next_buffer()
 	yy_init_buffer( b, file );
 
 	return b;
+}
+
+/** Delegate creation of buffers to the new version that takes an istream reference.
+ * @param file A readable stream.
+ * @param size The character buffer size in bytes. When in doubt, use @c YY_BUF_SIZE.
+ * 
+ * @return the allocated buffer state.
+ */
+	YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream* file, int size )
+{
+	return yy_create_buffer( *file, size );
 }
 
 /** Destroy the buffer.
@@ -3015,23 +3083,23 @@ int yyFlexLexer::yy_get_next_buffer()
 		YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
 
 	if ( b->yy_is_our_buffer )
-		mli1free((void *) b->yy_ch_buf  );
+		yyfree( (void *) b->yy_ch_buf  );
 
-	mli1free((void *) b  );
+	yyfree( (void *) b  );
 }
 
 /* Initializes or reinitializes a buffer.
  * This function is sometimes called more than once on the same buffer,
  * such as during a yyrestart() or at EOF.
  */
-    void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, std::istream* file )
+    void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, std::istream& file )
 
 {
 	int oerrno = errno;
     
 	yy_flush_buffer( b );
 
-	b->yy_input_file = file;
+	b->yy_input_file = file.rdbuf();
 	b->yy_fill_buffer = 1;
 
     /* If b is the current buffer, then yy_init_buffer was _probably_
@@ -3139,15 +3207,15 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 		 * scanner will even need a stack. We use 2 instead of 1 to avoid an
 		 * immediate realloc on the next call.
          */
-		num_to_alloc = 1;
-		(yy_buffer_stack) = (struct yy_buffer_state**)mli1alloc
+      num_to_alloc = 1; /* After all that talk, this was set to 1 anyways... */
+		(yy_buffer_stack) = (struct yy_buffer_state**)yyalloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
 		if ( ! (yy_buffer_stack) )
 			YY_FATAL_ERROR( "out of dynamic memory in yyensure_buffer_stack()" );
-								  
+
 		memset((yy_buffer_stack), 0, num_to_alloc * sizeof(struct yy_buffer_state*));
-				
+
 		(yy_buffer_stack_max) = num_to_alloc;
 		(yy_buffer_stack_top) = 0;
 		return;
@@ -3156,10 +3224,10 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 	if ((yy_buffer_stack_top) >= ((yy_buffer_stack_max)) - 1){
 
 		/* Increase the buffer to prepare for a possible push. */
-		int grow_size = 8 /* arbitrary grow size */;
+		yy_size_t grow_size = 8 /* arbitrary grow size */;
 
 		num_to_alloc = (yy_buffer_stack_max) + grow_size;
-		(yy_buffer_stack) = (struct yy_buffer_state**)mli1realloc
+		(yy_buffer_stack) = (struct yy_buffer_state**)yyrealloc
 								((yy_buffer_stack),
 								num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
@@ -3172,20 +3240,21 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 	}
 }
 
-    void yyFlexLexer::yy_push_state( int new_state )
+    void yyFlexLexer::yy_push_state( int _new_state )
 {
     	if ( (yy_start_stack_ptr) >= (yy_start_stack_depth) )
 		{
 		yy_size_t new_size;
 
 		(yy_start_stack_depth) += YY_START_STACK_INCR;
-		new_size = (yy_start_stack_depth) * sizeof( int );
+		new_size = (yy_size_t) (yy_start_stack_depth) * sizeof( int );
 
 		if ( ! (yy_start_stack) )
-			(yy_start_stack) = (int *) mli1alloc(new_size  );
+			(yy_start_stack) = (int *) yyalloc( new_size  );
 
 		else
-			(yy_start_stack) = (int *) mli1realloc((void *) (yy_start_stack),new_size  );
+			(yy_start_stack) = (int *) yyrealloc(
+					(void *) (yy_start_stack), new_size  );
 
 		if ( ! (yy_start_stack) )
 			YY_FATAL_ERROR( "out of memory expanding start-condition stack" );
@@ -3193,7 +3262,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 
 	(yy_start_stack)[(yy_start_stack_ptr)++] = YY_START;
 
-	BEGIN(new_state);
+	BEGIN(_new_state);
 }
 
     void yyFlexLexer::yy_pop_state()
@@ -3213,7 +3282,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 #define YY_EXIT_FAILURE 2
 #endif
 
-void yyFlexLexer::LexerError( yyconst char msg[] )
+void yyFlexLexer::LexerError( const char* msg )
 {
     	std::cerr << msg << std::endl;
 	exit( YY_EXIT_FAILURE );
@@ -3243,18 +3312,19 @@ void yyFlexLexer::LexerError( yyconst char msg[] )
  */
 
 #ifndef yytext_ptr
-static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
+static void yy_flex_strncpy (char* s1, const char * s2, int n )
 {
-	register int i;
+		
+	int i;
 	for ( i = 0; i < n; ++i )
 		s1[i] = s2[i];
 }
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen (yyconst char * s )
+static int yy_flex_strlen (const char * s )
 {
-	register int n;
+	int n;
 	for ( n = 0; s[n]; ++n )
 		;
 
@@ -3262,13 +3332,14 @@ static int yy_flex_strlen (yyconst char * s )
 }
 #endif
 
-void *mli1alloc (yy_size_t  size )
+void *yyalloc (yy_size_t  size )
 {
-	return (void *) malloc( size );
+			return malloc(size);
 }
 
-void *mli1realloc  (void * ptr, yy_size_t  size )
+void *yyrealloc  (void * ptr, yy_size_t  size )
 {
+		
 	/* The cast to (char *) in the following accommodates both
 	 * implementations that use char* generic pointers, and those
 	 * that use void* generic pointers.  It works with the latter
@@ -3276,18 +3347,17 @@ void *mli1realloc  (void * ptr, yy_size_t  size )
 	 * any pointer type to void*, and deal with argument conversions
 	 * as though doing an assignment.
 	 */
-	return (void *) realloc( (char *) ptr, size );
+	return realloc(ptr, size);
 }
 
-void mli1free (void * ptr )
+void yyfree (void * ptr )
 {
-	free( (char *) ptr );	/* see mli1realloc() for (char *) cast */
+			free( (char *) ptr );	/* see yyrealloc() for (char *) cast */
 }
 
 #define YYTABLES_NAME "yytables"
 
-#line 532 "../../mli-root/src/directive-lexer.ll"
-
+#line 533 "../../mli-root/src/directive-lexer.ll"
 
 
 
