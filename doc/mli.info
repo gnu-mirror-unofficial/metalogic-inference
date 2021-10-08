@@ -1,6 +1,6 @@
-This is mli.info, produced by makeinfo version 6.7 from mli.texi.
+This is mli.info, produced by makeinfo version 6.8 from mli.texi.
 
-This manual (17 November 2020) is for GNU MLI (version 0.1), the GNU
+This manual (8 October 2021) is for GNU MLI (version 0.1), the GNU
 MetaLogic Inference program.
 
    Copyright © 2017 Hans Åberg
@@ -27,7 +27,7 @@ File: mli.info,  Node: Top,  Next: Introduction,  Up: (dir)
 MLI
 ***
 
-This manual (17 November 2020) is for GNU MLI (version 0.1), the GNU
+This manual (8 October 2021) is for GNU MLI (version 0.1), the GNU
 MetaLogic Inference program.
 
    Copyright © 2017 Hans Åberg
@@ -1987,33 +1987,33 @@ Index of Terms
 
 
 Tag Table:
-Node: Top997
-Node: Introduction3407
-Node: Conditions3929
-Node: Copying4229
-Node: Concepts41967
-Node: Metatheory and Object Theory42956
-Node: Formal Theories and Formal Proofs45730
-Node: Proof Trees and Unification52381
-Node: The Propositional Calculus53725
-Node: The Predicate Calculus (Quantification Theory)58087
-Node: Theory with Equality58342
-Node: Formal Number Theory58539
-Node: Axiomatic Set Theory58710
-Node: Examples58852
-Node: Simple Propositional Calculus59240
-Node: Nested proofs77336
-Node: Input File78050
-Node: Interface78169
-Node: Algorithm78289
-Node: Debugging78434
-Node: Invocation78612
-Node: MLI Options79593
-Node: Option Cross Key81275
-Node: Table of Symbols81429
-Node: Glossary81618
-Node: Bibliography81945
-Node: Index of Terms82435
+Node: Top995
+Node: Introduction3403
+Node: Conditions3925
+Node: Copying4225
+Node: Concepts41963
+Node: Metatheory and Object Theory42952
+Node: Formal Theories and Formal Proofs45726
+Node: Proof Trees and Unification52377
+Node: The Propositional Calculus53721
+Node: The Predicate Calculus (Quantification Theory)58083
+Node: Theory with Equality58338
+Node: Formal Number Theory58535
+Node: Axiomatic Set Theory58706
+Node: Examples58848
+Node: Simple Propositional Calculus59236
+Node: Nested proofs77332
+Node: Input File78046
+Node: Interface78165
+Node: Algorithm78285
+Node: Debugging78430
+Node: Invocation78608
+Node: MLI Options79589
+Node: Option Cross Key81271
+Node: Table of Symbols81425
+Node: Glossary81614
+Node: Bibliography81941
+Node: Index of Terms82431
 
 End Tag Table
 

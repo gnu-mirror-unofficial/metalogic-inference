@@ -1879,7 +1879,7 @@ static const flex_int16_t yy_chk[5415] =
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 #line 1 "../../mli-root/src/database-lexer.ll"
-/* Copyright (C) 2017 Hans Åberg.
+/* Copyright (C) 2017, 2021 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 

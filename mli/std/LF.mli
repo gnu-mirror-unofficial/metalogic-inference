@@ -1,4 +1,4 @@
-[— Copyright (𝑪) 2017 Hans Åberg.
+[— Copyright (C) 2017, 2021 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
