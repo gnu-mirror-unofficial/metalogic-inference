@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -60,8 +60,7 @@ namespace mli {
     // Extends the substitution *this to a function, mapping formulas to formulas:
     virtual ref<formula> operator()(const ref<formula>& x) const;
 
-
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual kleenean has(const ref<variable>&, occurrence) const { return false; }
     virtual void contains(std::set<ref<variable>>&, std::set<ref<variable>>&, bool&, occurrence) const {}
@@ -148,7 +147,7 @@ namespace mli {
 
     virtual ref<formula> substitute_variable(const ref<variable>& x, substitute_environment) const;
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual void set_bind(bind&, name_variable_table&);
     virtual ref<formula> rename(level, degree) const;
@@ -232,7 +231,7 @@ namespace mli {
 
     virtual alternatives unify_substitution2(const ref<formula>&, unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual void set_bind(bind&, name_variable_table&);
     virtual ref<formula> rename(level, degree) const;
@@ -283,7 +282,7 @@ namespace mli {
 
     virtual ref<formula> substitute_variable(const ref<variable>& x, substitute_environment vt) const;
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+    formula::type get_formula_type() const override { return formula::meta; }
 
     // Variable renumbering:
     virtual void set_bind(bind&, name_variable_table&);
@@ -360,7 +359,7 @@ namespace mli {
     new_copy(substitution_formula);
     new_move(substitution_formula);
 
-    virtual formula_type get_formula_type() const;
+    virtual formula::type get_formula_type() const;
 
     // Variable renumbering:
     virtual void set_bind(bind&, name_variable_table&);
@@ -410,7 +409,6 @@ namespace mli {
   class alternative : public unit {
   public:
     ref<substitution> substitution_;  // Initializes to default substitution, i.e., I.
-    ref<formula> unifier_;   // Used by multi-argument unify().
     ref<formula> goal_;
 
 #if NEW_PROVED
@@ -421,7 +419,11 @@ namespace mli {
     struct statement_data {
       ref<statement> statement_;
       std::vector<ref<statement>> definitions_;
+#if NEW_SUBSTATEMENTS
+      std::vector<std::string> substatements_;
+#else
       std::vector<ref<statement>> substatements_;
+#endif
     };
 
     std::map<size_type, statement_data> labelstatements_;
@@ -438,14 +440,13 @@ namespace mli {
     new_copy(alternative);
     new_move(alternative);
 
-    explicit alternative(const ref<formula>& x) : unifier_(x) {}
-    
     alternative(const ref<substitution>& s) : substitution_(s) {}
     alternative(const ref<substitution>& s, const ref<formula>& g)
      : substitution_(s), goal_(g) {}
 
-    virtual alternative& label(const ref<statement>&, level);            // For statements.
-    virtual alternative& label(const ref<statement>&, level, degree);    // For definitions and deductions.
+    virtual alternative& label(const ref<statement>&, level);           // For statements.
+    virtual alternative& label(const ref<statement>&, level, degree);   // For definitions and deductions.
+    virtual alternative& sublabel(const std::string&, level);           // For substatements.
 
     alternative add_goal(const ref<formula>& x) const;
 
@@ -527,8 +528,9 @@ namespace mli {
 
     iterator erase(iterator i) { return alternatives_.erase(i); }
 
-    virtual alternatives& label(const ref<statement>&, level);              // For statements.
-    virtual alternatives& label(const ref<statement>&, level, degree);   // For definitions.
+    virtual alternatives& label(const ref<statement>&, level);          // For statements.
+    virtual alternatives& label(const ref<statement>&, level, degree);  // For definitions.
+    virtual alternatives& sublabel(const std::string&, level);           // For substatements.
 
     virtual alternatives& push_back(const alternative& a);
     virtual alternatives& append(const alternatives& as);
@@ -558,14 +560,6 @@ namespace mli {
       const ref<formula>& y, unify_environment ty,
       database*, level, degree_pool&, direction) const;
 
-
-    // Return is *this with unifier formulas inserted by applying substitutions to x:
-    virtual alternatives unifier(const ref<formula>& x) const;
-    
-    // Compute unify(xs, x) assuming that *this = unify(xs) with unifier
-    // formulas inserted:
-    virtual alternatives unify(unify_environment, const ref<formula>& x, unify_environment tx, database*, level, degree_pool&) const;
-
     virtual void write(std::ostream&, write_style) const;
 
     // Combine substitutions and conditions (goals) as of old x followed by new y.
@@ -585,6 +579,9 @@ namespace mli {
 
   // Combining the x*y of the single alternatives contained in x and y:
   alternatives operator*(const alternatives& x, const alternatives& y);
+
+
+  alternatives merge(const alternatives& x, const alternatives& y, metalevel_t ml);
 
 
   class proof : public unit {

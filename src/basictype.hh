@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -40,7 +40,7 @@ namespace mli {
     explicit operator signed long int() const { return (signed long)value; }
     explicit operator unsigned long int() const { return (unsigned long)value; }
 
-    virtual formula_type get_formula_type() const { return term_type_; }
+    formula::type get_formula_type() const override { return formula::object; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 

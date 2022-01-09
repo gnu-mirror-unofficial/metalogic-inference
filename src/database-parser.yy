@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -191,9 +191,6 @@
 
     mli::database_parser::token_type to_token(variable::type t) {
       switch (t) {
-#if USE_VARIABLE_META
-        case variable::metaformula_:   return mli::database_parser::token::metaformula_variable;
-#endif
         case variable::formula_:       return mli::database_parser::token::object_formula_variable;
         case variable::predicate_:     return mli::database_parser::token::predicate_variable;
         case variable::atom_:          return mli::database_parser::token::atom_variable;
@@ -461,6 +458,8 @@
 
 /* Formula functions: */
 
+%token natural_numner_key "ℕ"
+
 %token less_key "<"
 %token greater_key ">"
 %token less_or_equal_key "≤"
@@ -473,6 +472,9 @@
 
 %token equal_key "="
 %token not_equal_key "≠"
+
+%token divides_key "∣"
+%token not_divides_key "∤"
 
 %token mapsto_key "↦"
 %token Mapsto_key "⤇"
@@ -614,6 +616,8 @@
 
 %left "=" "≠"
 %left "<" ">" "≤" "≥"  "≮" "≯" "≰" "≱"
+
+%left "∣" "∤"
 
 
 /* Set theory. */
@@ -1383,7 +1387,7 @@ identifier_constant_name:
       }
 
       symbol_table.insert($x.text, {declared_token,
-        ref<constant>(make, $x.text, formula_type(declared_type))});
+        ref<constant>(make, $x.text, constant::type(declared_type))});
     }
 ;
 
@@ -1403,8 +1407,8 @@ identifier_variable_name:
           + symbol_name((symbol_kind_type)x0->first) + ".");
       }
 
-       symbol_table.insert($x.text, {declared_token,
-         ref<variable>(make, $x.text, variable::type(declared_type), -1)});
+      symbol_table.insert($x.text, {declared_token,
+       ref<variable>(make, $x.text, variable::ordinary_, variable::type(declared_type), -1)});
     }
   | "°" "name"[x] {
       // Check if name already has top level definition:
@@ -1441,10 +1445,12 @@ definition:
 metaformula_definition:
     pure_metaformula[x] "≔" pure_metaformula[y] {
       $$.object = ref<abbreviation>(make, ref<formula>($x.object), ref<formula>($y.object), ref<formula>(),
-        object_formula_type_, formula_definition_oprec); }
+        formula::logic, formula_definition_oprec);
+    }
   | pure_metaformula[x] "≕" pure_metaformula[y] {
       $$.object = ref<abbreviation>(make, ref<formula>($y.object), ref<formula>($x.object), ref<formula>(),
-        object_formula_type_, formula_definition_oprec); }
+       formula::logic, formula_definition_oprec);
+  }
 /*
   | metaformula[x] "⊢" metaformula[y] "≔" metaformula[z] {
       $$.object = ref<abbreviation>(make, ref<formula>($y.object), ref<formula>($z.object), ref<formula>($x.object),
@@ -1456,10 +1462,12 @@ metaformula_definition:
 object_formula_definition:
     object_formula[x] "≔" object_formula[y] {
       $$.object = ref<abbreviation>(make, ref<formula>($x.object), ref<formula>($y.object), ref<formula>(),
-        object_formula_type_, formula_definition_oprec); }
+        formula::logic, formula_definition_oprec);
+    }
   | object_formula[x] "≕" object_formula[y] {
       $$.object = ref<abbreviation>(make, ref<formula>($y.object), ref<formula>($x.object), ref<formula>(),
-        object_formula_type_, formula_definition_oprec); }
+        formula::logic, formula_definition_oprec);
+  }
 /*
   | metaformula[x] "⊢" object_formula[y] "≔" object_formula[z] {
       $$.object = ref<abbreviation>(make, ref<formula>($y.object), ref<formula>($z.object), ref<formula>($x.object),
@@ -1471,7 +1479,8 @@ object_formula_definition:
 term_definition:
     term[x] "≔" term[y] {
       $$.object = ref<abbreviation>(make, ref<formula>($x.object), ref<formula>($y.object), ref<formula>(),
-        term_type_, term_definition_oprec); }
+        formula::object, term_definition_oprec);
+    }
 /*
   // Causes conflicts with the general "⊢" rules.
   | metaformula[x] "⊢" term[y] "≔" term[z] {
@@ -1480,7 +1489,8 @@ term_definition:
 */
   | term[x] "≕" term[y] {
       $$.object = ref<abbreviation>(make, ref<formula>($y.object), ref<formula>($x.object), ref<formula>(),
-        term_type_, term_definition_oprec); }
+        formula::object, term_definition_oprec);
+  }
 ;
 
 
@@ -2064,6 +2074,11 @@ predicate:
     predicate_expression[x] { $$.object = $x.object; }
   | term[x] "="[a] term[y] { $$.object = ref<structure>(make, $a.text, structure::predicate, 0_ml, structure::infix, equal_oprec, $x.object, $y.object); }
   | term[x] "≠"[a] term[y] { $$.object = ref<structure>(make, $a.text, structure::predicate, 0_ml, structure::infix, not_equal_oprec, $x.object, $y.object); }
+
+  /* Divisibility */
+  | term[x] "∣"[a] term[y] { $$.object = ref<structure>(make, $a.text, structure::predicate, 0_ml, structure::infix, equal_oprec, $x.object, $y.object); }
+  | term[x] "∤"[a] term[y] { $$.object = ref<structure>(make, $a.text, structure::predicate, 0_ml, structure::infix, not_equal_oprec, $x.object, $y.object); }
+
   /* Inequalities and their negations. */
   | term[x] "<"[a] term[y] { $$.object = ref<structure>(make, $a.text, structure::predicate, 0_ml, structure::infix, less_oprec, $x.object, $y.object); }
   | term[x] ">"[a] term[y] { $$.object = ref<structure>(make, $a.text, structure::predicate, 0_ml, structure::infix, greater_oprec, $x.object, $y.object); }
@@ -2354,7 +2369,7 @@ function_term:
 
 set_term:
     "{" "}" { $$.object = ref<sequence>(make, sequence::member_list_set); }
-  | "∅" { $$.object = ref<constant>(make, "∅", formula_type(database_parser::token::term_constant)); }
+  | "∅" { $$.object = ref<constant>(make, "∅", constant::object); }
   | "{" set_member_list[x] "}" { $$.object = $x.object; }
   | "{" set_variable_definition[x] optional_in_term[s] "|" object_formula[y] "}" {
       symbol_table.pop_level();

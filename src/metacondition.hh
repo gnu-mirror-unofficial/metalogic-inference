@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -33,7 +33,8 @@ namespace mli {
 
     metanot(const ref<formula>& x) : formula_(x) {}
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 
@@ -73,7 +74,7 @@ namespace mli {
 
     bool provable() const override { return succeed_; }
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 
@@ -112,7 +113,8 @@ namespace mli {
     identical(const ref<formula>& x, const ref<formula>& y, bool not_negated = true)
      : first_(x), second_(y), positive_(not_negated) {}
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 
@@ -154,7 +156,8 @@ namespace mli {
     objectidentical(const ref<variable>& x, const ref<variable>& y, bool not_negated = true)
      : first_(x), second_(y), positive_(not_negated) {}
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 
@@ -195,7 +198,8 @@ namespace mli {
     free_in_object(const ref<variable>& x, const ref<formula>& f, bool not_negated)
      : variable_(x), formula_(f), positive_(not_negated) {}
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 
@@ -237,7 +241,8 @@ namespace mli {
     free_for_object(const ref<formula>& t, const ref<variable>& x, const ref<formula>& f, bool not_negated)
      : term_(t), variable_(x), formula_(f), positive_(not_negated) {}
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;
 

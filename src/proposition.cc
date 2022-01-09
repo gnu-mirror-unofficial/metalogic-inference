@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -893,9 +893,12 @@ namespace mli {
         }
       }
 
-      if (is_proved() && !proved_all_) {
+      if (!is_proved() == false && !proved_all_) {
         os << "\n" << spaces(proof_margin, proof_tab);
-        os << "[* Statement is proved, but some proof lines are unproved. *]";
+        os << "[* Statement is ";
+        if (is_proved() == undefined)
+          os << "conditionally ";
+        os << "proved, but some proof lines are unproved. *]";
       }
 
       os << "\n" << spaces(proof_margin, proof_tab);

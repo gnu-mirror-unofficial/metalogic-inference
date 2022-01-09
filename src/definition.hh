@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -29,7 +29,8 @@ namespace mli {
     ref<formula> defined_;    // Definiendum, what is defined.
     ref<formula> definer_;    // Definiens, what defines.
     ref<formula> condition_;  // condition_ ⊢ x ≔ y.
-    formula_type type_;
+
+    formula::type type_ = formula::logic;
 
     // The parameters, i.e., the variables that in A ≔ B only occur in B, and not in A.
     // These should be unspecializable in proof as to not generate faulty proofs.
@@ -39,13 +40,15 @@ namespace mli {
     // unspecializable, resulting in an unintended proof of the more special 0 + 𝒚 = 𝒚 + 0.
     std::set<ref<variable>> parameters_;
 
-    abbreviation() : type_(object_formula_type_) {}
+
+    abbreviation() = default;
 
     new_copy(abbreviation);
     new_move(abbreviation);
 
+
     abbreviation(const ref<formula>& x, const ref<formula>& y, const ref<formula>& c,
-      formula_type t, const precedence_t& p)
+      formula::type t, const precedence_t& p)
      : defined_(x), definer_(y), condition_(c), type_(t), precedence_(p) {
       parameters(parameters_);
     }
@@ -59,10 +62,10 @@ namespace mli {
         ps.erase(i);
     }
 
-    void set(formula_type t) { type_ = t; }
+    void set(formula::type t) { type_ = t; }
     void set(precedence_t p) { precedence_ = p; }
 
-    virtual formula_type get_formula_type() const { return type_; }
+    virtual formula::type get_formula_type() const { return type_; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const;  
 

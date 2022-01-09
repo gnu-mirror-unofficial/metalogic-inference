@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -34,6 +34,7 @@
 #include <string>
 #include <sstream>
 #include <typeinfo>
+#include <type_traits>
 
 #include <optional>
 
@@ -55,13 +56,25 @@
 #define DEBUG_ADD_PREMISE 0
 #define DEBUG_BODY 0
 
-// Varied variable checks in NEW_PROVED 0 shoul be integrated before removed:
+// Varied variable checks in NEW_PROVED 0 should be integrated before removed:
 #define NEW_PROVED 1
 
 #define NEW_SUBSTITUTION_FORMULA_UNIFY 1
 #define DEBUG_SUBSTITUTION_FORMULA_UNIFY 0
 
-#define NEW_LEXER 1
+#define UNIFY_FALSE 1
+
+// If the inference unification of heads produce a condition that is not
+// provables or a premise, it should be out into the head of the new goal:
+#define NEW_HEAD_CONDITION 0
+
+#define NEW_SUBSTATEMENTS 1
+
+// Implicit unification reductions.
+#define IMPLICATION_ELIMINATION 0
+
+
+#define EXPLICIT_SUBSTITUTION_SIMPLIFICATION 1
 
 
 namespace mli {
@@ -423,13 +436,6 @@ namespace mli {
   };
 
 
-  enum formula_type {
-    no_formula_type_,
-    metaformula_type_,
-    object_formula_type_,
-    term_type_
-  };
-
 
   // Used in parsing to assign bind numbers to variables with syntactically
   // same name, unique to the binder they belong to.
@@ -445,12 +451,16 @@ namespace mli {
   // Meta and public unit formulas.
   class formula : public unit {
   public:
+    // Formally redundant values: none, meta; might removed by setting: none = object, meta = logic.
+    enum type {none, object, logic, meta};
+
+
     new_copy(formula);
     new_move(formula);
 
     virtual bool empty() const { return true; }
 
-    virtual formula_type get_formula_type() const { return no_formula_type_; }
+    virtual type get_formula_type() const { return none; }
 
     // Variable renumbering:
     ref<formula> set_bind(); // Set numbering of binders and their associated bound variable occurrences.
@@ -557,6 +567,12 @@ namespace mli {
     // True if and only if object is (formula) set end marker.
     virtual bool is_end_of_formula_sequence() const { return false; }
 
+    // Logic unification helper functions.
+    virtual bool is_negation() const { return false; }
+    virtual bool is_implication() const { return false; }
+
+    // If true, can unify directly with top level logic expression without simplification:
+    virtual bool is_specializable_formula_variable() const { return false; }
 
     // Unification:
     virtual alternatives unify(unify_environment tx, const ref<formula>& y, unify_environment ty, database* dbp, level lv, degree_pool& sl, direction dr) const;
@@ -698,7 +714,8 @@ namespace mli {
     new_copy(statement);
     new_move(statement);
 
-    virtual formula_type get_formula_type() const override { return metaformula_type_; }
+
+    formula::type get_formula_type() const override { return formula::meta; }
 
     virtual ref<formula> get_formula(size_type k) const { return statement_->get_formula(k); }
 
@@ -794,28 +811,49 @@ namespace mli {
     // clash with user defined variables, like the 𝚪 in inference::unify.
     bool is_implicit_ = false;
 
-#if 0
-    // Variables with limited unification: though can appear simultanously as both free and
-    // bound occurrences referring to the same semantic value, and treated as free in both cases,
-    // can only be substituted with other variables, as in the case bound occurrences,
-    // not admitting variable change (α-conversion).
-    // So when the limited flag is set, the variable in effect only admits the intersection
-    // of the unification properties of the free and bound occurrences of that type of variable do.
-    // Used to define properties of binders by semantically linking free and bound occurrences,
-    // and also operators such as differentals.
-#endif
 
     // Variable metatype: ordinary, limited, term.
-    // The ordinary variable is what is used in normal application use, and the limited
-    // and term variables are used for the metamathematical desciprtion of the ordinary
-    // variable through explicit axiomatic rules.
-    // The limited varible corresponds to the metavariables in standard metmathematics,
+    // The ordinary variables are what is used in normal application use, and the limited and
+    // term variables are used for defining the behavior of binders and their bound variables.
+    //
+    // An ordinary variable has only free occurrences, or only bound occurrences belonging to the same
+    // binding operator (binder), that is, different occurrences of the same variables are bound to the
+    // same binding operator or none.
+    // An ordinary variable is called free if its occurrences, then all, are free, and is called bound
+    // if its occurrences are bound, then all belonging to the same binding operator.
+    // A limited variable can have both free and bound occurrences, however, there is only only
+    // rule where this happens, generalization 𝑨 ⊢ ∀𝒙 𝑨. In some terminology, a limited is called
+    // free if it has free occurrences, and bound if it has bound occurrences, so by that it is
+    // possible for a limited variable to be both free and bound.
+    // A term variable 𝒕 can only have free occurrenses, and is used to express explicit substitutions
+    // 𝑨[𝒙 ⤇ 𝒕], where 𝒙 is a limited or ordinary variable which is counted as a bound occurrence. It is
+    // used in the specialization rule ∀𝒙 𝑨 ⊢ 𝑨[𝒙 ⤇ 𝒕], and definiting functions (lambdas)
+    // (𝒙 ↦ 𝒇)(𝒕) ≔ 𝒇[𝒙 ⤇ 𝒕].
+    //
+    // A free ordinary variable can unify with a term, except in an occurrence of a premise where it is
+    // varied for this premise, where such a substitution leaves it unchanged. This behavior results
+    // from the Deduction Theorem.
+    //
+    // A bound ordinary variable admits variable change (α-conversion) which does not cause a free occurrence
+    // to become bound, or changes the binding of an bound occurrence to another binding operator or
+    // become free.
+    //
+    // The limited variable corresponds to the metavariables in standard metamathematics, but its
     // behavior expressed through unification, keeping implicitly track of variable clashes.
+    // The name limited variable refers to the limited unification they admit, what is common for
+    // free and bound ordinary variables, necessary as it can have both free and  bound occurrences.
+    //
+    // The ordinary variables are created with a bind number, that uniquely defines it in the formula,
+    // avoiding clashes between same named variables with different binding. However, as free and
+    // bound variables can be converted to each other by reduction or deduction of the generalization
+    // rule 𝑨 ⊢ ∀𝒙 𝑨, it is possible by that for free ordinary variables to have non-zero bind number,
+    // and bound ordinary variables to have zero bind number.
     enum metatype {
-      ordinary_, free_, bound_, limited_, term_
+      ordinary_, limited_, term_
     };
 
     metatype metatype_ = ordinary_;
+
 
     // For use with varied variables in the Deduction Theorem:
     // The object variables relative an inference of metalevel k for
@@ -846,16 +884,10 @@ namespace mli {
     std::set<ref<variable>> excluded_from_;
 
 
-// Should be replaced by implementation of metalevel_ before removing:
-#define USE_VARIABLE_META 0
-
     // The free and bound variables belong to the logic, the others
     // to the metalogic.
     // The order in the list below cannot be changed, as used in several searches.
     enum type { none_,
-#if USE_VARIABLE_META
-      metaformula_, metapredicate_,
-#endif
       formula_sequence_,
       formula_, predicate_, atom_,
       function_,
@@ -915,22 +947,15 @@ namespace mli {
 
 
     bool is_object() const;
-#if USE_VARIABLE_META
-    bool is_metaformula() const;
-#endif
     bool is_formula() const;
 
     bool is_unspecializable() const { return unspecializable_; }
     bool get_depth() const;
 
-#if USE_VARIABLE_META
-    virtual formula_type get_formula_type() const override {
-      return is_metaformula()? metaformula_type_
-              : (is_formula()? object_formula_type_ : term_type_); }
-#else
-    virtual formula_type get_formula_type() const override {
-      return is_formula()? object_formula_type_ : term_type_; }
-#endif
+    virtual formula::type get_formula_type() const override {
+      return is_formula()? formula::logic : formula::object; }
+
+    bool is_specializable_formula_variable() const override { return type_ == formula_ && !unspecializable_; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const override;
 
@@ -1074,19 +1099,39 @@ namespace mli {
 
   class constant : public nonempty_formula {
   public:
-    typedef formula_type type;
-
     std::string name;
-    type type_;
 
-    constant() : type_(no_formula_type_) {}
+    // Not yet implemented:
+    metalevel_t metalevel_ = 0_ml;
+
+    // logic constant, logic function constant, predicate constant,
+    // object constant, object function constant.
+    enum type { object, function, predicate, logic, logic_function };
+    type type_ = object;
+
+
+    static formula::type to_formula_type(type x) {
+      switch (x) {
+        case logic: case logic_function:
+        case predicate:
+          return formula::logic;
+        case object: case function:
+          return formula::object;
+        default:
+          return formula::none;
+      }
+    }
+
+
+    constant() = default;
 
     new_copy(constant);
     new_move(constant);
 
     constant(std::string s, type t) : name(s), type_(t) {}
 
-    virtual formula_type get_formula_type() const override { return type_; }
+
+    virtual formula::type get_formula_type() const override { return to_formula_type(type_); }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const override;
 
@@ -1173,7 +1218,7 @@ namespace mli {
      : formulas_(y.formulas_), type_(y.type_) { formulas_.push_front(x); }
 
 
-    formula_type get_formula_type() const override;
+    formula::type get_formula_type() const override;
 
     void push_back(const ref<formula>& t) { formulas_.push_back(t); }
     void reverse() { formulas_.reverse(); }
@@ -1219,26 +1264,38 @@ namespace mli {
     metalevel_t metalevel_ = 0_ml;
 
     // logic      logic value and argument
-    // predicate  logic value and term argument
-    // function   term value and term argument
-    enum type { logic, predicate, function };
+    // predicate  logic value and object argument
+    // function   object value and object argument
+    enum type { function, predicate, logic };
     type type_;
 
     // postargument  write argument as is after the atom
     enum style { postargument, prefix, postfix, infix };
     style style_;
 
-    static formula_type to_formula_type(type x) {
+
+    static formula::type to_formula_type(type x) {
       switch (x) {
         case logic:
         case predicate:
-          return object_formula_type_;
+          return formula::logic;
         case function:
-          return term_type_;
+          return formula::object;
         default:
-          return no_formula_type_;
+          return formula::none;
       }
     }
+
+
+    static constant::type to_constant_type(type x) {
+      switch (x) {
+        case logic: return constant::logic_function;
+        case predicate: return constant::predicate;
+        case function: return constant::function;
+        default: return constant::function;
+      }
+    }
+
 
     structure() : type_(predicate), style_(postargument) {}
 
@@ -1253,7 +1310,7 @@ namespace mli {
 
     // Structure with constant atom (a string, which is its name, and argument a sequence.
     structure(const std::string& s, type t, metalevel_t ml, style st, precedence_t p, std::initializer_list<ref<formula>> xs)
-     : atom(ref<constant>(make, s, to_formula_type(t))),
+     : atom(ref<constant>(make, s, to_constant_type(t))),
        argument(ref<sequence>(make, (t == logic)? sequence::logic : sequence::tuple, xs)),
        type_(t), style_(st), precedence_(p), metalevel_(ml) {}
 
@@ -1269,9 +1326,12 @@ namespace mli {
     void set(style s) { style_ = s; }
     void set(precedence_t p) { precedence_ = p; }
 
-    virtual formula_type get_formula_type() const override { return to_formula_type(type_); }
+    virtual formula::type get_formula_type() const override { return to_formula_type(type_); }
 
     virtual metalevel_t metalevel() const override { return metalevel_; }
+
+    bool is_negation() const override { return *atom == constant("¬", constant::logic_function); }
+    bool is_implication() const override { return *atom == constant("⇒", constant::logic_function); }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const override;
     virtual split_formula split(unify_environment, const ref<variable>&, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const override;
@@ -1348,7 +1408,7 @@ namespace mli {
 
     bool is_quantified() const { return (type_ == all_) || (type_ == exist_); }
 
-    virtual formula_type get_formula_type() const override { return object_formula_type_; }
+    virtual formula::type get_formula_type() const override { return formula::logic; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const override;
     virtual split_formula split(unify_environment, const ref<variable>&, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const override;
@@ -1454,7 +1514,7 @@ namespace mli {
     formula_sequence(const ref<formula>& x, const formula_sequence& y)
      : formulas_({x}) { formulas_.insert(formulas_.end(), y.formulas_.begin(), y.formulas_.end()); }
 
-    formula_type get_formula_type() const override;
+    formula::type get_formula_type() const override;
 
     void push_back(const ref<formula>& t) { formulas_.push_back(t); }
 
@@ -1615,7 +1675,8 @@ namespace mli {
     inference(const ref<formula>& h, const std::list<ref<formula>>& bfs, metalevel_t ml)
      : head_(h), body_(ref<formula_sequence>(make, bfs)), metalevel_(ml) {}
 
-    virtual formula_type get_formula_type() const { return metaformula_type_; }
+
+    virtual formula::type get_formula_type() const { return formula::meta; }
 
     virtual ref<formula> get_formula(size_type k) const;
 
@@ -1684,7 +1745,8 @@ namespace mli {
     new_copy(database);
     new_move(database);
 
-    virtual formula_type get_formula_type() const override { return metaformula_type_; }
+
+    virtual formula::type get_formula_type() const override { return formula::meta; }
 
     virtual alternatives unify(unify_environment, const ref<formula>&, unify_environment, database*, level, degree_pool&, direction) const override;
 

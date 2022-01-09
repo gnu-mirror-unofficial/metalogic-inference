@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -33,23 +33,25 @@ namespace mli {
   // Kleenan conversion to a signed integral type: 𝕗 ↦ 0, 𝕦 ↦ -1, 𝕥 ↦ 1.
   // Signed integral x conversion to kleenean: x = 0 ↦ 𝕗, x < 0 ↦ 𝕦, x > 0 ↦ 𝕥.
   //
-  // A C++ limitation makes it impossible to allow the kleenean type to be implicitly
+  // C++ limitations make it difficult to fully allow the kleenean type to be implicitly
   // converted to an integral type, as for use in switch statements, while at the same
   // time avoiding implicit conversion to the boolean type, as in if statements. So care
   // must be taken in if statements to make sure there is not an accidental conversion
   // from kleenean to bool.
+  // Currently, 'operator int' is implicit, while 'operator bool' is deleted, which seems
+  // to provide a reasonable tradeoff.
   //
   // Following a C tradition to not spell out the names properly, the type could have been
   // named 'kleen', but that can easily be added at need in C++ by 'using kleen = kleenean'.
 
   /* Kleenean truth tables:
-    The kleenean type extend the boolean type bool, so it is safe to convert from
+    The kleenean type extends the boolean type bool, so it is safe to convert from
     bool to kleenean, but not conversely. The bool values false and true are
     converted to the same kleenean values, called 𝕗 and 𝕥. The kleenean type
-    also have a value undefined 𝕦.
+    also has a value undefined 𝕦.
 
     Values: false = 𝕗, undefined = 𝕦, true = 𝕥; false and true the same as for bool.
-    Operators: !x = ¬x, x || y = x∨y, and x && y = x∧y, same as for bool for
+    Operators: !x = ¬x, x || y = x ∨ y, and x && y = x ∧ y, same as for bool for
     the false and true values.
 
       !x = ¬x
@@ -57,13 +59,13 @@ namespace mli {
       𝕦 | 𝕦
       𝕥 | 𝕗
 
-      x || y = x∨y
+      x || y = x ∨ y
           𝕗 𝕦 𝕥
       𝕗 | 𝕗 𝕦 𝕥
       𝕦 | 𝕦 𝕦 𝕥
       𝕥 | 𝕥 𝕥 𝕥
 
-      x && y = x∧y
+      x && y = x ∧ y
           𝕗 𝕦 𝕥
       𝕗 | 𝕗 𝕗 𝕗
       𝕦 | 𝕗 𝕦 𝕦
@@ -80,8 +82,13 @@ namespace mli {
     explicit constexpr kleenean(int x)
      : value_(x < 0? -1 : (bool)x) {}
 
-    constexpr operator int8_t() { return value_; }
-    constexpr operator const int8_t() const { return value_; }
+    // For use with: switch ((int)x) {case false: … case undefined: … case true: …}
+    constexpr operator int() { return value_; }
+    constexpr operator const int() const { return value_; }
+
+    // To avoid implicit conversion in boolean expressions, as in "if" statements.
+    operator bool() = delete;
+    operator bool() const = delete;
 
     friend constexpr kleenean operator!(kleenean);
 
@@ -150,7 +157,7 @@ namespace mli {
 
 
   inline std::ostream& operator<<(std::ostream& os, kleenean x) {
-    switch (x) {
+    switch ((int)x) {
       case false: os << "𝕗"; break;
       case undefined: os << "𝕦"; break;
       case true: os << "𝕥"; break;

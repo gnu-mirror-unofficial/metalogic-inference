@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -396,7 +396,7 @@ namespace mli {
   }
 
 
-  formula_type function_application::get_formula_type() const {
+  formula::type function_application::get_formula_type() const {
     return formula_->get_formula_type();
   }
 

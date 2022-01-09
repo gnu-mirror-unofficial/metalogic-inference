@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -43,8 +43,7 @@ namespace mli {
     //   (𝒇 ∘ 𝒈)(𝒕) ≔ 𝒇(𝒈(𝒕))
     virtual ref<formula> operator()(ref<formula>) const;
 
-
-    virtual formula_type get_formula_type() const { return object_formula_type_; }
+    formula::type get_formula_type() const override { return formula::logic; }
 
     virtual kleenean has(const ref<variable>&, occurrence) const { return false; }
     virtual void contains(std::set<ref<variable>>&, std::set<ref<variable>>&, bool&, occurrence) const {}
@@ -111,7 +110,7 @@ namespace mli {
 
     bool is_identity() const override { return variable_ == formula_; }
 
-    formula_type get_formula_type() const override { return metaformula_type_; }
+    formula::type get_formula_type() const override { return formula::meta; }
 
     void set_bind(bind&, name_variable_table&) override;
     ref<formula> rename(level, degree) const override;
@@ -163,7 +162,7 @@ namespace mli {
 
     bool is_identity() const override { return inner_->is_identity() && outer_->is_identity(); }
 
-    formula_type get_formula_type() const override { return object_formula_type_; }
+    formula::type get_formula_type() const override { return formula::logic; }
 
     // Variable renumbering:
     void set_bind(bind&, name_variable_table&) override;
@@ -228,7 +227,7 @@ namespace mli {
     new_copy(function_application);
     new_move(function_application);
 
-    formula_type get_formula_type() const override;
+    formula::type get_formula_type() const override;
 
     // Variable renumbering:
     void set_bind(bind&, name_variable_table&) override;

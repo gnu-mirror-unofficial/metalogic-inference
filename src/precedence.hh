@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -210,6 +210,9 @@ namespace mli {
     not_less_or_equal = less,
     not_greater_or_equal = less,
 
+    divides,
+    not_divides = divides,
+
     function_argument,
     tuple,
 
@@ -304,6 +307,9 @@ namespace mli {
 
   op_prec(equal, assoc::left);
   op_prec(not_equal, assoc::left);
+
+  op_prec(divides, assoc::left);
+  op_prec(not_divides, assoc::left);
 
   op_prec(function_argument, assoc::enfix);
   op_prec(tuple, assoc::enfix);

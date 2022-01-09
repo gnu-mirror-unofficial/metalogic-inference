@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -545,11 +545,9 @@ namespace mli {
 
     switch (t) {
       case none_:           s += "none";  break;
-#if USE_VARIABLE_META
-      case metaformula_:    s += "metaformula";  break;
-      case metapredicate_:  s += "metapredicate";  break;
-#endif
+
       case formula_sequence_:  s += "formula sequence";  break;
+
       case formula_:        s += "formula";  break;
       case predicate_:      s += "predicate variable";  break;
       case atom_:           s += "atom";  break;
@@ -587,18 +585,10 @@ namespace mli {
     if (type_ == none_ || vp->type_ == none_)  return false;
     type vt = vp->type_;;
     switch (type_) {
-#if USE_VARIABLE_META
-      case metapredicate_:
-#endif
       case predicate_:
       case function_:
         return false;
 
-      // Note: No break below!
-#if USE_VARIABLE_META
-      case metaformula_:
-        if (vt == formula_ || vt == predicate_ || vt == atom_)  return true;
-#endif
       case formula_:
         if (vt == object_ || vt == function_)  return true;
         return false;
@@ -642,10 +632,6 @@ namespace mli {
       return true;
 
     switch (x) {
-#if USE_VARIABLE_META
-      case metaformula_:    return y == metaformula_ || y == formula_ || y == predicate_ || y == atom_;
-      case metapredicate_:  return y == metapredicate_;
-#endif
       // Universal metaobject; metalevel defined by member with highest metalevel.
       case formula_sequence_:  return y == formula_sequence_ || y == formula_ || y == predicate_ || y == atom_;
 
@@ -667,11 +653,7 @@ namespace mli {
   bool variable::is_object() const {
     return type_ == object_;
   }
-#if USE_VARIABLE_META
-  bool variable::is_metaformula() const {
-    return type_ == metaformula_;
-  }
-#endif
+
   bool variable::is_formula() const {
     return type_ == formula_ || type_ == predicate_ || type_ == atom_;
   }
@@ -734,13 +716,13 @@ namespace mli {
       }
 
 
-      formula_type ft = f->get_formula_type();
+      formula::type ft = f->get_formula_type();
 
       // formula_sequence_ only unifies with a formula sequence or an object logical statement:
 
       auto sp = ref_cast<formula_sequence*>(f);
 
-      if ((sp != nullptr) || ft == object_formula_type_ || ft == no_formula_type_)
+      if ((sp != nullptr) || ft == formula::logic || ft == formula::none)
         return ref<variable_substitution>(make, this, f);
       else {
         if (trace_value & trace_unify) {
@@ -756,7 +738,7 @@ namespace mli {
 
     if (vp == 0) {
       // Case: f is not a variable. Cases of *this variable type & conditions:
-      //   type_                                   formula_type(f)
+      //   type_                                   formula::type(f)
       //   metaformula_, metapredicate_            metaformula_type_
       //   formula_sequence_                       metaformula_type_, object_formula_type_
       //   formula_, predicate_, atom_             object_formula_type_
@@ -777,7 +759,7 @@ namespace mli {
       if (is_unspecializable())
         return O;
 
-      formula_type ft = f->get_formula_type();
+      formula::type ft = f->get_formula_type();
 
       // Type check cuts down alternatives in unify(A[x ↦ t], B):
       if (ft != get_formula_type()) {
@@ -1336,9 +1318,7 @@ namespace mli {
     if (trace_value & trace_variable_type)
       switch (type_) {
         case none_:         os << "?";  break;
-#if USE_VARIABLE_META
-        case metaformula_:  os << "M";  break;
-#endif
+
         case formula_:      os << "F";  break;
         case predicate_:    os << "P";  break;
         case atom_:         os << "A";  break;
@@ -1513,7 +1493,7 @@ namespace mli {
 
   // Implementation of class constant.
 
-  alternatives constant::unify(unify_environment, const ref<formula>& x, unify_environment, database*, level, degree_pool&, direction) const {
+  alternatives constant::unify(unify_environment, const ref<formula>& x, unify_environment, database*, level lv, degree_pool&, direction) const {
     if (trace_value & trace_unify) {
       std::lock_guard<std::recursive_mutex> guard(write_mutex);
       std::clog
@@ -1521,8 +1501,20 @@ namespace mli {
        << std::endl;
     }
 
+#if UNIFY_FALSE
+    if (name == "𝕗") {
+      alternatives as = I;
+      as = as.add_goal(ref<structure>(make, "¬", structure::logic, metalevel_t(0),
+        structure::prefix, logical_not_oprec, x));
+      as.sublabel("+¬", lv);
+        std::cout << "constant::unify 𝕗: " << as << std::endl;
+      return as;
+    }
+#endif
     constant* xp = ref_cast<constant*>(x);
+    
     return (xp != 0) && (*this == *xp)? I : O;
+
   }
 
 
@@ -1544,31 +1536,35 @@ namespace mli {
   void constant::write(std::ostream& os, write_style) const {
     if (trace_value & trace_formula_type)
       switch (type_) {
-        case metaformula_type_:     os << "M"; break;
-        case object_formula_type_:  os << "F"; break;
-        case term_type_:            os << "T"; break;
-        default:                    os << "?"; break;
+        case object:          os << "ᵒ"; break;
+        case function:        os << "ᶠ"; break;
+        case predicate:       os << "ᴾ"; break;
+        case logic:           os << "ᴮ"; break;
+        case logic_function:  os << "ᴸ"; break;
+        default:              os << "?"; break;
       }
-    os << name; 
+
+    os << name;
   }
 
 
 
   // Implementation of class sequence.
 
-  formula_type sequence::get_formula_type() const {
+  formula::type sequence::get_formula_type() const {
     switch (type_) {
-      case logic: return object_formula_type_;
-      case tuple: return no_formula_type_;
+      case logic: return formula::logic;
+      case tuple: return formula::object;
 
       case member_list_set:
       case implicit_set:
       case vector:
       case list:
       case bracket:
-        return term_type_;
+        return formula::object;
+
       default:
-        return no_formula_type_;
+        return formula::none;
     }
   }
 
@@ -1827,6 +1823,28 @@ namespace mli {
       std::clog
        << "structure::unify(\n  " << *this << ";\n  " << x << ")" << std::endl;
     }
+
+#if IMPLICATION_ELIMINATION
+    if ((tt.is_fact() && !tt.is_premise_|| tt.is_goal() && tt.is_premise_)
+        && is_implication() && !x->is_implication()) {
+      sequence* sqp = ref_cast<sequence*>(argument);
+      if (sqp == nullptr || sqp->formulas_.size() != 2)
+        return O;
+
+      return mli::unify(sqp->formulas_.back(), tt, x, tx, dbp, lv, sl, dr).add_goal(sqp->formulas_.front()).sublabel("-⇒", lv);;
+    }
+
+    if ((tx.is_fact() && !tx.is_premise_ || tx.is_goal() && tx.is_premise_)
+        && !is_implication() && x->is_implication()) {
+      structure* stp = ref_cast<structure*>(x);
+
+      if (stp != nullptr) {
+        sequence* sqp = ref_cast<sequence*>(stp->argument);
+        if (sqp != nullptr && sqp->formulas_.size() == 2)
+          return mli::unify(this, tt, sqp->formulas_.back(), tx, dbp, lv, sl, dr).add_goal(sqp->formulas_.front()).sublabel("-⇒", lv);;
+      }
+    }
+#endif
 
     structure* sp = ref_cast<structure*>(x);
 
@@ -2128,32 +2146,21 @@ namespace mli {
   }
 
 
-  // u(𝛽 𝑥 𝐴, 𝛽 𝑦 𝐵) = [𝑥 ↦ 𝑦]•[𝐵↦𝐴[𝑥 ↦ 𝑦]] ⊢
-  //  𝑦 free for 𝑥 in 𝐴; 𝑦 not free in 𝐴; 𝑥 free for 𝑦 in 𝐵, 𝑥 not free in 𝐵.
+  // 𝐮(𝛽 𝑥 𝐴, 𝛽 𝑦 𝐵) = [𝑥 ↦ 𝑦]•[𝐵 ↦ 𝐴[𝑥 ↦ 𝑦]] with consistency check that no free
+  // variable occurrence becoming bound.
   alternatives bound_formula::unify(unify_environment tt, const ref<formula>& x, unify_environment tx, database* dbp, level lv, degree_pool& sl, direction dr) const {
     if (trace_value & trace_unify) {
       std::lock_guard<std::recursive_mutex> guard(write_mutex);
       std::clog << "bound_formula::unify(\n  " << *this << ";\n  " << x << ")\n" << std::flush;
     }
 
-    // Solutions:
-    // Define the metapredicate u(f, g) ≔ set of unifying substitutions of f, g. Then:
-    // For 𝑥, 𝑦 object variables, with x, y possibly swapped:
-    //   u(𝛽𝑥 𝐴, 𝛽𝑦 𝐵) = [𝑥 ↦ 𝑦]•u(𝐴[𝑥 ↦ 𝑦], 𝐵)
-    //     ⊢ 𝑦 free for 𝑥 in 𝐴; 𝑦 not free in 𝐴; 𝑥 free for 𝑦 in 𝐵, 𝑥 not free in 𝐵.
-    // Special cases:
-    //   𝐴, 𝐵 variables, u(𝐴[𝑥↦𝑦], 𝐵) = [𝑥 ↦ 𝑦]•[𝐵 ↦ 𝐴[𝑥 ↦ 𝑦]].
-    //   x, y object, x = y resp. x ≡ y: u(𝛽𝑥 𝐴, 𝛽𝑦 𝐵) = u(𝐴, 𝐵).
-    //
-
-    /*
-        u(all x A, all y B) == [y\x][B\A].
-        x == y ⊢ u(all x A, all y B) == [B\A].
-        x =/= y, y not free in A, x not free in B ⊢ u(all x A, all y B) == [B\A].
-    */
     bound_formula* xp = ref_cast<bound_formula*>(x);
     if (xp == 0 || type_ != xp->type_)
       return O;
+
+    // Consistency checks, ensuring that no free occurrences become bound, are done in
+    // variable::unify and variable susbtitution, making use of unify_environment::table_
+    // keeping track of the bound variables in scope.
 
     // Elements popped when the syntactic environment expires:
     push_bound p0(tt);
@@ -2166,111 +2173,12 @@ namespace mli {
 
     alternatives as;
 
-#if 1 // debug.hh
-    // u(x, y) * u(A, B):
+
+    // 𝐮(x; y).𝐮(A; B):
     alternatives as0 = mli::unify(variable_, tt, xp->variable_, tx, dbp, lv, sl, dr);
     as0 = as0.unify(domain_, tt, xp->domain_, tx, dbp, lv, sl, dr);
     as0 = as0.unify(formula_, tt, xp->formula_, tx, dbp, lv, sl, dr);
     as = as.append(as0);
-
-#else
-    // This segment is not in use, probably obsolete:
-
-    // Solutions:
-    // If x, y object, x = y resp. x ≡ y:
-    //   u(A, B)
-    // If x, y object, x ≠ y:
-    //   u(x, y) * u(A, B) ⊢ x not free in B, y not free in A.
-    // If x object, y metaobject or x metaobject, y object:
-    //   u(x, y) * u(A, B) ⊣ x not free in B, y not free in A
-    // If x, y metaobject, x ≢ y:
-    //   u(A, B) ⊣ x == y
-    //   u(x, y) * u(A, B) ⊣ x ≠ y, x not free in B, y not free in A.
-    //   u(x, y) * u(A, B) ⊣ x not free in B, y not free in A.
-
-    if (variable_ == xp->variable_) {
-      as = mli::unify(domain_, tt, xp->domain_, tx, dbp, lv, sl, dr);
-      as = as.unify(formula_, tt, xp->formula_, tx, dbp, lv, sl, dr);
-      return as;
-    }
-
-    if ((variable_->is_bound() || variable_->is_limited())
-      && (xp->variable_->is_bound() || xp->variable_->is_limited())) {
-      // u(x, y) * u(A, B):
-      alternatives as0 = mli::unify(ref<formula>(variable_), tt, ref<formula>(xp->variable_), tx, dbp, lv, sl, dr);
-      as0 = as0.unify(domain_, tt, xp->domain_, tx, dbp, lv, sl, dr);
-      as0 = as0.unify(formula_, tt, xp->formula_, tx, dbp, lv, sl, dr);
-      as = as.append(as0);
-      if (!as.empty())
-        return as;
-    }
-
-    kleenean free1 = domain_->has(xp->variable_, occurrence::free) || formula_->has(xp->variable_, occurrence::free);
-    kleenean free2 = xp->domain_->has(variable_, occurrence::free) || xp->formula_->has(variable_, occurrence::free);
-    if (free1 == true || free2 == true)
-      return O;
-
-#if 0
-    // Any type of variable can now be bound:
-    bool to = variable_->is_object();
-    bool xo = xp->variable_->is_object();
-    if (!(to && xo))
-      throw std::runtime_error("In bound_formula, variable not representing object variable.");
-#endif
-
-    // Conditions:
-
-    ref<objectidentical> id(make, variable_, xp->variable_, true);
-    ref<objectidentical> not_id(make, variable_, xp->variable_, false);
-
-    ref<free_in_object> not_free1(make, xp->variable_, formula_, false);
-    ref<free_in_object> not_free2(make, variable_, xp->formula_, false);
-
-    // y not free in A, x not free in B:
-    ref<sequence> s1(make, formula_sequence_);
-
-    if (free1 == undefined)
-      s1->push_back(not_free1);
-    if (free2 == undefined)
-      s1->push_back(not_free2);
-
-#if 0
-    // x /== y, y not free in A, x not free in B:
-    ref<sequence> sp2(make, not_id, formula_sequence_);
-    ref<formula> c2 = sp2;
-    if (free1 == undefined)
-      sp2->push_back(not_free1);
-    if (free2 == undefined)
-      sp2->push_back(not_free2);
-#endif
-
-    if (to && xo) { // Both object variables.
-      // Adds the free variables of formulas as not-free-in conditions:
-      as = mli::unify_bound(variable_, tt, xp->formula_, xp->variable_, tx, formula_, dbp, lv, sl, dr);
-      as = as.unify_binder(formula_, tt, xp->formula_, tx, dbp, lv, sl, dr);
-      // Need to add bound variables table here, in +:
-      as = as + s1;
-    }
-    else {
-      // u(x, y) * u(A, B):
-      alternatives as0 = mli::unify(ref<formula>(variable_), tt, ref<formula>(xp->variable_), tx, dbp, lv, sl, dr);
-      as0 = as0.unify(formula_, tt, xp->formula_, tx, dbp, lv, sl, dr);
-      as = as.append(as0);
-
-  #if 0
-      // One might add conditional solutions here:
-      // If x, y metaobject:
-      //             u(A, B) ⊣ x == y
-      //   u(x, y) • u(A, B) ⊣ x /== y, x not free in B, y not free in A
-      alternatives as1 = mli::unify(formula_, tt, xp->formula_, tx, dbp, lv, sl, dr);
-      // Need to add bound variables table here, in +:
-      as = as.append(as1 + id);
-      alternatives as2 = mli::unify_bound(variable_, tt, xp->formula_, xp->variable_, tx, formula_, dbp, lv, sl, dr);
-      as2 = as2->unify_binder(formula_, tt, xp->formula_, tx, dbp, lv, sl, dr);
-      as = as.append(as1 + c2);
-  #endif
-    }
-#endif // debug.hh
 
     if (trace_value & trace_unify) {
       std::lock_guard<std::recursive_mutex> guard(write_mutex);
@@ -2745,7 +2653,7 @@ namespace mli {
   }
 
 
-  formula_type formula_sequence::get_formula_type() const { return metaformula_type_; }
+  formula::type formula_sequence::get_formula_type() const { return formula::meta; }
 
 
   // 𝜞.add_premise(𝑨, 𝑘):
@@ -3230,7 +3138,6 @@ namespace mli {
   }
 
 
-  // If one
   ref<formula> concatenate(const ref<formula>& x, const ref<formula>& y) {
 #if NEW_PROVED
     if (y->provable()) { if (x->provable()) return {}; else return x; }
@@ -3407,6 +3314,16 @@ namespace mli {
 
     unify_environment tt = tt0;
 
+    // The variable is_premise_ is required for implicit logic simplification, and
+    // for unification of a premise variable with a conclusion variable, the latter
+    // which causes a varioable variation if they are inequivalent.
+    //
+    // As inferences of can be nested, with successive lower metalevel, the variable
+    // is_premise_ is set to false for the head [concliusion) unification, and set to
+    // true before the premise (body) unification, to ensure these are right in the
+    // case of inferences of different metalevel being nested.
+    tt.is_premise_ = false;
+
     // A higher inference level of *this raises the *this environment level:
     if (metalevel_ > tt0.metalevel_)
       tt.metalevel_ = metalevel_;
@@ -3442,6 +3359,13 @@ namespace mli {
     if (yip != nullptr) {
       unify_environment ty1 = ty;
 
+      // Variable is_premise_ is required for implicit logic simplification.
+      // It is set to false for the head unification, and set before the premise (body)
+      // unification, to ensure these are right in the case of inferences of different
+      // metalevel being nested.
+      ty1.is_premise_ = false;
+
+
       // A higher inference metalevel of y raises the y environment metalevel:
       if (yip->metalevel_ > ty.metalevel_)
         ty1.metalevel_ = yip->metalevel_;
@@ -3468,6 +3392,10 @@ namespace mli {
         // unificiaton just below here.
         alternatives as = mli::unify(head_, tt, yip->head_, ty1, dbp, lv, sl, dr);
 
+        // Variable is_premise_ is required for implicit logic simplification.
+        tt.is_premise_ = true;
+        ty1.is_premise_ = true;
+
 #if 1
         // Alternatively, return unify with arguents reversed, but does not arrive here.
         if (tt.target_ == fact)
@@ -3490,6 +3418,12 @@ namespace mli {
 
       for (auto& a: as) {
         ref<substitution> s = a.substitution_;
+#if NEW_HEAD_CONDITION
+        // The goals in as come from unification of the inference heads, and should
+        // should be put back there, so lifted out here:
+        ref<formula> g = a.goal_;
+        a.goal_ = ref<formula>();
+#endif
         ref<inference> xinf, yinf;
 
 
@@ -3504,7 +3438,8 @@ namespace mli {
             << "xinf = " << xinf << "\n"
             << "y    = " << y << "\n"
             << "yinf = " << yinf << "\n"
-            << "s = " << s << std::endl;
+            << "s = " << s << "\n"
+            << "g = " << g << std::endl;
           yinf = y->substitute(s, ty1);
 #endif
         }
@@ -3558,16 +3493,20 @@ namespace mli {
           alternatives ds;
 
           if (xbp == nullptr)
-            ds = a * mli::unify(xb, tt, yb, ty1, dbp, lv, sl, dr);
+            ds = merge(a, mli::unify(xb, tt, yb, ty1, dbp, lv, sl, dr), metalevel_);
           else
             for (auto& i: xbp->formulas_)
-              ds.append(a * mli::unify(i, tt, yb, ty1, dbp, lv, sl, dr));
+              ds.append(merge(a, mli::unify(i, tt, yb, ty1, dbp, lv, sl, dr), metalevel_));
 
           if (ds.empty()) {
             ref<inference> r0(make, yinf->body_, xinf->body_, metalevel_, varied_);
 
             if (includes_varied(xinf, yinf, 0, 0))
+#if 0         // Using the merge in case a has a condition that is an inference:
+              ds = merge(a, alternative({}, r0), metalevel_);
+#else
               ds = a.add_goal(r0);
+#endif
           }
 
           qs.append(ds);
@@ -3660,12 +3599,15 @@ namespace mli {
 #endif
 
             for (auto& b: bs) {
-              ref<formula> hr;
+              ref<formula> hr, gr;
 
               try {
                 ref<substitution> t = b.substitution_;
 
                 hr = fsv->substitute(t, ty1);
+#if NEW_HEAD_CONDITION
+                gr = g->substitute(t, ty1);
+#endif
               }
               catch (illegal_substitution& ex) {
                 if (trace_value & trace_unify)
@@ -3707,14 +3649,37 @@ namespace mli {
 
 #if NEW_PROVED
               if (!hrp->formulas_.empty()) {
-                ref<inference> r0(make, hr, xinf->body_, xinf->metalevel_, xinf->varied_, xinf->varied_in_reduction_);
+#if NEW_HEAD_CONDITION
+                ref<formula> kr;
+                if (gr->provable() || xinf->body_->has_formula(gr))
+                  kr = hr;
+                else
+                  kr = concatenate(gr, hr);
 
+                ref<inference> r0(make, kr, xinf->body_, xinf->metalevel_, xinf->varied_, xinf->varied_in_reduction_);
+#else
+                ref<inference> r0(make, hr, xinf->body_, xinf->metalevel_, xinf->varied_, xinf->varied_in_reduction_);
+#endif
                 rs.push_back(b.add_goal(r0));
               }
               else {
+#if NEW_HEAD_CONDITION
+                // Here, fact body has been proved in full using the goal premises, but there may be still a
+                // condition from the unification of the heads that must be check if provable.
+                if (!gr->provable() && !xinf->body_->has_formula(gr)) {
+                  ref<inference> r0(make, gr, xinf->body_, xinf->metalevel_, xinf->varied_, xinf->varied_in_reduction_);
+                  rs.push_back(b.add_goal(r0));
+                }
+                else {
+                  hrb = true;
+                  ps.push_back(b);
+                  rs.push_back(b);
+                }
+#else
                 hrb = true;
                 ps.push_back(b);
                 rs.push_back(b);
+#endif
               }
 #else
               if (!hrp->formulas_.empty()) {
@@ -3729,9 +3694,9 @@ namespace mli {
 
 #if NEW_PROVED
             if (hrb)
-              qs.append(a * ps);
+              qs.append(merge(a, ps, metalevel_));
             else
-              qs.append(a * rs);
+              qs.append(merge(a, rs, metalevel_));
 #else
             qs.append(a * rs);
 #endif
@@ -3839,9 +3804,9 @@ namespace mli {
 
 #if NEW_PROVED
             if (hrb)
-              qs.append(a * ps);
+              qs.append(merge(a, ps, metalevel_));
             else
-              qs.append(a * rs);
+              qs.append(merge(a, rs, metalevel_));
 #else
             qs.append(a * rs);
 #endif
@@ -3948,7 +3913,7 @@ namespace mli {
                 bs = bs * sr;
               }
 
-            qs.append(a * bs);
+            qs.append(merge(a, bs, metalevel_));
             continue;
           }
             // Now xbp == nullptr.
@@ -4006,7 +3971,7 @@ namespace mli {
               bs = ds;
             }
 
-            qs.append(a * bs);
+            qs.append(merge(a, bs, metalevel_));
             continue;
           }
 
@@ -4099,6 +4064,9 @@ namespace mli {
     }
     else {
       alternatives as = mli::unify(head_, tt, y, ty, dbp, lv, sl, dr);
+
+      // Variable is_premise_ is required for implicit logic simplification.
+      tt.is_premise_ = true;
 
       // The body can be a formula sequence 𝜞 (or ⦰), in which case there should be a substitution [𝜞 ↦ ⦰].
       alternatives bs = as.unify(body_, tt, ref<formula>(), ty, dbp, lv, sl, dr);

@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -351,12 +351,7 @@ utf8char    [\x09\x0A\x0D\x20-\x7E]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-
 "≝"        { return mli::database_parser::token::defined_equal_key; }
 
 "metaformula" { declaration_context = true; declared_token = mli::database_parser::token::metaformula_variable;
-#if USE_VARIABLE_META
-            declared_type = mli::variable::metaformula_;
-#else
-            declared_type = mli::variable::formula_;
-#endif
-             return mli::database_parser::token::identifier_variable_key; }
+            declared_type = mli::variable::formula_; return mli::database_parser::token::identifier_variable_key; }
 
 "formula"[[:space:]]+"sequence" { declaration_context = true; declared_token = mli::database_parser::token::metaformula_variable;
             declared_type = mli::variable::formula_sequence_; return mli::database_parser::token::identifier_variable_key; }
@@ -388,25 +383,25 @@ utf8char    [\x09\x0A\x0D\x20-\x7E]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-
 
 "function" {
             declaration_context = true; declared_token = mli::database_parser::token::function_key;
-            declared_type = mli::term_type_; return mli::database_parser::token::identifier_function_key; }
+            declared_type = constant::function; return mli::database_parser::token::identifier_function_key; }
 "predicate" {
             declaration_context = true; declared_token = mli::database_parser::token::predicate_key;
-            declared_type = mli::object_formula_type_; return mli::database_parser::token::identifier_function_key; }
+            declared_type = constant::predicate; return mli::database_parser::token::identifier_function_key; }
 
 
 "metapredicate" { declaration_context = true; declared_token = mli::database_parser::token::metapredicate_constant;
-               declared_type = mli::metaformula_type_; return mli::database_parser::token::identifier_constant_key; }
+               declared_type = constant::predicate; return mli::database_parser::token::identifier_constant_key; }
 "predicate"[[:space:]]+"constant" {
             declaration_context = true; declared_token = mli::database_parser::token::predicate_constant;
-            declared_type = mli::object_formula_type_; return mli::database_parser::token::identifier_constant_key; }
+            declared_type = constant::predicate; return mli::database_parser::token::identifier_constant_key; }
 "atom"       { declaration_context = true; declared_token = mli::database_parser::token::atom_constant;
-               declared_type = mli::object_formula_type_; return mli::database_parser::token::identifier_constant_key; }
+               declared_type = constant::logic; return mli::database_parser::token::identifier_constant_key; }
 
 "function"[[:space:]]+"constant" {
             declaration_context = true; declared_token = mli::database_parser::token::function_constant;
-            declared_type = mli::term_type_; return mli::database_parser::token::identifier_constant_key; }
+            declared_type = formula::object; return mli::database_parser::token::identifier_constant_key; }
 "constant"   { declaration_context = true; declared_token = mli::database_parser::token::term_constant;
-               declared_type = mli::term_type_; return mli::database_parser::token::identifier_constant_key; }
+               declared_type = formula::object; return mli::database_parser::token::identifier_constant_key; }
 
 "⇒"   { get_text; return mli::database_parser::token::implies_key; }
 "⇐"   { get_text; return mli::database_parser::token::impliedby_key; }
@@ -440,6 +435,8 @@ utf8char    [\x09\x0A\x0D\x20-\x7E]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-
 "="  { get_text; return mli::database_parser::token::equal_key; }
 "≠"  { get_text; return mli::database_parser::token::not_equal_key; }
 
+"∣"  { get_text; return mli::database_parser::token::divides_key; }
+"∤"  { get_text; return mli::database_parser::token::not_divides_key; }
 
 "↦" { get_text; bound_variable_type = free_variable_context; return mli::database_parser::token::mapsto_key; }
 "⤇" { get_text; return mli::database_parser::token::Mapsto_key; }

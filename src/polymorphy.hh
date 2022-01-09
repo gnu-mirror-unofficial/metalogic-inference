@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -133,11 +133,11 @@ namespace mli {
 
     // Return the operator() value the the data held:
     template<class... B>
-    auto operator()(B&&... bs) -> typename std::result_of<A(B...)>::type
+    auto operator()(B&&... bs) -> typename std::invoke_result<A, B...>::type
     { return (*data_)(bs...); }
 
     template<class... B>
-    auto operator()(B&&... bs) const -> typename std::result_of<A(B...)>::type
+    auto operator()(B&&... bs) const -> typename std::invoke_result<A, B...>::type
     { return (*data_)(bs...); }
   };
 }

@@ -1,4 +1,4 @@
-/* Copyright (C) 2017, 2021 Hans Åberg.
+/* Copyright (C) 2017, 2021-2022 Hans Åberg.
 
    This file is part of MLI, MetaLogic Inference.
 
@@ -1189,7 +1189,7 @@ namespace mli {
   }
 
 
-  formula_type substitution_formula::get_formula_type() const {
+  formula::type substitution_formula::get_formula_type() const {
     return formula_->get_formula_type();
   }
 
@@ -1273,6 +1273,22 @@ namespace mli {
 
     ref<formula> f1 = formula_->substitute(s, vt);
     ref<substitution> s1 = substitution_->substitute(s, vt);
+
+#if EXPLICIT_SUBSTITUTION_SIMPLIFICATION
+    explicit_substitution* esp = ref_cast<explicit_substitution*>(s1);
+
+    if (esp == nullptr) {
+      std::ostringstream ost;
+
+      ost << "Error: substitution_formula::substitute: " << *this << "\n"
+        << s << "\n" << s1 << std::endl;
+
+      throw std::runtime_error(ost.str());
+    }
+
+    if (formula_->has(esp->variable_, occurrence::free) == false)
+      return formula_;
+#endif
 
     ref<formula> fr;
 
@@ -1455,6 +1471,13 @@ namespace mli {
   }
 
 
+  alternative& alternative::sublabel(const std::string& ls, level lv) {
+    labelstatements_[lv.sub].substatements_.push_back(ls);
+
+    return *this;
+  }
+
+
   void alternative::write(std::ostream& os, write_style ws) const {
     if (!(ws & write_statement)) {
       bool it0 = true;
@@ -1488,8 +1511,11 @@ namespace mli {
           for (auto& j: i.second.substatements_) {
             if (it0) it0 = false;
             else     os << ", ";
-
+#if NEW_SUBSTATEMENTS
+            os << j;
+#else
             j->write(os, ws);
+#endif
           }
 
           os << "⁾";
@@ -1521,6 +1547,22 @@ namespace mli {
         }
       }
 
+#if NEW_SUBSTATEMENTS
+      if (!i.second.substatements_.empty()) {
+        os << "substatements: ";
+
+        bool it0 = true;
+
+        for (auto& j: i.second.substatements_) {
+          if (it0) it0 = false;
+          else     os << ", ";
+
+          os << j;
+        }
+
+        os << "\n";
+      }
+#else
       if (!i.second.substatements_.empty())
         os << "Substatement section:\n";
 
@@ -1530,6 +1572,7 @@ namespace mli {
           os << "\n";
         }
       }
+#endif
     }
 #else
     for (auto& i: labelstatements_) {
@@ -1553,13 +1596,143 @@ namespace mli {
       os << "\n∴ ";
       goal_->write(os, ws);
     }
-
-    if (!unifier_->empty()) {
-      os << "\n      unifier: ";
-      unifier_->write(os, ws);
-    }
   }
 
+#if 1
+  // Assumption is that x comes from an inference head unification and y from body unification.
+  // The metalevel ml is the one of the inference contructed in infrence::unify. The metalevel of
+  // y may be lower if no new inference is contructed. The metalevel of x is allowed to be equal
+  // to ml to allow for the head unification to produce a premise.
+  ref<formula> merge(const ref<formula>& x, const ref<formula>& y, metalevel_t ml) {
+    if (y->provable()) { if (x->provable()) return {}; else return x; }
+    if (x->provable())  return y;
+
+    metalevel_t ml1 = x->metalevel();
+    metalevel_t ml2 = y->metalevel();
+
+    inference* ip1 = ref_cast<inference*>(x);
+    inference* ip2 = ref_cast<inference*>(y);
+
+    // Check inference objects of metalevel ml, as lower level should be passive formulas.
+    bool ib1 = ip1 != 0 && ml1 == ml;
+    bool ib2 = ip2 != 0 && ml2 == ml;
+
+    if (ib1 && ib2) {
+      // Only insert the head of x in case it is not provable from the y premises, and
+      // only insert the head of y in case it is not provable from the x premises,
+      ref<formula> hr;
+
+      bool hb1 = !ip1->head_->provable() && !ip2->body_->has_formula(ip1->head_);
+      bool hb2 = !ip2->head_->provable() && !ip1->body_->has_formula(ip2->head_);
+
+      if (hb1 && hb2)
+        hr = concatenate(ip1->head_, ip2->head_);
+      else if (hb1)
+        hr = ip1->head_;
+      else if (hb2)
+        hr = ip2->head_;
+      else
+        return {};
+
+      return ref<inference>(make, hr, concatenate(ip1->body_, ip2->body_),
+        ip2->metalevel_, ip2->varied_, ip2->varied_in_reduction_);
+    }
+    else if (ib2) {
+      // Only insert x in case it is not provable from the y premises:
+      ref<formula> hr;
+      if (!x->provable() && !ip2->body_->has_formula(x))
+        hr = concatenate(x, ip2->head_);
+      else
+        hr = ip2->head_;
+
+      return ref<inference>(make, hr, ip2->body_, ip2->metalevel_, ip2->varied_, ip2->varied_in_reduction_);
+    }
+    else if (ib1) {
+      // Case should not appear, but added for symmetry:
+
+      // Only insert y in case it is not provable from the x premises:
+      ref<formula> hr;
+      if (!y->provable() && !ip1->body_->has_formula(y))
+        hr = concatenate(ip1->head_, y);
+      else
+        hr = ip1->head_;
+
+      return ref<inference>(make, hr, ip1->body_, ip1->metalevel_, ip1->varied_, ip1->varied_in_reduction_);
+    }
+
+    return concatenate(x, y);
+  }
+
+
+  alternative merge(const alternative& x, const alternative& y, metalevel_t ml) {
+    if (trace_value & trace_unify) {
+      std::lock_guard<std::recursive_mutex> guard(write_mutex);
+      std::clog
+       << "alternative merge(\n  "
+       << x << ";\n  "
+       << y << ")"
+       << std::endl;
+
+      if (!x.goal_->empty() && !y.goal_->empty())
+        std::clog << std::flush;
+    }
+
+    alternative a;
+
+    a.substitution_ = x.substitution_ * y.substitution_;
+
+    // If the statement labels are inserted into a sequencetial container, then x should
+    // be inserted before y, but as an associative container is used here, the
+    // order does not matter from the functional point of view, but lists definitions
+    // in the order they are used in 'unify'.
+
+    a.labelstatements_ = x.labelstatements_;
+
+#if NEW_PROVED
+    for (auto& i: y.labelstatements_) {
+      // Only insert if statement label is non-empty:
+      a.labelstatements_[i.first].statement_ = i.second.statement_;
+
+      // Currently permits definition duplicates:
+      auto it1 = a.labelstatements_[i.first].definitions_.end();
+      a.labelstatements_[i.first].definitions_.insert(it1, i.second.definitions_.begin(), i.second.definitions_.end());
+
+      // Permits substatement duplicates:
+      a.labelstatements_[i.first].substatements_.insert(a.labelstatements_[i.first].substatements_.end(),
+        i.second.substatements_.begin(), i.second.substatements_.end());
+    }
+#else
+    for (auto& i: y.labelstatements_) {
+      // Only insert if statement label is non-empty:
+      a.labelstatements_[i.first].first = i.second.first;
+
+      // Currently permits definition duplicates:
+      auto it1 = a.labelstatements_[i.first].second.end();
+      a.labelstatements_[i.first].second.insert(it1, i.second.second.begin(), i.second.second.end());
+    }
+#endif
+
+    // Forward goal concatenation order:
+    // The order of the goals are preserved here: the old x.goal_ followed by the new
+    // y.goal_, with the new subtitution y.substitution_ applied to the old goal x.goal_.
+    a.goal_ = merge((*y.substitution_)(x.goal_), y.goal_, ml);
+
+    return a;
+  }
+
+
+  alternatives merge(const alternatives& x, const alternatives& y, metalevel_t ml) {
+    if (y.empty() || x.empty())  return O;
+
+    alternatives as;
+
+    for (auto& i: x)
+      for (auto& j: y)
+        as.push_back(merge(i, j, ml));
+
+    return as;
+  }
+#endif
 
   alternative operator*(const alternative& x, const alternative& y) {
     if (trace_value & trace_unify) {
@@ -1577,9 +1750,6 @@ namespace mli {
     alternative a;
 
     a.substitution_ = x.substitution_ * y.substitution_;
-
-    // Dictated by use in alternatives::unify(const ref<formula>&):
-    a.unifier_ = (*y.substitution_)(x.unifier_);
 
     // If the statement labels are inserted into a sequencetial container, then x should
     // be inserted before y, but as an associative container is used here, the
@@ -1686,6 +1856,14 @@ namespace mli {
   alternatives& alternatives::label(const ref<statement>& ls, level lv, degree sl) {
     for (auto& i: alternatives_)
       i = i.label(ls, lv, sl);
+    return *this;
+  }
+
+
+  alternatives& alternatives::sublabel(const std::string& ls, level lv) {
+    for (auto& i: alternatives_)
+      i = i.sublabel(ls, lv);
+
     return *this;
   }
 
@@ -1947,30 +2125,6 @@ namespace mli {
   }
 
 
-  alternatives alternatives::unifier(const ref<formula>& x) const {
-    alternatives as;
-
-    for (auto& i: alternatives_) {
-      alternative a = i;
-      a.unifier_ = (*i.substitution_)(x);
-      as.push_back(a);
-    }
-
-    return as;
-  }
-
-
-  alternatives alternatives::unify(unify_environment tt, const ref<formula>& y, unify_environment ty, database* dbp, level lv, degree_pool& sl) const {
-    alternatives as;
-
-
-    for (auto& i: alternatives_)
-      as.append(i * mli::unify(i.unifier_, tt, (*i.substitution_)(y), ty, dbp, lv, sl));
-
-    return as;
-  }
-
-
   void alternatives::write(std::ostream& os, write_style ws) const {
     if (empty()) { os << "\n    no solutions."; return; }
 
@@ -2017,7 +2171,7 @@ namespace mli {
 #if NEW_PROVED
     for (auto& i: proof_)
       for (auto& j: i.labelstatements_)
-        if (!j.second.statement_->is_proved()) {
+        if (j.second.statement_->is_proved() == false) {
           conditional_ = true;
           break;
         }
